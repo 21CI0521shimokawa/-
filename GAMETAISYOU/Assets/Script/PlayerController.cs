@@ -59,8 +59,8 @@ public class PlayerController : MonoBehaviour
         if (TriggerCheck())
         {
             this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
-            stickX[freamCnt % freamCntMax] = Input.GetAxis("Horizontal");
-            stickY[freamCnt % freamCntMax] = Input.GetAxis("Vertical");
+            stickX[freamCnt % freamCntMax] = Input.GetAxis("L_Stick_Horizontal");
+            stickY[freamCnt % freamCntMax] = Input.GetAxis("L_Stick_Vertical");
                         
             if (freamCnt >= freamCntMax)
             {
@@ -87,8 +87,8 @@ public class PlayerController : MonoBehaviour
 
     private bool TriggerCheck()
     {
-        if (Input.GetAxis("LTrigger") < 0.3) { return false; }
-        if (Input.GetAxis("RTrigger") < 0.3) { return false; }
+        if (Input.GetAxis("L_Trigger") < 0.3) { return false; }
+        if (Input.GetAxis("R_Trigger") < 0.3) { return false; }
 
         return true;
     }

@@ -29,8 +29,8 @@ public class Tearoff : MonoBehaviour
         {
             moveCheck = false;  //キャラ移動NG(ちぎる最中)
 
-            float stickLHorizontal = Input.GetAxis("Horizontal");
-            float stickRHorizontal = Input.GetAxis("R_Stick_H");
+            float stickLHorizontal = Input.GetAxis("L_Stick_Horizontal");
+            float stickRHorizontal = Input.GetAxis("R_Stick_Horizontal");
 
             if ((stickLHorizontal < 0) && (stickRHorizontal > 0))
             {
@@ -101,8 +101,8 @@ public class Tearoff : MonoBehaviour
         //キャラの移動(左右)
         if (moveCheck == true)
         {
-            if (Input.GetAxis("Horizontal") > 0) { transform.position += transform.right * walkSpeed * Time.deltaTime; }    //右
-            if (Input.GetAxis("Horizontal") < 0) { transform.position -= transform.right * walkSpeed * Time.deltaTime; }    //左
+            if (Input.GetAxis("L_Stick_Horizontal") > 0) { transform.position += transform.right * walkSpeed * Time.deltaTime; }    //右
+            if (Input.GetAxis("L_Stick_Horizontal") < 0) { transform.position -= transform.right * walkSpeed * Time.deltaTime; }    //左
         }
     }
 }
