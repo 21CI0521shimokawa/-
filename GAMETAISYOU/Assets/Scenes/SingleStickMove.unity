@@ -344,11 +344,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1192042799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da9362ba8a1eea049b500547befea900, type: 3}
+  m_Script: {fileID: 11500000, guid: 659c0527f04eab4439edd5fc3ab7fd82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   divisionTime: 1
-  mini: {fileID: 2914972373985173978, guid: ab1c67ac25330c14a83da215b9f54c08, type: 3}
+  mini: {fileID: 9004350315908444527, guid: 9bf9b30a2aef9fa43be914070f036f51, type: 3}
 --- !u!50 &1192042801
 Rigidbody2D:
   serializedVersion: 4
