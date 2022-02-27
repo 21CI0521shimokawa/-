@@ -65,4 +65,10 @@ public class GameManager : MonoBehaviour
         else
             return false;
     }
+
+    public void ResetStageData()
+    {
+        m_doorGroup.Clear();
+        m_laserGroup.Clear();
+    } 
 }
