@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum State { MOVE, STOP, ATTACK, NORMAL, DIVISION, AIR };
-
-public class Shake : MonoBehaviour
+public class PlayerWallSticking : MonoBehaviour
 {
     #region ÇÕÇ∂Ç≠ïœêîêÈåæ
     //float stickX;
@@ -34,7 +32,7 @@ public class Shake : MonoBehaviour
     private State s_state;
     #endregion
 
-   
+
 
     #region Unityfunction
     void Start()
@@ -63,6 +61,8 @@ public class Shake : MonoBehaviour
             case State.STOP:
                 break;
             case State.ATTACK:
+                break;
+            case State.AIR:
                 break;
         }
 
@@ -159,32 +159,65 @@ public class Shake : MonoBehaviour
     }
     private void RepelMove()
     {
-            //ÇÕÇ∂Ç≠
-            Debug.Log("Ç¬Ç©ÇÒÇ≈Ç»Ç¢ÇÊ");
+        //ÇÕÇ∂Ç≠
+        Debug.Log("Ç¬Ç©ÇÒÇ≈Ç»Ç¢ÇÊ");
 
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
-            stickX[freamCnt % freamCntMax] = Input.GetAxis("L_Stick_Horizontal");
-            stickY[freamCnt % freamCntMax] = Input.GetAxis("L_Stick_Vertical");
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
+        stickX[freamCnt % freamCntMax] = Input.GetAxis("L_Stick_Horizontal");
+        stickY[freamCnt % freamCntMax] = Input.GetAxis("L_Stick_Vertical");
 
-            if (freamCnt >= freamCntMax)
+        if (freamCnt >= freamCntMax)
+        {
+            Debug.Log("ì¸óÕÇ≥ÇÍÇƒÇ¢Ç‹Ç∑");
+            Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
+            Vector2 stickVectorBefore = new Vector2(stickX[(freamCnt + 1) % freamCntMax], stickY[(freamCnt + 1) % freamCntMax]);
+
+            float stickVectorNowMagnitude = stickVectorNow.magnitude;
+            float stickVectorBeforeMagnitude = stickVectorBefore.magnitude;
+
+            if (stickVectorNowMagnitude <= 0.1f && stickVectorNowMagnitude < stickVectorBeforeMagnitude - 0.3f)
             {
-                Debug.Log("ì¸óÕÇ≥ÇÍÇƒÇ¢Ç‹Ç∑");
-                Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
-                Vector2 stickVectorBefore = new Vector2(stickX[(freamCnt + 1) % freamCntMax], stickY[(freamCnt + 1) % freamCntMax]);
-
-                float stickVectorNowMagnitude = stickVectorNow.magnitude;
-                float stickVectorBeforeMagnitude = stickVectorBefore.magnitude;
-
-                if (stickVectorNowMagnitude <= 0.1f && stickVectorNowMagnitude < stickVectorBeforeMagnitude - 0.3f)
-                {
-                    freamCnt = 0;
-                    rigid2D.velocity = new Vector2(-stickX[(freamCnt + 1) % freamCntMax] * moveSpeed, -stickY[(freamCnt + 1) % freamCntMax] * moveSpeed);
-                }
+                freamCnt = 0;
+                rigid2D.velocity = new Vector2(-stickX[(freamCnt + 1) % freamCntMax] * moveSpeed, -stickY[(freamCnt + 1) % freamCntMax] * moveSpeed);
             }
+        }
         ++freamCnt;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Wall")
+        {   
+            Vector2 velocityCopy = rigid2D.velocity;
+            float vectorCos = Vector2.Dot(new Vector2(0.0f, 1.0f), velocityCopy);
+
+            if(rigid2D.velocity.magnitude > 2.5f && vectorCos < -0.95f)
+            {
+                
+                velocityCopy.Normalize();
+                rigid2D.velocity = velocityCopy * 4.0f;
+            }
+
+            this.s_state = State.MOVE;
+        }
+        else if(collision.gameObject.tag == "Ground")
+        {
+            this.s_state = State.MOVE;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Wall")
+        {
+            this.s_state = State.AIR;
+        }
+        if(collision.gameObject.tag == "Ground")
+        {
+            this.s_state = State.AIR;
+        }
     }
     #endregion
     #region public function
     #endregion
 }
-
