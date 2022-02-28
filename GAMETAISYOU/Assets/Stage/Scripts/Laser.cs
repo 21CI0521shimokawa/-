@@ -45,6 +45,7 @@ public class Laser : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Player"))
             {
+                GameManager.Instance.ResetStageData();
                 SwitchScene.ReloadScene();
             }
             else
