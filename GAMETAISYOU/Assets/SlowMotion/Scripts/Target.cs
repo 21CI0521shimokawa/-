@@ -5,7 +5,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     //public float _RecoveryTime = 10f;
-    public int _HP = 2;
+    //public int _HP = 2;
 
     SpriteRenderer m_spriteRenderer;    
     //float m_timer;
@@ -44,8 +44,8 @@ public class Target : MonoBehaviour
             m_spriteRenderer.color = Color.gray;
             Destroy(other.gameObject);
 
-            _HP--;
-            if (_HP <= 0) Destroy(gameObject);
+            //_HP--;
+            //if (_HP <= 0) Destroy(gameObject);
         }
     }
 }

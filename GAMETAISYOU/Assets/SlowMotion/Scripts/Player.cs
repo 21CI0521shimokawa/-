@@ -152,6 +152,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Target")
+        {
+            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            Instantiate(_DivideBody, transform.position, Quaternion.identity);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Ground")
