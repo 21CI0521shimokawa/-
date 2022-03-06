@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     //----------------------------------------
     public GameObject _Arrow;
-    public GameObject _DivideBody;
+    //public GameObject _DivideBody;
     public TimeManager _TimeManager;
     public float _RecoveryCT;
     public float _LimitedTime;
@@ -124,11 +124,11 @@ public class Player : MonoBehaviour
 
                         //----------------------------------------スローモーション、分裂
                         _Arrow.SetActive(false);
-                         GameObject obj = Instantiate(_DivideBody, transform.position , Quaternion.identity);
-                        obj.GetComponent<Rigidbody2D>().velocity = new Vector2(stickX[(freamCnt + 1) % freamCntMax] * moveSpeed, stickY[(freamCnt + 1) % freamCntMax] * moveSpeed) * 2;
+                        //GameObject obj = Instantiate(_DivideBody, transform.position , Quaternion.identity);
+                        //obj.GetComponent<Rigidbody2D>().velocity = new Vector2(stickX[(freamCnt + 1) % freamCntMax] * moveSpeed, stickY[(freamCnt + 1) % freamCntMax] * moveSpeed) * 2;
                         _TimeManager._IsNormalSpeed = true;
                         transform.localScale = new Vector3(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f, transform.localScale.z - 0.1f);
-                        //------
+                        //----------------------------------------
                     }
                 }
             }
@@ -187,8 +187,8 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Target")
         {
-            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
-            Instantiate(_DivideBody, transform.position, Quaternion.identity);
+            //transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            //Instantiate(_DivideBody, transform.position, Quaternion.identity);
         }
     }
 
