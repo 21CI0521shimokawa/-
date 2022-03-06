@@ -5,12 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region はじく
-    [SerializeField]float[] stickX;
-    [SerializeField]float[] stickY;
-    const int freamCntMax = 8;
+    [SerializeField] float[] stickX;
+    [SerializeField] float[] stickY;
+    public const int freamCntMax = 20;
     int freamCnt;
     float moveSpeed;
-    
+
     Rigidbody2D rigid2D;
     #endregion
 
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
     float m_timer;
     bool m_intoSlowMotion;
-    [SerializeField]bool m_isGround;
+    [SerializeField] bool m_isGround;
 
 
     //----------------------------------------
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
             if (currentVector.magnitude > 0.3f)
             {
                 _Arrow.SetActive(true);
-                _Arrow.transform.position = transform.position; 
+                _Arrow.transform.position = transform.position;
                 _Arrow.transform.rotation = Quaternion.Euler(0, 0, radian);
             }
             //----------------------------------------
@@ -81,24 +81,53 @@ public class Player : MonoBehaviour
 
             if (freamCnt >= freamCntMax)
             {
+                /*  Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
+                  Vector2 stickVectorBefore = new Vector2(stickX[(freamCnt + 1) % freamCntMax], stickY[(freamCnt + 1) % freamCntMax]);
+
+                  float stickVectorNowMagnitude = stickVectorNow.magnitude;
+                  float stickVectorBeforeMagnitude = stickVectorBefore.magnitude;
+
+
+                  if (stickVectorNowMagnitude <= 0.1f && stickVectorNowMagnitude < stickVectorBeforeMagnitude - 0.3f)
+                  {
+                      rigid2D.velocity = new Vector2(-stickX[(freamCnt + 1) % freamCntMax] * moveSpeed, -stickY[(freamCnt + 1) % freamCntMax] * moveSpeed);
+                      freamCnt = 0;
+
+                      //----------------------------------------スローモーション、分裂
+                      _Arrow.SetActive(false);
+                     // GameObject obj = Instantiate(_DivideBody, transform.position , Quaternion.identity);
+                      //obj.GetComponent<Rigidbody2D>().velocity = new Vector2(stickX[(freamCnt + 1) % freamCntMax] * moveSpeed, stickY[(freamCnt + 1) % freamCntMax] * moveSpeed) * 2;
+                      _TimeManager._IsNormalSpeed = true;
+                      transform.localScale = new Vector3(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f, transform.localScale.z - 0.1f);
+                      //----------------------------------------
+                  }*/
                 Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
-                Vector2 stickVectorBefore = new Vector2(stickX[(freamCnt + 1) % freamCntMax], stickY[(freamCnt + 1) % freamCntMax]);
-
-                float stickVectorNowMagnitude = stickVectorNow.magnitude;
-                float stickVectorBeforeMagnitude = stickVectorBefore.magnitude;
-
-                if (stickVectorNowMagnitude <= 0.1f && stickVectorNowMagnitude < stickVectorBeforeMagnitude - 0.3f)
+                if (stickVectorNow.magnitude <= 0.1f)
                 {
-                    freamCnt = 0;
-                    rigid2D.velocity = new Vector2(-stickX[(freamCnt + 1) % freamCntMax] * moveSpeed, -stickY[(freamCnt + 1) % freamCntMax] * moveSpeed);
+                    Vector2 stickVectorMost = stickVectorNow;
+                    for (int i = 1; i < freamCntMax; ++i)
+                    {
+                        Vector2 stickVectorCompare = new Vector2(stickX[(freamCnt + i) % freamCntMax], stickY[(freamCnt + i) % freamCntMax]);
+                        if (stickVectorMost.magnitude < stickVectorCompare.magnitude)
+                        {
+                            stickVectorMost = stickVectorCompare;
+                        }
+                    }
 
-                    //----------------------------------------スローモーション、分裂
-                    _Arrow.SetActive(false);
-                    GameObject obj = Instantiate(_DivideBody, transform.position , Quaternion.identity);
-                    obj.GetComponent<Rigidbody2D>().velocity = new Vector2(stickX[(freamCnt + 1) % freamCntMax] * moveSpeed, stickY[(freamCnt + 1) % freamCntMax] * moveSpeed) * 2;
-                    _TimeManager._IsNormalSpeed = true;
-                    transform.localScale = new Vector3(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f, transform.localScale.z - 0.1f);
-                    //----------------------------------------
+                    if (stickVectorMost.magnitude > stickVectorNow.magnitude + 0.3f)
+                    {
+                        _TimeManager._IsNormalSpeed = true;
+                        rigid2D.velocity = stickVectorMost * -moveSpeed;
+                        freamCnt = 0;
+
+                        //----------------------------------------スローモーション、分裂
+                        _Arrow.SetActive(false);
+                         GameObject obj = Instantiate(_DivideBody, transform.position , Quaternion.identity);
+                        obj.GetComponent<Rigidbody2D>().velocity = new Vector2(stickX[(freamCnt + 1) % freamCntMax] * moveSpeed, stickY[(freamCnt + 1) % freamCntMax] * moveSpeed) * 2;
+                        _TimeManager._IsNormalSpeed = true;
+                        transform.localScale = new Vector3(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f, transform.localScale.z - 0.1f);
+                        //------
+                    }
                 }
             }
 
@@ -134,7 +163,7 @@ public class Player : MonoBehaviour
 
     bool SizeCheck()
     {
-        if(transform.localScale.x < 0.5f)
+        if (transform.localScale.x < 0.5f)
         {
             return false;
         }
@@ -154,7 +183,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Target")
+        if (other.gameObject.tag == "Target")
         {
             transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
             Instantiate(_DivideBody, transform.position, Quaternion.identity);
@@ -163,7 +192,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Ground")
+        if (other.gameObject.tag == "Ground")
             m_isGround = true;
     }
 
