@@ -46,7 +46,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (m_isGround)
+        {
             SizeRecovery();
+        }
 
         #region ‚Í‚¶‚­
         if (TriggerCheck() && SizeCheck())
