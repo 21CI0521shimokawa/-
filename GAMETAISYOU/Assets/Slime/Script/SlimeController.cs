@@ -11,6 +11,7 @@ public class SlimeController: MonoBehaviour
 
     public bool hazikuUpdate;
     public bool tearoffUpdate;
+    public bool moveUpdate;
 
     #region スライム関連 変数宣言
     [SerializeField, Tooltip("ステータス")]
@@ -18,8 +19,12 @@ public class SlimeController: MonoBehaviour
     public Rigidbody2D rigid2D;
     [System.NonSerialized] public float pullWideForce;    //スライムが横にどれだけ引っ張られているか
     public float scale;   //スライムの大きさ
+    public enum LRMode { Left, Right };   //左右スティックの分岐
+    public LRMode modeLR;
 
     public float liveTime; //スライムが生成されてから何秒経過するか
+
+    [System.NonSerialized] public float deadTime;  //スライムが消える時間
 
     public bool core;  //このスライムが本体かどうか
     #endregion
@@ -77,7 +82,14 @@ public class SlimeController: MonoBehaviour
                 }
                 else
                 {
-                    hazikuUpdate = true;
+                    if((modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Trigger") : Input.GetAxis("R_Trigger")) >= 0.5f)
+                    {
+                        hazikuUpdate = true;
+                    }
+                    else
+                    {
+                        moveUpdate = true;
+                    }
                 }
 
                 break;
@@ -109,6 +121,35 @@ public class SlimeController: MonoBehaviour
 
         liveTime += Time.deltaTime;
 
+        //スライム消滅
+        if(liveTime >= deadTime && deadTime != 0)
+        {
+            #region 本体の大きさを戻す
+            //本体を探す
+            GameObject[] slimes = GameObject.FindGameObjectsWithTag("Slime");
+            GameObject slimeCore = this.gameObject; //仮で自身を入れておく
+            bool successSearch = false;
+            //配列の要素一つ一つに対して処理を行う
+            foreach (GameObject i in slimes)
+            {
+                if(i.GetComponent<SlimeController>().core)  //本体だったら
+                {
+                    slimeCore = i;
+                    successSearch = true;
+                    break;
+                }
+            }
+
+            //大きさを変更する
+            if(successSearch)
+            {
+                slimeCore.GetComponent<SlimeController>().scale += this.scale;
+            }
+            #endregion
+
+            Destroy(this.gameObject);
+        }
+
         //スライムの縮み
         if (liveTime >= stretchEndTime && pullWideForce != 0)
         {
@@ -134,6 +175,7 @@ public class SlimeController: MonoBehaviour
     {
         hazikuUpdate = false;
         tearoffUpdate = false;
+        moveUpdate = false;
     }
 
     //両方のトリガーが押されているか確認

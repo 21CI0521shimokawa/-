@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 8680789583821087134}
   - component: {fileID: 8680789583821087133}
   - component: {fileID: 8680789583821087129}
+  - component: {fileID: 615655020605770485}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Slime
@@ -439,9 +440,11 @@ MonoBehaviour:
   slimeBuf: {fileID: 0}
   hazikuUpdate: 0
   tearoffUpdate: 0
+  moveUpdate: 0
   s_state: 0
   rigid2D: {fileID: 8680789583821087135}
   scale: 2
+  modeLR: 0
   liveTime: 0
   core: 0
   Debug_Ontrigger: 0
@@ -463,6 +466,7 @@ MonoBehaviour:
   divisionTime: 1
   slimePrefab: {fileID: 8680789583821087122}
   stretchEndTime: 3
+  deadEndTime: 0
   power: 0
 --- !u!114 &8680789583821087129
 MonoBehaviour:
@@ -477,6 +481,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeController: {fileID: 8680789583821087134}
-  modeLR: 0
   stickX: []
   stickY: []
+--- !u!114 &615655020605770485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8680789583821087122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322859229cbb26e4ea2bc3e59f5c1ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeController: {fileID: 8680789583821087134}
+  rigidBody: {fileID: 8680789583821087135}
+  speed: 15000
