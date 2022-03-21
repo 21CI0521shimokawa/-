@@ -6,8 +6,7 @@ public class Slime_Haziku : MonoBehaviour
 {
     public SlimeController slimeController;
 
-    public enum LRMode { Left, Right };   //左右スティックの分岐
-    public LRMode modeLR;
+    
     #region はじく
     [SerializeField] float[] stickX;
     [SerializeField] float[] stickY;
@@ -33,8 +32,8 @@ public class Slime_Haziku : MonoBehaviour
         if (slimeController.hazikuUpdate && !slimeController.slimeBuf.ifTearOff)
         {
             this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
-            float horizontal = modeLR == LRMode.Left ? Input.GetAxis("L_Stick_Horizontal") : Input.GetAxis("R_Stick_Horizontal");
-            float vertical = modeLR == LRMode.Left ? Input.GetAxis("L_Stick_Vertical") : Input.GetAxis("R_Stick_Vertical");
+            float horizontal = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Horizontal") : Input.GetAxis("R_Stick_Horizontal");
+            float vertical = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Vertical") : Input.GetAxis("R_Stick_Vertical");
 
             stickX[freamCnt % freamCntMax] = horizontal;
             stickY[freamCnt % freamCntMax] = vertical;

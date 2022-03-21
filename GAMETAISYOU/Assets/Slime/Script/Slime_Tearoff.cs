@@ -16,6 +16,7 @@ public class Slime_Tearoff : MonoBehaviour
     private GameObject slimePrefab;
 
     public float stretchEndTime;    //何秒経過したら元の長さに戻るか
+    public float deadEndTime;       //何秒経過したらスライムが消えるか
 
     public float power; //かかっている力
 
@@ -66,30 +67,32 @@ public class Slime_Tearoff : MonoBehaviour
                             power = 0;
                             slimeController.slimeBuf.ifTearOff = true;
 
-                            //右
+                            //右 コアじゃないほう
                             {
                                 Vector3 position = new Vector2((float)(transform.position.x + 0.1), transform.position.y);
                                 GameObject cloneObject = Instantiate(slimePrefab);
                                 cloneObject.transform.position = position;
 
-                                cloneObject.GetComponent<SlimeController>().scale = divisionScale;
+                                SlimeController buf = cloneObject.GetComponent<SlimeController>();
+                                buf.scale = divisionScale;
                                 cloneObject.transform.localScale = new Vector2(divisionScale, divisionScale);
-
-                                cloneObject.GetComponent<SlimeController>().core = false;
-                                cloneObject.GetComponent<Slime_Haziku>().modeLR = Slime_Haziku.LRMode.Right;
+                                buf.core = false;
+                                buf.deadTime = deadEndTime;
+                                buf.modeLR = SlimeController.LRMode.Right;
                             }
 
-                            //左
+                            //左 コア
                             {
                                 Vector3 position = new Vector2((float)(transform.position.x - 0.1), transform.position.y);
                                 GameObject cloneObject = Instantiate(slimePrefab);
                                 cloneObject.transform.position = position;
 
-                                cloneObject.GetComponent<SlimeController>().scale = slimeController.scale;
+                                SlimeController buf = cloneObject.GetComponent<SlimeController>();
+                                buf.scale = slimeController.scale;
                                 cloneObject.transform.localScale = new Vector2(slimeController.scale, slimeController.scale);
 
-                                cloneObject.GetComponent<SlimeController>().core = true;
-                                cloneObject.GetComponent<Slime_Haziku>().modeLR = Slime_Haziku.LRMode.Left;
+                                buf.core = true;
+                                buf.modeLR = SlimeController.LRMode.Left;
                             }
 
                             //自身を破壊
