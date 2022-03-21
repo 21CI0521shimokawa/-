@@ -12,9 +12,13 @@ public class Trampoline : MonoBehaviour
     [SerializeField] float angle; //角度
     [SerializeField] float ShakeTime = 0.2f;
     [SerializeField] float timer;
+    [SerializeField] bool shake;
 
     void OnValidate()
     {
+        angle = transform.eulerAngles.z + 90f;
+        //角度から法線を求める
+        normal = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
         if(angle < 0)
         {
             angle += 360f;
@@ -44,14 +48,14 @@ public class Trampoline : MonoBehaviour
     //瞬間振動
     void Shake()
     {
-        if (itemBody)
+        if (shake)
         {
             timer += Time.deltaTime;
             transform.position -= new Vector3(normal.x, normal.y, 0f) * Time.deltaTime;
             if (timer > ShakeTime)
             {
                 transform.position = startPoint;
-                itemBody = null;
+                shake = false;
             }
         }
         else
@@ -72,6 +76,7 @@ public class Trampoline : MonoBehaviour
             itemBody = collisionInfo.gameObject.GetComponent<Rigidbody2D>();
             objectSpeed = itemBody.velocity;
             itemBody.AddForce(normal * force, ForceMode2D.Impulse);
+            shake = true;
             GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         }
         //CaculateStopAndShotPoint();
