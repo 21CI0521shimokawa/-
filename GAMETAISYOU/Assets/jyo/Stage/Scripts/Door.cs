@@ -7,7 +7,7 @@ public class Door : MonoBehaviour
     [Header("‘Î‰”Ô†")]
     public int _Number;
 
-    [SerializeField]Vector3 m_normalPos;@//‰ŠúˆÊ’u
+    [SerializeField]Vector3 m_normalPos;//‰ŠúˆÊ’u
     [SerializeField]bool isOpen;
 
     void Start()

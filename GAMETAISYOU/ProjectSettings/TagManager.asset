@@ -9,6 +9,8 @@ TagManager:
   - DivideBody
   - Target
   - DivideArea
+  - Slime
+  - Trampoline
   layers:
   - Default
   - TransparentFX
