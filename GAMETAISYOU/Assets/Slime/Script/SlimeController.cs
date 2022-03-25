@@ -166,6 +166,12 @@ public class SlimeController: MonoBehaviour
             pullWideForce = Mathf.Max(pullWideForce, Tearoff.power);
         }
         transform.localScale = new Vector2((1 + pullWideForce) * scale, (1.0f / (1 + pullWideForce)) * scale);
+
+        //スライムの重さ変更
+        if(rigid2D.mass != scale * slimeBuf.slimeMass)
+        {
+            rigid2D.mass = scale * slimeBuf.slimeMass;
+        }
     }
 
 

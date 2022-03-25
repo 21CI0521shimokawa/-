@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ifTearOff: 0
+  slimeMass: 1
 --- !u!1 &918893342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1018,10 @@ PrefabInstance:
     - target: {fileID: 8680789583821087122, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680789583821087123, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_RootOrder

@@ -70,7 +70,7 @@ public class SlimeTrampoline : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
     {
-        if (slimeController.pullWideForce > 0.1f)
+        //if(slimeController.pullWideForce > 0.1f)
         {
             if (collisionInfo.gameObject.tag == "Target")
             {

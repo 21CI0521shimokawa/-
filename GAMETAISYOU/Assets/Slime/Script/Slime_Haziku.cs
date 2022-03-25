@@ -29,16 +29,17 @@ public class Slime_Haziku : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (slimeController.hazikuUpdate && !slimeController.slimeBuf.ifTearOff)
+
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
+        float horizontal = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Horizontal") : Input.GetAxis("R_Stick_Horizontal");
+        float vertical = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Vertical") : Input.GetAxis("R_Stick_Vertical");
+
+        stickX[freamCnt % freamCntMax] = horizontal;
+        stickY[freamCnt % freamCntMax] = vertical;
+
+        if (freamCnt >= freamCntMax)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
-            float horizontal = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Horizontal") : Input.GetAxis("R_Stick_Horizontal");
-            float vertical = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Vertical") : Input.GetAxis("R_Stick_Vertical");
-
-            stickX[freamCnt % freamCntMax] = horizontal;
-            stickY[freamCnt % freamCntMax] = vertical;
-
-            if (freamCnt >= freamCntMax)
+            if (slimeController.hazikuUpdate && !slimeController.slimeBuf.ifTearOff)
             {
                 Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
                 if (stickVectorNow.magnitude <= 0.1f)
@@ -62,8 +63,8 @@ public class Slime_Haziku : MonoBehaviour
                     }
                 }
             }
-
-            ++freamCnt;
         }
+
+        ++freamCnt;
     }
 }
