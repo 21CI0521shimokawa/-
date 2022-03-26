@@ -26,7 +26,9 @@ public class Slime_Move : MonoBehaviour
 
             if (moveForceX != 0)
             {
-                rigidBody.velocity = Vector3.zero;
+                //X²‚É‘Î‚µ‚Ä‚©‚©‚Á‚Ä‚¢‚é—Í‚ğÁ‚·
+                float velocityY = rigidBody.velocity.y;
+                rigidBody.velocity = new Vector3(0.0f, velocityY, 0.0f);
                 rigidBody.angularVelocity = 0;
 
                 Vector3 force = new Vector3(moveForceX, 0.0f, 0.0f);    // —Í‚ğİ’è

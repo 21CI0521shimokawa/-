@@ -26,4 +26,13 @@ public class SlimeTrigger_Under : MonoBehaviour
             //rigid2D.velocity = Vector3.zero;
         }
     }
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (slime.GetComponent<SlimeController>().s_state == State.MOVE)
+    //    {
+    //        slime.GetComponent<SlimeController>().s_state = State.AIR;
+    //        //rigid2D.velocity = Vector3.zero;
+    //    }
+    //}
 }
