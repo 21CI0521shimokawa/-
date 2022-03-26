@@ -43,6 +43,7 @@ public class SlimeController: MonoBehaviour
     {
         s_state = State.NORMAL;
         rigid2D = this.gameObject.GetComponent<Rigidbody2D>();
+
         slimeBuf = GameObject.Find("SlimeBuffer").GetComponent<SlimeBuffer>();
 
         AllFalse_FunctionProcessingFlag();
