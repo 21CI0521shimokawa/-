@@ -9,6 +9,8 @@ public class stringControll : MonoBehaviour
     private GameObject Item;
     [SerializeField, Tooltip("Wallオブジェクト")]
     private GameObject Wall;
+    [SerializeField, Tooltip("Playerオブジェクト")]
+    private GameObject Player;
 
     private Vector2 ItemPosition;
     private Vector2 WallPosition;
@@ -25,17 +27,23 @@ public class stringControll : MonoBehaviour
     {
         ItemPosition = Item.transform.position;
         WallPosition = Wall.transform.position;
-        Distance = Vector3.Distance(ItemPosition,WallPosition);
-        if (Distance < 5.0f)
+        Distance = Vector3.Distance(ItemPosition, WallPosition);
+        Debug.Log(Distance);
+        if (Distance >= 5.0f)
         {
             rd.mass = 1;
         }
-    }
-    public void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Slime")
+        else
         {
-           rd.bodyType = RigidbodyType2D.Kinematic;
+            rd.mass = 100;
         }
     }
+        public void OnCollisionStay2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "Slime")
+            {
+
+
+            }
+        }
 }
