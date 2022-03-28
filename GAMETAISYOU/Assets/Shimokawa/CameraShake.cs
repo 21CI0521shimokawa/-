@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraShake : MonoBehaviour
 {
@@ -17,6 +18,13 @@ public class CameraShake : MonoBehaviour
 
         var elapsed = 0f;
 
+        Gamepad gamepad = Gamepad.current;
+
+        if (gamepad != null)
+        {
+            gamepad.SetMotorSpeeds(1.0f, 1.0f);
+        }
+
         while (elapsed < duration)
         {
             var x = pos.x + Random.Range(-1f, 1f) * magnitude;
@@ -30,5 +38,10 @@ public class CameraShake : MonoBehaviour
         }
 
         transform.localPosition = pos;
+
+        if (gamepad != null)
+        {
+            gamepad.SetMotorSpeeds(0.0f, 0.0f);
+        }
     }
 }

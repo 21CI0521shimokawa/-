@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Stage/Scene/Stage.unity
+- path: Assets/Slime/SlimeTest.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

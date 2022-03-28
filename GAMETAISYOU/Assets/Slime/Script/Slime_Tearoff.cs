@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Slime_Tearoff : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Slime_Tearoff : MonoBehaviour
 
     bool oneFrameBefore_Update; //1フレーム前に処理を行ったかどうか
 
+    Gamepad gamepad;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,8 @@ public class Slime_Tearoff : MonoBehaviour
         power = 0;
 
         oneFrameBefore_Update = false;
+
+        gamepad = Gamepad.current;
     }
 
     // Update is called once per frame
@@ -53,7 +58,7 @@ public class Slime_Tearoff : MonoBehaviour
                         power = (-stickLHorizontal + stickRHorizontal) / 2;
                     }
 
-
+                    gamepad.SetMotorSpeeds(power, power);
 
                     if (power >= 1)
                     {
@@ -97,6 +102,8 @@ public class Slime_Tearoff : MonoBehaviour
 
                             //自身を破壊
                             Destroy(this.gameObject);
+
+                            gamepad.SetMotorSpeeds(0.0f, 0.0f);
                         }
                         else
                         {
@@ -118,6 +125,8 @@ public class Slime_Tearoff : MonoBehaviour
                     power = 0;
 
                     GetComponent<Renderer>().material.color = Color.green;
+
+                    gamepad.SetMotorSpeeds(0.0f, 0.0f);
                 }
 
 
