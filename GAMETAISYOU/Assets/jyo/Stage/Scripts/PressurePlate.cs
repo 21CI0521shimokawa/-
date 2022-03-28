@@ -61,7 +61,7 @@ public class PressurePlate : MonoBehaviour
         var colliders =  Physics2D.OverlapBoxAll(pos + new Vector2(0f, 0.4f), new Vector2(0.5f, 0.2f), 0f);
         foreach(var item in colliders)
         {
-            if (item.CompareTag("Player"))
+            if (item.CompareTag("Slime") || item.CompareTag("Player"))
                 return true;
         }
         return false;
