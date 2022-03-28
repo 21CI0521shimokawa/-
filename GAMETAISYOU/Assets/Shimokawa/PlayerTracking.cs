@@ -25,17 +25,17 @@ public class PlayerTracking: MonoBehaviour
         }
         if (PlayerPosition != null)
         {
-            transform.position = new Vector3(PlayerPosition.transform.position.x, PlayerPosition.transform.position.y, -10.0f);
+            transform.position = new Vector3(PlayerPosition.transform.position.x, PlayerPosition.transform.position.y + 5.0f, -10.0f);
         }
         #endregion
         #region ƒJƒƒ‰‚ÌŠg‘å—¦
         if(objects.Length>1)
         {
-            camera.orthographicSize = 7;
+            camera.orthographicSize = 9;
         }
         else 
         {
-            camera.orthographicSize = 5;
+            camera.orthographicSize = 7;
         }
         #endregion
     }

@@ -58,7 +58,7 @@ public class Slime_Tearoff : MonoBehaviour
                         power = (-stickLHorizontal + stickRHorizontal) / 2;
                     }
 
-                    gamepad.SetMotorSpeeds(power, power);
+                    //gamepad.SetMotorSpeeds(power, power);
 
                     if (power >= 1)
                     {
@@ -103,7 +103,7 @@ public class Slime_Tearoff : MonoBehaviour
                             //é©êgÇîjâÛ
                             Destroy(this.gameObject);
 
-                            gamepad.SetMotorSpeeds(0.0f, 0.0f);
+                            //gamepad.SetMotorSpeeds(0.0f, 0.0f);
                         }
                         else
                         {
@@ -126,7 +126,7 @@ public class Slime_Tearoff : MonoBehaviour
 
                     GetComponent<Renderer>().material.color = Color.green;
 
-                    gamepad.SetMotorSpeeds(0.0f, 0.0f);
+                    //gamepad.SetMotorSpeeds(0.0f, 0.0f);
                 }
 
 
