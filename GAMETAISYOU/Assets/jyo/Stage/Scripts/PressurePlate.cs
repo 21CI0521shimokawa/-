@@ -62,7 +62,19 @@ public class PressurePlate : MonoBehaviour
         foreach(var item in colliders)
         {
             if (item.CompareTag("Slime") || item.CompareTag("Player"))
+            {
+                #region スライム操作停止
+                SlimeController buf = item.GetComponent<SlimeController>();
+                if (!buf) 
+                {
+                    if(buf.core == false)   //コアではなかったら
+                    {  
+                        buf.ifOperation = false;    //操作停止
+                    }
+                }
+                #endregion
                 return true;
+            }
         }
         return false;
     }

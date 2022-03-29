@@ -27,6 +27,8 @@ public class SlimeController: MonoBehaviour
     [System.NonSerialized] public float deadTime;  //スライムが消える時間
 
     public bool core;  //このスライムが本体かどうか
+       
+    public bool ifOperation;    //操作ができるかどうか
     #endregion
 
     bool Ontrigger;         //トリガーが押されているかどうか
@@ -47,6 +49,8 @@ public class SlimeController: MonoBehaviour
         slimeBuf = GameObject.Find("SlimeBuffer").GetComponent<SlimeBuffer>();
 
         AllFalse_FunctionProcessingFlag();
+
+        ifOperation = true;
 
         pullWideForce = 0;
 
@@ -75,24 +79,25 @@ public class SlimeController: MonoBehaviour
 
             case State.MOVE:
                 //移動可
-
-                //トリガーが押されているなら
-                if (Ontrigger)
+                if (ifOperation)    //操作が可能なら
                 {
-                    tearoffUpdate = true;
-                }
-                else
-                {
-                    if((modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Trigger") : Input.GetAxis("R_Trigger")) >= 0.5f)
+                    //トリガーが押されているなら
+                    if (Ontrigger)
                     {
-                        hazikuUpdate = true;
+                        tearoffUpdate = true;
                     }
                     else
                     {
-                        moveUpdate = true;
+                        if ((modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Trigger") : Input.GetAxis("R_Trigger")) >= 0.5f)
+                        {
+                            hazikuUpdate = true;
+                        }
+                        else
+                        {
+                            moveUpdate = true;
+                        }
                     }
                 }
-
                 break;
 
             case State.STOP:
@@ -194,12 +199,6 @@ public class SlimeController: MonoBehaviour
         Debug_Ontrigger = Input.GetKey(KeyCode.Space);
 
         return triggerL == 1 && triggerR == 1 || Debug_Ontrigger;
-    }
-
-
-    private float easeOutExpo(float _x)
-    {
-        return _x == 1 ? 1 : 1 - Mathf.Pow(2, -10 * _x);
     }
 
 }
