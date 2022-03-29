@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : StageGimmick
 {
-    [Header("対応番号")]
-    public int _Number;
+    [Header("Door Script")]
+    [Tooltip("移動量"), SerializeField] Vector2 moveTo = new Vector2(0, 2);
+    [Tooltip("移動速度"), SerializeField] float moveSpeed = 5f;
 
-    [SerializeField]Vector3 m_normalPos;//初期位置
-    [SerializeField]bool isOpen;
+    Vector2 m_normalPos;//初期位置
 
     void Start()
     {
         //オブジェクトをゲームマネージャーのリストに登録する
         GameManager.Instance.RegisterDoor(this.gameObject); 
         m_normalPos = transform.position;
-        isOpen = false;
     }
 
     void Update()
@@ -26,8 +25,8 @@ public class Door : MonoBehaviour
     //状態による移動設定
     void Movement()
     {
-        if (isOpen)
-            transform.position = Vector3.MoveTowards(transform.position, m_normalPos + new Vector3(0, 2, 0), 5 * Time.deltaTime);
+        if (_IsOpen)
+            transform.position = Vector3.MoveTowards(transform.position, m_normalPos + moveTo, moveSpeed * Time.deltaTime);
         else
             transform.position = Vector3.MoveTowards(transform.position, m_normalPos, 5 * Time.deltaTime);
     }
@@ -35,13 +34,13 @@ public class Door : MonoBehaviour
 
     //-------------------------------------------------------
     //起動する
-    public void Open()
+    public override void Open()
     {
-        isOpen = true;
+        _IsOpen = !_IsOpen;
     }
     //終了する
-    public void Close()
+    public override void Close()
     {
-        isOpen = false;
+        _IsOpen = !_IsOpen;
     }
 }

@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
-{ 
-    [Header("対応番号")]
-    public int _Number;
-
-    List<GameObject> m_matchItem;   //対応番号のマップアイテム
-    Vector3 m_normalPos;    //初期位置
+public class PressurePlate : StageGimmick
+{
     enum STATE { NORMAL, PRESSED };
+    [Header("PressurePlate Script")]
     [SerializeField]STATE m_state;
+    [Tooltip("???"), SerializeField] Vector2 sinkTo = new Vector2(0f, -0.1f);
+    [Tooltip("??????????????"), SerializeField] bool needAllSameButtonCheck = true;
+    [Tooltip("????"), SerializeField] LayerMask searchLayer = ~0;
+
+    List<GameObject> m_matchItem; //????????????
+    List<GameObject> m_matchButton; //????????
+    Vector2 m_normalPos; //????
+    bool ispressed; //?????????
 
     void Start()
     {
+        GameManager.Instance.RegisterButton(this.gameObject);
         m_matchItem = new List<GameObject>();
+        m_matchButton = new List<GameObject>();
         m_normalPos = transform.position;
     }
 
@@ -23,7 +29,6 @@ public class PressurePlate : MonoBehaviour
         SwitchState();
     }
 
-    //状態更新
     void SwitchState()
     {
         switch (m_state)
@@ -31,21 +36,28 @@ public class PressurePlate : MonoBehaviour
             case STATE.NORMAL:
                 transform.position = Vector3.MoveTowards(transform.position, m_normalPos, Time.deltaTime);
 
-                //状態変更
-                if (IsPressed())
+                if (CheckAboveItem())
                 {
-                    GetComponent<SpriteRenderer>().color = Color.yellow;
+                    _IsOpen = true;
+                    GetComponent<SpriteRenderer>().color = Color.red;
                     m_state = STATE.PRESSED;
-                    OpenItem();
+
+                    //??????????????????????????
+                    if (CheckSameNumberButton())
+                    {
+                        OpenItem();
+                    }
                 }
                 break;
             case STATE.PRESSED:
-                transform.position = Vector3.MoveTowards(transform.position, m_normalPos + new Vector3(0, -0.3f, 0), Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, m_normalPos + sinkTo, Time.deltaTime);
+                //OpenItem();
 
-                //状態変更
-                if (!IsPressed())
+                if (!CheckAboveItem())
                 {
-                    GetComponent<SpriteRenderer>().color = Color.green;
+                    _IsOpen = false;
+                    ispressed = false;
+                    GetComponent<SpriteRenderer>().color = Color.cyan;
                     m_state = STATE.NORMAL;
                     CloseItem();
                 }
@@ -53,56 +65,90 @@ public class PressurePlate : MonoBehaviour
         }
     }
 
-    //ボタンの状態確認
-    bool IsPressed()
+    /// <summary>
+    /// ??????????????
+    /// </summary>
+    /// <returns></returns>
+    bool CheckAboveItem()
     {
-        Vector2 pos = transform.position;
-        //判定範囲
-        var colliders =  Physics2D.OverlapBoxAll(pos + new Vector2(0f, 0.4f), new Vector2(0.5f, 0.2f), 0f);
-        foreach(var item in colliders)
+        if (!ispressed)
         {
-            if (item.CompareTag("Slime") || item.CompareTag("Player"))
-                return true;
+            return false;
+        }
+
+        Vector2 pos = transform.position;
+
+        var colliders = Physics2D.OverlapBoxAll(pos + new Vector2(0f, transform.localScale.y / 2.0f + 0.2f), new Vector2(transform.localScale.x - 0.2f, 0.2f), 0f, searchLayer);
+        // foreach(var item in colliders)
+        // {
+        //     if (item.CompareTag("Slime") || item.CompareTag("Player"))
+        //         return true;
+        // }
+        if (colliders.Length > 0)
+        {
+            return true;
         }
         return false;
     }
 
-    //対応番号のマップアイテムを起動する
+    /// <summary>
+    /// ?????????????????????
+    /// </summary>
+    /// <returns></returns>
+    bool CheckSameNumberButton()
+    {
+        //????????true???
+        if(!needAllSameButtonCheck)
+        {
+            return true;
+        }
+
+        if(GameManager.Instance.GetSameNumberButton(_Number, out m_matchButton))
+        {
+            foreach(var button in m_matchButton)
+            {
+                if(!button.GetComponent<StageGimmick>()._IsOpen)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }  
+
     void OpenItem()
     {
-        if (GameManager.Instance.SearchDoor(_Number, out m_matchItem))
+        if(GameManager.Instance.SearchItem(_Number, out m_matchItem))
         {
-            foreach (var item in m_matchItem)
-                item.GetComponent<Door>().Open();
-        }
-
-        if(GameManager.Instance.SearchLaser(_Number, out m_matchItem))
-        {
-            foreach (var item in m_matchItem)
-                item.GetComponent<Laser>().Open();
+            foreach(var item in m_matchItem)
+            {
+                item.GetComponent<StageGimmick>().Open();  
+            }
         }
     }
 
-    //対応番号のマップアイテムを終了する
     void CloseItem()
     {
-        if (GameManager.Instance.SearchDoor(_Number, out m_matchItem))
+        if(GameManager.Instance.SearchItem(_Number, out m_matchItem))
         {
-            foreach (var item in m_matchItem)
-                item.GetComponent<Door>().Close();
-        }
-
-        if(GameManager.Instance.SearchLaser(_Number, out m_matchItem))
-        {
-            foreach (var item in m_matchItem)
-                item.GetComponent<Laser>().Close();
+            foreach(var item in m_matchItem)
+            {
+                item.GetComponent<StageGimmick>().Close();
+            }
         }
     }
 
-    //判定範囲を可視化する
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject)
+        {
+            ispressed = true;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.4f, 0), new Vector2(0.5f, 0.2f));
+        Gizmos.DrawWireCube(transform.position + new Vector3(0, transform.localScale.y / 2.0f + 0.2f, 0), new Vector2(transform.localScale.x - 0.2f, 0.2f));
     }
 }
