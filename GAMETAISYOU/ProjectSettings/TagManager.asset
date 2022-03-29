@@ -11,6 +11,8 @@ TagManager:
   - DivideArea
   - Slime
   - Trampoline
+  - WeighingBoard
+  - Item
   layers:
   - Default
   - TransparentFX

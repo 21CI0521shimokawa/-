@@ -6,14 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField]List<GameObject> m_doorGroup;
-    [SerializeField]List<GameObject> m_laserGroup;
+    [SerializeField] List<GameObject> m_doorGroup;
+    [SerializeField] List<GameObject> m_laserGroup;
+    [SerializeField] List<GameObject> m_buttonGroup;
 
     void Awake()
     {
         if (Instance != null)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
             return;
         }
         Instance = this;
@@ -23,48 +24,85 @@ public class GameManager : MonoBehaviour
     }
 
     //マップアイテム登録（ドアー）
-    public void RegisterDoor(GameObject door_)
+    public void RegisterDoor(GameObject door)
     {
-        if (!m_doorGroup.Contains(door_))
-            m_doorGroup.Add(door_);
+        if (!m_doorGroup.Contains(door))
+        {
+            m_doorGroup.Add(door);
+        }
     }
     //マップアイテム登録（レザー）
-    public void RegisterLaser(GameObject laser_)
+    public void RegisterLaser(GameObject laser)
     {
-        if (!m_laserGroup.Contains(laser_))
-            m_laserGroup.Add(laser_);
+        if (!m_laserGroup.Contains(laser))
+        {
+            m_laserGroup.Add(laser);
+        }
+    }
+    //マップアイテム登録（ボタン）
+    public void RegisterButton(GameObject button)
+    {
+        if (!m_buttonGroup.Contains(button))
+        {
+            m_buttonGroup.Add(button);
+        }
     }
 
-    //対応マップアイテム取得（ドアー）
-    public bool SearchDoor(int num_, out List<GameObject> doors)
+    //対応番号のマップアイテムを取得する
+    public bool SearchItem(int num, out List<GameObject> items)
     {
-        doors = new List<GameObject>();
+        items = new List<GameObject>();
         foreach(var item in m_doorGroup)
         {
-            if(item.GetComponent<Door>()._Number == num_)
-                doors.Add(item);
+            if(item.GetComponent<Door>()._Number == num)
+            {
+                items.Add(item);
+            }
         }
 
-        //一つもない場合、flaseを返す
-        if (doors.Count > 0)
-            return true;
-        else
-            return false;
-    }
-    //対応マップアイテム取得（レザー）
-    public bool SearchLaser(int num_, out List<GameObject> lasers)
-    {
-        lasers = new List<GameObject>();
         foreach(var item in m_laserGroup)
         {
-            if (item.GetComponent<Laser>()._Number == num_)
-                lasers.Add(item);
+            if(item.GetComponent<Laser>()._Number == num)
+            {
+                items.Add(item);
+            }
         }
 
-        if (lasers.Count > 0)
+        if(items.Count > 0)
+        {
             return true;
+        }
         else
+        {
             return false;
+        }
+    }
+
+    /// <summary>
+    /// 同じ番号のボタンを取得する
+    /// </summary>
+    /// <param name="num"></param>
+    /// <param name="items"></param>
+    /// <returns></returns>
+    public bool GetSameNumberButton(int num, out List<GameObject> items)
+    {
+        items = new List<GameObject>();
+        foreach(var button in m_buttonGroup)
+        {
+            if(button.GetComponent<StageGimmick>()._Number == num)
+            {
+                items.Add(button);
+            }
+        }
+
+        if(items.Count > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void ResetStageData()
@@ -72,4 +110,10 @@ public class GameManager : MonoBehaviour
         m_doorGroup.Clear();
         m_laserGroup.Clear();
     } 
+
+    public void RestartStage()
+    {
+        ResetStageData();
+        SwitchScene.ReloadScene();
+    }
 }

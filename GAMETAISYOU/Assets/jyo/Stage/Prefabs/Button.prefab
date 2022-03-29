@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3010640501918462856}
   - component: {fileID: 3010640501918462863}
-  - component: {fileID: 3010640501918462857}
+  - component: {fileID: 5358649139285111831}
   - component: {fileID: 3010640501918462858}
   m_Layer: 0
   m_Name: Button
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.20207596, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3010640501918462857
-BoxCollider2D:
+--- !u!60 &5358649139285111831
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,9 +107,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.3368832, y: 0.50217724}
+      - {x: -0.33316064, y: 0.5}
+      - {x: -0.5987406, y: -0.4944601}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.4829383, y: -0.5048742}
+      - {x: 0.60226715, y: -0.5015116}
 --- !u!114 &3010640501918462858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,4 +128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Number: 0
+  _IsOpen: 0
   m_state: 0
+  sinkTo: {x: 0, y: -0.1}
+  needAllSameButtonCheck: 0
+  searchLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
