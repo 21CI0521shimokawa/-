@@ -19,7 +19,7 @@ public class WallControll : MonoBehaviour
     #region public function
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag=="Player" || collision.gameObject.tag == "Slime")
+        if(collision.gameObject.tag=="Player")
         {
             shake.Shake(0.25f, 0.2f);
         }

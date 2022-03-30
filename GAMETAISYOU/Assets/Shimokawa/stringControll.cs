@@ -19,31 +19,45 @@ public class stringControll : MonoBehaviour
     public Rigidbody2D rd;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        OnMouseDrag();
         ItemPosition = Item.transform.position;
         WallPosition = Wall.transform.position;
         Distance = Vector3.Distance(ItemPosition, WallPosition);
-        Debug.Log(Distance);
-        if (Distance >= 5.0f)
+        if (Distance >= 8.0f)
         {
-            rd.mass = 1;
-        }
-        else
-        {
-            rd.mass = 100;
+            GameObject.Destroy(Item.GetComponent<SpringJoint2D>());
+            Item.GetComponent<Renderer>().material.color = Color.red;
+           
         }
     }
-        public void OnCollisionStay2D(Collision2D collision)
+    private void OnMouseDrag()
+    {
+        if (Input.GetMouseButton(0))
         {
-            if (collision.gameObject.tag == "Slime")
-            {
+            Vector3 objectPoint
+                = Camera.main.WorldToScreenPoint(transform.position);
 
 
-            }
+            Vector3 pointScreen
+                = new Vector3(Input.mousePosition.x,
+                              Input.mousePosition.y,
+                              objectPoint.z);
+
+
+            Vector3 pointWorld = Camera.main.ScreenToWorldPoint(pointScreen);
+            pointWorld.z = transform.position.z;
+
+
+            transform.position = pointWorld;
         }
+    }
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+
+    }
 }
