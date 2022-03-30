@@ -21,7 +21,7 @@ public class SlimeSizeChange_Item : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //ƒXƒ‰ƒCƒ€‚¾‚Á‚½‚ç
-        if(GameObject.FindWithTag("Slime"))
+        if(collision.gameObject.tag == "Slime")
         {
             collision.gameObject.GetComponent<SlimeController>().scale += chengeSize;
             Destroy(this.gameObject);

@@ -42,37 +42,27 @@ public class SlimeTrampoline : MonoBehaviour
     void Update()
     {
         OnValidate();
-        Shake();
-
+        ForceChange();
         Debug.DrawRay(transform.position, normal * 2f, Color.green);
     }
 
-    //uŠÔU“®
-    void Shake()
+    void ForceChange()
     {
-        //if (shake)
-        //{
-        //    timer += Time.deltaTime;
-        //    transform.position -= new Vector3(normal.x, normal.y, 0f) * Time.deltaTime;
-        //    if (timer > ShakeTime)
-        //    {
-        //        transform.position = startPoint;
-        //        shake = false;
-        //    }
-        //}
-        //else
-        //{
-        //    //transform.position = startPoint;
-        //    GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
-        //    timer = 0;
-        //}
+        if(Mathf.Abs(transform.localScale.x) > slimeController.scale)
+        {
+            force = 15;
+        }
+        else
+        {
+            force = 5;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
     {
         //if(slimeController.pullWideForce > 0.1f)
         {
-            if (collisionInfo.gameObject.tag == "Target")
+            if (collisionInfo.gameObject.tag == "Item")
             {
                 if (Vector3.Angle(normal, collisionInfo.transform.position - transform.position) < 90f)
                 {

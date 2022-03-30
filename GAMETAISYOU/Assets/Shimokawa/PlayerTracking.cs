@@ -25,7 +25,7 @@ public class PlayerTracking: MonoBehaviour
         }
         if (PlayerPosition != null)
         {
-            transform.position = new Vector3(PlayerPosition.transform.position.x, PlayerPosition.transform.position.y + 5.0f, -10.0f);
+            transform.position = new Vector3(PlayerPosition.transform.position.x, PlayerPosition.transform.position.y + 4.0f, -10.0f);
         }
         #endregion
         #region ÉJÉÅÉâÇÃägëÂó¶

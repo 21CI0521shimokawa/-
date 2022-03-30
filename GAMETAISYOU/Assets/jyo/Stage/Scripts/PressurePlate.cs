@@ -86,6 +86,7 @@ public class PressurePlate : StageGimmick
         // }
         if (colliders.Length > 0)
         {
+            Slime_Outage(colliders);
             return true;
         }
         return false;
@@ -150,5 +151,23 @@ public class PressurePlate : StageGimmick
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + new Vector3(0, transform.localScale.y / 2.0f + 0.2f, 0), new Vector2(transform.localScale.x - 0.2f, 0.2f));
+    }
+
+
+    //ÉXÉâÉCÉÄÇÃëÄçÏí‚é~ è¡Ç¶ÇÈÇ‹Ç≈ÇÃéûä‘âÑí∑
+    private void Slime_Outage(Collider2D[] _colliders)
+    {
+        foreach (var item in _colliders)
+        {
+            if (item.gameObject.tag == "Slime")
+            {
+                SlimeController slimeController = item.gameObject.GetComponent<SlimeController>();
+                if (!slimeController.core && slimeController._ifOperation)
+                {
+                    slimeController._ifOperation = false;
+                    slimeController.deadTime += 10.0f;
+                }
+            }
+        }
     }
 }

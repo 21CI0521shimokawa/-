@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 2940406491224384435}
   - component: {fileID: 2940406491224384432}
   m_Layer: 0
-  m_Name: Circle
-  m_TagString: Target
+  m_Name: weight 1 circle
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
