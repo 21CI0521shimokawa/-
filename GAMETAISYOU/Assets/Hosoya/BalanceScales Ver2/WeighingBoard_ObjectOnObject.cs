@@ -44,13 +44,14 @@ public class WeighingBoard_ObjectOnObject : MonoBehaviour
     //リスト追加
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Rigidbody2D collisionRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
         //リストに無かったら追加
-        if (!onObjects.Contains(collision.gameObject) && !collision.gameObject.CompareTag("WeighingBoard"))
+        if (!onObjects.Contains(collision.gameObject) && !collision.gameObject.CompareTag("WeighingBoard") && collisionRigidbody)
         {
             onObjects.Add(collision.gameObject);
 
             //Scriptが無かったら Scriptアタッチ
-            if(!collision.gameObject.GetComponent<WeighingBoard_ObjectOnObject>())
+            if (!collision.gameObject.GetComponent<WeighingBoard_ObjectOnObject>())
             {
                 collision.gameObject.AddComponent<WeighingBoard_ObjectOnObject>();
             }

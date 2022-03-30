@@ -57,6 +57,8 @@ public class Slime_Haziku : MonoBehaviour
                     //ˆÚ“®
                     if (stickVectorMost.magnitude > stickVectorNow.magnitude + 0.3f)
                     {
+                        slimeController._SlimeAnimator.SetTrigger("Haziku");
+
                         slimeController.rigid2D.velocity = stickVectorMost * -moveSpeed;
                         freamCnt = 0;
                         slimeController.s_state = State.AIR;

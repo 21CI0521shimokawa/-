@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class SlimeController: MonoBehaviour
 {
+    public enum _Direction { Non, Right, Left };
+    public _Direction _direction;
+
+    public Animator _SlimeAnimator;
+
     //関数処理管理
     [SerializeField] Slime_Haziku hazikuScript;
-    [SerializeField] Slime_Tearoff Tearoff;
+    [SerializeField] Slime_Tearoff tearoff;
     public SlimeBuffer slimeBuf;
 
     public bool hazikuUpdate;
@@ -24,9 +29,11 @@ public class SlimeController: MonoBehaviour
 
     public float liveTime; //スライムが生成されてから何秒経過するか
 
-    [System.NonSerialized] public float deadTime;  //スライムが消える時間
+    public float deadTime;  //スライムが消える時間
 
     public bool core;  //このスライムが本体かどうか
+
+    public bool _ifOperation;   //操作できるようにするかどうか
     #endregion
 
     bool Ontrigger;         //トリガーが押されているかどうか
@@ -53,6 +60,10 @@ public class SlimeController: MonoBehaviour
         liveTime = 0;
 
         stretchEndTime = 0;
+
+        _direction = _Direction.Right;
+
+        _ifOperation = true;
     }
 
     // Update is called once per frame
@@ -75,24 +86,25 @@ public class SlimeController: MonoBehaviour
 
             case State.MOVE:
                 //移動可
-
-                //トリガーが押されているなら
-                if (Ontrigger)
+                if (_ifOperation)
                 {
-                    tearoffUpdate = true;
-                }
-                else
-                {
-                    if((modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Trigger") : Input.GetAxis("R_Trigger")) >= 0.5f)
+                    //トリガーが押されているなら
+                    if (Ontrigger)
                     {
-                        hazikuUpdate = true;
+                        tearoffUpdate = true;
                     }
                     else
                     {
-                        moveUpdate = true;
+                        if ((modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Trigger") : Input.GetAxis("R_Trigger")) >= 0.5f)
+                        {
+                            hazikuUpdate = true;
+                        }
+                        else
+                        {
+                            moveUpdate = true;
+                        }
                     }
                 }
-
                 break;
 
             case State.STOP:
@@ -157,22 +169,17 @@ public class SlimeController: MonoBehaviour
             pullWideForce = 0;
         }
 
-        //スライムの大きさ変更
-        if (Ontrigger)   //伸ばす（ちぎれる）状態なら大きさを固定しない
-        {
-            pullWideForce = Tearoff.power;
-        }
-        else
-        {
-            pullWideForce = Mathf.Max(pullWideForce, Tearoff.power);
-        }
-        transform.localScale = new Vector2((1 + pullWideForce) * scale, (1.0f / (1 + pullWideForce)) * scale);
+        Slime_SizeChange();
 
         //スライムの重さ変更
-        if(rigid2D.mass != scale * slimeBuf.slimeMass)
+        if (rigid2D.mass != scale * slimeBuf.slimeMass)
         {
             rigid2D.mass = scale * slimeBuf.slimeMass;
         }
+
+        Slime_Direction();
+
+        _SlimeAnimator.SetFloat("FallSpeed", rigid2D.velocity.y);
     }
 
 
@@ -197,9 +204,39 @@ public class SlimeController: MonoBehaviour
     }
 
 
-    private float easeOutExpo(float _x)
+    //スライムの大きさ変更
+    private void Slime_SizeChange()
     {
-        return _x == 1 ? 1 : 1 - Mathf.Pow(2, -10 * _x);
+        if (Ontrigger)   //伸ばす（ちぎれる）状態なら大きさを固定しない
+        {
+            pullWideForce = tearoff.power;
+        }
+        else
+        {
+            pullWideForce = Mathf.Max(pullWideForce, tearoff.power);
+        }
+
+        int slimeDirection = Slime_Direction();
+
+        transform.localScale = new Vector2((1 + pullWideForce) * scale * slimeDirection, (1.0f / (1 + pullWideForce)) * scale);
+    }
+
+    private int Slime_Direction()
+    {
+        //左→右
+        if(rigid2D.velocity.x >= 0.01f && _direction == _Direction.Left) 
+        {
+            transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            _direction = _Direction.Right;
+        }
+        //右→左
+        if (rigid2D.velocity.x <= -0.01f && _direction == _Direction.Right)
+        {
+            transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            _direction = _Direction.Left;
+        }
+
+        return _direction == _Direction.Right ? 1 : -1;
     }
 
 }
