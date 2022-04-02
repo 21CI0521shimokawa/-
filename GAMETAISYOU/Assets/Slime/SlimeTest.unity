@@ -6465,7 +6465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 90
+      value: 85.06
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6514,6 +6514,14 @@ PrefabInstance:
     - target: {fileID: 8680789583821087134, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: scale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680789583821087134, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: _moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680789583821087134, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: _stateAIRMoveSpeedMagnification
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087135, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_Mass

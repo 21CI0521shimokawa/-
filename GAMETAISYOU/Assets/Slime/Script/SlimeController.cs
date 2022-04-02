@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SlimeController: MonoBehaviour
 {
@@ -34,11 +35,13 @@ public class SlimeController: MonoBehaviour
     public bool core;  //このスライムが本体かどうか
 
     public bool _ifOperation;   //操作できるようにするかどうか
+
+    public float _moveSpeed;    //スティックでの移動速度
+    public float _stateAIRMoveSpeedMagnification;    //StateがAIRの時の移動速度倍率
+    public float _stateAIRMoveSpeedMax; //StateがAIRの時の空中での最大速度
     #endregion
 
     bool Ontrigger;         //トリガーが押されているかどうか
-
-    [SerializeField] bool Debug_Ontrigger;         //トリガーを押していることにする
 
     #region 伸び縮み処理
     [System.NonSerialized] public float stretchEndTime;   //スライムが縮み始める時間
@@ -61,7 +64,10 @@ public class SlimeController: MonoBehaviour
 
         stretchEndTime = 0;
 
-        _direction = _Direction.Right;
+        if (_direction == _Direction.Non)
+        {
+            _direction = _Direction.Right;
+        }
 
         _ifOperation = true;
     }
@@ -70,7 +76,17 @@ public class SlimeController: MonoBehaviour
     void Update()
     {
         AllFalse_FunctionProcessingFlag();
-        Ontrigger = IfLRTriggerOn();
+
+        Gamepad gamepad = Gamepad.current;
+
+        //ゲームパッドが接続されていないなら処理しない
+        if (gamepad == null)
+        {
+            Debug.Log("コントローラーが接続されていません");
+            return;
+        }
+
+        Ontrigger = IsLRTriggerPressed();
 
         if(!Ontrigger)
         {
@@ -95,7 +111,7 @@ public class SlimeController: MonoBehaviour
                     }
                     else
                     {
-                        if ((modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Trigger") : Input.GetAxis("R_Trigger")) >= 0.5f)
+                        if ((modeLR ==　LRMode.Left ? /*Input.GetAxis("L_Trigger")*/gamepad.leftTrigger.ReadValue() : /*Input.GetAxis("R_Trigger")*/gamepad.rightTrigger.ReadValue()) >= 0.9f)
                         {
                             hazikuUpdate = true;
                         }
@@ -124,6 +140,9 @@ public class SlimeController: MonoBehaviour
 
             case State.AIR:
                 //空中にいるとき
+
+                moveUpdate = true;
+
                 break;
         }
 
@@ -131,35 +150,16 @@ public class SlimeController: MonoBehaviour
         //StateChange();
         #endregion
 
-
         liveTime += Time.deltaTime;
 
         //スライム消滅
         if(liveTime >= deadTime && deadTime != 0)
         {
-            #region 本体の大きさを戻す
-            //本体を探す
-            GameObject[] slimes = GameObject.FindGameObjectsWithTag("Slime");
-            GameObject slimeCore = this.gameObject; //仮で自身を入れておく
-            bool successSearch = false;
-            //配列の要素一つ一つに対して処理を行う
-            foreach (GameObject i in slimes)
-            {
-                if(i.GetComponent<SlimeController>().core)  //本体だったら
-                {
-                    slimeCore = i;
-                    successSearch = true;
-                    break;
-                }
-            }
+            Slime_Destroy();
+        }
 
-            //大きさを変更する
-            if(successSearch)
-            {
-                slimeCore.GetComponent<SlimeController>().scale += this.scale;
-            }
-            #endregion
-
+        if(scale <= 0)
+        {
             Destroy(this.gameObject);
         }
 
@@ -184,7 +184,7 @@ public class SlimeController: MonoBehaviour
 
 
 
-    //関数
+    //全てのフラグをfalseに
     private void AllFalse_FunctionProcessingFlag()
     {
         hazikuUpdate = false;
@@ -193,14 +193,9 @@ public class SlimeController: MonoBehaviour
     }
 
     //両方のトリガーが押されているか確認
-    private bool IfLRTriggerOn()
+    private bool IsLRTriggerPressed()
     {
-        float triggerL = Input.GetAxis("L_Trigger");
-        float triggerR = Input.GetAxis("R_Trigger");
-
-        Debug_Ontrigger = Input.GetKey(KeyCode.Space);
-
-        return triggerL == 1 && triggerR == 1 || Debug_Ontrigger;
+        return Gamepad.current.leftTrigger.ReadValue() >= 0.9f && Gamepad.current.rightTrigger.ReadValue() >= 0.9f;
     }
 
 
@@ -221,6 +216,7 @@ public class SlimeController: MonoBehaviour
         transform.localScale = new Vector2((1 + pullWideForce) * scale * slimeDirection, (1.0f / (1 + pullWideForce)) * scale);
     }
 
+    //スライムの向き変更
     private int Slime_Direction()
     {
         //左→右
@@ -237,6 +233,39 @@ public class SlimeController: MonoBehaviour
         }
 
         return _direction == _Direction.Right ? 1 : -1;
+    }
+
+    //スライムの破棄
+    public bool Slime_Destroy()
+    {
+        if(!core)
+        {
+            #region 本体の大きさを戻す
+            //本体を探す
+            GameObject[] slimes = GameObject.FindGameObjectsWithTag("Slime");
+            GameObject slimeCore = this.gameObject; //仮で自身を入れておく
+            bool successSearch = false;
+            //配列の要素一つ一つに対して処理を行う
+            foreach (GameObject i in slimes)
+            {
+                if (i.GetComponent<SlimeController>().core)  //本体だったら
+                {
+                    slimeCore = i;
+                    successSearch = true;
+                    break;
+                }
+            }
+
+            //大きさを変更する
+            if (successSearch)
+            {
+                slimeCore.GetComponent<SlimeController>().scale += this.scale;
+            }
+            #endregion
+
+            Destroy(this.gameObject);
+        }
+        return false;
     }
 
 }
