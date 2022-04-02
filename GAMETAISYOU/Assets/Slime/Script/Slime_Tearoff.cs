@@ -45,14 +45,24 @@ public class Slime_Tearoff : MonoBehaviour
             {
 
                 //ちぎる
-                float stickLHorizontal = Input.GetAxis("L_Stick_Horizontal");
-                float stickRHorizontal = Input.GetAxis("R_Stick_Horizontal");
+                //float stickLHorizontal = Input.GetAxis("L_Stick_Horizontal");
+                //float stickRHorizontal = Input.GetAxis("R_Stick_Horizontal");
+
+                var gamepadLeftStick = Gamepad.current.leftStick.ReadValue();
+                var gamepadRightStick = Gamepad.current.rightStick.ReadValue();
+                float stickLHorizontal = gamepadLeftStick.x;
+                float stickRHorizontal = gamepadRightStick.x;
+
+                //スティックの最大値にある程度余裕を持たせる（ちぎれなくなっちゃう）
+                stickLHorizontal = Mathf.Min(stickLHorizontal / 0.98f, 1.0f);
+                stickRHorizontal = Mathf.Min(stickRHorizontal / 0.98f, 1.0f);
 
                 if ((stickLHorizontal < 0) && (stickRHorizontal > 0))
                 {
                     slimeController._SlimeAnimator.SetBool("Extend", true);
 
                     //Debug.Log("引っ張ってるよ:" + stickLHorizontal + "," + stickRHorizontal);
+
                     power += (-stickLHorizontal + stickRHorizontal) / 2 * Time.deltaTime / divisionTime;    //かかる力を増やす
 
                     if (power > (-stickLHorizontal + stickRHorizontal) / 2)
@@ -145,6 +155,7 @@ public class Slime_Tearoff : MonoBehaviour
             buf.core = false;
             buf.deadTime = deadEndTime;
             buf.modeLR = SlimeController.LRMode.Right;
+            buf._direction = slimeController._direction;
         }
 
         slimeController.scale -= divisionScale;
@@ -161,6 +172,7 @@ public class Slime_Tearoff : MonoBehaviour
 
             buf.core = true;
             buf.modeLR = SlimeController.LRMode.Left;
+            buf._direction = slimeController._direction;
         }
 
         //自身を破壊

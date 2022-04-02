@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeighingBoard_DebugText : MonoBehaviour
+public class BeltConveyor_DebugText : MonoBehaviour
 {
-    [SerializeField] GameObject weighingBoard;
+    [SerializeField] GameObject beltConveyor;
     [SerializeField] TextMesh textMesh;
 
-    WeighingBoard weighingBoardScript;
+    BeltConveyor beltConveyorScript;
 
     // Start is called before the first frame update
     void Start()
@@ -16,8 +16,8 @@ public class WeighingBoard_DebugText : MonoBehaviour
 
         //ëÂÇ´Ç≥ÅEà íuí≤êÆ
         {
-            float boardScaleX = weighingBoard.transform.localScale.x;
-            float boardScaleY = weighingBoard.transform.localScale.y;
+            float boardScaleX = beltConveyor.transform.localScale.x;
+            float boardScaleY = beltConveyor.transform.localScale.y;
             float textScaleX = 1.0f / boardScaleX * 2.0f;
             float textScaleY = 1.0f / boardScaleY * 2.0f;
 
@@ -26,12 +26,12 @@ public class WeighingBoard_DebugText : MonoBehaviour
             transform.Translate(new Vector3(0, boardScaleY / 2.0f + 0.5f));
         }
 
-        weighingBoardScript = weighingBoard.GetComponent<WeighingBoard>();
+        beltConveyorScript = beltConveyor.GetComponent<BeltConveyor>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        textMesh.text = weighingBoardScript.weight.ToString();
+        textMesh.text = beltConveyorScript._speed.ToString();
     }
 }

@@ -18,13 +18,14 @@ public class SlimeSizeChange_Item : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //ƒXƒ‰ƒCƒ€‚¾‚Á‚½‚ç
-        if(collision.gameObject.tag == "Slime")
+        if (collision.gameObject.tag == "Slime")
         {
             collision.gameObject.GetComponent<SlimeController>().scale += chengeSize;
             Destroy(this.gameObject);
         }
     }
+        
 }
