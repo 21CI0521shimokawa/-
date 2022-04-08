@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         m_doorGroup = new List<GameObject>();
         m_laserGroup = new List<GameObject>();
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     //マップアイテム登録（ドアー）
