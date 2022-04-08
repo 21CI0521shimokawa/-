@@ -7,14 +7,13 @@ public class PressurePlate : StageGimmick
     enum STATE { NORMAL, PRESSED };
     [Header("PressurePlate Script")]
     [SerializeField]STATE m_state;
-    [Tooltip("???"), SerializeField] Vector2 sinkTo = new Vector2(0f, -0.1f);
-    [Tooltip("??????????????"), SerializeField] bool needAllSameButtonCheck = true;
-    [Tooltip("????"), SerializeField] LayerMask searchLayer = ~0;
+    [Tooltip("押されているときの移動"), SerializeField] Vector2 sinkTo = new Vector2(0f, -0.1f);
+    [Tooltip("同じ番号のボタンの確認が必要"), SerializeField] bool needAllSameButtonCheck = true;
+    [Tooltip("検知アイテム"), SerializeField] LayerMask searchLayer = ~0;
 
-    List<GameObject> m_matchItem; //????????????
-    List<GameObject> m_matchButton; //????????
-    Vector2 m_normalPos; //????
-    bool ispressed; //?????????
+    List<GameObject> m_matchItem; //同じ番号を持っているギミック
+    List<GameObject> m_matchButton; //同じ番号のボタン
+    Vector2 m_normalPos; //初期位置
 
     void Start()
     {
@@ -42,7 +41,7 @@ public class PressurePlate : StageGimmick
                     GetComponent<SpriteRenderer>().color = Color.red;
                     m_state = STATE.PRESSED;
 
-                    //??????????????????????????
+                    //同じ番号のボタンの状況確認
                     if (CheckSameNumberButton())
                     {
                         OpenItem();
@@ -56,7 +55,6 @@ public class PressurePlate : StageGimmick
                 if (!CheckAboveItem())
                 {
                     _IsOpen = false;
-                    ispressed = false;
                     GetComponent<SpriteRenderer>().color = Color.cyan;
                     m_state = STATE.NORMAL;
                     CloseItem();
@@ -66,12 +64,12 @@ public class PressurePlate : StageGimmick
     }
 
     /// <summary>
-    /// ??????????????
+    /// ボタン上のアイテム確認
     /// </summary>
     /// <returns></returns>
     bool CheckAboveItem()
     {
-        if (!ispressed)
+        if (!_IsOpen)
         {
             return false;
         }
@@ -93,12 +91,12 @@ public class PressurePlate : StageGimmick
     }
 
     /// <summary>
-    /// ?????????????????????
+    /// 同じ番号を持っているボタンの状態確認
     /// </summary>
     /// <returns></returns>
     bool CheckSameNumberButton()
     {
-        //????????true???
+        //確認いらない場合抜ける
         if(!needAllSameButtonCheck)
         {
             return true;
@@ -143,7 +141,7 @@ public class PressurePlate : StageGimmick
     {
         if(other.gameObject)
         {
-            ispressed = true;
+            _IsOpen = true;
         }
     }
 
