@@ -2,20 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTracking: MonoBehaviour
+public class PlayerTracking : MonoBehaviour
 {
     [SerializeField, Tooltip("カメラオブジェクト")]
     private Camera camera;
     public GameObject PlayerPosition;
     private float CameraPullingcondition;
-    // Start is called before the first frame update
+    public float ExpansionTime = 0.05f;
+
+    private const int LimitExpansionrate = 9;
+    private const int IminimumExpansionrate = 7;
+
+    private GameObject player;
+    private Vector3 offset;
+
     void Start()
     {
         CameraPullingcondition = 1.0f;
+        this.gameObject.transform.position = new Vector3(85, 0, -10);
+        player = GameObject.Find("Slime");
+        offset = transform.position - player.transform.position;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         #region 主人公追跡
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Slime");
@@ -25,17 +35,26 @@ public class PlayerTracking: MonoBehaviour
         }
         if (PlayerPosition != null)
         {
-            transform.position = new Vector3(PlayerPosition.transform.position.x, PlayerPosition.transform.position.y + 4.0f, -10.0f);
+            // transform.position = new Vector3(PlayerPosition.transform.position.x, PlayerPosition.transform.position.y + 4.0f, -10.0f);
+            transform.position = Vector3.Lerp(transform.position, PlayerPosition.transform.position + offset, 6.0f * Time.deltaTime);
         }
         #endregion
         #region カメラの拡大率
-        if(objects.Length>1)
+        if (objects.Length > 1)
         {
-            camera.orthographicSize = 9;
+            camera.orthographicSize = camera.orthographicSize + 0.2f * ExpansionTime;
+            if (camera.orthographicSize >= LimitExpansionrate)
+            {
+                camera.orthographicSize = 9;
+            }
         }
-        else 
+        else
         {
-            camera.orthographicSize = 7;
+            camera.orthographicSize = camera.orthographicSize - 0.2f * ExpansionTime;
+            if (camera.orthographicSize <= IminimumExpansionrate)
+            {
+                camera.orthographicSize = 7;
+            }
         }
         #endregion
     }
