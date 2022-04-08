@@ -34,12 +34,12 @@ public class Slime_Haziku : MonoBehaviour
         float horizontal = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Horizontal") : Input.GetAxis("R_Stick_Horizontal");
         float vertical = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Vertical") : Input.GetAxis("R_Stick_Vertical");
 
-        stickX[freamCnt % freamCntMax] = horizontal;
-        stickY[freamCnt % freamCntMax] = vertical;
-
-        if (freamCnt >= freamCntMax)
+        if (slimeController.hazikuUpdate && !slimeController.slimeBuf.ifTearOff)
         {
-            if (slimeController.hazikuUpdate && !slimeController.slimeBuf.ifTearOff)
+            stickX[freamCnt % freamCntMax] = horizontal;
+            stickY[freamCnt % freamCntMax] = vertical;
+
+            if (freamCnt >= freamCntMax)
             {
                 Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
                 if (stickVectorNow.magnitude <= 0.1f)
@@ -62,8 +62,22 @@ public class Slime_Haziku : MonoBehaviour
                         slimeController.rigid2D.velocity = stickVectorMost * -moveSpeed;
                         freamCnt = 0;
                         slimeController.s_state = State.AIR;
+
+                        for (int i = 0; i < freamCntMax; ++i)
+                        {
+                            stickX[i] = 0.0f;
+                            stickY[i] = 0.0f;
+                        }
                     }
                 }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < freamCntMax; ++i)
+            {
+                stickX[i] = 0.0f;
+                stickY[i] = 0.0f;
             }
         }
 
