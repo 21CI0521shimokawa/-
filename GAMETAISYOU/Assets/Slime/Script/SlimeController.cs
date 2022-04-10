@@ -111,7 +111,8 @@ public class SlimeController: MonoBehaviour
                     }
                     else
                     {
-                        if ((modeLR ==　LRMode.Left ? /*Input.GetAxis("L_Trigger")*/gamepad.leftTrigger.ReadValue() : /*Input.GetAxis("R_Trigger")*/gamepad.rightTrigger.ReadValue()) >= 0.9f)
+                        //if ((modeLR ==　LRMode.Left ? /*Input.GetAxis("L_Trigger")*/gamepad.leftTrigger.ReadValue() : /*Input.GetAxis("R_Trigger")*/gamepad.rightTrigger.ReadValue()) >= 0.9f)
+                        if(IsHazikuUpdate(gamepad))
                         {
                             hazikuUpdate = true;
                         }
@@ -196,6 +197,26 @@ public class SlimeController: MonoBehaviour
     private bool IsLRTriggerPressed()
     {
         return Gamepad.current.leftTrigger.ReadValue() >= 0.9f && Gamepad.current.rightTrigger.ReadValue() >= 0.9f;
+    }
+
+    //はじくのアップデートを行うかどうか
+    private bool IsHazikuUpdate(Gamepad _gamepad)
+    {
+        if(s_state == State.MOVE && _ifOperation)   //はじくのアップデートを行える状況なら
+        {
+            if(modeLR == LRMode.Left ? _gamepad.leftStickButton.isPressed : _gamepad.rightStickButton.isPressed)    //スティックが押されているなら
+            {
+                return true;
+            }
+            else
+            {
+                if(hazikuScript._ifSlimeHazikuNow)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 

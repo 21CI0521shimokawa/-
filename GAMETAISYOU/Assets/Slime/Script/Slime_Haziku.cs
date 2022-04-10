@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Slime_Haziku : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Slime_Haziku : MonoBehaviour
     float moveSpeed;
     #endregion
 
+    public bool _ifSlimeHazikuNow;  //はじくのアップデートを行っている最中かどうか
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +27,34 @@ public class Slime_Haziku : MonoBehaviour
         freamCnt = 0;
         moveSpeed = 15.0f;
         #endregion
+
+        _ifSlimeHazikuNow = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Gamepad gamepad = Gamepad.current;
 
         this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
-        float horizontal = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Horizontal") : Input.GetAxis("R_Stick_Horizontal");
-        float vertical = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Vertical") : Input.GetAxis("R_Stick_Vertical");
+        float horizontal = 0.0f;
+        float vertical = 0.0f;
+
+        //ゲームパッドが接続されているなら
+        if (!(gamepad == null))
+        {
+            Vector2 stickValue = slimeController.modeLR == SlimeController.LRMode.Left ? gamepad.leftStick.ReadValue() : gamepad.rightStick.ReadValue();
+
+            horizontal = stickValue.x;
+            vertical = stickValue.y;
+
+            //horizontal = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Horizontal") : Input.GetAxis("R_Stick_Horizontal");
+            //vertical = slimeController.modeLR == SlimeController.LRMode.Left ? Input.GetAxis("L_Stick_Vertical") : Input.GetAxis("R_Stick_Vertical");
+        }
+        else
+        {
+            Debug.Log("コントローラーが接続されていません");
+        }
 
         if (slimeController.hazikuUpdate && !slimeController.slimeBuf.ifTearOff)
         {
@@ -44,6 +66,8 @@ public class Slime_Haziku : MonoBehaviour
                 Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
                 if (stickVectorNow.magnitude <= 0.1f)
                 {
+                    _ifSlimeHazikuNow = false;
+
                     Vector2 stickVectorMost = stickVectorNow;
                     for (int i = 1; i < freamCntMax; ++i)
                     {
@@ -68,7 +92,13 @@ public class Slime_Haziku : MonoBehaviour
                             stickX[i] = 0.0f;
                             stickY[i] = 0.0f;
                         }
+
+                        _ifSlimeHazikuNow = false;
                     }
+                }
+                else
+                {
+                    _ifSlimeHazikuNow = true;
                 }
             }
         }
@@ -79,6 +109,8 @@ public class Slime_Haziku : MonoBehaviour
                 stickX[i] = 0.0f;
                 stickY[i] = 0.0f;
             }
+
+            _ifSlimeHazikuNow = false;
         }
 
         ++freamCnt;
