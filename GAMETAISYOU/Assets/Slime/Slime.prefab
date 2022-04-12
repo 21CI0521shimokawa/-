@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6795523916300200675}
   - component: {fileID: 1798847698586161097}
   - component: {fileID: 6143646198465809491}
-  - component: {fileID: 1102518164501208580}
+  - component: {fileID: 4632479698400582876}
   m_Layer: 0
   m_Name: TriggerRight
   m_TagString: Untagged
@@ -132,7 +132,7 @@ PolygonCollider2D:
       - {x: 0.32, y: -0.26999998}
       - {x: 0.52, y: -0.19999999}
       - {x: 0.68, y: -0.12}
---- !u!114 &1102518164501208580
+--- !u!114 &4632479698400582876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,10 +141,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3240949056467850978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb29926cd9b1cd0498a415f75f096939, type: 3}
+  m_Script: {fileID: 11500000, guid: a0cdf07d03bb6424d98e87096f05c734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slime: {fileID: 8680789583821087122}
+  _onTrigger: 0
 --- !u!1 &3968010567801475350
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 6598974271413423365}
   - component: {fileID: 3387056731005542385}
   - component: {fileID: 4387260557540028039}
-  - component: {fileID: 1315544151467704628}
+  - component: {fileID: 3381462553252452642}
   m_Layer: 0
   m_Name: TriggerLeft
   m_TagString: Untagged
@@ -277,7 +277,7 @@ PolygonCollider2D:
       - {x: 0.32, y: -0.26999998}
       - {x: 0.52, y: -0.19999999}
       - {x: 0.68, y: -0.12}
---- !u!114 &1315544151467704628
+--- !u!114 &3381462553252452642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,10 +286,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3968010567801475350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e18694c93976f645aed68421af17504, type: 3}
+  m_Script: {fileID: 11500000, guid: a0cdf07d03bb6424d98e87096f05c734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slime: {fileID: 8680789583821087122}
+  _onTrigger: 0
 --- !u!1 &4418132168905195426
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 8214095427525539981}
   - component: {fileID: 6007873235857770945}
   - component: {fileID: 5764212691944554456}
-  - component: {fileID: 3361346887587697184}
+  - component: {fileID: 8766844711772804312}
   m_Layer: 0
   m_Name: TriggerTop
   m_TagString: Untagged
@@ -422,7 +422,7 @@ PolygonCollider2D:
       - {x: 0.32, y: -0.26999998}
       - {x: 0.52, y: -0.19999999}
       - {x: 0.68, y: -0.12}
---- !u!114 &3361346887587697184
+--- !u!114 &8766844711772804312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -431,10 +431,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4418132168905195426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef53d17f4ee628d4fbf4b6cbbceff28d, type: 3}
+  m_Script: {fileID: 11500000, guid: a0cdf07d03bb6424d98e87096f05c734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slime: {fileID: 8680789583821087122}
+  _onTrigger: 0
 --- !u!1 &4845632778822277070
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 6055011121027416599}
   - component: {fileID: 4635797980655644002}
   - component: {fileID: 8617849495297849348}
+  - component: {fileID: 6466544053871863749}
   m_Layer: 0
   m_Name: TriggerUnder
   m_TagString: Untagged
@@ -628,7 +629,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5570083483672920366}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da7d689cb9a55b54f87b362db3c13d4c, type: 3}
   m_Name: 
@@ -684,6 +685,19 @@ PolygonCollider2D:
       - {x: 0.32, y: -0.26999998}
       - {x: 0.52, y: -0.19999999}
       - {x: 0.68, y: -0.12}
+--- !u!114 &6466544053871863749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570083483672920366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0cdf07d03bb6424d98e87096f05c734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onTrigger: 0
 --- !u!1 &8680789583821087122
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +827,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _direction: 0
   _SlimeAnimator: {fileID: 4163097197365091292}
+  _triggerLeft: {fileID: 3381462553252452642}
+  _triggerRight: {fileID: 4632479698400582876}
+  _triggerUnder: {fileID: 6466544053871863749}
+  _triggerTop: {fileID: 8766844711772804312}
   hazikuScript: {fileID: 8680789583821087129}
   tearoff: {fileID: 8680789583821087133}
   slimeBuf: {fileID: 0}
@@ -821,7 +839,7 @@ MonoBehaviour:
   moveUpdate: 0
   s_state: 0
   rigid2D: {fileID: 8680789583821087135}
-  scale: 2
+  _scaleMax: 1
   modeLR: 0
   liveTime: 0
   deadTime: 0
@@ -830,6 +848,7 @@ MonoBehaviour:
   _moveSpeed: 4
   _stateAIRMoveSpeedMagnification: 0.5
   _stateAIRMoveSpeedMax: 2
+  _scaleNow: 0
 --- !u!114 &8680789583821087133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,7 +862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeController: {fileID: 8680789583821087134}
-  scaleLowerLimit: 0.5
+  _scaleLowerLimit: 0.5
   divisionScale: 0.5
   divisionTime: 1
   slimePrefab: {fileID: 8680789583821087122}
@@ -863,8 +882,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeController: {fileID: 8680789583821087134}
+  ArrowPrefab: {fileID: 813840520905290210, guid: 395aa6f5f8c69454b8082c910c17a0b2, type: 3}
   stickX: []
   stickY: []
+  _ifSlimeHazikuNow: 0
+  coolTime: 0.5
+  _nextHazikuUpdateTime: 0
+  _stateFixationTime: 0
 --- !u!114 &615655020605770485
 MonoBehaviour:
   m_ObjectHideFlags: 0

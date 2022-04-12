@@ -6,6 +6,8 @@ public class WeighingBoard_Door : MonoBehaviour
 {
     [SerializeField] WeighingBoard weighingBoard;
 
+    public bool _isMove;   //動くようにするかどうか
+
     [SerializeField] float onWeight;    //どの重さ以上でOnになるか
     [SerializeField] bool ifOnOpen;     //Onの状態だと開くようにするかどうか
 
@@ -25,32 +27,34 @@ public class WeighingBoard_Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ifOn = weighingBoard.weight >= onWeight;
-
-        float moveY = 0;
-        //開くなら
-        if(ifOnOpen && ifOn || !ifOnOpen && !ifOn)
+        if(_isMove) //動かすかどうか
         {
-            moveY = moveMaxY / moveTimeMax * Time.deltaTime;
+            ifOn = weighingBoard.weight >= onWeight;
+            float moveY = 0;
 
-            //上限
-            if(transform.position.y + moveY > beforePosY + moveMaxY)
+            //開くなら
+            if (ifOnOpen && ifOn || !ifOnOpen && !ifOn)
             {
-                moveY = beforePosY + moveMaxY - transform.position.y;
-            }
-        }
-        else
-        {
-            moveY = -moveMaxY / moveTimeMax * Time.deltaTime;
+                moveY = moveMaxY / moveTimeMax * Time.deltaTime;
 
-            //下限
-            if(transform.position.y + moveY < beforePosY)
+                //上限
+                if (transform.position.y + moveY > beforePosY + moveMaxY)
+                {
+                    moveY = beforePosY + moveMaxY - transform.position.y;
+                }
+            }
+            else
             {
-                moveY = beforePosY - transform.position.y;
+                moveY = -moveMaxY / moveTimeMax * Time.deltaTime;
+
+                //下限
+                if (transform.position.y + moveY < beforePosY)
+                {
+                    moveY = beforePosY - transform.position.y;
+                }
             }
+
+            transform.position = new Vector2(transform.position.x, transform.position.y + moveY);
         }
-
-        transform.position = new Vector2(transform.position.x, transform.position.y + moveY);
-
     }
 }

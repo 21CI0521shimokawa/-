@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class Slime_Haziku : MonoBehaviour
 {
     public SlimeController slimeController;
+    [SerializeField] GameObject ArrowPrefab;
 
-    
     #region はじく
     [SerializeField] float[] stickX;
     [SerializeField] float[] stickY;
@@ -16,7 +16,15 @@ public class Slime_Haziku : MonoBehaviour
     float moveSpeed;
     #endregion
 
+    GameObject arrow;
+
     public bool _ifSlimeHazikuNow;  //はじくのアップデートを行っている最中かどうか
+    bool isArrowBeing;  //矢印が存在するかどうか
+
+    [SerializeField] float coolTime;    //はじいた後何秒間はじくことができないか
+    public float _nextHazikuUpdateTime;  //はじくアップデートを行うことができるようになる時間
+
+    public float _stateFixationTime;    //はじいた後StateをAIRで固定する時間（不具合対策）
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +37,9 @@ public class Slime_Haziku : MonoBehaviour
         #endregion
 
         _ifSlimeHazikuNow = false;
+        isArrowBeing = false;
+
+        _nextHazikuUpdateTime = 0.0f;
     }
 
     // Update is called once per frame
@@ -64,6 +75,24 @@ public class Slime_Haziku : MonoBehaviour
             if (freamCnt >= freamCntMax)
             {
                 Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
+
+                #region ガイド
+                Vector2 currentVector = new Vector2(horizontal, vertical);
+                float radian = Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg + 90;
+                if (radian < 0) radian += 360;
+                if (currentVector.magnitude > 0.3f)
+                {
+                    ArrowInstanceate();
+                    arrow.transform.position = transform.position;
+                    arrow.transform.rotation = Quaternion.Euler(0, 0, radian);
+                    arrow.transform.localScale = new Vector2(slimeController._scaleMax, slimeController._scaleMax * currentVector.magnitude * 5);
+                }
+                else
+                {
+                    _ArrowDestroy();
+                }
+                #endregion
+
                 if (stickVectorNow.magnitude <= 0.1f)
                 {
                     _ifSlimeHazikuNow = false;
@@ -94,6 +123,9 @@ public class Slime_Haziku : MonoBehaviour
                         }
 
                         _ifSlimeHazikuNow = false;
+
+                        _nextHazikuUpdateTime = slimeController.liveTime + coolTime;
+                        _stateFixationTime = slimeController.liveTime + 0.03f;
                     }
                 }
                 else
@@ -111,8 +143,35 @@ public class Slime_Haziku : MonoBehaviour
             }
 
             _ifSlimeHazikuNow = false;
+            _ArrowDestroy();
         }
 
         ++freamCnt;
+    }
+
+
+    //矢印の生成
+    private void ArrowInstanceate()
+    {
+        if (!isArrowBeing)
+        {
+            isArrowBeing = true;
+
+            ArrowPrefab.SetActive(true);
+            GameObject buf = GameObject.Instantiate(ArrowPrefab);
+            arrow = buf;
+        }
+    }
+
+    //矢印の破棄
+    public void _ArrowDestroy()
+    {
+        if (isArrowBeing)
+        {
+            isArrowBeing = false;
+
+            arrow.SetActive(false);
+            Destroy(arrow);
+        }
     }
 }

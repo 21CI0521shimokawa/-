@@ -48,7 +48,7 @@ public class SlimeTrampoline : MonoBehaviour
 
     void ForceChange()
     {
-        if(Mathf.Abs(transform.localScale.x) > slimeController.scale)
+        if(Mathf.Abs(transform.localScale.x) > slimeController._scaleMax)
         {
             force = 15;
         }
