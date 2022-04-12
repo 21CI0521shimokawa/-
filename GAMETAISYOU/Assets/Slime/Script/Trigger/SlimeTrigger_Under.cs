@@ -39,7 +39,6 @@ public class SlimeTrigger_Under : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SlimeController slimeController = slime.GetComponent<SlimeController>();
         //if (slimeController._SlimeAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slime_Fall"))
         //{
         //    slimeController._SlimeAnimator.SetTrigger("Landing");

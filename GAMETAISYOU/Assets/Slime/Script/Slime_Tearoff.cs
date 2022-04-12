@@ -7,8 +7,8 @@ public class Slime_Tearoff : MonoBehaviour
 {
     [SerializeField] SlimeController slimeController;
 
-    [SerializeField, Tooltip("分裂できる大きさの下限")]
-    private float scaleLowerLimit;
+    [Tooltip("分裂できる大きさの下限")]
+    public float _scaleLowerLimit;
     [SerializeField, Tooltip("ちぎる大きさ")]
     private float divisionScale;
     [SerializeField, Tooltip("分裂するまでの時間")]
@@ -75,25 +75,43 @@ public class Slime_Tearoff : MonoBehaviour
                     //ちぎる
                     if (power >= 1)
                     {
-
-                        //大きさがLimitを下回らないなら
-                        if (scaleLowerLimit <= slimeController.scale - divisionScale)
+                        if (slimeController._scaleMax == slimeController._scaleNow) //スライムが大きくなりきっていたら
                         {
-                            power = 0;
+                            
+                            //大きさがLimitより大きいならちぎる
+                            if(slimeController._scaleMax > _scaleLowerLimit)
+                            {
+                                //ちぎる大きさと今の大きさからLimitを引いた値の内小さい方を代入する
+                                float tearOffSlimeScale = Mathf.Min(divisionScale, slimeController._scaleMax - _scaleLowerLimit);
+                                //gamepad.SetMotorSpeeds(0.0f, 0.0f);
 
-                            slimeController._ifOperation = false;
+                                StartCoroutine(SlimeTearOffCoroutine(tearOffSlimeScale));    //コルーチンの起動
+                            }
+                            else
+                            {
+                                GetComponent<Renderer>().material.color = Color.red;
+                                Debug.Log("大きさが足りません！！");
+                            }
 
-                            slimeController._SlimeAnimator.SetTrigger("Tearoff");
-                            slimeController.slimeBuf.ifTearOff = true;
+                            //大きさがLimitを下回らないなら
+                            //if (_scaleLowerLimit <= slimeController._scaleMax - divisionScale)
+                            //{
 
-                            Invoke("SlimeInstantiate", 0.55f);
+                            //    power = 0;
 
-                            //gamepad.SetMotorSpeeds(0.0f, 0.0f);
+                            //    slimeController._ifOperation = false;
+
+                            //    slimeController._SlimeAnimator.SetTrigger("Tearoff");
+                            //    slimeController.slimeBuf.ifTearOff = true;
+
+                            //    //Invoke("SlimeInstantiate", 0.55f);
+                            //}
+                            
                         }
                         else
                         {
                             GetComponent<Renderer>().material.color = Color.red;
-                            Debug.Log("きれません！！");
+                            Debug.Log("スライムが大きくなりきってません！！");
                         }
                     }
                     else
@@ -143,14 +161,14 @@ public class Slime_Tearoff : MonoBehaviour
 
         //コアじゃないほう
         {
-            float distance = slimeController.scale * 1.0f;
+            float distance = slimeController._scaleMax * 1.0f;
 
             Vector3 position = new Vector2((float)(transform.position.x + distance * (slimeController._direction == SlimeController._Direction.Right ? 1 : -1)), transform.position.y);
             GameObject cloneObject = Instantiate(slimePrefab);
             cloneObject.transform.position = position;
 
             SlimeController buf = cloneObject.GetComponent<SlimeController>();
-            buf.scale = divisionScale;
+            buf._scaleMax = divisionScale;
             cloneObject.transform.localScale = new Vector2(divisionScale, divisionScale);
             buf.core = false;
             buf.deadTime = deadEndTime;
@@ -158,7 +176,7 @@ public class Slime_Tearoff : MonoBehaviour
             buf._direction = slimeController._direction;
         }
 
-        slimeController.scale -= divisionScale;
+        slimeController._scaleMax -= divisionScale;
 
         //コア
         {
@@ -167,8 +185,62 @@ public class Slime_Tearoff : MonoBehaviour
             cloneObject.transform.position = position;
 
             SlimeController buf = cloneObject.GetComponent<SlimeController>();
-            buf.scale = slimeController.scale;
-            cloneObject.transform.localScale = new Vector2(slimeController.scale, slimeController.scale);
+            buf._scaleMax = slimeController._scaleMax;
+            cloneObject.transform.localScale = new Vector2(slimeController._scaleMax, slimeController._scaleMax);
+
+            buf.core = true;
+            buf.modeLR = SlimeController.LRMode.Left;
+            buf._direction = slimeController._direction;
+        }
+
+        //自身を破壊
+        Destroy(this.gameObject);
+    }
+
+    // コルーチン本体
+    private IEnumerator SlimeTearOffCoroutine(float slimeScale)
+    {
+        power = 0;
+
+        slimeController._ifOperation = false;
+
+        slimeController._SlimeAnimator.SetTrigger("Tearoff");
+        slimeController.slimeBuf.ifTearOff = true;
+
+        yield return new WaitForSeconds(0.55f); //0.55秒待つ
+
+        Debug.Log("きれたよ");
+
+        power = 0;
+
+        //コアじゃないほう
+        {
+            float distance = slimeController._scaleMax * 1.0f;
+
+            Vector3 position = new Vector2((float)(transform.position.x + distance * (slimeController._direction == SlimeController._Direction.Right ? 1 : -1)), transform.position.y);
+            GameObject cloneObject = Instantiate(slimePrefab);
+            cloneObject.transform.position = position;
+
+            SlimeController buf = cloneObject.GetComponent<SlimeController>();
+            buf._scaleMax = slimeScale;
+            cloneObject.transform.localScale = new Vector2(divisionScale, divisionScale);
+            buf.core = false;
+            buf.deadTime = deadEndTime;
+            buf.modeLR = SlimeController.LRMode.Right;
+            buf._direction = slimeController._direction;
+        }
+
+        slimeController._scaleMax -= slimeScale;
+
+        //コア
+        {
+            Vector3 position = new Vector2((float)(transform.position.x), transform.position.y);
+            GameObject cloneObject = Instantiate(slimePrefab);
+            cloneObject.transform.position = position;
+
+            SlimeController buf = cloneObject.GetComponent<SlimeController>();
+            buf._scaleMax = slimeController._scaleMax;
+            cloneObject.transform.localScale = new Vector2(slimeController._scaleMax, slimeController._scaleMax);
 
             buf.core = true;
             buf.modeLR = SlimeController.LRMode.Left;

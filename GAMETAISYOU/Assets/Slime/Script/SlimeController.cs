@@ -10,6 +10,12 @@ public class SlimeController: MonoBehaviour
 
     public Animator _SlimeAnimator;
 
+    public SlimeTrigger _triggerLeft;
+    public SlimeTrigger _triggerRight;
+    public SlimeTrigger _triggerUnder;
+    public SlimeTrigger _triggerTop;
+
+
     //関数処理管理
     [SerializeField] Slime_Haziku hazikuScript;
     [SerializeField] Slime_Tearoff tearoff;
@@ -24,7 +30,8 @@ public class SlimeController: MonoBehaviour
     public State s_state;
     public Rigidbody2D rigid2D;
     [System.NonSerialized] public float pullWideForce;    //スライムが横にどれだけ引っ張られているか
-    public float scale;   //スライムの大きさ
+    public float _scaleMax;   //スライムの大きさ
+
     public enum LRMode { Left, Right };   //左右スティックの分岐
     public LRMode modeLR;
 
@@ -40,6 +47,10 @@ public class SlimeController: MonoBehaviour
     public float _stateAIRMoveSpeedMagnification;    //StateがAIRの時の移動速度倍率
     public float _stateAIRMoveSpeedMax; //StateがAIRの時の空中での最大速度
     #endregion
+
+    public float _scaleNow; //今のスライムの大きさ
+    float smoothCurrentVelocity;    //SmoothDamp関数用変数
+
 
     bool Ontrigger;         //トリガーが押されているかどうか
 
@@ -70,6 +81,8 @@ public class SlimeController: MonoBehaviour
         }
 
         _ifOperation = true;
+
+        _scaleNow = _scaleMax;
     }
 
     // Update is called once per frame
@@ -112,7 +125,7 @@ public class SlimeController: MonoBehaviour
                     else
                     {
                         //if ((modeLR ==　LRMode.Left ? /*Input.GetAxis("L_Trigger")*/gamepad.leftTrigger.ReadValue() : /*Input.GetAxis("R_Trigger")*/gamepad.rightTrigger.ReadValue()) >= 0.9f)
-                        if(IsHazikuUpdate(gamepad))
+                        if(IfHazikuUpdate(gamepad))
                         {
                             hazikuUpdate = true;
                         }
@@ -159,7 +172,7 @@ public class SlimeController: MonoBehaviour
             Slime_Destroy();
         }
 
-        if(scale <= 0)
+        if(_scaleMax <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -173,14 +186,32 @@ public class SlimeController: MonoBehaviour
         Slime_SizeChange();
 
         //スライムの重さ変更
-        if (rigid2D.mass != scale * slimeBuf.slimeMass)
+        if (rigid2D.mass != _scaleNow * slimeBuf.slimeMass)
         {
-            rigid2D.mass = scale * slimeBuf.slimeMass;
+            rigid2D.mass = _scaleNow * slimeBuf.slimeMass;
         }
 
         Slime_Direction();
 
         _SlimeAnimator.SetFloat("FallSpeed", rigid2D.velocity.y);
+        _SlimeAnimator.SetBool("OnGround", _triggerUnder._onTrigger);
+
+        //地面についていたら
+        if (_triggerUnder._onTrigger)
+        {
+            //アニメーションがFallだったら着地にする
+            if (_SlimeAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slime_Fall"))
+            {
+                _SlimeAnimator.SetTrigger("Landing");
+            }
+
+            //スライムのStateがAIRで固定されていなければMOVEに変える
+            if (s_state == State.AIR && liveTime >= hazikuScript._stateFixationTime)
+            {
+                s_state = State.MOVE;
+                //rigid2D.velocity = Vector3.zero;
+            }
+        }
     }
 
 
@@ -200,19 +231,22 @@ public class SlimeController: MonoBehaviour
     }
 
     //はじくのアップデートを行うかどうか
-    private bool IsHazikuUpdate(Gamepad _gamepad)
+    private bool IfHazikuUpdate(Gamepad _gamepad)
     {
-        if(s_state == State.MOVE && _ifOperation)   //はじくのアップデートを行える状況なら
+        if(liveTime >= hazikuScript._nextHazikuUpdateTime)  //クールタイム中だったら処理しない
         {
-            if(modeLR == LRMode.Left ? _gamepad.leftStickButton.isPressed : _gamepad.rightStickButton.isPressed)    //スティックが押されているなら
+            if (s_state == State.MOVE && _ifOperation)   //はじくのアップデートを行える状況なら
             {
-                return true;
-            }
-            else
-            {
-                if(hazikuScript._ifSlimeHazikuNow)
+                if (modeLR == LRMode.Left ? _gamepad.leftStickButton.isPressed : _gamepad.rightStickButton.isPressed)    //スティックが押されているなら
                 {
                     return true;
+                }
+                else
+                {
+                    if (hazikuScript._ifSlimeHazikuNow)
+                    {
+                        return true;
+                    }
                 }
             }
         }
@@ -223,6 +257,19 @@ public class SlimeController: MonoBehaviour
     //スライムの大きさ変更
     private void Slime_SizeChange()
     {
+        //スライムの大きさを大きくする
+        if (IfSlimeGrowInSize())
+        {
+            float scaleBefore = _scaleNow;
+            _scaleNow = Mathf.SmoothDamp(_scaleNow, _scaleMax, ref smoothCurrentVelocity, 0.5f);
+
+            //大きさが変化しなかったら最大値と同じにする（不具合対策）
+            if (scaleBefore == _scaleNow)
+            {
+                _scaleNow = _scaleMax;
+            }
+        }
+        
         if (Ontrigger)   //伸ばす（ちぎれる）状態なら大きさを固定しない
         {
             pullWideForce = tearoff.power;
@@ -234,7 +281,7 @@ public class SlimeController: MonoBehaviour
 
         int slimeDirection = Slime_Direction();
 
-        transform.localScale = new Vector2((1 + pullWideForce) * scale * slimeDirection, (1.0f / (1 + pullWideForce)) * scale);
+        transform.localScale = new Vector2((1 + pullWideForce) * _scaleNow * slimeDirection, (1.0f / (1 + pullWideForce)) * _scaleNow);
     }
 
     //スライムの向き変更
@@ -280,13 +327,29 @@ public class SlimeController: MonoBehaviour
             //大きさを変更する
             if (successSearch)
             {
-                slimeCore.GetComponent<SlimeController>().scale += this.scale;
+                slimeCore.GetComponent<SlimeController>()._scaleMax += this._scaleMax;
             }
             #endregion
+
+            //はじくの矢印を消す
+            hazikuScript._ArrowDestroy();
 
             Destroy(this.gameObject);
         }
         return false;
     }
 
+
+    //スライムが大きくなれるかどうか
+    private bool IfSlimeGrowInSize()
+    {
+        //現在の大きさと最大値が同じだったら処理しない
+        if(_scaleMax == _scaleNow)
+        {
+            return false;
+        }
+
+        //上下or左右が他のものと接触していたらfalse
+        return !(_triggerLeft._onTrigger && _triggerRight._onTrigger || _triggerTop._onTrigger && _triggerUnder._onTrigger);
+    }
 }

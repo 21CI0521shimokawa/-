@@ -23,7 +23,7 @@ public class SlimeSizeChange_Item : MonoBehaviour
         //ƒXƒ‰ƒCƒ€‚¾‚Á‚½‚ç
         if (collision.gameObject.tag == "Slime")
         {
-            collision.gameObject.GetComponent<SlimeController>().scale += chengeSize;
+            collision.gameObject.GetComponent<SlimeController>()._scaleMax += chengeSize;
             Destroy(this.gameObject);
         }
     }
