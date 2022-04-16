@@ -611,13 +611,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928503384}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aca6067e392a7f84994fde5d46ed0b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1928503388}
   PlayerPosition: {fileID: 1247028022}
+  ExpansionTime: 0.05
 --- !u!114 &1928503386
 MonoBehaviour:
   m_ObjectHideFlags: 0

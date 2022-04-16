@@ -41,7 +41,7 @@ public class Slime_Tearoff : MonoBehaviour
     {
         if (slimeController.tearoffUpdate && slimeController.core)  //update‚ð‹–‰Â‚³‚ê‚Ä‚¢‚Ä–{‘Ì‚¾‚Á‚½‚ç
         {
-            if (!slimeController.slimeBuf.ifTearOff)    //Šù‚É‚¿‚¬‚ç‚ê‚Ä‚¢‚È‚©‚Á‚½‚ç
+            if (!slimeController._slimeBuf._ifTearOff)    //Šù‚É‚¿‚¬‚ç‚ê‚Ä‚¢‚È‚©‚Á‚½‚ç
             {
 
                 //‚¿‚¬‚é
@@ -145,6 +145,7 @@ public class Slime_Tearoff : MonoBehaviour
             }
 
             power = 0;
+            //gamepad.SetMotorSpeeds(0.0f, 0.0f);
 
             oneFrameBefore_Update = false;
 
@@ -205,7 +206,7 @@ public class Slime_Tearoff : MonoBehaviour
         slimeController._ifOperation = false;
 
         slimeController._SlimeAnimator.SetTrigger("Tearoff");
-        slimeController.slimeBuf.ifTearOff = true;
+        slimeController._slimeBuf._ifTearOff = true;
 
         yield return new WaitForSeconds(0.55f); //0.55•b‘Ò‚Â
 

@@ -17,9 +17,10 @@ public class SlimeController: MonoBehaviour
 
 
     //関数処理管理
-    [SerializeField] Slime_Haziku hazikuScript;
-    [SerializeField] Slime_Tearoff tearoff;
-    public SlimeBuffer slimeBuf;
+    public Slime_Haziku _hazikuScript;
+    public Slime_Tearoff _tearoff;
+    public SlimeBuffer _slimeBuf;
+    public SlimeTrampoline _trampoline;
 
     public bool hazikuUpdate;
     public bool tearoffUpdate;
@@ -51,8 +52,12 @@ public class SlimeController: MonoBehaviour
     public float _scaleNow; //今のスライムの大きさ
     float smoothCurrentVelocity;    //SmoothDamp関数用変数
 
+    GameObject slimeCore;   //自身が本体ではないときにスライムの本体が入る変数
+    SlimeController slimeCoreController;     //自身が本体ではないときにスライムの本体のコントローラーが入る変数
 
     bool Ontrigger;         //トリガーが押されているかどうか
+
+    public bool _airJump;    //空中でもジャンプができるかどうか
 
     #region 伸び縮み処理
     [System.NonSerialized] public float stretchEndTime;   //スライムが縮み始める時間
@@ -65,7 +70,7 @@ public class SlimeController: MonoBehaviour
         s_state = State.NORMAL;
         rigid2D = this.gameObject.GetComponent<Rigidbody2D>();
 
-        slimeBuf = GameObject.Find("SlimeBuffer").GetComponent<SlimeBuffer>();
+        _slimeBuf = GameObject.Find("SlimeBuffer").GetComponent<SlimeBuffer>();
 
         AllFalse_FunctionProcessingFlag();
 
@@ -103,7 +108,7 @@ public class SlimeController: MonoBehaviour
 
         if(!Ontrigger)
         {
-            slimeBuf.ifTearOff = false;
+            _slimeBuf._ifTearOff = false;
         }
 
         switch (s_state)
@@ -154,9 +159,14 @@ public class SlimeController: MonoBehaviour
 
             case State.AIR:
                 //空中にいるとき
-
-                moveUpdate = true;
-
+                if (IfHazikuUpdate(gamepad) && _airJump)
+                {
+                    hazikuUpdate = true;
+                }
+                else
+                {
+                    moveUpdate = true;
+                }
                 break;
         }
 
@@ -166,8 +176,36 @@ public class SlimeController: MonoBehaviour
 
         liveTime += Time.deltaTime;
 
+        //自身がコアでないなら
+        if(!core)
+        {
+            if(!slimeCore)
+            {
+                //本体を探す
+                GameObject[] slimes = GameObject.FindGameObjectsWithTag("Slime");
+                //配列の要素一つ一つに対して処理を行う
+                foreach (GameObject i in slimes)
+                {
+                    if (i.GetComponent<SlimeController>().core)  //本体だったら
+                    {
+                        slimeCore = i;
+                        slimeCoreController = i.GetComponent<SlimeController>();
+                        break;
+                    }
+                }
+            }
+            if(slimeCore)
+            { 
+                //生存時間の延長
+                if((slimeCore.transform.position - this.gameObject.transform.position).magnitude <= _slimeBuf._doNotDeadAreaRadius)
+                {
+                    deadTime = liveTime + slimeCoreController._tearoff.deadEndTime;
+                }
+            }
+        }
+
         //スライム消滅
-        if(liveTime >= deadTime && deadTime != 0)
+        if (liveTime >= deadTime && deadTime != 0)
         {
             Slime_Destroy();
         }
@@ -186,9 +224,9 @@ public class SlimeController: MonoBehaviour
         Slime_SizeChange();
 
         //スライムの重さ変更
-        if (rigid2D.mass != _scaleNow * slimeBuf.slimeMass)
+        if (rigid2D.mass != _scaleNow * _slimeBuf._slimeMass)
         {
-            rigid2D.mass = _scaleNow * slimeBuf.slimeMass;
+            rigid2D.mass = _scaleNow * _slimeBuf._slimeMass;
         }
 
         Slime_Direction();
@@ -206,7 +244,7 @@ public class SlimeController: MonoBehaviour
             }
 
             //スライムのStateがAIRで固定されていなければMOVEに変える
-            if (s_state == State.AIR && liveTime >= hazikuScript._stateFixationTime)
+            if (s_state == State.AIR && liveTime >= _hazikuScript._stateFixationTime)
             {
                 s_state = State.MOVE;
                 //rigid2D.velocity = Vector3.zero;
@@ -233,9 +271,9 @@ public class SlimeController: MonoBehaviour
     //はじくのアップデートを行うかどうか
     private bool IfHazikuUpdate(Gamepad _gamepad)
     {
-        if(liveTime >= hazikuScript._nextHazikuUpdateTime)  //クールタイム中だったら処理しない
+        if(liveTime >= _hazikuScript._nextHazikuUpdateTime)  //クールタイム中だったら処理しない
         {
-            if (s_state == State.MOVE && _ifOperation)   //はじくのアップデートを行える状況なら
+            if (_ifOperation)   //操作ができるなら
             {
                 if (modeLR == LRMode.Left ? _gamepad.leftStickButton.isPressed : _gamepad.rightStickButton.isPressed)    //スティックが押されているなら
                 {
@@ -243,7 +281,7 @@ public class SlimeController: MonoBehaviour
                 }
                 else
                 {
-                    if (hazikuScript._ifSlimeHazikuNow)
+                    if (_hazikuScript._ifSlimeHazikuNow)
                     {
                         return true;
                     }
@@ -272,11 +310,11 @@ public class SlimeController: MonoBehaviour
         
         if (Ontrigger)   //伸ばす（ちぎれる）状態なら大きさを固定しない
         {
-            pullWideForce = tearoff.power;
+            pullWideForce = _tearoff.power;
         }
         else
         {
-            pullWideForce = Mathf.Max(pullWideForce, tearoff.power);
+            pullWideForce = Mathf.Max(pullWideForce, _tearoff.power);
         }
 
         int slimeDirection = Slime_Direction();
@@ -332,7 +370,7 @@ public class SlimeController: MonoBehaviour
             #endregion
 
             //はじくの矢印を消す
-            hazikuScript._ArrowDestroy();
+            _hazikuScript._ArrowDestroy();
 
             Destroy(this.gameObject);
         }
