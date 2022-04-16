@@ -831,9 +831,10 @@ MonoBehaviour:
   _triggerRight: {fileID: 4632479698400582876}
   _triggerUnder: {fileID: 6466544053871863749}
   _triggerTop: {fileID: 8766844711772804312}
-  hazikuScript: {fileID: 8680789583821087129}
-  tearoff: {fileID: 8680789583821087133}
-  slimeBuf: {fileID: 0}
+  _hazikuScript: {fileID: 8680789583821087129}
+  _tearoff: {fileID: 8680789583821087133}
+  _slimeBuf: {fileID: 0}
+  _trampoline: {fileID: 0}
   hazikuUpdate: 0
   tearoffUpdate: 0
   moveUpdate: 0
@@ -849,6 +850,7 @@ MonoBehaviour:
   _stateAIRMoveSpeedMagnification: 0.5
   _stateAIRMoveSpeedMax: 2
   _scaleNow: 0
+  _airJump: 0
 --- !u!114 &8680789583821087133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,7 +869,7 @@ MonoBehaviour:
   divisionTime: 1
   slimePrefab: {fileID: 8680789583821087122}
   stretchEndTime: 3
-  deadEndTime: 0
+  deadEndTime: 5
   power: 0
 --- !u!114 &8680789583821087129
 MonoBehaviour:
@@ -885,6 +887,7 @@ MonoBehaviour:
   ArrowPrefab: {fileID: 813840520905290210, guid: 395aa6f5f8c69454b8082c910c17a0b2, type: 3}
   stickX: []
   stickY: []
+  _power: 5
   _ifSlimeHazikuNow: 0
   coolTime: 0.5
   _nextHazikuUpdateTime: 0
@@ -923,6 +926,7 @@ MonoBehaviour:
   force: 10
   angle: 90
   timer: 0
+  _isOn: 0
 --- !u!70 &9089298555572136632
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

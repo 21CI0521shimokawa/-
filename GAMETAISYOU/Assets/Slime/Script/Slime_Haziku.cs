@@ -16,6 +16,8 @@ public class Slime_Haziku : MonoBehaviour
     float moveSpeed;
     #endregion
 
+    public float _power;    //パワー
+
     GameObject arrow;
 
     public bool _ifSlimeHazikuNow;  //はじくのアップデートを行っている最中かどうか
@@ -33,7 +35,7 @@ public class Slime_Haziku : MonoBehaviour
         stickX = new float[freamCntMax];
         stickY = new float[freamCntMax];
         freamCnt = 0;
-        moveSpeed = 15.0f;
+        moveSpeed = 3.0f;
         #endregion
 
         _ifSlimeHazikuNow = false;
@@ -67,7 +69,7 @@ public class Slime_Haziku : MonoBehaviour
             Debug.Log("コントローラーが接続されていません");
         }
 
-        if (slimeController.hazikuUpdate && !slimeController.slimeBuf.ifTearOff)
+        if (slimeController.hazikuUpdate && !slimeController._slimeBuf._ifTearOff)
         {
             stickX[freamCnt % freamCntMax] = horizontal;
             stickY[freamCnt % freamCntMax] = vertical;
@@ -112,7 +114,7 @@ public class Slime_Haziku : MonoBehaviour
                     {
                         slimeController._SlimeAnimator.SetTrigger("Haziku");
 
-                        slimeController.rigid2D.velocity = stickVectorMost * -moveSpeed;
+                        slimeController.rigid2D.velocity = stickVectorMost * -moveSpeed * _power;
                         freamCnt = 0;
                         slimeController.s_state = State.AIR;
 

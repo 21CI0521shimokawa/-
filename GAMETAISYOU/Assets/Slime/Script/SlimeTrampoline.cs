@@ -16,6 +16,8 @@ public class SlimeTrampoline : MonoBehaviour
     [SerializeField] float timer;
     //[SerializeField] bool shake;
 
+    public bool _isOn;
+
     void OnValidate()
     {
         angle = transform.eulerAngles.z + 90f;
@@ -48,7 +50,7 @@ public class SlimeTrampoline : MonoBehaviour
 
     void ForceChange()
     {
-        if(Mathf.Abs(transform.localScale.x) > slimeController._scaleMax)
+        if(Mathf.Abs(transform.localScale.x) > slimeController._scaleMax && _isOn)
         {
             force = 15;
         }
@@ -63,6 +65,7 @@ public class SlimeTrampoline : MonoBehaviour
         //if(slimeController.pullWideForce > 0.1f)
         {
             if (collisionInfo.gameObject.tag == "Item")
+            //if(collisionInfo.gameObject.GetComponent<Rigidbody2D>())
             {
                 if (Vector3.Angle(normal, collisionInfo.transform.position - transform.position) < 90f)
                 {
