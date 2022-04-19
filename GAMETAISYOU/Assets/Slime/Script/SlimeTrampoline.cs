@@ -18,6 +18,10 @@ public class SlimeTrampoline : MonoBehaviour
 
     public bool _isOn;
 
+    //外部
+    [SerializeField, Tooltip("エレベーター")]
+    private GameObject Elevator;
+
     void OnValidate()
     {
         angle = transform.eulerAngles.z + 90f;
@@ -76,6 +80,13 @@ public class SlimeTrampoline : MonoBehaviour
                     //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
                 }
             }
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name=="Area")
+        {
+            Elevator.GetComponent<ElevatoControll>().ElevatorStart();
         }
     }
 }
