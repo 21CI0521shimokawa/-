@@ -23,8 +23,6 @@ public class ElevatoControll : MonoBehaviour
     private PostProcessVolume Volume;
     [SerializeField, Tooltip("ポストエフェクトVignetteの取得")] //エレベーター乗った時に暗くなる
     private Vignette Vignette;
-    [SerializeField, Tooltip("ポストエフェクトVinetteのアクティブ真偽判定")]
-    private bool IsUseVInette;
 
     void Start()
     {
@@ -32,12 +30,10 @@ public class ElevatoControll : MonoBehaviour
         DestinationNum = Mathf.Abs(Destination.position.y);
         //ポストエフェクト
         Volume.profile.TryGetSettings<Vignette>(out Vignette);
-        IsUseVInette = false;
     }
 
      public void ElevatorStart()
     {
-        IsUseVInette = true;
         Vignette.enabled.Override(true);
         StartCoroutine("ElevatorUp");
     }
