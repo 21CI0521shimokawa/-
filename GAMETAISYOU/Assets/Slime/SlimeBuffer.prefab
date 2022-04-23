@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ifTearOff: 0
   _slimeMass: 1
-  _doNotDeadAreaRadius: 2
+  _doNotDeadAreaRadius: 0
   m_lineRenderer: {fileID: -1380270251856587544}
   m_radius: 2
   m_lineWidth: 0.1

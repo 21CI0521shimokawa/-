@@ -2590,6 +2590,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8680789583821087122, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
   m_PrefabInstance: {fileID: 2802986895353430678}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &970494652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4143101950999046256, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+  m_PrefabInstance: {fileID: 2802986895353430678}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970494651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc60041374aa61143a0848f20b45bf47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &970494658 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8680789583821087134, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
@@ -6726,6 +6737,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7007595957200978829, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007595957200978829, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007595957200978829, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007595957200978829, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007595957200978829, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7189602254510067625, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: slimeController
       value: 
@@ -6792,7 +6823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087133, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: deadEndTime
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087133, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: _scaleLowerLimit
@@ -6814,6 +6845,10 @@ PrefabInstance:
       propertyPath: _moveSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8680789583821087134, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: _trampoline
+      value: 
+      objectReference: {fileID: 970494652}
     - target: {fileID: 8680789583821087134, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: _stateAIRMoveSpeedMagnification
       value: 0.1
@@ -6901,7 +6936,7 @@ PrefabInstance:
       objectReference: {fileID: 2070508740}
     - target: {fileID: 3479599118848043228, guid: 4b4798d6a1568a54b9fa2384370ef5d8, type: 3}
       propertyPath: _doNotDeadAreaRadius
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4798d6a1568a54b9fa2384370ef5d8, type: 3}
