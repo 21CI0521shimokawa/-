@@ -59,10 +59,14 @@ public class SlimeController: MonoBehaviour
 
     public bool _airJump;    //空中でもジャンプができるかどうか
 
+    bool isDead;    //死んでるかどうか
+
     #region 伸び縮み処理
     [System.NonSerialized] public float stretchEndTime;   //スライムが縮み始める時間
     [System.NonSerialized] public float pullWideForceMax; //スライム横にどれだけ引っ張られているか（最大）
     #endregion
+
+    [SerializeField] SpriteRenderer slimeImage;
 
     // Start is called before the first frame update
     void Start()
@@ -88,12 +92,21 @@ public class SlimeController: MonoBehaviour
         _ifOperation = true;
 
         _scaleNow = _scaleMax;
+
+        isDead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         AllFalse_FunctionProcessingFlag();
+
+        //死んでるなら既に死んだときの処理を行う
+        if (isDead) 
+        {
+            DeadUpdate();
+            return; 
+        }
 
         Gamepad gamepad = Gamepad.current;
 
@@ -159,7 +172,7 @@ public class SlimeController: MonoBehaviour
 
             case State.AIR:
                 //空中にいるとき
-                if (IfHazikuUpdate(gamepad) && _airJump)
+                if (IfHazikuUpdate(gamepad) && _airJump && _ifOperation)
                 {
                     hazikuUpdate = true;
                 }
@@ -204,6 +217,15 @@ public class SlimeController: MonoBehaviour
             }
         }
 
+        //スライム点滅
+        if(liveTime >= deadTime - 5 && deadTime != 0 && liveTime + _tearoff.deadEndTime - Time.deltaTime != deadTime)
+        {
+            Slime_Blinking();
+        }
+        else
+        {
+            slimeImage.enabled = true;
+        }
         //スライム消滅
         if (liveTime >= deadTime && deadTime != 0)
         {
@@ -250,6 +272,15 @@ public class SlimeController: MonoBehaviour
                 //rigid2D.velocity = Vector3.zero;
             }
         }
+        else //ついていなかったら
+        {
+            //スライムのStateがMOVEだったらAIRに変える
+            if (s_state == State.MOVE)
+            {
+                s_state = State.AIR;
+            }
+        }
+
     }
 
 
@@ -322,6 +353,13 @@ public class SlimeController: MonoBehaviour
         transform.localScale = new Vector2((1 + pullWideForce) * _scaleNow * slimeDirection, (1.0f / (1 + pullWideForce)) * _scaleNow);
     }
 
+    //スライムの点滅
+    private void Slime_Blinking()
+    {
+        bool buf = liveTime % 0.5f <= 0.25f;
+        slimeImage.enabled = buf;
+    }
+
     //スライムの向き変更
     private int Slime_Direction()
     {
@@ -342,14 +380,33 @@ public class SlimeController: MonoBehaviour
     }
 
     //スライムの破棄
-    public bool Slime_Destroy()
+    public void Slime_Destroy()
     {
         if(!core)
         {
-            #region 本体の大きさを戻す
+            isDead = true;
+
+            _ifOperation = false;   //操作不可
+            _hazikuScript.enabled = false;
+            _tearoff.enabled = false;
+            _trampoline.enabled = false;
+            rigid2D.simulated = false;
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+
+            //はじくの矢印を消す
+            _hazikuScript._GuideDestroy();
+        }
+    }
+
+    //死んだときの更新処理
+    private void DeadUpdate()
+    {
+        //本体がなかったら本体を探す
+        if(!slimeCore)
+        {
+            #region 本体を探す
             //本体を探す
             GameObject[] slimes = GameObject.FindGameObjectsWithTag("Slime");
-            GameObject slimeCore = this.gameObject; //仮で自身を入れておく
             bool successSearch = false;
             //配列の要素一つ一つに対して処理を行う
             foreach (GameObject i in slimes)
@@ -361,22 +418,35 @@ public class SlimeController: MonoBehaviour
                     break;
                 }
             }
+            #endregion
 
+            //それでも見つからなかったら即破棄
+            if (!successSearch)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
+        //コアへのベクトルを計算
+        Vector2 vec = slimeCore.transform.position - this.transform.position;   
+        //移動
+        this.transform.position += new Vector3(vec.x * Time.deltaTime, vec.y * Time.deltaTime) ;
+
+        //少しずつ薄く
+        slimeImage.color += new Color(0, 0, 0, -Time.deltaTime);
+
+        //見えなくなったら
+        if(slimeImage.color.a <= 0)
+        {
             //大きさを変更する
-            if (successSearch)
+            if (slimeCore)
             {
                 slimeCore.GetComponent<SlimeController>()._scaleMax += this._scaleMax;
             }
-            #endregion
-
-            //はじくの矢印を消す
-            _hazikuScript._ArrowDestroy();
 
             Destroy(this.gameObject);
         }
-        return false;
     }
-
 
     //スライムが大きくなれるかどうか
     private bool IfSlimeGrowInSize()

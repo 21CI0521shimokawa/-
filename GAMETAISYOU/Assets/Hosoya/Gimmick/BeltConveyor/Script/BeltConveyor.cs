@@ -26,7 +26,10 @@ public class BeltConveyor : MonoBehaviour
 
             foreach (GameObject i in weighingBoardScript.onObjectsOll)
             {
-                i.transform.Translate(move, Space.World);
+                if(i)
+                {
+                    i.transform.Translate(move, Space.World);
+                }
             }
         }
     }

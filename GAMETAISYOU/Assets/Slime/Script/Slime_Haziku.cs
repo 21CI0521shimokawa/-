@@ -7,6 +7,7 @@ public class Slime_Haziku : MonoBehaviour
 {
     public SlimeController slimeController;
     [SerializeField] GameObject ArrowPrefab;
+    [SerializeField] LineRenderer lineRenderer;
 
     #region ÇÕÇ∂Ç≠
     [SerializeField] float[] stickX;
@@ -28,6 +29,16 @@ public class Slime_Haziku : MonoBehaviour
 
     public float _stateFixationTime;    //ÇÕÇ∂Ç¢ÇΩå„StateÇAIRÇ≈å≈íËÇ∑ÇÈéûä‘ÅiïsãÔçáëŒçÙÅj
 
+    enum GuideType
+    { 
+        Non,
+        arrow,
+        Ray
+    };
+
+
+    [SerializeField] GuideType guidetype;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +53,10 @@ public class Slime_Haziku : MonoBehaviour
         isArrowBeing = false;
 
         _nextHazikuUpdateTime = 0.0f;
+
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = new Color(1, 1, 1, 1);
+        lineRenderer.endColor = new Color(1, 1, 1, 0);
     }
 
     // Update is called once per frame
@@ -79,19 +94,39 @@ public class Slime_Haziku : MonoBehaviour
                 Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
 
                 #region ÉKÉCÉh
-                Vector2 currentVector = new Vector2(horizontal, vertical);
-                float radian = Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg + 90;
-                if (radian < 0) radian += 360;
-                if (currentVector.magnitude > 0.3f)
+                if(guidetype == GuideType.arrow)
                 {
-                    ArrowInstanceate();
-                    arrow.transform.position = transform.position;
-                    arrow.transform.rotation = Quaternion.Euler(0, 0, radian);
-                    arrow.transform.localScale = new Vector2(slimeController._scaleMax, slimeController._scaleMax * currentVector.magnitude * 5);
+                    Vector2 currentVector = new Vector2(horizontal, vertical);
+                    float radian = Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg + 90;
+                    if (radian < 0) radian += 360;
+                    if (currentVector.magnitude > 0.3f)
+                    {
+                        GuideInstanceate();
+                        arrow.transform.position = transform.position;
+                        arrow.transform.rotation = Quaternion.Euler(0, 0, radian);
+                        arrow.transform.localScale = new Vector2(slimeController._scaleMax, slimeController._scaleMax * currentVector.magnitude * 5);
+                    }
+                    else
+                    {
+                        _GuideDestroy();
+                    }
                 }
-                else
+                #endregion
+
+                #region ÉKÉCÉh2
+                if (guidetype == GuideType.Ray)
                 {
-                    _ArrowDestroy();
+                    Vector2 currentVector = new Vector2(horizontal, vertical);
+                    if (currentVector.magnitude > 0.3f)
+                    {
+                        GuideInstanceate();
+                        lineRenderer.SetPosition(0, this.gameObject.transform.position);
+                        lineRenderer.SetPosition(1, new Vector2(this.gameObject.transform.position.x + currentVector.normalized.x * -3, this.gameObject.transform.position.y + currentVector.normalized.y * -3));
+                    }
+                    else
+                    {
+                        _GuideDestroy();
+                    }
                 }
                 #endregion
 
@@ -145,35 +180,53 @@ public class Slime_Haziku : MonoBehaviour
             }
 
             _ifSlimeHazikuNow = false;
-            _ArrowDestroy();
+            _GuideDestroy();
         }
 
         ++freamCnt;
     }
 
 
-    //ñÓàÛÇÃê∂ê¨
-    private void ArrowInstanceate()
+    //ÉKÉCÉhÇÃê∂ê¨
+    private void GuideInstanceate()
     {
-        if (!isArrowBeing)
+        switch (guidetype)
         {
-            isArrowBeing = true;
+            case GuideType.arrow:
+                if (!isArrowBeing)
+                {
+                    isArrowBeing = true;
 
-            ArrowPrefab.SetActive(true);
-            GameObject buf = GameObject.Instantiate(ArrowPrefab);
-            arrow = buf;
+                    ArrowPrefab.SetActive(true);
+                    GameObject buf = GameObject.Instantiate(ArrowPrefab);
+                    arrow = buf;
+                }
+                break;
+
+            case GuideType.Ray:
+                lineRenderer.enabled = true;
+                break;
         }
     }
 
-    //ñÓàÛÇÃîjä¸
-    public void _ArrowDestroy()
+    //ÉKÉCÉhÇÃîjä¸
+    public void _GuideDestroy()
     {
-        if (isArrowBeing)
+        switch (guidetype)
         {
-            isArrowBeing = false;
+            case GuideType.arrow:
+                if (isArrowBeing)
+                {
+                    isArrowBeing = false;
 
-            arrow.SetActive(false);
-            Destroy(arrow);
+                    arrow.SetActive(false);
+                    Destroy(arrow);
+                }
+                break;
+
+            case GuideType.Ray:
+                lineRenderer.enabled = false;
+                break;
         }
     }
 }
