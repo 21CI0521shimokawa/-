@@ -33,13 +33,16 @@ public class Slime_Move : MonoBehaviour
 
             if (moveForceX != 0)
             {
-                if(slimeController.s_state == State.AIR)
+                if (slimeController.s_state == State.AIR)
                 {
                     moveForceX = StateAIRMoveForceCheck(moveForceX);
 
-                    //X軸に力を足す
-                    Vector2 force = new Vector2(moveForceX, 0);    // 力を設定
-                    rigidBody.AddForce(force);
+                    if (StateAIRMoveWallCheck())
+                    {
+                        //X軸に力を足す
+                        Vector2 force = new Vector2(moveForceX, 0);    // 力を設定
+                        rigidBody.AddForce(force);
+                    }
                 }
                 else
                 {
@@ -48,7 +51,7 @@ public class Slime_Move : MonoBehaviour
                     rigidBody.velocity = force;
                 }
             }
-            
+
             slimeController._SlimeAnimator.SetFloat("MoveSpeed", Mathf.Abs(rigidBody.velocity.x));
         }
     }
@@ -59,7 +62,7 @@ public class Slime_Move : MonoBehaviour
         speed = slimeController._moveSpeed;
 
         //AIRの時の速度
-        if(slimeController.s_state == State.AIR)
+        if (slimeController.s_state == State.AIR)
         {
             speed *= slimeController._stateAIRMoveSpeedMagnification;
         }
@@ -76,7 +79,7 @@ public class Slime_Move : MonoBehaviour
         }
 
         //今の速度が最大速度以上なら
-        if(Mathf.Abs(rigidBody.velocity.x) >= Mathf.Abs(slimeController._stateAIRMoveSpeedMax))
+        if (Mathf.Abs(rigidBody.velocity.x) >= Mathf.Abs(slimeController._stateAIRMoveSpeedMax))
         {
             return 0;
         }
@@ -100,5 +103,12 @@ public class Slime_Move : MonoBehaviour
         }
 
         return _moveForceX;
+    }
+
+
+    //進もうとしている方向に壁はないか確認    
+    bool StateAIRMoveWallCheck()
+    {
+        return !slimeController._triggerRight._onTrigger;
     }
 }
