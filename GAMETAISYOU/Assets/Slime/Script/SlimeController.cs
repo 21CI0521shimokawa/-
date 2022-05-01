@@ -68,6 +68,13 @@ public class SlimeController: MonoBehaviour
 
     [SerializeField] SpriteRenderer slimeImage;
 
+    public ControllerVibrationScript _controllerVibrationScript;
+
+    void Awake() 
+    {
+        _ifOperation = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,11 +96,11 @@ public class SlimeController: MonoBehaviour
             _direction = _Direction.Right;
         }
 
-        _ifOperation = true;
-
         _scaleNow = _scaleMax;
 
         isDead = false;
+
+        _controllerVibrationScript = GameObject.Find("ControllerVibration").GetComponent<ControllerVibrationScript>();
     }
 
     // Update is called once per frame

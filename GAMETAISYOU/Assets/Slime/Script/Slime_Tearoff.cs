@@ -23,7 +23,16 @@ public class Slime_Tearoff : MonoBehaviour
 
     bool oneFrameBefore_Update; //1フレーム前に処理を行ったかどうか
 
-    Gamepad gamepad;
+    bool IsDirecting;   //演出中かどうか
+
+    enum TearoffSlimeType
+    {
+        Non,
+        Right,
+        Left
+    }
+
+    [SerializeField] TearoffSlimeType tearoffSlimeType;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +42,7 @@ public class Slime_Tearoff : MonoBehaviour
 
         oneFrameBefore_Update = false;
 
-        gamepad = Gamepad.current;
+        IsDirecting = false;
     }
 
     // Update is called once per frame
@@ -70,7 +79,8 @@ public class Slime_Tearoff : MonoBehaviour
                         power = (-stickLHorizontal + stickRHorizontal) / 2;
                     }
 
-                    //gamepad.SetMotorSpeeds(power, power);
+                    //振動
+                    slimeController._controllerVibrationScript.Vibration("SlimeTearoff", power * 0.5f, power * 0.5f);
 
                     //ちぎる
                     if (power >= 1)
@@ -83,8 +93,7 @@ public class Slime_Tearoff : MonoBehaviour
                             {
                                 //ちぎる大きさと今の大きさからLimitを引いた値の内小さい方を代入する
                                 float tearOffSlimeScale = Mathf.Min(divisionScale, slimeController._scaleMax - _scaleLowerLimit);
-                                //gamepad.SetMotorSpeeds(0.0f, 0.0f);
-
+                             
                                 StartCoroutine(SlimeTearOffCoroutine(tearOffSlimeScale));    //コルーチンの起動
                             }
                             else
@@ -145,7 +154,11 @@ public class Slime_Tearoff : MonoBehaviour
             }
 
             power = 0;
-            //gamepad.SetMotorSpeeds(0.0f, 0.0f);
+
+            if (!IsDirecting)
+            {
+                slimeController._controllerVibrationScript.Destroy("SlimeTearoff");
+            }
 
             oneFrameBefore_Update = false;
 
@@ -173,8 +186,26 @@ public class Slime_Tearoff : MonoBehaviour
             cloneObject.transform.localScale = new Vector2(divisionScale, divisionScale);
             buf.core = false;
             buf.deadTime = deadEndTime;
-            buf.modeLR = SlimeController.LRMode.Right;
             buf._direction = slimeController._direction;
+
+            //操作タイプ
+            switch (tearoffSlimeType)
+            {
+                //操作不可
+                case TearoffSlimeType.Non:
+                    buf._ifOperation = false;
+                    break;
+
+                //右
+                case TearoffSlimeType.Right:
+                    buf.modeLR = SlimeController.LRMode.Right;
+                    break;
+
+                //左
+                case TearoffSlimeType.Left:
+                    buf.modeLR = SlimeController.LRMode.Left;
+                    break;
+            }
         }
 
         slimeController._scaleMax -= divisionScale;
@@ -201,6 +232,8 @@ public class Slime_Tearoff : MonoBehaviour
     // コルーチン本体
     private IEnumerator SlimeTearOffCoroutine(float slimeScale)
     {
+        IsDirecting = true;
+
         power = 0;
 
         slimeController._ifOperation = false;
@@ -208,7 +241,11 @@ public class Slime_Tearoff : MonoBehaviour
         slimeController._SlimeAnimator.SetTrigger("Tearoff");
         slimeController._slimeBuf._ifTearOff = true;
 
-        yield return new WaitForSeconds(0.55f); //0.55秒待つ
+        slimeController._controllerVibrationScript.Vibration("SlimeTearoff", 1.0f, 1.0f);
+
+        yield return new WaitForSeconds(0.15f); //0.15秒待つ
+        slimeController._controllerVibrationScript.Destroy("SlimeTearoff");
+        yield return new WaitForSeconds(0.3f); //0.3秒待つ
 
         Debug.Log("きれたよ");
 
@@ -227,8 +264,26 @@ public class Slime_Tearoff : MonoBehaviour
             cloneObject.transform.localScale = new Vector2(divisionScale, divisionScale);
             buf.core = false;
             buf.deadTime = deadEndTime;
-            buf.modeLR = SlimeController.LRMode.Right;
             buf._direction = slimeController._direction;
+
+            //操作タイプ
+            switch (tearoffSlimeType)
+            {
+                //操作不可
+                case TearoffSlimeType.Non:
+                    buf._ifOperation = false;
+                    break;
+
+                //右
+                case TearoffSlimeType.Right:
+                    buf.modeLR = SlimeController.LRMode.Right;
+                    break;
+
+                //左
+                case TearoffSlimeType.Left:
+                    buf.modeLR = SlimeController.LRMode.Left;
+                    break;
+            }
         }
 
         slimeController._scaleMax -= slimeScale;
@@ -250,5 +305,7 @@ public class Slime_Tearoff : MonoBehaviour
 
         //自身を破壊
         Destroy(this.gameObject);
+
+        IsDirecting = false;
     }
 }

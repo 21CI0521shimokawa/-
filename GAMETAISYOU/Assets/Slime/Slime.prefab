@@ -846,13 +846,14 @@ MonoBehaviour:
   liveTime: 0
   deadTime: 0
   core: 0
-  _ifOperation: 0
+  _ifOperation: 1
   _moveSpeed: 4
   _stateAIRMoveSpeedMagnification: 0.5
   _stateAIRMoveSpeedMax: 2
   _scaleNow: 0
   _airJump: 0
   slimeImage: {fileID: 7007595957200978829}
+  _controllerVibrationScript: {fileID: 0}
 --- !u!114 &8680789583821087133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,6 +874,7 @@ MonoBehaviour:
   stretchEndTime: 3
   deadEndTime: 20
   power: 0
+  tearoffSlimeType: 0
 --- !u!114 &8680789583821087129
 MonoBehaviour:
   m_ObjectHideFlags: 0
