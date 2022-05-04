@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Slime_Tearoff : MonoBehaviour
 {
     [SerializeField] SlimeController slimeController;
+    [SerializeField] SlimeSE slimeSE;
 
     [Tooltip("分裂できる大きさの下限")]
     public float _scaleLowerLimit;
@@ -232,6 +233,8 @@ public class Slime_Tearoff : MonoBehaviour
     // コルーチン本体
     private IEnumerator SlimeTearOffCoroutine(float slimeScale)
     {
+        slimeSE._PlayTearoffSE();
+
         IsDirecting = true;
 
         power = 0;

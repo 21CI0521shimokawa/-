@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 9e88212f813332c47b07732fe55b8178
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - slimeController: {instanceID: 0}
+  - coreSlime_Idle: {fileID: 7400000, guid: 9c3cd36b0cc43c74ca5e872303b1efe1, type: 2}
+  - coreSlime_Haziku_prepare: {fileID: 7400000, guid: 4fe57bb2b338b5c40bcc06a19fdc5e47, type: 2}
+  - coreSlime_Haziku: {fileID: 7400000, guid: a9ee39060b7eb1a48af71ab5330edc98, type: 2}
+  - coreSlime_Fall: {fileID: 7400000, guid: 5cccb88be8e96f14397ed70d1648e842, type: 2}
+  - coreSlime_Extend: {fileID: 7400000, guid: d36f5c51967b35e489136f0a9567e644, type: 2}
+  - coreSlime_ExtendIdle: {fileID: 7400000, guid: 10b5022dfca33fe479c081c666f3401b, type: 2}
+  - coreSlime_Tearoff: {fileID: 7400000, guid: 3e30cd5fc7b37b440a6e3e764b26f5bb, type: 2}
+  - coreSlime_Move: {fileID: 7400000, guid: e98f8a82b8cb55f4ca8f9431fe772cda, type: 2}
+  - coreSlime_Landing: {fileID: 7400000, guid: 92f4ec65beabca542938776542802889, type: 2}
+  - noCoreSlime_Idle: {fileID: 7400000, guid: a7f2e666d62603447a80f171993b5725, type: 2}
+  - noCoreSlime_Haziku_prepare: {fileID: 7400000, guid: b30727b6f1a82cb4092148af80eefe9e, type: 2}
+  - noCoreSlime_Haziku: {fileID: 7400000, guid: c9ac1adabff6790439a408447bb9975a, type: 2}
+  - noCoreSlime_Fall: {fileID: 7400000, guid: f70c778b13f587c439bd55a8a9dfa0f5, type: 2}
+  - noCoreSlime_Extend: {fileID: 7400000, guid: c618b874ce6078a4faa6d193851b61d2, type: 2}
+  - noCoreSlime_ExtendIdle: {fileID: 7400000, guid: afb9a0059ae87d149a06ef0bc876a3e0, type: 2}
+  - noCoreSlime_Tearoff: {fileID: 7400000, guid: b60ab3e0cb80e7a42a8bcfd0ee58eac3, type: 2}
+  - noCoreSlime_Move: {fileID: 7400000, guid: c19b69d013b963f4bacc91ed5e2e6da4, type: 2}
+  - noCoreSlime_Landing: {fileID: 7400000, guid: 37b3569baa9ed584aa580dd86a819df4, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
