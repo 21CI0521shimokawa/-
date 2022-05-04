@@ -21,6 +21,8 @@ public class SlimeTrampoline : MonoBehaviour
     //外部
     [SerializeField, Tooltip("エレベーター")]
     private GameObject Elevator;
+    [SerializeField, Tooltip("カメラ")]
+    private GameObject Camera;
 
     void OnValidate()
     {
@@ -87,6 +89,20 @@ public class SlimeTrampoline : MonoBehaviour
         if(collision.gameObject.name=="Area")
         {
             Elevator.GetComponent<ElevatoControll>().ElevatorStart();
+        }
+    }
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag== "Tracking")
+        {
+            Camera.GetComponent<PlayerTracking>().TrackingFlag = true;
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Tracking")
+        {
+            Camera.GetComponent<PlayerTracking>().TrackingFlag = false;
         }
     }
 }

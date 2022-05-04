@@ -5,57 +5,77 @@ using UnityEngine;
 public class AutoDoorControll : MonoBehaviour
 {
     private enum State { Open, Exit, Default };
-    private Vector3 NowPosition;
-    private Vector3 StartPositon;
     private State NowState;
-
+    private Vector2 StartPosition;
     [SerializeField, Tooltip("ドアの開閉スピード")]
     private float Speed;
+    [SerializeField, Tooltip("移動量"),] 
+    Vector2 moveTo = new Vector2(0, 4);
+    [SerializeField,Tooltip("オーディオsource")]
+    AudioSource audioSource = null;
+    [SerializeField, Tooltip("ドア開閉SE")]
+    AudioClip DoorSE;
+
     void Start()
     {
+        StartPosition = this.transform.position;
         NowState = State.Default;
-        StartPositon.y =this.transform.position.y;
     }
 
 
     void Update()
     {
-        switch (NowState)
+        if (NowState == State.Open |NowState==State.Exit)
         {
-            case State.Default:
-                //何もしない
-                break;
-            case State.Open:
-                //ドアオープン
-                while (NowPosition.y < 11.3f)
-                {
-                    NowPosition = transform.position;
-                    transform.Translate(0, Speed, 0);
-                }
-                NowState = State.Default;
-                    break;
-            case State.Exit:
-                while (NowPosition.y > StartPositon.y)
-                {
-                    NowPosition = transform.position;
-                    transform.Translate(0, -Speed, 0);
-                }
-                break;
-        }
-        Debug.Log(NowState);
-    }
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag== "Slime")
-        {
-            NowState = State.Open;
+            StartCoroutine(Move());
         }
     }
-    public void OnTriggerExit2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Slime")
         {
-            NowState = State.Exit;
+            PlaySE(DoorSE);
+            NowState = State.Open;
+        }
+        if(collision.gameObject.tag=="Ground")
+        {
+            NowState = State.Default;
+        }
+    }
+    private IEnumerator Up()//ドア上昇
+    {
+        if (NowState == State.Open)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, StartPosition + moveTo, 5 * Time.deltaTime);
+        }
+        yield break;
+    }
+    private IEnumerator Down()//ドア下降
+    {
+        if (NowState == State.Exit)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, StartPosition, 5 * Time.deltaTime);
+        }
+        yield break;
+    }
+    private IEnumerator Move()
+    {
+        StartCoroutine(Up());
+        yield return new WaitForSeconds(3f);
+        NowState = State.Exit;
+        StartCoroutine(Down());
+        NowState = State.Default;
+        yield break;
+    }
+    public void PlaySE(AudioClip audio)
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(audio);
+        }
+        else
+        {
+            Debug.Log("オーディオソースが設定されてない");
         }
     }
 }

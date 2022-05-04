@@ -1,0 +1,5 @@
+background  -2
+Slime            5
+wall               0
+Ground         3
+Cord_haikei  0
