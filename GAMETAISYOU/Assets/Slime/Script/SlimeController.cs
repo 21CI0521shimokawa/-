@@ -402,6 +402,9 @@ public class SlimeController: MonoBehaviour
 
             //‚Í‚¶‚­‚Ì–îˆó‚ğÁ‚·
             _hazikuScript._GuideDestroy();
+
+            //‚Í‚¶‚­‚Ì–Ú‚ğÁ‚·
+            _hazikuScript._AnimationEnd();
         }
     }
 

@@ -6922,7 +6922,8 @@ PrefabInstance:
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8533063386190141541, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
 --- !u!1001 &3479599117940048016
 PrefabInstance:
@@ -7344,6 +7345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb45529ee06764943b8690ad6cd3c834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   onObjects: []
   onObjectsOll: []
   quantity: 0
@@ -7452,6 +7454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb45529ee06764943b8690ad6cd3c834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   onObjects: []
   onObjectsOll: []
   quantity: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeighingBoard : MonoBehaviour
 {
+    [SerializeField] Animator animator;
+
     // 乗っているオブジェクトリスト
     public List<GameObject> onObjects = new List<GameObject>();
     
@@ -60,6 +62,11 @@ public class WeighingBoard : MonoBehaviour
         foreach (GameObject i in onObjectsOll)
         {
             weight += i.GetComponent<Rigidbody2D>().mass;
+        }
+
+        if(animator)
+        {
+            animator.SetFloat("Weight", (int)weight);
         }
     }
 

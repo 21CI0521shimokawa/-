@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 public class Slime_Haziku : MonoBehaviour
 {
     public SlimeController slimeController;
+    [SerializeField] SlimeSE slimeSE;
     [SerializeField] GameObject ArrowPrefab;
     [SerializeField] LineRenderer lineRenderer;
-
+    [SerializeField] GameObject EyePrefab;
     #region はじく
     [SerializeField] float[] stickX;
     [SerializeField] float[] stickY;
@@ -20,9 +21,11 @@ public class Slime_Haziku : MonoBehaviour
     public float _power;    //パワー
 
     GameObject arrow;
+    GameObject eye;
 
     public bool _ifSlimeHazikuNow;  //はじくのアップデートを行っている最中かどうか
     bool isArrowBeing;  //矢印が存在するかどうか
+    bool isEyeBeing;    //目が存在するかどうか
 
     [SerializeField] float coolTime;    //はじいた後何秒間はじくことができないか
     public float _nextHazikuUpdateTime;  //はじくアップデートを行うことができるようになる時間
@@ -39,6 +42,8 @@ public class Slime_Haziku : MonoBehaviour
 
     [SerializeField] GuideType guidetype;
 
+    [SerializeField] bool eyeReverse;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +56,7 @@ public class Slime_Haziku : MonoBehaviour
 
         _ifSlimeHazikuNow = false;
         isArrowBeing = false;
+        isEyeBeing = false;
 
         _nextHazikuUpdateTime = 0.0f;
 
@@ -94,7 +100,7 @@ public class Slime_Haziku : MonoBehaviour
                 Vector2 stickVectorNow = new Vector2(stickX[freamCnt % freamCntMax], stickY[freamCnt % freamCntMax]);
 
                 #region ガイド
-                if(guidetype == GuideType.arrow)
+                if (guidetype == GuideType.arrow)
                 {
                     Vector2 currentVector = new Vector2(horizontal, vertical);
                     float radian = Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg + 90;
@@ -130,6 +136,44 @@ public class Slime_Haziku : MonoBehaviour
                 }
                 #endregion
 
+                #region 向き変更
+                {
+                    Vector2 currentVector = new Vector2(horizontal, vertical);
+                    float radian = Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg + 90;
+                    if (radian < 0) radian += 360;
+                    
+                    //目の位置に応じて向き変更
+                    if(slimeController._direction == SlimeController._Direction.Right && horizontal * (eyeReverse ? -1 : 1) > 0.1f)
+                    {
+                        slimeController._direction = SlimeController._Direction.Left;
+                    }
+                    else if (slimeController._direction == SlimeController._Direction.Left && horizontal * (eyeReverse ? -1 : 1) < -0.1f)
+                    {
+                        slimeController._direction = SlimeController._Direction.Right;
+                    }
+                }
+                #endregion
+
+                #region 目
+                {
+                    Vector2 currentVector = new Vector2(horizontal, vertical);
+                    float radian = Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg + 90;
+                    if (radian < 0) radian += 360;
+                    AnimationInstanceate();
+                    eye.transform.position = transform.position;
+
+                    //大きさ調整
+                    eye.transform.localScale = new Vector2(slimeController._scaleMax * 1.2f * (slimeController._direction == SlimeController._Direction.Right ? 1 : -1), slimeController._scaleMax * 1.2f);
+
+                    //位置調整
+                    eye.transform.position += new Vector3(slimeController._direction == SlimeController._Direction.Right ? 0.05f : -0.05f, 0, 0);
+
+                    //目移動
+                    float magnification = 0.2f * (eyeReverse ? 1 : -1);
+                    eye.transform.position += new Vector3(currentVector.x * magnification, currentVector.y * magnification);
+                }
+                #endregion
+
                 if (stickVectorNow.magnitude <= 0.1f)
                 {
                     _ifSlimeHazikuNow = false;
@@ -145,8 +189,10 @@ public class Slime_Haziku : MonoBehaviour
                     }
 
                     //移動
-                    if (stickVectorMost.magnitude > stickVectorNow.magnitude + 0.3f)
+                    if (stickVectorMost.magnitude > stickVectorNow.magnitude + 0.25f)
                     {
+                        slimeSE._PlayJumpSE();
+
                         slimeController._SlimeAnimator.SetTrigger("Haziku");
 
                         slimeController.rigid2D.velocity = stickVectorMost * -moveSpeed * _power;
@@ -181,6 +227,7 @@ public class Slime_Haziku : MonoBehaviour
 
             _ifSlimeHazikuNow = false;
             _GuideDestroy();
+            _AnimationEnd();
         }
 
         ++freamCnt;
@@ -227,6 +274,40 @@ public class Slime_Haziku : MonoBehaviour
             case GuideType.Ray:
                 lineRenderer.enabled = false;
                 break;
+        }
+    }
+
+
+    void AnimationInstanceate()
+    {
+        slimeController._SlimeAnimator.SetBool("Haziku_prepare", true);
+
+        if (!isEyeBeing)
+        {
+            isEyeBeing = true;
+
+            EyePrefab.SetActive(true);
+            GameObject buf = GameObject.Instantiate(EyePrefab);
+            eye = buf;
+        }
+    }
+
+
+    public void _AnimationEnd()
+    {
+        slimeController._SlimeAnimator.SetBool("Haziku_prepare", false);
+
+        EyeDestroy();
+    }
+
+    void EyeDestroy()
+    {
+        if (isEyeBeing)
+        {
+            isEyeBeing = false;
+
+            eye.SetActive(false);
+            Destroy(eye);
         }
     }
 }
