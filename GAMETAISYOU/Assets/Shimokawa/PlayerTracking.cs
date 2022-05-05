@@ -6,13 +6,15 @@ public class PlayerTracking : MonoBehaviour
 {
     [SerializeField, Tooltip("カメラオブジェクト")]
     private Camera camera;
+    [SerializeField]
+    SlimeController slimeController;
     public GameObject PlayerPosition;
     private float CameraPullingcondition;
     public float ExpansionTime = 0.05f;
     public bool TrackingFlag;
 
-    private const int LimitExpansionrate = 9;
-    private const int IminimumExpansionrate = 7;
+    private const int LimitExpansionrate = 11;
+    private const int IminimumExpansionrate = 9;
 
     private GameObject player;
     private Vector3 offset;
@@ -48,7 +50,7 @@ public class PlayerTracking : MonoBehaviour
                 camera.orthographicSize = camera.orthographicSize + 0.2f * ExpansionTime;
                 if (camera.orthographicSize >= LimitExpansionrate)
                 {
-                    camera.orthographicSize = 9;
+                    camera.orthographicSize = 11;
                 }
             }
             else
@@ -56,7 +58,7 @@ public class PlayerTracking : MonoBehaviour
                 camera.orthographicSize = camera.orthographicSize - 0.2f * ExpansionTime;
                 if (camera.orthographicSize <= IminimumExpansionrate)
                 {
-                    camera.orthographicSize = 7;
+                    camera.orthographicSize = 9;
                 }
             }
         }
