@@ -44,7 +44,7 @@ public class ElevatoControll : MonoBehaviour
 
     public void ElevatorStart()
     {
-        AutoDoorControll.PlaySE(SE);
+      //  AutoDoorControll.PlaySE(SE);
         Vignette.enabled.Override(true);
         StartCoroutine("ElevatorUp");
     }
