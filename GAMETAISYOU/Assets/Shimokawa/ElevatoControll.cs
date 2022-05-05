@@ -25,7 +25,12 @@ public class ElevatoControll : MonoBehaviour
     private Vignette Vignette;
     [SerializeField, Tooltip("sceneの名前")]
     Scene SceneName;
-
+    [SerializeField, Tooltip("SE関数取得")]
+    AutoDoorControll AutoDoorControll;
+    [SerializeField, Tooltip("SE")]
+    AudioClip SE;
+    [SerializeField, Tooltip("オーディオsource")]
+    AudioSource AudioSource;
     //当たり判定のすり抜け防止
     public Rigidbody2D ElevatorRigidbody;
     void Start()
@@ -39,6 +44,7 @@ public class ElevatoControll : MonoBehaviour
 
     public void ElevatorStart()
     {
+        AutoDoorControll.PlaySE(SE);
         Vignette.enabled.Override(true);
         StartCoroutine("ElevatorUp");
     }

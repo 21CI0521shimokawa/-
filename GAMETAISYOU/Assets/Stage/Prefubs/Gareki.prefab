@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4763144985439617261}
   - component: {fileID: 2054241178644437059}
   - component: {fileID: 327360670236268197}
+  - component: {fileID: 1120022537894584775}
   m_Layer: 0
   m_Name: Gareki
   m_TagString: Untagged
@@ -126,3 +127,39 @@ PolygonCollider2D:
       - {x: 0.25, y: -2.625}
       - {x: 2.4375, y: -2.9375}
       - {x: 3.0625, y: -2.375}
+--- !u!68 &1120022537894584775
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5630210565815589020}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: e2d502d2a44612f45aac968c24c9ab56, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 1.8053589, y: 1.3241929}
+  - {x: -0.28512573, y: 1.9452281}
+  - {x: -1.2302094, y: 2.1407437}
+  - {x: -2.4772873, y: 1.5157461}
+  - {x: -2.9155807, y: -0.84810656}
+  - {x: -2.9701233, y: -1.8919911}
+  - {x: -1.750618, y: -2.4029505}
+  - {x: -0.4392395, y: -2.9344735}
+  - {x: 0.17250061, y: -2.3483036}
+  - {x: 2.3071594, y: -2.6858013}
+  - {x: 2.8715591, y: -2.3472495}
+  - {x: 2.93618, y: -1.521251}
+  - {x: 2.8218384, y: -1.2429131}
+  - {x: 2.3558197, y: -0.52724826}
+  - {x: 2.302887, y: 0.47284937}
+  - {x: 1.7845383, y: 1.3404629}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
