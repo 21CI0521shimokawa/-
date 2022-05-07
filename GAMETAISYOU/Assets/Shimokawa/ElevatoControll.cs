@@ -17,6 +17,7 @@ public class ElevatoControll : MonoBehaviour
     [SerializeField, Tooltip("フェードの時間")]
     private float FadeTime;
     private float DestinationNum;
+    private float StartPosition;
     public bool _IsFloor;//今後使うかも
 
     [SerializeField, Tooltip("ポストエフェクトの取得")]
@@ -35,34 +36,23 @@ public class ElevatoControll : MonoBehaviour
     public Rigidbody2D ElevatorRigidbody;
     void Start()
     {
+        StartPosition = this.transform.position.y;
         ElevatorRigidbody = GetComponent<Rigidbody2D>();
         _IsFloor = false;
         DestinationNum = Mathf.Abs(Destination.position.y);
         //ポストエフェクト
         Volume.profile.TryGetSettings<Vignette>(out Vignette);
     }
-
+    public void ElevatorDown()
+    {
+        StartCoroutine(ElevatorStop());
+    }
     public void ElevatorStart()
     {
-      //  AutoDoorControll.PlaySE(SE);
+        //  AutoDoorControll.PlaySE(SE);
         Vignette.enabled.Override(true);
         StartCoroutine("ElevatorUp");
     }
-    #region コルーチン
-    public IEnumerator ElevatorUp()
-    {
-        while (NowPosition.y < DestinationNum)
-        {
-            NowPosition = transform.position;
-            ElevatorRigidbody.velocity = new Vector2(0, Speed);
-            yield return new WaitForSeconds(0.01f);
-        }
-        ElevatorRigidbody.bodyType = RigidbodyType2D.Static;
-        SceneChange();
-        yield return new WaitForSeconds(0.01f);
-        yield break;
-    }
-    #endregion
     public void SceneChange()  //実装方法変更予定
     {
         //現在のsceneを取得
@@ -78,4 +68,27 @@ public class ElevatoControll : MonoBehaviour
             return;
         }
     }
+    #region コルーチン
+    public IEnumerator ElevatorUp()
+    {
+        while (NowPosition.y < DestinationNum)
+        {
+            NowPosition = transform.position;
+            ElevatorRigidbody.velocity = new Vector2(0, Speed);
+            yield return new WaitForSeconds(0.01f);
+        }
+        ElevatorRigidbody.bodyType = RigidbodyType2D.Static;
+        SceneChange();
+        yield return new WaitForSeconds(0.01f);
+        yield break;
+    }
+    public IEnumerator ElevatorStop()
+    {
+        StopCoroutine("ElevatorUp");
+        ElevatorRigidbody.bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(1.5f);//一時停止してから降下開始
+        ElevatorRigidbody.bodyType = RigidbodyType2D.Dynamic;
+        yield break;
+    }
+    #endregion
 }
