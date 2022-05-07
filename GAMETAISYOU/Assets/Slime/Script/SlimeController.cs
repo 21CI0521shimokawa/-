@@ -147,7 +147,11 @@ public class SlimeController: MonoBehaviour
                     //ƒgƒŠƒK[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚é‚È‚ç
                     if (Ontrigger)
                     {
-                        tearoffUpdate = true;
+                        //°‚ªŒX‚¢‚Ä‚¢‚È‚¢êŠ‚È‚ç
+                        if(Quaternion.FromToRotation(new Vector3(0, 1, 0), _rayHitFoot.normal).eulerAngles.z == 0)
+                        {
+                            tearoffUpdate = true;
+                        }
                     }
                     else
                     {
