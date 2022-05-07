@@ -30,6 +30,18 @@ public class AutoDoorControll : MonoBehaviour
             StartCoroutine(Move());
         }
     }
+    #region public fanction
+    public void PlaySE(AudioClip audio)
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(audio);
+        }
+        else
+        {
+            Debug.Log("オーディオソースが設定されてない");
+        }
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Slime")
@@ -42,6 +54,8 @@ public class AutoDoorControll : MonoBehaviour
             NowState = State.Default;
         }
     }
+    #endregion
+    #region コルーチン
     private IEnumerator Up()//ドア上昇
     {
         if (NowState == State.Open)
@@ -67,15 +81,5 @@ public class AutoDoorControll : MonoBehaviour
         NowState = State.Default;
         yield break;
     }
-    public void PlaySE(AudioClip audio)
-    {
-        if (audioSource != null)
-        {
-            audioSource.PlayOneShot(audio);
-        }
-        else
-        {
-            Debug.Log("オーディオソースが設定されてない");
-        }
-    }
+    #endregion
 }

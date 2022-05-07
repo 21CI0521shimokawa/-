@@ -24,6 +24,7 @@ public class SlimeTrampoline : MonoBehaviour
     [SerializeField, Tooltip("ÉJÉÅÉâ")]
     private GameObject Camera;
 
+
     void OnValidate()
     {
         angle = transform.eulerAngles.z + 90f;
@@ -103,6 +104,10 @@ public class SlimeTrampoline : MonoBehaviour
         if (collision.gameObject.tag == "Tracking")
         {
             Camera.GetComponent<PlayerTracking>().TrackingFlag = false;
+        }
+        if (collision.gameObject.name == "Area")
+        {
+            Elevator.GetComponent<ElevatoControll>().ElevatorDown();
         }
     }
 }

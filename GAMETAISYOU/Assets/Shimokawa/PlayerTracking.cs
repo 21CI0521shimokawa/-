@@ -6,7 +6,7 @@ public class PlayerTracking : MonoBehaviour
 {
     [SerializeField, Tooltip("カメラオブジェクト")]
     private Camera camera;
-    [SerializeField]
+    [SerializeField,Tooltip("スライムコントローラー取得")]
     SlimeController slimeController;
     public GameObject PlayerPosition;
     private float CameraPullingcondition;
