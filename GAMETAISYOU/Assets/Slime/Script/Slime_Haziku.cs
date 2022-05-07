@@ -163,13 +163,13 @@ public class Slime_Haziku : MonoBehaviour
                     eye.transform.position = transform.position;
 
                     //ëÂÇ´Ç≥í≤êÆ
-                    eye.transform.localScale = new Vector2(slimeController._scaleMax * 1.2f * (slimeController._direction == SlimeController._Direction.Right ? 1 : -1), slimeController._scaleMax * 1.2f);
+                    eye.transform.localScale = new Vector2(slimeController._scaleNow * 1.2f * (slimeController._direction == SlimeController._Direction.Right ? 1 : -1), slimeController._scaleNow * 1.2f);
 
                     //à íuí≤êÆ
                     eye.transform.position += new Vector3(slimeController._direction == SlimeController._Direction.Right ? 0.05f : -0.05f, 0, 0);
 
                     //ñ⁄à⁄ìÆ
-                    float magnification = 0.2f * (eyeReverse ? 1 : -1);
+                    float magnification = 0.07f * (eyeReverse ? 1 : -1) * slimeController._scaleNow;
                     eye.transform.position += new Vector3(currentVector.x * magnification, currentVector.y * magnification);
                 }
                 #endregion
