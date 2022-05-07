@@ -70,6 +70,8 @@ public class SlimeController: MonoBehaviour
 
     public ControllerVibrationScript _controllerVibrationScript;
 
+    public RaycastHit2D _rayHitFoot = new RaycastHit2D();
+
     void Awake() 
     {
         _ifOperation = true;
@@ -249,6 +251,9 @@ public class SlimeController: MonoBehaviour
         {
             pullWideForce = 0;
         }
+
+        //Rayを飛ばす
+        RayFly();
 
         Slime_SizeChange();
 
@@ -470,4 +475,66 @@ public class SlimeController: MonoBehaviour
         //上下or左右が他のものと接触していたらfalse
         return !(_triggerLeft._onTrigger && _triggerRight._onTrigger || _triggerTop._onTrigger && _triggerUnder._onTrigger);
     }
+
+
+    //Rayを足元になげてぶつかったオブジェクトを検知
+    private void RayFly()
+    {
+        _rayHitFoot = new RaycastHit2D();   //初期化
+
+        //Rayを真下に飛ばす
+        Ray ray = new Ray(transform.position, Vector3.down);
+        float distance = 0.3f;
+
+        Debug.DrawRay(ray.origin, ray.direction * (_scaleNow / 2 + distance), Color.red);
+        RaycastHit2D[] rayHits = Physics2D.RaycastAll(ray.origin, ray.direction, _scaleNow / 2 + distance);
+        List<RaycastHit2D> raycastHits = new List<RaycastHit2D>();
+
+        //一部のオブジェクトを除外
+        foreach (RaycastHit2D i in rayHits)
+        {
+            //自分自身は除外
+            if(i.collider.gameObject == this.gameObject)
+            {
+                continue;
+            }
+
+            //一部のタグのついたオブジェクトは除外
+            switch (i.collider.gameObject.tag)
+            {
+                case "SlimeTrigger": break;  //スライムトリガー
+                case "Tracking": break;      //カメラトラッキング
+                //ここに追加
+
+                default:
+                    raycastHits.Add(i);    //追加
+                    break;
+            }
+        }
+
+        //スライムに一番近いオブジェクトを取得
+        RaycastHit2D nearestRaycastHit = new RaycastHit2D();
+        foreach (RaycastHit2D i in raycastHits)
+        {
+            if(!nearestRaycastHit)
+            {
+                nearestRaycastHit = i;
+            }
+            else
+            {
+                if(nearestRaycastHit.distance > i.distance)
+                {
+                    nearestRaycastHit = i;
+                }
+            }
+        }
+
+        //当たったら
+        if(nearestRaycastHit)
+        {
+            _rayHitFoot = nearestRaycastHit;
+            Debug.Log(_rayHitFoot.collider.name);
+        }
+    }
+
 }
