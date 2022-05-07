@@ -63,6 +63,8 @@ public class Slime_Haziku : MonoBehaviour
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.startColor = new Color(1, 1, 1, 1);
         lineRenderer.endColor = new Color(1, 1, 1, 0);
+
+        _stateFixationTime = 0;
     }
 
     // Update is called once per frame

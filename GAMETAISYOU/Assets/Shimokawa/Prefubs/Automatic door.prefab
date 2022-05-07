@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2312038998898597139}
   m_Layer: 0
   m_Name: Collison
-  m_TagString: Untagged
+  m_TagString: AutomaticDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 279385682395199047}
   m_Layer: 0
   m_Name: Automatic door
-  m_TagString: Untagged
+  m_TagString: AutomaticDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

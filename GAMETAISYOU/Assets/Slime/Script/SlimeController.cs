@@ -72,6 +72,8 @@ public class SlimeController: MonoBehaviour
 
     public RaycastHit2D _rayHitFoot = new RaycastHit2D();
 
+    bool offTriggerUnderOneFlameBefore; //1フレーム前も地面に立っていなかったかどうか
+
     void Awake() 
     {
         _ifOperation = true;
@@ -103,6 +105,8 @@ public class SlimeController: MonoBehaviour
         isDead = false;
 
         _controllerVibrationScript = GameObject.Find("ControllerVibration").GetComponent<ControllerVibrationScript>();
+
+        offTriggerUnderOneFlameBefore = false;
     }
 
     // Update is called once per frame
@@ -269,12 +273,15 @@ public class SlimeController: MonoBehaviour
 
         Slime_Direction();
 
-        _SlimeAnimator.SetFloat("FallSpeed", rigid2D.velocity.y);
+        //_SlimeAnimator.SetFloat("FallSpeed", rigid2D.velocity.y);
         _SlimeAnimator.SetBool("OnGround", _triggerUnder._onTrigger);
 
         //地面についていたら
-        if (_triggerUnder._onTrigger)
+        if (_triggerUnder._onTrigger || SlimeGetRayHit())
         {
+            offTriggerUnderOneFlameBefore = false;
+            _SlimeAnimator.SetFloat("FallSpeed", 0);
+
             //アニメーションがFallだったら着地にする
             if (_SlimeAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slime_Fall"))
             {
@@ -290,11 +297,21 @@ public class SlimeController: MonoBehaviour
         }
         else //ついていなかったら
         {
-            //スライムのStateがMOVEだったらAIRに変える
-            if (s_state == State.MOVE)
+            //1フレームだけ待つ
+            if (offTriggerUnderOneFlameBefore)
             {
-                s_state = State.AIR;
+                //スライムのStateがMOVEだったらAIRに変える
+                if (s_state == State.MOVE)
+                {
+                    s_state = State.AIR;
+                }
+
+                _SlimeAnimator.SetFloat("FallSpeed", rigid2D.velocity.y);
             }
+            else
+            {
+                offTriggerUnderOneFlameBefore = true;
+            } 
         }
 
     }
@@ -541,4 +558,9 @@ public class SlimeController: MonoBehaviour
         }
     }
 
+
+    bool SlimeGetRayHit()
+    {
+        return _rayHitFoot;
+    }
 }
