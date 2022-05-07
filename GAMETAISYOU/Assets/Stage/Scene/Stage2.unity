@@ -351,11 +351,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aac26ae0f7b5c8a44be611ab6545a505, type: 3}
---- !u!95 &98255064 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8378587736743986809, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
-  m_PrefabInstance: {fileID: 455064800}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &125414679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -413,11 +408,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aac26ae0f7b5c8a44be611ab6545a505, type: 3}
---- !u!95 &145388568 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8378587736743986809, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
-  m_PrefabInstance: {fileID: 1624056027}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &149834324
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,11 +950,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.5
+      value: -20.32
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.53
+      value: -1.66
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1001,7 +991,15 @@ PrefabInstance:
     - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: automaticDoorAnimator
       value: 
-      objectReference: {fileID: 98255064}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569751922304826677, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987281897102204834, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7707845458755566032, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_Name
       value: Automatic door
@@ -4515,11 +4513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43
+      value: 43.73
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.44
+      value: -1.63
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4555,12 +4553,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: moveTo.y
-      value: 1.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: automaticDoorAnimator
       value: 
-      objectReference: {fileID: 1433958931}
+      objectReference: {fileID: 0}
     - target: {fileID: 7707845458755566032, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_Name
       value: Automatic door (3)
@@ -5502,11 +5500,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aac26ae0f7b5c8a44be611ab6545a505, type: 3}
---- !u!95 &1433958931 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8378587736743986809, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
-  m_PrefabInstance: {fileID: 987103077}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1534793470 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8680789583821087122, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
@@ -5540,7 +5533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.99
+      value: 11.67
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5581,7 +5574,7 @@ PrefabInstance:
     - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: automaticDoorAnimator
       value: 
-      objectReference: {fileID: 145388568}
+      objectReference: {fileID: 0}
     - target: {fileID: 7707845458755566032, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_Name
       value: Automatic door (1)
