@@ -6,7 +6,7 @@ public class PressurePlate : StageGimmick
 {
     enum STATE { NORMAL, PRESSED };
     [Header("PressurePlate Script")]
-    [SerializeField]STATE m_state;
+    [SerializeField] STATE m_state;
     [Tooltip("押されているときの移動"), SerializeField] Vector2 sinkTo = new Vector2(0f, -0.1f);
     [Tooltip("同じ番号のボタンの確認が必要"), SerializeField] bool needAllSameButtonCheck = true;
     [Tooltip("検知アイテム"), SerializeField] LayerMask searchLayer = ~0;
@@ -18,8 +18,6 @@ public class PressurePlate : StageGimmick
     void Start()
     {
         GameManager.Instance.RegisterButton(this.gameObject);
-        m_matchItem = new List<GameObject>();
-        m_matchButton = new List<GameObject>();
         m_normalPos = transform.position;
     }
 
@@ -33,12 +31,11 @@ public class PressurePlate : StageGimmick
         switch (m_state)
         {
             case STATE.NORMAL:
-                transform.position = Vector3.MoveTowards(transform.position, m_normalPos, Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, m_normalPos, 1);
 
                 if (CheckAboveItem())
                 {
                     _IsOpen = true;
-                    GetComponent<SpriteRenderer>().color = Color.red;
                     m_state = STATE.PRESSED;
 
                     //同じ番号のボタンの状況確認
@@ -49,13 +46,12 @@ public class PressurePlate : StageGimmick
                 }
                 break;
             case STATE.PRESSED:
-                transform.position = Vector3.MoveTowards(transform.position, m_normalPos + sinkTo, Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, m_normalPos + sinkTo, 1);
                 //OpenItem();
 
                 if (!CheckAboveItem())
                 {
                     _IsOpen = false;
-                    GetComponent<SpriteRenderer>().color = Color.cyan;
                     m_state = STATE.NORMAL;
                     CloseItem();
                 }
@@ -76,16 +72,22 @@ public class PressurePlate : StageGimmick
 
         Vector2 pos = transform.position;
 
-        var colliders = Physics2D.OverlapBoxAll(pos + new Vector2(0f, transform.localScale.y / 2.0f + 0.2f), new Vector2(transform.localScale.x - 0.2f, 0.2f), 0f, searchLayer);
-        // foreach(var item in colliders)
-        // {
-        //     if (item.CompareTag("Slime") || item.CompareTag("Player"))
-        //         return true;
-        // }
+        var colliders = Physics2D.OverlapBoxAll(
+            pos + new Vector2(0f, transform.localScale.y / 4.0f),
+            new Vector2(transform.localScale.x - 1, 0.2f), 0f,
+            searchLayer
+        );
+        
         if (colliders.Length > 0)
         {
-            Slime_Outage(colliders);
-            return true;
+            foreach (var item in colliders)
+            {
+                if (item.gameObject.tag == "Slime")
+                {
+                    Slime_Outage(colliders);
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -137,9 +139,9 @@ public class PressurePlate : StageGimmick
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject)
+        if (other.gameObject)
         {
             _IsOpen = true;
         }
@@ -148,7 +150,8 @@ public class PressurePlate : StageGimmick
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + new Vector3(0, transform.localScale.y / 2.0f + 0.2f, 0), new Vector2(transform.localScale.x - 0.2f, 0.2f));
+        Gizmos.DrawWireCube(transform.position + new Vector3(0f, transform.localScale.y / 4.0f),
+            new Vector2(transform.localScale.x - 1f, 0.2f));
     }
 
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,11 @@ using UnityEngine;
 public class Door : StageGimmick
 {
     [Header("Door Script")]
+    [Tooltip("歯車アニメーター"), SerializeField] Animator gear;
     [Tooltip("移動量"), SerializeField] Vector2 moveTo = new Vector2(0, 2);
     [Tooltip("移動速度"), SerializeField] float moveSpeed = 5f;
 
+    
     Vector2 m_normalPos;//初期位置
 
     void Start()
@@ -26,9 +29,21 @@ public class Door : StageGimmick
     void Movement()
     {
         if (_IsOpen)
+        {
             transform.position = Vector3.MoveTowards(transform.position, m_normalPos + moveTo, moveSpeed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, m_normalPos + moveTo) < 1e-3)
+            {
+                gear.SetBool("Open", false);
+            }
+        }
         else
+        {
             transform.position = Vector3.MoveTowards(transform.position, m_normalPos, 5 * Time.deltaTime);
+            if (Vector3.Distance(transform.position, m_normalPos) < 1e-3)
+            {
+                gear.SetBool("Open", false);
+            }
+        }  
     }
 
 
@@ -37,10 +52,12 @@ public class Door : StageGimmick
     public override void Open()
     {
         _IsOpen = !_IsOpen;
+        gear.SetBool("Open", true);
     }
     //終了する
     public override void Close()
     {
         _IsOpen = !_IsOpen;
+        gear.SetBool("Open", true);
     }
 }
