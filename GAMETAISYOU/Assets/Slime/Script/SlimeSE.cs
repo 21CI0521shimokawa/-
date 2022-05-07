@@ -122,7 +122,7 @@ public class SlimeSE : MonoBehaviour
 
         PlaysoundStretch = true;
 
-        Debug.Log("ˆø‚«‰„‚Î‚· " + pitch_);
+        //Debug.Log("ˆø‚«‰„‚Î‚· " + pitch_);
     }
 
     public void _StopStretchSE()

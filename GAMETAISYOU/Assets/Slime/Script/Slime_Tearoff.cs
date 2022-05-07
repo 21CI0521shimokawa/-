@@ -128,7 +128,7 @@ public class Slime_Tearoff : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("‚«‚ê‚Ä‚È‚¢‚æ:" + power);
+                        //Debug.Log("‚«‚ê‚Ä‚È‚¢‚æ:" + power);
 
                         GetComponent<Renderer>().material.color = Color.green;
                     }

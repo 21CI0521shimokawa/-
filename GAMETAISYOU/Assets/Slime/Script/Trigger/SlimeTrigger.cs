@@ -38,7 +38,7 @@ public class SlimeTrigger : MonoBehaviour
             {
                 case "SlimeTrigger":            break;  //スライムトリガー
                 case "Tracking":                break;  //カメラトラッキング
-                case "AutomaticdoorCollison":   break;  //自動ドアのcollison
+                case "AutomaticDoor":           break;  //自動ドア
                     //ここに追加
 
                 default:
@@ -55,7 +55,8 @@ public class SlimeTrigger : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //リストに無かったら追加
         if (!onObjects.Contains(collision.gameObject))
