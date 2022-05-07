@@ -1,0 +1,1200 @@
+fileFormatVersion: 2
+guid: 234b76664e784d54fbcdca73ec5905e4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4782466486615796572
+    second: tutorial_move_0
+  - first:
+      213: -6235509165893296166
+    second: tutorial_move_1
+  - first:
+      213: 238849191772504203
+    second: tutorial_move_2
+  - first:
+      213: -7032007791864948343
+    second: tutorial_move_3
+  - first:
+      213: 7185859444171156278
+    second: tutorial_move_4
+  - first:
+      213: 5434434854164230059
+    second: tutorial_move_5
+  - first:
+      213: 5555677317367502624
+    second: tutorial_move_6
+  - first:
+      213: 4878961866905446767
+    second: tutorial_move_7
+  - first:
+      213: 2555371803595673812
+    second: tutorial_move_8
+  - first:
+      213: 538607828955602517
+    second: tutorial_move_9
+  - first:
+      213: -479358877041954893
+    second: tutorial_move_10
+  - first:
+      213: -3890504266689781816
+    second: tutorial_move_11
+  - first:
+      213: -3487509924139061697
+    second: tutorial_move_12
+  - first:
+      213: 4939014910768627756
+    second: tutorial_move_13
+  - first:
+      213: -3479595085999193152
+    second: tutorial_move_14
+  - first:
+      213: 6350365528162274444
+    second: tutorial_move_15
+  - first:
+      213: 8995514107741739244
+    second: tutorial_move_16
+  - first:
+      213: 4136606791710417359
+    second: tutorial_move_17
+  - first:
+      213: -6744930238018835510
+    second: tutorial_move_18
+  - first:
+      213: -7851582838028701753
+    second: tutorial_move_19
+  - first:
+      213: 6380332201862011620
+    second: tutorial_move_20
+  - first:
+      213: 2892788936617842451
+    second: tutorial_move_21
+  - first:
+      213: 4424241621289240189
+    second: tutorial_move_22
+  - first:
+      213: -2821528155659237152
+    second: tutorial_move_23
+  - first:
+      213: -7806882403722448976
+    second: tutorial_move_24
+  - first:
+      213: -6890769937294857322
+    second: tutorial_move_25
+  - first:
+      213: 5059663455761886878
+    second: tutorial_move_26
+  - first:
+      213: 307705994829944152
+    second: tutorial_move_27
+  - first:
+      213: 8126509894891114359
+    second: tutorial_move_28
+  - first:
+      213: -7384336591963149689
+    second: tutorial_move_29
+  - first:
+      213: 6819798966072795398
+    second: tutorial_move_30
+  - first:
+      213: 8266961625300418596
+    second: tutorial_move_31
+  - first:
+      213: -1050275307106484008
+    second: tutorial_move_32
+  - first:
+      213: -8624334035919461563
+    second: tutorial_move_33
+  - first:
+      213: -1427257910092875753
+    second: tutorial_move_34
+  - first:
+      213: -7406323979585383133
+    second: tutorial_move_35
+  - first:
+      213: -1900054747862070006
+    second: tutorial_move_36
+  - first:
+      213: 5639818680521265607
+    second: tutorial_move_37
+  - first:
+      213: -1816692714610886648
+    second: tutorial_move_38
+  - first:
+      213: -8993640507675164532
+    second: tutorial_move_39
+  - first:
+      213: -8090144659349306150
+    second: tutorial_move_40
+  - first:
+      213: 6579497218229133068
+    second: tutorial_move_41
+  - first:
+      213: -4206881738969130072
+    second: tutorial_move_42
+  - first:
+      213: 7028935842187498256
+    second: tutorial_move_43
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tutorial_move_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 803
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a41e0ba11441adb0800000000000000
+      internalID: -4782466486615796572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 803
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adfdc3563750779a0800000000000000
+      internalID: -6235509165893296166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_2
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 803
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b804d7e0310905300800000000000000
+      internalID: 238849191772504203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_3
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 803
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9895c14ab2a496e90800000000000000
+      internalID: -7032007791864948343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_4
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 803
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b25b7971d49b360800000000000000
+      internalID: 7185859444171156278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_5
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 803
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bafe57df4bdfa6b40800000000000000
+      internalID: 5434434854164230059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_6
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 803
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 027926cb51bb91d40800000000000000
+      internalID: 5555677317367502624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_7
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 675
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f696395d7fd85b340800000000000000
+      internalID: 4878961866905446767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_8
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 675
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d09e5ecd11867320800000000000000
+      internalID: 2555371803595673812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_9
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 675
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55e942e77f4897700800000000000000
+      internalID: 538607828955602517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_10
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 675
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bfebfd14a9f859f0800000000000000
+      internalID: -479358877041954893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_11
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 675
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf50d27bf6220ac0800000000000000
+      internalID: -3890504266689781816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_12
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 675
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3eaa0d9330e99fc0800000000000000
+      internalID: -3487509924139061697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_13
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 675
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c20c8b0b4e7ea8440800000000000000
+      internalID: 4939014910768627756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_14
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 547
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c3c2d874bef5bfc0800000000000000
+      internalID: -3479595085999193152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_15
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 547
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8c8ffb5dc7012850800000000000000
+      internalID: 6350365528162274444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_16
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 547
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce816f3bb6c76dc70800000000000000
+      internalID: 8995514107741739244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_17
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 547
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc12e5bd5fd286930800000000000000
+      internalID: 4136606791710417359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_18
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 547
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acba8184fa13562a0800000000000000
+      internalID: -6744930238018835510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_19
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 547
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cfeebe1203990390800000000000000
+      internalID: -7851582838028701753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_20
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 547
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ea98f8455e7b8850800000000000000
+      internalID: 6380332201862011620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_21
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 419
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31759411630452820800000000000000
+      internalID: 2892788936617842451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_22
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 419
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d76817d5050166d30800000000000000
+      internalID: 4424241621289240189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_23
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 419
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e80b2e671be7d8d0800000000000000
+      internalID: -2821528155659237152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_24
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 419
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf20e201d168a390800000000000000
+      internalID: -7806882403722448976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_25
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 419
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b699a30411f50a0800000000000000
+      internalID: -6890769937294857322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_26
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 419
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e66b31b19873640800000000000000
+      internalID: 5059663455761886878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_27
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 419
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855d815d8f0354400800000000000000
+      internalID: 307705994829944152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_28
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 291
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77f8eac71b927c070800000000000000
+      internalID: 8126509894891114359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_29
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 291
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a2e165ef0958990800000000000000
+      internalID: -7384336591963149689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_30
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 291
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 601685cd60bc4ae50800000000000000
+      internalID: 6819798966072795398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_31
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 291
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42041d74cc52ab270800000000000000
+      internalID: 8266961625300418596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_32
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 291
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d0cd8b3c2cac61f0800000000000000
+      internalID: -1050275307106484008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_33
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 291
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543a5b453e5305880800000000000000
+      internalID: -8624334035919461563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_34
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 291
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7183c022e7c513ce0800000000000000
+      internalID: -1427257910092875753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_35
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 163
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3251b59b493773990800000000000000
+      internalID: -7406323979585383133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_36
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 163
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d03e31646a1a5e0800000000000000
+      internalID: -1900054747862070006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_37
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 163
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1151a7539a44e40800000000000000
+      internalID: 5639818680521265607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_38
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 163
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 808f39fe99fc9c6e0800000000000000
+      internalID: -1816692714610886648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_39
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 163
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c80457ecb9b203380800000000000000
+      internalID: -8993640507675164532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_40
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 163
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad406f5bb480abf80800000000000000
+      internalID: -8090144659349306150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_41
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 163
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0fd73d3cd11f4b50800000000000000
+      internalID: 6579497218229133068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_42
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 35
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8abdaa0f8572e95c0800000000000000
+      internalID: -4206881738969130072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_move_43
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 35
+        width: 125
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 013d89658ebcb8160800000000000000
+      internalID: 7028935842187498256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

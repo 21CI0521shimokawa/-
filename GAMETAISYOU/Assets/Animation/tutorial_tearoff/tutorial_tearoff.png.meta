@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: c22a4dc4548b8804cb6dce96296cac1f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7649698918412709739
+    second: tutorial_tearoff_0
+  - first:
+      213: 2812413626823830132
+    second: tutorial_tearoff_1
+  - first:
+      213: 91073276357499521
+    second: tutorial_tearoff_2
+  - first:
+      213: 3949707511012999416
+    second: tutorial_tearoff_3
+  - first:
+      213: 4209383727130457386
+    second: tutorial_tearoff_4
+  - first:
+      213: 91181355064869328
+    second: tutorial_tearoff_5
+  - first:
+      213: 2993010933381859667
+    second: tutorial_tearoff_6
+  - first:
+      213: 1858264575331323850
+    second: tutorial_tearoff_7
+  - first:
+      213: -6978438215896349237
+    second: tutorial_tearoff_8
+  - first:
+      213: 4555796615928365855
+    second: tutorial_tearoff_9
+  - first:
+      213: -3571306707864071396
+    second: tutorial_tearoff_10
+  - first:
+      213: 5040394905209744631
+    second: tutorial_tearoff_11
+  - first:
+      213: -7859002615141300103
+    second: tutorial_tearoff_12
+  - first:
+      213: 8010385983859863629
+    second: tutorial_tearoff_13
+  - first:
+      213: 2359766160542949153
+    second: tutorial_tearoff_14
+  - first:
+      213: 535516953578145669
+    second: tutorial_tearoff_15
+  - first:
+      213: -8637272948107229887
+    second: tutorial_tearoff_16
+  - first:
+      213: 1561385587823084316
+    second: tutorial_tearoff_17
+  - first:
+      213: 9091007728385393548
+    second: tutorial_tearoff_18
+  - first:
+      213: -6842995926006426931
+    second: tutorial_tearoff_19
+  - first:
+      213: -4974158934637639889
+    second: tutorial_tearoff_20
+  - first:
+      213: -7319067361695952255
+    second: tutorial_tearoff_21
+  - first:
+      213: -2377307676983063433
+    second: tutorial_tearoff_22
+  - first:
+      213: -390465011262559742
+    second: tutorial_tearoff_23
+  - first:
+      213: -172125080473416172
+    second: tutorial_tearoff_24
+  - first:
+      213: 6146872813141135248
+    second: tutorial_tearoff_25
+  - first:
+      213: 3974487700265627447
+    second: tutorial_tearoff_26
+  - first:
+      213: -6786838068163066854
+    second: tutorial_tearoff_27
+  - first:
+      213: -763520401842619214
+    second: tutorial_tearoff_28
+  - first:
+      213: -900140167031625937
+    second: tutorial_tearoff_29
+  - first:
+      213: -3054469332825117155
+    second: tutorial_tearoff_30
+  - first:
+      213: 5104421739466316469
+    second: tutorial_tearoff_31
+  - first:
+      213: 3133026288697932180
+    second: tutorial_tearoff_32
+  - first:
+      213: 794875604848981070
+    second: tutorial_tearoff_33
+  - first:
+      213: -3833431286984411943
+    second: tutorial_tearoff_34
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tutorial_tearoff_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 675
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6fedaee2a0392a60800000000000000
+      internalID: 7649698918412709739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_1
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 675
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a6d44fa43b70720800000000000000
+      internalID: 2812413626823830132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_2
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 675
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ad1dd89ae834100800000000000000
+      internalID: 91073276357499521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_3
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 675
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f04f980e0e20d630800000000000000
+      internalID: 3949707511012999416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_4
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 675
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a25bbe2923cba6a30800000000000000
+      internalID: 4209383727130457386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_5
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 675
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1c7c695f0f34100800000000000000
+      internalID: 91181355064869328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 547
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3590615169f498920800000000000000
+      internalID: 2993010933381859667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_7
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 547
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acfc05729c1e9c910800000000000000
+      internalID: 1858264575331323850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_8
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 547
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5cc7e7a6b972f90800000000000000
+      internalID: -6978438215896349237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_9
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 547
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f13465172e0793f30800000000000000
+      internalID: 4555796615928365855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_10
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 547
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c13dac5887b207ec0800000000000000
+      internalID: -3571306707864071396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_11
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 547
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fc27bc067413f540800000000000000
+      internalID: 5040394905209744631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 419
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97803a3a2c63fe290800000000000000
+      internalID: -7859002615141300103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_13
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 419
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d403cb98c9b9a2f60800000000000000
+      internalID: 8010385983859863629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_14
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 419
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12f562802d29fb020800000000000000
+      internalID: 2359766160542949153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_15
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 419
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587893df4d98e6700800000000000000
+      internalID: 535516953578145669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_16
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 419
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1454af3140e322880800000000000000
+      internalID: -8637272948107229887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_17
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 419
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c130c976be72ba510800000000000000
+      internalID: 1561385587823084316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_18
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 291
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c830ebcdc5fb92e70800000000000000
+      internalID: 9091007728385393548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_19
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 291
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc211f6067bc801a0800000000000000
+      internalID: -6842995926006426931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_20
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 291
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f27869c9dcc38fab0800000000000000
+      internalID: -4974158934637639889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_21
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 291
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18215fa33037d6a90800000000000000
+      internalID: -7319067361695952255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_22
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 291
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77c8d97634b120fd0800000000000000
+      internalID: -2377307676983063433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_23
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 291
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ae97a142ac49af0800000000000000
+      internalID: -390465011262559742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_24
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 163
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41e4279b62d7c9df0800000000000000
+      internalID: -172125080473416172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_25
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 163
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09f88ca81441e4550800000000000000
+      internalID: 6146872813141135248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_26
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 163
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73fed727187382730800000000000000
+      internalID: 3974487700265627447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_27
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 163
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14ca073cbe40d1a0800000000000000
+      internalID: -6786838068163066854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_28
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 163
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc38656d3e6765f0800000000000000
+      internalID: -763520401842619214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_29
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 163
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f27e408894f0283f0800000000000000
+      internalID: -900140167031625937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_30
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 35
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e62a733585c95d0800000000000000
+      internalID: -3054469332825117155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_31
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 35
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5badba4178c86d640800000000000000
+      internalID: 5104421739466316469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_32
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 35
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 499fcc16fceba7b20800000000000000
+      internalID: 3133026288697932180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_33
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 35
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44b5a3b627f70b00800000000000000
+      internalID: 794875604848981070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_tearoff_34
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 35
+        width: 124
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d4fc6c0e8aeccac0800000000000000
+      internalID: -3833431286984411943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
