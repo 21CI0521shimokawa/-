@@ -36,12 +36,14 @@ public class SlimeTrigger : MonoBehaviour
             //一部のタグのついたオブジェクトは除外
             switch (i.tag)
             {
-                case "SlimeTrigger":    break;  //スライムトリガー
-                case "Tracking":        break;  //カメラトラッキング
+                case "SlimeTrigger":            break;  //スライムトリガー
+                case "Tracking":                break;  //カメラトラッキング
+                case "AutomaticdoorCollison":   break;  //自動ドアのcollison
                     //ここに追加
 
                 default:
                     _onTrigger = true;
+                    Debug.Log(i.gameObject.name);
                     break;
             }
 

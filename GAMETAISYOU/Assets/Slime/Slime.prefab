@@ -611,7 +611,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3759887020259416478}
   - component: {fileID: 6055011121027416599}
-  - component: {fileID: 4635797980655644002}
   - component: {fileID: 8617849495297849348}
   - component: {fileID: 6466544053871863749}
   m_Layer: 0
@@ -686,21 +685,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4635797980655644002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5570083483672920366}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da7d689cb9a55b54f87b362db3c13d4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slime: {fileID: 8680789583821087122}
-  slimeController: {fileID: 8680789583821087134}
-  _onGround: 0
 --- !u!60 &8617849495297849348
 PolygonCollider2D:
   m_ObjectHideFlags: 0
