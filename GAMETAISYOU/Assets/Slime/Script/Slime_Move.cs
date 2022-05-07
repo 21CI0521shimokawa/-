@@ -46,9 +46,22 @@ public class Slime_Move : MonoBehaviour
                 }
                 else
                 {
-                    //X軸に対してかかっている力を消す
-                    Vector2 force = new Vector2(moveForceX, rigidBody.velocity.y);    // 力を設定
+                    Vector2 force = new Vector2(moveForceX, 0);    // 力を設定
+
+                    //移動ベクトルを床の角度に応じて回転
+                    if (slimeController._rayHitFoot)
+                    {
+                        Debug.Log(slimeController._rayHitFoot.normal);
+                        force = Quaternion.Euler(Quaternion.FromToRotation(transform.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
+                    }
+
                     rigidBody.velocity = force;
+
+
+
+                    //かかっている力を消す
+                    //Vector2 force = new Vector2(moveForceX, rigidBody.velocity.y);    // 力を設定
+                    //rigidBody.velocity = force;
                 }
             }
 

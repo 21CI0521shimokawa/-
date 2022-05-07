@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cdf07d03bb6424d98e87096f05c734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exclusionObjects: []
   _onTrigger: 0
 --- !u!1 &3968010567801475350
 GameObject:
@@ -289,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cdf07d03bb6424d98e87096f05c734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exclusionObjects: []
   _onTrigger: 0
 --- !u!1 &4418132168905195426
 GameObject:
@@ -434,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cdf07d03bb6424d98e87096f05c734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exclusionObjects: []
   _onTrigger: 0
 --- !u!1 &4845632778822277070
 GameObject:
@@ -448,6 +451,7 @@ GameObject:
   - component: {fileID: 4163097197365091292}
   - component: {fileID: 5765013259604420940}
   - component: {fileID: 7984795086429806052}
+  - component: {fileID: 4618879269328200172}
   m_Layer: 0
   m_Name: SlimeImage
   m_TagString: Untagged
@@ -584,6 +588,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeSE: {fileID: 5634184182169987763}
+--- !u!114 &4618879269328200172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845632778822277070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101142dade8efaa479f7bcc3108b51a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeController: {fileID: 8680789583821087134}
+  transform: {fileID: 6589390435767048825}
 --- !u!1 &5570083483672920366
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cdf07d03bb6424d98e87096f05c734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exclusionObjects: []
   _onTrigger: 0
 --- !u!1 &8680789583821087122
 GameObject:
