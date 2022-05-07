@@ -537,7 +537,7 @@ public class SlimeController: MonoBehaviour
         if(nearestRaycastHit)
         {
             _rayHitFoot = nearestRaycastHit;
-            Debug.Log(_rayHitFoot.collider.name);
+            //Debug.Log(_rayHitFoot.collider.name);
         }
     }
 
