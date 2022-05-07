@@ -83,6 +83,8 @@ public class Slime_Tearoff : MonoBehaviour
                     //U“®
                     slimeController._controllerVibrationScript.Vibration("SlimeTearoff", power * 0.5f, power * 0.5f);
 
+                    slimeSE._PlayStretchSE(3 * power);
+
                     //‚¿‚¬‚é
                     if (power >= 1)
                     {
@@ -139,10 +141,9 @@ public class Slime_Tearoff : MonoBehaviour
 
                     GetComponent<Renderer>().material.color = Color.green;
 
-                    //gamepad.SetMotorSpeeds(0.0f, 0.0f);
+                    slimeController._controllerVibrationScript.Vibration("SlimeTearoff", 0, 0);
+                    slimeSE._StopStretchSE();
                 }
-
-
                 oneFrameBefore_Update = true;
             }
         }
@@ -164,6 +165,8 @@ public class Slime_Tearoff : MonoBehaviour
             oneFrameBefore_Update = false;
 
             slimeController._SlimeAnimator.SetBool("Extend", false);
+
+            slimeSE._StopStretchSE();
         }
     }
 
@@ -234,6 +237,7 @@ public class Slime_Tearoff : MonoBehaviour
     private IEnumerator SlimeTearOffCoroutine(float slimeScale)
     {
         slimeSE._PlayTearoffSE();
+        slimeSE._StopStretchSE();
 
         IsDirecting = true;
 

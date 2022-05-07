@@ -5,57 +5,128 @@ using UnityEngine;
 public class SlimeSE : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource audioSourceSoundStretch;
 
     [SerializeField] AudioClip soundJump;
     [SerializeField] AudioClip soundTearoff;
     [SerializeField] AudioClip soundMove;
     [SerializeField] AudioClip soundLanding;
 
+    bool playsoundJump;
+    bool playsoundTearoff;
+    bool playsoundMove;
+    bool playsoundLanding;
+
+    bool PlaysoundStretch; 
+    bool isPlaysoundStretch;    //ç°çƒê∂ÇµÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        flagReset();
+
+        PlaysoundStretch = false;
+        isPlaysoundStretch = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        flagReset();
+
+        if(PlaysoundStretch)
+        {
+            if (!isPlaysoundStretch)
+            {
+                isPlaysoundStretch = true;
+                audioSourceSoundStretch.Play();
+            }
+        }
+        else
+        {
+            if (isPlaysoundStretch)
+            {
+                isPlaysoundStretch = false;
+                audioSourceSoundStretch.Stop();
+            }          
+        }
+    }
+
+    void flagReset()
+    {
+        playsoundJump = false;
+        playsoundTearoff = false;
+        playsoundMove = false;
+        playsoundLanding = false;
     }
 
     public void _PlayJumpSE()
     {
-        if(soundJump)
+        if (!playsoundJump)
         {
-            audioSource.PlayOneShot(soundJump);
+            playsoundJump = true;
+
+            if (soundJump)
+            {
+                audioSource.PlayOneShot(soundJump);
+            }
+            Debug.Log("îÚÇ‘âπ");
         }
-        Debug.Log("îÚÇ‘âπ");
     }
 
     public void _PlayTearoffSE()
     {
-        if (soundTearoff)
+        if (!playsoundTearoff)
         {
-            audioSource.PlayOneShot(soundTearoff);
+            playsoundTearoff = true;
+
+            if (soundTearoff)
+            {
+                audioSource.PlayOneShot(soundTearoff);
+            }
+            Debug.Log("ÇøÇ¨ÇÍÇÈâπ");
         }
-        Debug.Log("ÇøÇ¨ÇÍÇÈâπ");
     }
 
     public void _PlayMoveSE()
     {
-        if (soundMove)
+        if (!playsoundMove)
         {
-            audioSource.PlayOneShot(soundMove);
+            playsoundMove = true;
+
+            if (soundMove)
+            {
+                audioSource.PlayOneShot(soundMove);
+            }
+            Debug.Log("ï‡Ç≠âπ");
         }
-        Debug.Log("ï‡Ç≠âπ");
     }
 
     public void _PlayLandingSE()
     {
-        if (soundLanding)
+        if (!playsoundLanding)
         {
-            audioSource.PlayOneShot(soundLanding);
+            playsoundLanding = true;
+
+            if (soundLanding)
+            {
+                audioSource.PlayOneShot(soundLanding);
+            }
+            Debug.Log("íÖínâπ");
         }
-        Debug.Log("íÖínâπ");
+    }
+
+    public void _PlayStretchSE(float pitch_)
+    {
+        audioSourceSoundStretch.pitch = pitch_;
+
+        PlaysoundStretch = true;
+
+        Debug.Log("à¯Ç´âÑÇŒÇ∑ " + pitch_);
+    }
+
+    public void _StopStretchSE()
+    {
+        PlaysoundStretch = false;
     }
 }
