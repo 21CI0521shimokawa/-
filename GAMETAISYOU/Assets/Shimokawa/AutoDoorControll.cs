@@ -7,17 +7,21 @@ public class AutoDoorControll : MonoBehaviour
     private enum State { Open, Exit, Default };
     private State NowState;
     private Vector2 StartPosition;
+    private int PlaySECnt;
     [SerializeField, Tooltip("ドアの開閉スピード")]
     private float Speed;
-    [SerializeField, Tooltip("移動量"),] 
+    [SerializeField, Tooltip("移動量"),]
     Vector2 moveTo = new Vector2(0, 4);
-    [SerializeField,Tooltip("オーディオsource")]
+    [SerializeField, Tooltip("オーディオsource")]
     AudioSource audioSource = null;
     [SerializeField, Tooltip("ドア開閉SE")]
     AudioClip DoorSE;
+    [SerializeField, Tooltip("Animation")]
+    Animator AutoDoorAnimator;
 
     void Start()
     {
+        PlaySECnt = 0;
         StartPosition = this.transform.position;
         NowState = State.Default;
     }
@@ -25,10 +29,15 @@ public class AutoDoorControll : MonoBehaviour
 
     void Update()
     {
-        if (NowState == State.Open |NowState==State.Exit)
+        if (NowState == State.Open)
         {
-            StartCoroutine(Move());
+            StartCoroutine("Up");
         }
+        else if (NowState == State.Exit)
+        {
+            StartCoroutine("Down");
+        }
+        Debug.Log(NowState);
     }
     #region public fanction
     public void PlaySE(AudioClip audio)
@@ -46,39 +55,53 @@ public class AutoDoorControll : MonoBehaviour
     {
         if (collision.gameObject.tag == "Slime")
         {
-            PlaySE(DoorSE);
-            NowState = State.Open;
+            if (NowState == State.Default)
+            {
+                NowState = State.Open;
+            }
+            else
+            {
+                return;
+            }
         }
-        if(collision.gameObject.tag=="Ground")
+    }
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Slime" && NowState == State.Default)
         {
-            NowState = State.Default;
+            NowState = State.Open;
         }
     }
     #endregion
     #region コルーチン
     private IEnumerator Up()//ドア上昇
     {
-        if (NowState == State.Open)
+        if (PlaySECnt== 0)
         {
-            transform.position = Vector3.MoveTowards(transform.position, StartPosition + moveTo, 5 * Time.deltaTime);
+            PlaySE(DoorSE);
+            PlaySECnt++;
         }
+        AutoDoorAnimator.SetBool("Start", true);
+        StopCoroutine("Down");
+        transform.position = Vector3.MoveTowards(transform.position, StartPosition + moveTo, 5 * Time.deltaTime);
+        yield return new WaitForSeconds(3f);
+        NowState = State.Exit;
+        PlaySECnt = 0;
         yield break;
     }
     private IEnumerator Down()//ドア下降
     {
-        if (NowState == State.Exit)
+        StopCoroutine("Up");
+        AutoDoorAnimator.SetBool("Start", true);
+        transform.position = Vector3.MoveTowards(transform.position, StartPosition, 5 * Time.deltaTime);
+        if (this.transform.position.y == StartPosition.y)
         {
-            transform.position = Vector3.MoveTowards(transform.position, StartPosition, 5 * Time.deltaTime);
+            AutoDoorAnimator.SetBool("Start", false);
+            if (NowState != State.Open)
+            {
+                NowState = State.Default;
+            }
         }
-        yield break;
-    }
-    private IEnumerator Move()
-    {
-        StartCoroutine(Up());
-        yield return new WaitForSeconds(3f);
-        NowState = State.Exit;
-        StartCoroutine(Down());
-        NowState = State.Default;
         yield break;
     }
     #endregion
