@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4632479698400582876}
   m_Layer: 0
   m_Name: TriggerRight
-  m_TagString: Untagged
+  m_TagString: SlimeTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 3381462553252452642}
   m_Layer: 0
   m_Name: TriggerLeft
-  m_TagString: Untagged
+  m_TagString: SlimeTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 8766844711772804312}
   m_Layer: 0
   m_Name: TriggerTop
-  m_TagString: Untagged
+  m_TagString: SlimeTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 6466544053871863749}
   m_Layer: 0
   m_Name: TriggerUnder
-  m_TagString: Untagged
+  m_TagString: SlimeTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1003,6 +1003,7 @@ MonoBehaviour:
   timer: 0
   _isOn: 0
   Elevator: {fileID: 0}
+  Camera: {fileID: 0}
 --- !u!120 &4195293298133824690
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1126,6 +1127,7 @@ MonoBehaviour:
   soundJump: {fileID: 8300000, guid: 563961c87ae5fbd48a2bec4e93906c15, type: 3}
   soundTearoff: {fileID: 0}
   soundMove: {fileID: 0}
+  soundLanding: {fileID: 0}
 --- !u!82 &7447981417997804932
 AudioSource:
   m_ObjectHideFlags: 0

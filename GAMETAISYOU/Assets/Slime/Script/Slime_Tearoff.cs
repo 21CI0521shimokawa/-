@@ -64,8 +64,8 @@ public class Slime_Tearoff : MonoBehaviour
                 float stickRHorizontal = gamepadRightStick.x;
 
                 //スティックの最大値にある程度余裕を持たせる（ちぎれなくなっちゃう）
-                stickLHorizontal = Mathf.Min(stickLHorizontal / 0.98f, 1.0f);
-                stickRHorizontal = Mathf.Min(stickRHorizontal / 0.98f, 1.0f);
+                stickLHorizontal = Mathf.Min(stickLHorizontal / 0.90f, 1.0f);
+                stickRHorizontal = Mathf.Min(stickRHorizontal / 0.90f, 1.0f);
 
                 if ((stickLHorizontal < 0) && (stickRHorizontal > 0))
                 {
