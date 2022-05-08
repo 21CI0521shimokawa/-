@@ -52,7 +52,9 @@ public class Slime_Move : MonoBehaviour
                     if (slimeController._rayHitFoot)
                     {
                         Debug.Log(slimeController._rayHitFoot.normal);
-                        force = Quaternion.Euler(Quaternion.FromToRotation(transform.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
+                        //force = Quaternion.Euler(Quaternion.FromToRotation(transform.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
+                        //force = Quaternion.Euler(Quaternion.FromToRotation(Vector3.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
+                        force = Quaternion.Euler(slimeController._FloorAngle()) * force;
                     }
 
                     rigidBody.velocity = force;
@@ -64,9 +66,9 @@ public class Slime_Move : MonoBehaviour
                     //rigidBody.velocity = force;
                 }
             }
-
-            slimeController._SlimeAnimator.SetFloat("MoveSpeed", Mathf.Abs(rigidBody.velocity.x));
         }
+
+        slimeController._SlimeAnimator.SetFloat("MoveSpeed", Mathf.Abs(rigidBody.velocity.x));
     }
 
     //ë¨ìxê›íË
