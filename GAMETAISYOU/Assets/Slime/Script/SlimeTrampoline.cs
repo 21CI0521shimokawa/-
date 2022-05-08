@@ -87,9 +87,12 @@ public class SlimeTrampoline : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        //エレベーター
         if(collision.gameObject.name=="Area")
         {
             Elevator.GetComponent<ElevatoControll>().ElevatorStart();
+            slimeController._ifOperation = false;
+            slimeController._OnElevetor = true;
         }
     }
     public void OnTriggerStay2D(Collider2D collision)
@@ -108,6 +111,8 @@ public class SlimeTrampoline : MonoBehaviour
         if (collision.gameObject.name == "Area")
         {
             Elevator.GetComponent<ElevatoControll>().ElevatorDown();
+            slimeController._ifOperation = true;
+            slimeController._OnElevetor = false;
         }
     }
 }

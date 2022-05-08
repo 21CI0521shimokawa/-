@@ -74,6 +74,8 @@ public class SlimeController: MonoBehaviour
 
     bool offTriggerUnderOneFlameBefore; //1フレーム前も地面に立っていなかったかどうか
 
+    public bool _OnElevetor;    //スライムがエレベーターに乗っているか
+
     void Awake() 
     {
         _ifOperation = true;
@@ -107,6 +109,8 @@ public class SlimeController: MonoBehaviour
         _controllerVibrationScript = GameObject.Find("ControllerVibration").GetComponent<ControllerVibrationScript>();
 
         offTriggerUnderOneFlameBefore = false;
+
+        _OnElevetor = false;
     }
 
     // Update is called once per frame
@@ -493,8 +497,14 @@ public class SlimeController: MonoBehaviour
     //スライムが大きくなれるかどうか
     private bool IfSlimeGrowInSize()
     {
+        //エレベーターに乗っていたら処理しない
+        if (_OnElevetor)
+        {
+            return false;
+        }
+
         //現在の大きさと最大値が同じだったら処理しない
-        if(_scaleMax == _scaleNow)
+        if (_scaleMax == _scaleNow)
         {
             return false;
         }
