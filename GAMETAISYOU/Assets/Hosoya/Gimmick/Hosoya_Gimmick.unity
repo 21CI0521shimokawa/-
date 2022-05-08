@@ -682,8 +682,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1928503388}
+  slimeController: {fileID: 0}
   PlayerPosition: {fileID: 1247028022}
   ExpansionTime: 0.05
+  TrackingFlag: 0
 --- !u!114 &1928503386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,11 +816,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
       propertyPath: _speed
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: renderer
+      value: 
+      objectReference: {fileID: 880174228300806237}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[0]
+      value: 
+      objectReference: {fileID: -5866078890989962885, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[1]
+      value: 
+      objectReference: {fileID: 6797898751344718074, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[2]
+      value: 
+      objectReference: {fileID: -1225960872507089792, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[3]
+      value: 
+      objectReference: {fileID: -4087233138307873374, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[4]
+      value: 
+      objectReference: {fileID: -3050777757020711930, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[5]
+      value: 
+      objectReference: {fileID: -4299265924083621732, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[6]
+      value: 
+      objectReference: {fileID: 1347626387950579622, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[7]
+      value: 
+      objectReference: {fileID: 5537039452907043478, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[8]
+      value: 
+      objectReference: {fileID: 4409865235783765427, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[9]
+      value: 
+      objectReference: {fileID: 7640004273600804017, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[10]
+      value: 
+      objectReference: {fileID: 236827217054527687, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[11]
+      value: 
+      objectReference: {fileID: 6393557228301120726, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[12]
+      value: 
+      objectReference: {fileID: -3327492960028027566, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[13]
+      value: 
+      objectReference: {fileID: 3245637426036611708, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[14]
+      value: 
+      objectReference: {fileID: 685952693542290594, guid: 60197383472f6034b990bf2017704e98, type: 3}
+    - target: {fileID: 880174229796470254, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+      propertyPath: images.Array.data[15]
+      value: 
+      objectReference: {fileID: -5989573198621078593, guid: 60197383472f6034b990bf2017704e98, type: 3}
     - target: {fileID: 880174229796470258, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
       propertyPath: m_Name
       value: BeltConveyor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+--- !u!212 &880174228300806237 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2229063936785164351, guid: 356431a3cc665b84db55d8fc8bfec456, type: 3}
+  m_PrefabInstance: {fileID: 880174228300806236}
+  m_PrefabAsset: {fileID: 0}
