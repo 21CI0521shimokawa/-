@@ -19,9 +19,9 @@ public class SlimeImageRotation : MonoBehaviour
     {
         if(slimeController._rayHitFoot && slimeController.s_state != State.AIR)
         {
-            Debug.Log(Quaternion.FromToRotation(new Vector3(0, 1, 0), slimeController._rayHitFoot.normal).eulerAngles);
+            Debug.Log(slimeController._FloorAngle());
 
-            angleZ = Quaternion.FromToRotation(new Vector3(0, 1, 0), slimeController._rayHitFoot.normal).eulerAngles.z;
+            angleZ = slimeController._FloorAngle().z;
             angleZ *= slimeController._direction == SlimeController._Direction.Right ? 1 : -1;  //ƒXƒ‰ƒCƒ€‚ÌŒü‚«‚É‡‚í‚¹‚Ä‰ñ“]
 
             transform.Rotate(new Vector3(0, 0, angleZ - transform.localEulerAngles.z));
