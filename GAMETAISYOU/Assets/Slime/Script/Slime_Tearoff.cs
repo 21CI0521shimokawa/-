@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Slime_Tearoff : MonoBehaviour
 {
     [SerializeField] SlimeController slimeController;
-    [SerializeField] SlimeSE slimeSE;
 
     [Tooltip("分裂できる大きさの下限")]
     public float _scaleLowerLimit;
@@ -83,7 +82,7 @@ public class Slime_Tearoff : MonoBehaviour
                     //振動
                     slimeController._controllerVibrationScript.Vibration("SlimeTearoff", power * 0.5f, power * 0.5f);
 
-                    slimeSE._PlayStretchSE(3 * power);
+                    slimeController._slimeSE._PlayStretchSE(3 * power);
 
                     //ちぎる
                     if (power >= 1)
@@ -103,6 +102,7 @@ public class Slime_Tearoff : MonoBehaviour
                             {
                                 GetComponent<Renderer>().material.color = Color.red;
                                 Debug.Log("大きさが足りません！！");
+                                slimeController._CannotAction();
                             }
 
                             //大きさがLimitを下回らないなら
@@ -124,6 +124,7 @@ public class Slime_Tearoff : MonoBehaviour
                         {
                             GetComponent<Renderer>().material.color = Color.red;
                             Debug.Log("スライムが大きくなりきってません！！");
+                            slimeController._CannotAction();
                         }
                     }
                     else
@@ -142,7 +143,7 @@ public class Slime_Tearoff : MonoBehaviour
                     GetComponent<Renderer>().material.color = Color.green;
 
                     slimeController._controllerVibrationScript.Vibration("SlimeTearoff", 0, 0);
-                    slimeSE._StopStretchSE();
+                    slimeController._slimeSE._StopStretchSE();
                 }
                 oneFrameBefore_Update = true;
             }
@@ -166,7 +167,7 @@ public class Slime_Tearoff : MonoBehaviour
 
             slimeController._SlimeAnimator.SetBool("Extend", false);
 
-            slimeSE._StopStretchSE();
+            slimeController._slimeSE._StopStretchSE();
         }
     }
 
@@ -236,8 +237,8 @@ public class Slime_Tearoff : MonoBehaviour
     // コルーチン本体
     private IEnumerator SlimeTearOffCoroutine(float slimeScale)
     {
-        slimeSE._PlayTearoffSE();
-        slimeSE._StopStretchSE();
+        slimeController._slimeSE._PlayTearoffSE();
+        slimeController._slimeSE._StopStretchSE();
 
         IsDirecting = true;
 

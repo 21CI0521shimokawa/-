@@ -7031,6 +7031,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087134, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: _scaleMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680789583821087134, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: _moveSpeed
       value: 4
       objectReference: {fileID: 0}

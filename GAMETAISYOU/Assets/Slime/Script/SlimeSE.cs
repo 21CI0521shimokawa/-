@@ -11,16 +11,19 @@ public class SlimeSE : MonoBehaviour
     [SerializeField] AudioClip soundTearoff;
     [SerializeField] AudioClip soundMove;
     [SerializeField] AudioClip soundLanding;
+    [SerializeField] AudioClip soundBuzzer;
 
     [SerializeField] float soundJumpVolume;
     [SerializeField] float soundTearoffVolume;
     [SerializeField] float soundMoveVolume;
     [SerializeField] float soundLandingVolume;
+    [SerializeField] float soundBuzzerVolume;
 
     bool playsoundJump;
     bool playsoundTearoff;
     bool playsoundMove;
     bool playsoundLanding;
+    bool playsoundBuzzer;
 
     bool PlaysoundStretch; 
     bool isPlaysoundStretch;    //今再生しているかどうか
@@ -63,6 +66,7 @@ public class SlimeSE : MonoBehaviour
         playsoundTearoff = false;
         playsoundMove = false;
         playsoundLanding = false;
+        playsoundBuzzer = false;
     }
 
     public void _PlayJumpSE()
@@ -118,6 +122,20 @@ public class SlimeSE : MonoBehaviour
                 audioSource.PlayOneShot(soundLanding, soundLandingVolume);
             }
             Debug.Log("着地音");
+        }
+    }
+
+    public void _PlayBuzzerSE()
+    {
+        if (!playsoundBuzzer)
+        {
+            playsoundBuzzer = true;
+
+            if (soundBuzzer)
+            {
+                audioSource.PlayOneShot(soundBuzzer, soundBuzzerVolume);
+            }
+            Debug.Log("ブザー音");
         }
     }
 

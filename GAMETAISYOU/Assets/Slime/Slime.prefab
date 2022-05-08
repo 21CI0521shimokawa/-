@@ -900,12 +900,14 @@ MonoBehaviour:
   core: 0
   _ifOperation: 1
   _moveSpeed: 4
-  _stateAIRMoveSpeedMagnification: 0.5
+  _stateAIRMoveSpeedMagnification: 0.75
   _stateAIRMoveSpeedMax: 2
   _scaleNow: 0
   _airJump: 0
   slimeImage: {fileID: 7007595957200978829}
   _controllerVibrationScript: {fileID: 0}
+  _OnElevetor: 0
+  _slimeSE: {fileID: 5634184182169987763}
 --- !u!114 &8680789583821087133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,7 +921,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeController: {fileID: 8680789583821087134}
-  slimeSE: {fileID: 5634184182169987763}
   _scaleLowerLimit: 0.5
   divisionScale: 0.5
   divisionTime: 1
@@ -927,7 +928,7 @@ MonoBehaviour:
   stretchEndTime: 0
   deadEndTime: 20
   power: 0
-  tearoffSlimeType: 0
+  _tearoffSlimeType: 0
 --- !u!114 &8680789583821087129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,10 +1134,12 @@ MonoBehaviour:
   soundTearoff: {fileID: 8300000, guid: ab5936601ce3c4d43bdadcc8ee492056, type: 3}
   soundMove: {fileID: 8300000, guid: e98d6f0f3404ff945a83d145d3d12da6, type: 3}
   soundLanding: {fileID: 8300000, guid: 059383c60df60ea418a9cda3d921a0f6, type: 3}
+  soundBuzzer: {fileID: 8300000, guid: 8c77805369b687e4e9b32d838b75217f, type: 3}
   soundJumpVolume: 0.2
   soundTearoffVolume: 1
   soundMoveVolume: 0.3
   soundLandingVolume: 1
+  soundBuzzerVolume: 0.5
 --- !u!82 &7447981417997804932
 AudioSource:
   m_ObjectHideFlags: 0

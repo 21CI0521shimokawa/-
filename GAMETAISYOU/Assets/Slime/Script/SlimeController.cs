@@ -76,6 +76,11 @@ public class SlimeController: MonoBehaviour
 
     public bool _OnElevetor;    //スライムがエレベーターに乗っているか
 
+    public SlimeSE _slimeSE;
+
+    bool playBuzzerOneFlameBefore;  //ブザーが鳴ったかどうか
+    bool playBuzzerThisFlame;        //このフレーム中にブザーが鳴ったか
+
     void Awake() 
     {
         _ifOperation = true;
@@ -111,6 +116,9 @@ public class SlimeController: MonoBehaviour
         offTriggerUnderOneFlameBefore = false;
 
         _OnElevetor = false;
+
+        playBuzzerOneFlameBefore = false;
+        playBuzzerThisFlame = false;
     }
 
     // Update is called once per frame
@@ -156,9 +164,13 @@ public class SlimeController: MonoBehaviour
                     if (Ontrigger)
                     {
                         //床が傾いていない場所なら
-                        if(Quaternion.FromToRotation(new Vector3(0, 1, 0), _rayHitFoot.normal).eulerAngles.z == 0)
+                        if(_FloorAngle().z == 0)
                         {
                             tearoffUpdate = true;
+                        }
+                        else
+                        {
+                            _CannotAction();
                         }
                     }
                     else
@@ -318,6 +330,9 @@ public class SlimeController: MonoBehaviour
             } 
         }
 
+
+        playBuzzerOneFlameBefore = playBuzzerThisFlame;
+        playBuzzerThisFlame = false;
     }
 
 
@@ -367,6 +382,7 @@ public class SlimeController: MonoBehaviour
         if (IfSlimeGrowInSize())
         {
             float scaleBefore = _scaleNow;
+
             _scaleNow = Mathf.SmoothDamp(_scaleNow, _scaleMax, ref smoothCurrentVelocity, 0.5f);
 
             //大きさが変化しなかったら最大値と同じにする（不具合対策）
@@ -388,6 +404,8 @@ public class SlimeController: MonoBehaviour
         int slimeDirection = Slime_Direction();
 
         transform.localScale = new Vector2((1 + pullWideForce) * _scaleNow * slimeDirection, (1.0f / (1 + pullWideForce)) * _scaleNow);
+
+        transform.localScale = new Vector2((1) * _scaleNow * slimeDirection, (1.0f / (1)) * _scaleNow);
     }
 
     //スライムの点滅
@@ -580,9 +598,23 @@ public class SlimeController: MonoBehaviour
         }
     }
 
+    //床の角度を返す
+    public Vector3 _FloorAngle()
+    {
+        return Quaternion.FromToRotation(Vector3.up, _rayHitFoot.normal).eulerAngles;
+    }
 
     bool SlimeGetRayHit()
     {
         return _rayHitFoot;
+    }
+
+    public void _CannotAction()
+    {
+        playBuzzerThisFlame = true;
+        if (!playBuzzerOneFlameBefore)
+        {
+            _slimeSE._PlayBuzzerSE();
+        }
     }
 }
