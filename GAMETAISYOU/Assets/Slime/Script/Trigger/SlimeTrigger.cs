@@ -58,10 +58,14 @@ public class SlimeTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //リストに無かったら追加
-        if (!onObjects.Contains(collision.gameObject))
+        //トリガーではなかったら
+        if (!collision.isTrigger)
         {
-            onObjects.Add(collision.gameObject);
+            //リストに無かったら追加
+            if (!onObjects.Contains(collision.gameObject))
+            {
+                onObjects.Add(collision.gameObject);
+            }
         }
     }
 

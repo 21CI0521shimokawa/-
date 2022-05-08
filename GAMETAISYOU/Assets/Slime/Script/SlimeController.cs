@@ -277,7 +277,7 @@ public class SlimeController: MonoBehaviour
         _SlimeAnimator.SetBool("OnGround", _triggerUnder._onTrigger);
 
         //地面についていたら
-        if (_triggerUnder._onTrigger || SlimeGetRayHit())
+        if (_triggerUnder._onTrigger/* || SlimeGetRayHit()*/)
         {
             offTriggerUnderOneFlameBefore = false;
             _SlimeAnimator.SetFloat("FallSpeed", 0);
@@ -391,6 +391,12 @@ public class SlimeController: MonoBehaviour
     {
         bool buf = liveTime % 0.5f <= 0.25f;
         slimeImage.enabled = buf;
+
+        //目の点滅
+        if(_hazikuScript._eyeRenderer)
+        {
+            _hazikuScript._eyeRenderer.enabled = buf;
+        }
     }
 
     //スライムの向き変更
@@ -514,6 +520,12 @@ public class SlimeController: MonoBehaviour
         //一部のオブジェクトを除外
         foreach (RaycastHit2D i in rayHits)
         {
+            //トリガーは除外
+            if(i.collider.isTrigger)
+            {
+                continue;
+            }
+
             //自分自身は除外
             if(i.collider.gameObject == this.gameObject)
             {

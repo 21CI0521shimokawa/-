@@ -22,6 +22,7 @@ public class Slime_Haziku : MonoBehaviour
 
     GameObject arrow;
     GameObject eye;
+    public SpriteRenderer _eyeRenderer;
 
     public bool _ifSlimeHazikuNow;  //はじくのアップデートを行っている最中かどうか
     bool isArrowBeing;  //矢印が存在するかどうか
@@ -291,6 +292,8 @@ public class Slime_Haziku : MonoBehaviour
             EyePrefab.SetActive(true);
             GameObject buf = GameObject.Instantiate(EyePrefab);
             eye = buf;
+
+            _eyeRenderer = eye.GetComponent<SpriteRenderer>();
         }
     }
 

@@ -12,6 +12,11 @@ public class SlimeSE : MonoBehaviour
     [SerializeField] AudioClip soundMove;
     [SerializeField] AudioClip soundLanding;
 
+    [SerializeField] float soundJumpVolume;
+    [SerializeField] float soundTearoffVolume;
+    [SerializeField] float soundMoveVolume;
+    [SerializeField] float soundLandingVolume;
+
     bool playsoundJump;
     bool playsoundTearoff;
     bool playsoundMove;
@@ -68,7 +73,7 @@ public class SlimeSE : MonoBehaviour
 
             if (soundJump)
             {
-                audioSource.PlayOneShot(soundJump);
+                audioSource.PlayOneShot(soundJump, soundJumpVolume);
             }
             Debug.Log("”ò‚Ô‰¹");
         }
@@ -82,7 +87,7 @@ public class SlimeSE : MonoBehaviour
 
             if (soundTearoff)
             {
-                audioSource.PlayOneShot(soundTearoff);
+                audioSource.PlayOneShot(soundTearoff, soundTearoffVolume);
             }
             Debug.Log("‚¿‚¬‚ê‚é‰¹");
         }
@@ -96,7 +101,7 @@ public class SlimeSE : MonoBehaviour
 
             if (soundMove)
             {
-                audioSource.PlayOneShot(soundMove);
+                audioSource.PlayOneShot(soundMove, soundMoveVolume);
             }
             Debug.Log("•à‚­‰¹");
         }
@@ -110,7 +115,7 @@ public class SlimeSE : MonoBehaviour
 
             if (soundLanding)
             {
-                audioSource.PlayOneShot(soundLanding);
+                audioSource.PlayOneShot(soundLanding, soundLandingVolume);
             }
             Debug.Log("’…’n‰¹");
         }

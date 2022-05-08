@@ -948,6 +948,7 @@ MonoBehaviour:
   stickX: []
   stickY: []
   _power: 5
+  _eyeRenderer: {fileID: 0}
   _ifSlimeHazikuNow: 0
   coolTime: 0.5
   _nextHazikuUpdateTime: 0
@@ -1127,11 +1128,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 7447981417997804932}
-  audioSourceSoundStretch: {fileID: 0}
+  audioSourceSoundStretch: {fileID: 7803590351163427987}
   soundJump: {fileID: 8300000, guid: 563961c87ae5fbd48a2bec4e93906c15, type: 3}
-  soundTearoff: {fileID: 0}
-  soundMove: {fileID: 0}
-  soundLanding: {fileID: 0}
+  soundTearoff: {fileID: 8300000, guid: ab5936601ce3c4d43bdadcc8ee492056, type: 3}
+  soundMove: {fileID: 8300000, guid: e98d6f0f3404ff945a83d145d3d12da6, type: 3}
+  soundLanding: {fileID: 8300000, guid: 059383c60df60ea418a9cda3d921a0f6, type: 3}
+  soundJumpVolume: 0.2
+  soundTearoffVolume: 1
+  soundMoveVolume: 0.3
+  soundLandingVolume: 1
 --- !u!82 &7447981417997804932
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1143,7 +1148,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
