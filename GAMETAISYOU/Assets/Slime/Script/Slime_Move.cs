@@ -64,9 +64,9 @@ public class Slime_Move : MonoBehaviour
                     //rigidBody.velocity = force;
                 }
             }
-
-            slimeController._SlimeAnimator.SetFloat("MoveSpeed", Mathf.Abs(rigidBody.velocity.x));
         }
+
+        slimeController._SlimeAnimator.SetFloat("MoveSpeed", Mathf.Abs(rigidBody.velocity.x));
     }
 
     //ë¨ìxê›íË

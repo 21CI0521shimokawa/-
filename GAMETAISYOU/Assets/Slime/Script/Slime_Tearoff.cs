@@ -26,14 +26,14 @@ public class Slime_Tearoff : MonoBehaviour
 
     bool IsDirecting;   //演出中かどうか
 
-    enum TearoffSlimeType
+    public enum TearoffSlimeType
     {
-        Non,
-        Right,
-        Left
+        NON,
+        RIGHT,
+        LEFT
     }
 
-    [SerializeField] TearoffSlimeType tearoffSlimeType;
+    public TearoffSlimeType _tearoffSlimeType;
 
     // Start is called before the first frame update
     void Start()
@@ -193,20 +193,20 @@ public class Slime_Tearoff : MonoBehaviour
             buf._direction = slimeController._direction;
 
             //操作タイプ
-            switch (tearoffSlimeType)
+            switch (_tearoffSlimeType)
             {
                 //操作不可
-                case TearoffSlimeType.Non:
+                case TearoffSlimeType.NON:
                     buf._ifOperation = false;
                     break;
 
                 //右
-                case TearoffSlimeType.Right:
+                case TearoffSlimeType.RIGHT:
                     buf.modeLR = SlimeController.LRMode.Right;
                     break;
 
                 //左
-                case TearoffSlimeType.Left:
+                case TearoffSlimeType.LEFT:
                     buf.modeLR = SlimeController.LRMode.Left;
                     break;
             }
@@ -274,20 +274,20 @@ public class Slime_Tearoff : MonoBehaviour
             buf._direction = slimeController._direction;
 
             //操作タイプ
-            switch (tearoffSlimeType)
+            switch (_tearoffSlimeType)
             {
                 //操作不可
-                case TearoffSlimeType.Non:
+                case TearoffSlimeType.NON:
                     buf._ifOperation = false;
                     break;
 
                 //右
-                case TearoffSlimeType.Right:
+                case TearoffSlimeType.RIGHT:
                     buf.modeLR = SlimeController.LRMode.Right;
                     break;
 
                 //左
-                case TearoffSlimeType.Left:
+                case TearoffSlimeType.LEFT:
                     buf.modeLR = SlimeController.LRMode.Left;
                     break;
             }
