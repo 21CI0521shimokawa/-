@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.91
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -177,7 +177,7 @@ PrefabInstance:
     - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: automaticDoorAnimator
       value: 
-      objectReference: {fileID: 1279624705}
+      objectReference: {fileID: 0}
     - target: {fileID: 7707845458755566032, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_Name
       value: Automatic door (2)
@@ -305,11 +305,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fefdd3f2af51a84e8a4e47d0c0a0699, type: 3}
---- !u!95 &71413874 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8378587736743986809, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
-  m_PrefabInstance: {fileID: 1945919727}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &139140047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -971,11 +966,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.5
+      value: -20.32
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.53
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1012,7 +1007,7 @@ PrefabInstance:
     - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: automaticDoorAnimator
       value: 
-      objectReference: {fileID: 511297936}
+      objectReference: {fileID: 0}
     - target: {fileID: 7707845458755566032, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_Name
       value: Automatic door
@@ -1035,11 +1030,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
---- !u!95 &511297936 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8378587736743986809, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
-  m_PrefabInstance: {fileID: 511297935}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &542955146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5103,11 +5093,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aac26ae0f7b5c8a44be611ab6545a505, type: 3}
---- !u!95 &1279624705 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8378587736743986809, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
-  m_PrefabInstance: {fileID: 1029193}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1299002508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5820,7 +5805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.44
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5857,7 +5842,7 @@ PrefabInstance:
     - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: automaticDoorAnimator
       value: 
-      objectReference: {fileID: 71413874}
+      objectReference: {fileID: 0}
     - target: {fileID: 7707845458755566032, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
       propertyPath: m_Name
       value: Automatic door (1)
