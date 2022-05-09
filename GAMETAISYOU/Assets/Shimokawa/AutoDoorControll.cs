@@ -37,7 +37,6 @@ public class AutoDoorControll : MonoBehaviour
         {
             StartCoroutine("Down");
         }
-        Debug.Log(NowState);
     }
     #region public fanction
     public void PlaySE(AudioClip audio)
