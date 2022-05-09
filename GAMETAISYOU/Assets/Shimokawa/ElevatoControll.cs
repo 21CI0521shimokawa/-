@@ -45,10 +45,6 @@ public class ElevatoControll : MonoBehaviour
         //ポストエフェクト
         Volume.profile.TryGetSettings<Vignette>(out Vignette);
     }
-    public void ElevatorDown()
-    {
-        StartCoroutine(ElevatorStop());
-    }
     public void ElevatorStart()
     {
         AutoDoorAnimator.SetTrigger("Close");
@@ -88,7 +84,6 @@ public class ElevatoControll : MonoBehaviour
             ElevatorRigidbody.velocity = new Vector2(0, Speed);
             yield return new WaitForSeconds(0.01f);
         }
-        ElevatorRigidbody.bodyType = RigidbodyType2D.Static;
         SceneChange();
         yield return new WaitForSeconds(0.01f);
         yield break;
@@ -98,7 +93,6 @@ public class ElevatoControll : MonoBehaviour
         StopCoroutine("ElevatorUp");
         ElevatorRigidbody.bodyType = RigidbodyType2D.Static;
         yield return new WaitForSeconds(1.5f);//一時停止してから降下開始
-        ElevatorRigidbody.bodyType = RigidbodyType2D.Dynamic;
         yield break;
     }
     #endregion
