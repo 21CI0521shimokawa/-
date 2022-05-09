@@ -32,6 +32,8 @@ public class ElevatoControll : MonoBehaviour
     AudioClip SE;
     [SerializeField, Tooltip("オーディオsource")]
     AudioSource AudioSource;
+    [SerializeField]
+    Animator AutoDoorAnimator;
     //当たり判定のすり抜け防止
     public Rigidbody2D ElevatorRigidbody;
     void Start()
@@ -49,8 +51,9 @@ public class ElevatoControll : MonoBehaviour
     }
     public void ElevatorStart()
     {
+        AutoDoorAnimator.SetTrigger("Close");
         //  AutoDoorControll.PlaySE(SE);
-        Vignette.enabled.Override(true);
+       // Vignette.enabled.Override(true);
         StartCoroutine("ElevatorUp");
     }
     public void SceneChange()  //実装方法変更予定
@@ -66,6 +69,14 @@ public class ElevatoControll : MonoBehaviour
         {
             FadeManager.Instance.LoadScene("Stage2", FadeTime);
             return;
+        }
+        else if(SceneName== "Stage2")
+        {
+            FadeManager.Instance.LoadScene("Stage3", FadeTime);
+        }
+        else if(SceneName== "Stage3")
+        {
+            FadeManager.Instance.LoadScene("Stage4", FadeTime);
         }
     }
     #region コルーチン
