@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1466602970285474363}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1947975507961491483
 BoxCollider2D:
@@ -57,36 +57,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.71667165, y: 0.35768116}
   m_EdgeRadius: 0
---- !u!1 &5820067744168622950
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5027491419492222224}
-  m_Layer: 0
-  m_Name: ' Destination'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5027491419492222224
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5820067744168622950}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1466602970285474363}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7388471236682931035
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +69,7 @@ GameObject:
   - component: {fileID: 2322439112574899918}
   - component: {fileID: 5050075161512873543}
   - component: {fileID: 2864338087935963703}
+  - component: {fileID: 4293981865823242996}
   m_Layer: 0
   m_Name: StartElevator
   m_TagString: Untagged
@@ -115,11 +86,11 @@ Transform:
   m_GameObject: {fileID: 7388471236682931035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.9521842, y: 0.5311, z: 1}
+  m_LocalScale: {x: 3.6308963, y: 0.5311, z: 1}
   m_Children:
-  - {fileID: 5027491419492222224}
   - {fileID: 8828176040228077040}
   - {fileID: 2967539018438886246}
+  - {fileID: 5774664646910116399}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,9 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d19b6481895fe249ab89bf79d54646a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NowPosition: {x: 0, y: 0, z: 0}
-  Destination: {fileID: 0}
-  Speed: 0.002
+  StartPosition: {x: 0, y: 0}
+  Speed: 2
+  MoveTo: {x: 0, y: 2}
+  ElevatorAnimator: {fileID: 0}
   ElevatorRigidbody: {fileID: 0}
 --- !u!61 &2864338087935963703
 BoxCollider2D:
@@ -216,6 +188,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &4293981865823242996
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388471236682931035}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &7496419929152582189
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +234,36 @@ Transform:
   m_GameObject: {fileID: 7496419929152582189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1466602970285474363}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9033211347014184660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5774664646910116399}
+  m_Layer: 0
+  m_Name: Destination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5774664646910116399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033211347014184660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 9.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1466602970285474363}
