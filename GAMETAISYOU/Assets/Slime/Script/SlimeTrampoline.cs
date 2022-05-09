@@ -110,7 +110,6 @@ public class SlimeTrampoline : MonoBehaviour
         }
         if (collision.gameObject.name == "Area")
         {
-            Elevator.GetComponent<ElevatoControll>().ElevatorDown();
             slimeController._ifOperation = true;
             slimeController._OnElevetor = false;
         }
