@@ -24,7 +24,7 @@ public class PlayerTracking : MonoBehaviour
         TrackingFlag = true;
         CameraPullingcondition = 1.0f;
         player = GameObject.Find("Slime");
-        this.gameObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y+4f, player.transform.position.z - 10);
+        this.gameObject.transform.position = new Vector3(player.transform.position.x+3f, player.transform.position.y+4f, player.transform.position.z - 10);
         offset = transform.position - player.transform.position;
 
     }
