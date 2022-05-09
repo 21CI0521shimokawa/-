@@ -244,6 +244,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 983956536765754970, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: m_SortingOrder
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 2029051302279793293, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: m_Name
       value: Elevator
@@ -258,11 +262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6290584954129448259, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 93.69
+      value: 93.51
       objectReference: {fileID: 0}
     - target: {fileID: 6290584954129448259, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.32
+      value: -1.46
       objectReference: {fileID: 0}
     - target: {fileID: 6290584954129448259, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4297,7 +4301,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -100
   m_Sprite: {fileID: 21300000, guid: 232703e19b10060448c3a6787fbb161f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4317,7 +4321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349088310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 93.56, y: 0, z: 0}
+  m_LocalPosition: {x: 93.32, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4783,19 +4787,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2345298975985114716, guid: 3bc36009f7ae1f34fb68c858698cbee7, type: 3}
       propertyPath: m_Size.x
-      value: 34.678516
+      value: 35.48274
       objectReference: {fileID: 0}
     - target: {fileID: 2345298975985114716, guid: 3bc36009f7ae1f34fb68c858698cbee7, type: 3}
       propertyPath: m_Size.y
-      value: 8.41441
+      value: 24.61348
       objectReference: {fileID: 0}
     - target: {fileID: 2345298975985114716, guid: 3bc36009f7ae1f34fb68c858698cbee7, type: 3}
       propertyPath: m_Offset.x
-      value: 9.506575
+      value: 10.245756
       objectReference: {fileID: 0}
     - target: {fileID: 2345298975985114716, guid: 3bc36009f7ae1f34fb68c858698cbee7, type: 3}
       propertyPath: m_Offset.y
-      value: 0.09719086
+      value: 1.6721001
       objectReference: {fileID: 0}
     - target: {fileID: 2345298975985114717, guid: 3bc36009f7ae1f34fb68c858698cbee7, type: 3}
       propertyPath: m_RootOrder
