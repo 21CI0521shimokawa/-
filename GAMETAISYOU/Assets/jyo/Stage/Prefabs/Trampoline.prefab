@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2689092492043228526}
   - component: {fileID: 2689092492043228513}
   - component: {fileID: 2689092492043228525}
+  - component: {fileID: 963185452}
   m_Layer: 0
   m_Name: Trampoline
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2689092492043228524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.34, y: -5.33, z: 0}
-  m_LocalScale: {x: 3.1273, y: 0.5, z: 1}
+  m_LocalScale: {x: 5, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 6505800009688839383, guid: 31cca3a4a5337d449b0ae673d1b87ea1, type: 3}
   m_Color: {r: 1, g: 0.96885556, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,18 +99,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.3806386}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.2387228}
   m_EdgeRadius: 0
 --- !u!50 &2689092492043228513
 Rigidbody2D:
@@ -145,10 +146,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemBody: {fileID: 0}
-  normal: {x: 0, y: 0}
+  normal: {x: -0.00000004371139, y: 1}
   startPoint: {x: 0, y: 0}
   objectSpeed: {x: 0, y: 0}
-  force: 10
-  angle: 0
+  force: 37.4
+  angle: 90
   ShakeTime: 0.2
   timer: 0
+  shake: 0
+--- !u!95 &963185452
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2689092492043228524}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d04ac0794b15514cb60fc736ea77740, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
