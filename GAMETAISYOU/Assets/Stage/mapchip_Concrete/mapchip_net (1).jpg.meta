@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4cc79284e90131048ae3274341c0c7fe
+guid: deca452cea5c1814abf859c704938967
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9073976123254697425
-    second: mapchip_conNormal_0
+      213: -3120680211194348008
+    second: mapchip_net (1)_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,12 +130,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mapchip_conNormal_0
+      name: mapchip_net (1)_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
-        width: 96
+        x: 64
+        y: 64
+        width: 64
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -144,8 +144,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f221709bac2c21280800000000000000
-      internalID: -9073976123254697425
+      spriteID: 81e7b2ac1ed11b4d0800000000000000
+      internalID: -3120680211194348008
       vertices: []
       indices: 
       edges: []

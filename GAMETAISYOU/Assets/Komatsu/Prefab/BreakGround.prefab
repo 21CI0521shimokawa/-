@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1552634854184943993}
   - component: {fileID: 1552634854184943973}
   m_Layer: 0
-  m_Name: BreakWall (1)
+  m_Name: BreakGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6573102588047023246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23.67, y: -5.0091, z: 0}
-  m_LocalScale: {x: 6.9618587, y: 1.127051, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 1, g: 0.6133982, b: 0, a: 1}
+  m_Sprite: {fileID: -9073976123254697425, guid: 4cc79284e90131048ae3274341c0c7fe, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,18 +98,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0000009536743, y: -0.008954048}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 6, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.978586, y: 1.9133396}
   m_EdgeRadius: 0
 --- !u!114 &1552634854184943993
 MonoBehaviour:
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb45529ee06764943b8690ad6cd3c834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   onObjects: []
   onObjectsOll: []
   quantity: 0
@@ -141,4 +142,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakWeight: 2
   brokenWallPieces: 20
-  brokenWallPrefab: {fileID: 5286970114045103105, guid: 02a6e7e6f3d8d7a468887448f290fc67, type: 3}
+  brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
