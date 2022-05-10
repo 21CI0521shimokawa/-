@@ -17,6 +17,8 @@ public class WeighingBoard_Door : MonoBehaviour
     bool ifOn;  //OnÇ©Ç«Ç§Ç©
     float beforePosY;   //à⁄ìÆëOÇÃYç¿ïW
 
+    [SerializeField] Animator gear;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,9 @@ public class WeighingBoard_Door : MonoBehaviour
             //äJÇ≠Ç»ÇÁ
             if (ifOnOpen && ifOn || !ifOnOpen && !ifOn)
             {
+                if (gear) { gear.SetBool("Open", true); }
+                
+
                 moveY = moveMaxY / moveTimeMax * Time.deltaTime;
 
                 //è„å¿
@@ -45,6 +50,8 @@ public class WeighingBoard_Door : MonoBehaviour
             }
             else
             {
+                if (gear) { gear.SetBool("Open", false); }
+
                 moveY = -moveMaxY / moveTimeMax * Time.deltaTime;
 
                 //â∫å¿
