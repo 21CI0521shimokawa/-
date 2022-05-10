@@ -20,10 +20,10 @@ public class BalanceScales_LineRenderer : MonoBehaviour
     void Update()
     {
         var positions = new Vector3[]{
-        left.transform.position,
-        leftPulley.transform.position,
-        rightPulley.transform.position,
-        right.transform.position
+        new Vector3(left.transform.position.x, left.transform.position.y + 0.38f, -5),
+        new Vector3(leftPulley.transform.position.x, leftPulley.transform.position.y, -5),
+        new Vector3(rightPulley.transform.position.x, rightPulley.transform.position.y, -5),
+        new Vector3(right.transform.position.x, right.transform.position.y + 0.38f, -5)
         };
 
         // ì_ÇÃêîÇéwíËÇ∑ÇÈ
