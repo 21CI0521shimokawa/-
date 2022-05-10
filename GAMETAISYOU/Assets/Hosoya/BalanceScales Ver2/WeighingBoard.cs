@@ -36,7 +36,11 @@ public class WeighingBoard : MonoBehaviour
         foreach (GameObject i in onObjects)
         {
             onObjectsOll.Add(i);
-            i.GetComponent<WeighingBoard_ObjectOnObject>().ObjectOnObjectProsess(this);
+            WeighingBoard_ObjectOnObject buf = i.GetComponent<WeighingBoard_ObjectOnObject>();
+            if (buf)
+            {
+                buf.ObjectOnObjectProsess(this);
+            }
         }
 
         #region 念のため重複しているオブジェクトがあったら削除

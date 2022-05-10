@@ -1059,7 +1059,7 @@ MonoBehaviour:
   EyePrefab: {fileID: 6656324580854073292, guid: 76d39a81b978fbe4eba6996e62e869c6, type: 3}
   stickX: []
   stickY: []
-  _power: 8
+  _power: 6
   _eyeRenderer: {fileID: 0}
   _ifSlimeHazikuNow: 0
   coolTime: 0.5
