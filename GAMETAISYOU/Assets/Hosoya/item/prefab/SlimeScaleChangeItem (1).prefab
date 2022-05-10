@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21a77e3d8c90f84abd5463e979afb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chengeSize: 1
+  chengeSize: 0.5
 --- !u!60 &6769201387092114976
 PolygonCollider2D:
   m_ObjectHideFlags: 0
