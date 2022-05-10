@@ -14,6 +14,8 @@ public class Trampoline : MonoBehaviour
     [SerializeField] float timer;
     [SerializeField] bool shake;
 
+    Animator animator;
+
     void OnValidate()
     {
         angle = transform.eulerAngles.z + 90f;
@@ -31,6 +33,8 @@ public class Trampoline : MonoBehaviour
 
     void Start()
     {
+        TryGetComponent(out animator);
+
         startPoint = transform.position;
         angle = transform.eulerAngles.z + 90f;
         //角度から法線を求める
@@ -61,7 +65,7 @@ public class Trampoline : MonoBehaviour
         else
         {
             transform.position = startPoint;
-            GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
+            //GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
             timer = 0;
         }
     }
@@ -76,8 +80,9 @@ public class Trampoline : MonoBehaviour
             itemBody = collisionInfo.gameObject.GetComponent<Rigidbody2D>();
             objectSpeed = itemBody.velocity;
             itemBody.AddForce(normal * force, ForceMode2D.Impulse);
-            shake = true;
-            GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            //shake = true;
+            //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            animator.SetTrigger("Touch");
         }
         //CaculateStopAndShotPoint();
     }
