@@ -56,23 +56,43 @@ public class ElevatoControll : MonoBehaviour
     {
         //åªç›ÇÃsceneÇéÊìæ
         string SceneName = SceneManager.GetActiveScene().name;
-        if (SceneName == "Stage0")
+        if (SceneName == "0-1")
         {
-            FadeManager.Instance.LoadScene("Stage1", FadeTime);
+            FadeManager.Instance.LoadScene("0-2", FadeTime);
             return;
         }
-        else if (SceneName == "Stage1")
+        else if (SceneName == "0-2")
         {
-            FadeManager.Instance.LoadScene("Stage2", FadeTime);
+            FadeManager.Instance.LoadScene("0-3", FadeTime);
             return;
         }
-        else if(SceneName== "Stage2")
+        else if(SceneName== "0-3")
         {
-            FadeManager.Instance.LoadScene("Stage3", FadeTime);
+            FadeManager.Instance.LoadScene("1-1", FadeTime);
         }
-        else if(SceneName== "Stage3")
+        else if(SceneName== "1-1")
         {
-            FadeManager.Instance.LoadScene("Stage4", FadeTime);
+            FadeManager.Instance.LoadScene("1-2", FadeTime);
+        }
+        else if (SceneName == "1-2")
+        {
+            FadeManager.Instance.LoadScene("2-1", FadeTime);
+        }
+        else if (SceneName == "2-1")
+        {
+            FadeManager.Instance.LoadScene("2-2", FadeTime);
+        }
+        else if (SceneName == "2-2")
+        {
+            FadeManager.Instance.LoadScene("3-1", FadeTime);
+        }
+        else if (SceneName == "3-1")
+        {
+            FadeManager.Instance.LoadScene("3-2", FadeTime);
+        }
+        else if (SceneName == "3-2")
+        {
+            FadeManager.Instance.LoadScene("4-1", FadeTime);
         }
     }
     #region ÉRÉãÅ[É`Éì
