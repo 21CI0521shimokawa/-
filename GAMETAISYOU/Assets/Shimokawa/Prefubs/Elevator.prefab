@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2029051302279793293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 145.2617, y: 5.21, z: 0}
-  m_LocalScale: {x: 7.7799683, y: 8.3118, z: 1.3853}
+  m_LocalScale: {x: 7.817034, y: 8.351399, z: 1.3919}
   m_Children:
   - {fileID: 805456640089178364}
   - {fileID: 5644892542105372795}
@@ -110,7 +110,7 @@ MonoBehaviour:
   SceneName:
     m_Handle: 0
   AutoDoorControll: {fileID: 0}
-  SE: {fileID: 8300000, guid: d755a498849996f4a8f9f47bb198c3ae, type: 3}
+  SE: {fileID: 8300000, guid: d773e9601ebae42429c76d68af2ff65c, type: 3}
   AudioSource: {fileID: 5722008326939435404}
   AutoDoorAnimator: {fileID: 3095068783024266687}
   CameraActive: {fileID: 0}
@@ -434,7 +434,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 4}
+  m_Size: {x: 0.5, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -516,7 +516,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 0.5, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -546,7 +546,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7468805107588806725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.16, z: 0}
+  m_LocalPosition: {x: 0, y: 3.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6290584954129448259}
