@@ -10,7 +10,6 @@ public class WeightGenerator : MonoBehaviour
     public bool spawnFlag;
     float timer;
     [SerializeField] AudioSource WeightGeneratorAudioSource;
-    [SerializeField] AutoDoorControll PlaySE;
     [SerializeField] AudioClip SE;
 
     // Start is called before the first frame update
@@ -28,11 +27,22 @@ public class WeightGenerator : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= spawnInterval)
             {
-                PlaySE.PlaySE(SE);
+               PlaySE(SE);
                 timer = 0.0f;
                 GameObject weight = Instantiate(weightPrefab) as GameObject;
                 weight.transform.position = this.transform.position;
             }
+        }
+    }
+    public void PlaySE(AudioClip audio)
+    {
+        if (WeightGeneratorAudioSource != null)
+        {
+            WeightGeneratorAudioSource.PlayOneShot(audio);
+        }
+        else
+        {
+            Debug.Log("オーディオソースが設定されてない");
         }
     }
 }
