@@ -14,6 +14,11 @@ public class Trampoline : MonoBehaviour
     [SerializeField] float timer;
     [SerializeField] bool shake;
 
+    [SerializeField, Tooltip("オーディオsource")]
+    AudioSource audioSource = null;
+    [SerializeField]
+    AudioClip SE;
+
     Animator animator;
 
     void OnValidate()
@@ -77,6 +82,7 @@ public class Trampoline : MonoBehaviour
 
         if (Vector3.Angle(normal, collisionInfo.transform.position - transform.position) < 90f)
         {
+            PlaySE(SE);
             itemBody = collisionInfo.gameObject.GetComponent<Rigidbody2D>();
             objectSpeed = itemBody.velocity;
             //itemBody.velocity =Vector2.zero;
@@ -87,5 +93,16 @@ public class Trampoline : MonoBehaviour
             animator.SetTrigger("Touch");
         }
         //CaculateStopAndShotPoint();
+    }
+    public void PlaySE(AudioClip audio)
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(audio);
+        }
+        else
+        {
+            Debug.Log("オーディオソースが設定されてない");
+        }
     }
 }

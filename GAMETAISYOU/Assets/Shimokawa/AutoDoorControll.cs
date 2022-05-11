@@ -7,6 +7,7 @@ public class AutoDoorControll : MonoBehaviour
     private enum State { Open, Exit, Default };
     private State NowState;
     private Vector2 StartPosition;
+    private bool StayFlag;
     private int PlaySECnt;
     [SerializeField, Tooltip("ドアの開閉スピード")]
     private float Speed;
@@ -21,6 +22,7 @@ public class AutoDoorControll : MonoBehaviour
 
     void Start()
     {
+        StayFlag = false;
         PlaySECnt = 0;
         StartPosition = this.transform.position;
         NowState = State.Default;
@@ -33,7 +35,7 @@ public class AutoDoorControll : MonoBehaviour
         {
             StartCoroutine("Up");
         }
-        else if (NowState == State.Exit)
+        else if (NowState == State.Exit&& !StayFlag)
         {
             StartCoroutine("Down");
         }
@@ -70,12 +72,25 @@ public class AutoDoorControll : MonoBehaviour
         {
             NowState = State.Open;
         }
+        if (collision.gameObject.tag == "Slime" && NowState == State.Exit)
+        {
+            StayFlag = true;
+            StopCoroutine("Down");
+            StartCoroutine("Up");
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Slime" && NowState == State.Exit)
+        {
+            StayFlag = false;
+        }
     }
     #endregion
     #region コルーチン
     private IEnumerator Up()//ドア上昇
     {
-        if (PlaySECnt== 0)
+        if (PlaySECnt == 0)
         {
             PlaySE(DoorSE);
             PlaySECnt++;
