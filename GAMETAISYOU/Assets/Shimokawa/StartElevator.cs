@@ -11,9 +11,10 @@ public class StartElevator : MonoBehaviour
     public bool is2ndFloor;
 
     [SerializeField] Animator StartElevatorAnimator;
-
+    [SerializeField] SlimeController SlimeController;
     void Start()
     {
+        SlimeController._ifOperation = false;
         DestinationPos = new Vector3(0, DestinationPosY, 0);
         pos = this.transform.position;
         is2ndFloor = false;
@@ -29,9 +30,10 @@ public class StartElevator : MonoBehaviour
         while (pos.y < DestinationPos.y)
         {
             pos = transform.position;
-            transform.Translate(0, 0.02f, 0);
+            transform.Translate(0, 4*Time.deltaTime, 0);
             yield return new WaitForSeconds(0.01f);
         }
+        SlimeController._ifOperation = true;
         StartElevatorAnimator.SetTrigger("Open");
         is2ndFloor = true;
     }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4850817084406060684}
   m_Layer: 0
   m_Name: Trampoline_Base
-  m_TagString: Untagged
+  m_TagString: Trampoline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemBody: {fileID: 0}
-  normal: {x: -0.00000004371139, y: 1}
+  normal: {x: -0.16556391, y: 0.9861991}
   startPoint: {x: 0, y: 0}
   objectSpeed: {x: 0, y: 0}
-  force: 37.4
-  angle: 90
+  force: 30
+  angle: 99.53
   ShakeTime: 0.2
   timer: 0
   shake: 0

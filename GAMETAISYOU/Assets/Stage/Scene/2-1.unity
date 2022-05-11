@@ -309,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349878096552151245, guid: 6a7f6e796f6cec9439a5d4ed444e1c20, type: 3}
       propertyPath: force
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7349878096552151245, guid: 6a7f6e796f6cec9439a5d4ed444e1c20, type: 3}
       propertyPath: normal.x
@@ -1434,11 +1434,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.4
+      value: 63.2
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.47
+      value: 19.1
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4000,10 +4000,6 @@ PrefabInstance:
       value: 99.53
       objectReference: {fileID: 0}
     - target: {fileID: 7349878096552151245, guid: 6a7f6e796f6cec9439a5d4ed444e1c20, type: 3}
-      propertyPath: force
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349878096552151245, guid: 6a7f6e796f6cec9439a5d4ed444e1c20, type: 3}
       propertyPath: normal.x
       value: -0.16556391
       objectReference: {fileID: 0}
@@ -5985,16 +5981,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 62, y: 38, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 14, y: 39, z: 0}
     second:
       serializedVersion: 2
@@ -6949,7 +6935,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 78c607038cf7e5e4882088fdd1629942, type: 2}
   - m_RefCount: 40
     m_Data: {fileID: 11400000, guid: a65fe507544c9214086ade26081f0625, type: 2}
-  - m_RefCount: 6
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 1ea07720f13bad9439afe18e9cac89b2, type: 2}
   - m_RefCount: 48
     m_Data: {fileID: 11400000, guid: 35332891926fe5b49ad9a6bed4070fea, type: 2}
@@ -6966,12 +6952,12 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 5a901ed9d8c7c584482029839e2201ea, type: 3}
   - m_RefCount: 40
     m_Data: {fileID: -4321338884823954255, guid: 712d93f2171cd3748b3f52428cf46fcd, type: 3}
-  - m_RefCount: 6
+  - m_RefCount: 5
     m_Data: {fileID: -5074998065307219840, guid: b17fa6a24c42cab41908ac896da5ed48, type: 3}
   - m_RefCount: 48
     m_Data: {fileID: 21300000, guid: d612c6be31e41b348b3d3472851a6f2c, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 230
+  - m_RefCount: 229
     m_Data:
       e00: 1
       e01: 0
@@ -6990,7 +6976,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 230
+  - m_RefCount: 229
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -7073,19 +7059,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349878096552151245, guid: 6a7f6e796f6cec9439a5d4ed444e1c20, type: 3}
       propertyPath: angle
-      value: 80.59
+      value: 73.42001
       objectReference: {fileID: 0}
     - target: {fileID: 7349878096552151245, guid: 6a7f6e796f6cec9439a5d4ed444e1c20, type: 3}
       propertyPath: force
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7349878096552151245, guid: 6a7f6e796f6cec9439a5d4ed444e1c20, type: 3}
       propertyPath: normal.x
-      value: 0.16349839
+      value: 0.2853537
       objectReference: {fileID: 0}
     - target: {fileID: 7349878096552151245, guid: 6a7f6e796f6cec9439a5d4ed444e1c20, type: 3}
       propertyPath: normal.y
-      value: 0.9865436
+      value: 0.9584223
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a7f6e796f6cec9439a5d4ed444e1c20, type: 3}

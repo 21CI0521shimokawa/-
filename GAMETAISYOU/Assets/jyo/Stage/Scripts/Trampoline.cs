@@ -21,11 +21,11 @@ public class Trampoline : MonoBehaviour
         angle = transform.eulerAngles.z + 90f;
         //角度から法線を求める
         normal = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-        if(angle < 0)
+        if (angle < 0)
         {
             angle += 360f;
         }
-        else if(angle > 360)
+        else if (angle > 360)
         {
             angle -= 360f;
         }
@@ -74,12 +74,14 @@ public class Trampoline : MonoBehaviour
     {
         // Debug.Log(collisionInfo.transform.position - transform.position);
         // Debug.Log(Vector3.Angle(normal, collisionInfo.transform.position - transform.position));
-    
+
         if (Vector3.Angle(normal, collisionInfo.transform.position - transform.position) < 90f)
         {
             itemBody = collisionInfo.gameObject.GetComponent<Rigidbody2D>();
             objectSpeed = itemBody.velocity;
-            itemBody.AddForce(normal * force, ForceMode2D.Impulse);
+            //itemBody.velocity =Vector2.zero;
+            //itemBody.AddForce(normal.normalized * force, ForceMode2D.Impulse);
+            itemBody.velocity = normal.normalized * force;
             //shake = true;
             //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
             animator.SetTrigger("Touch");
