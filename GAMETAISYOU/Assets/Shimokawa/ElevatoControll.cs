@@ -34,10 +34,13 @@ public class ElevatoControll : MonoBehaviour
     AudioSource AudioSource;
     [SerializeField]
     Animator AutoDoorAnimator;
+    [SerializeField]
+    GameObject CameraActive;
     //“–‚½‚è”»’è‚Ì‚·‚è”²‚¯–hŽ~
     public Rigidbody2D ElevatorRigidbody;
     void Start()
     {
+        CameraActive.SetActive(true);
         StartPosition = this.transform.position.y;
         ElevatorRigidbody = GetComponent<Rigidbody2D>();
         _IsFloor = false;
@@ -48,6 +51,7 @@ public class ElevatoControll : MonoBehaviour
     public void ElevatorStart()
     {
         AutoDoorAnimator.SetTrigger("Close");
+        CameraActive.SetActive(false);
         //  AutoDoorControll.PlaySE(SE);
        // Vignette.enabled.Override(true);
         StartCoroutine("ElevatorUp");
