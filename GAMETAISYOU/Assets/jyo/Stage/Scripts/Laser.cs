@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,11 @@ public class Laser : StageGimmick
     [Tooltip("破壊目標切り替え"), SerializeField] bool pressToSwitchTarget = false;
     [Tooltip("検知範囲"), SerializeField] LayerMask searchLayer = ~0;
 
+    [SerializeField] GameObject startVFX;
+    [SerializeField] GameObject endVFX;
+    [SerializeField] GameObject startBeam;
+    [SerializeField] GameObject endBeam;
+
     GameObject m_hitObject; //当たったオブジェクト
     LineRenderer m_lineRenderer; //レイの描画
     Vector2 m_hitPos; //当たったポイント
@@ -20,8 +26,8 @@ public class Laser : StageGimmick
     void Start()
     {
         GameManager.Instance.RegisterLaser(this.gameObject);
-        m_lineRenderer = GetComponent<LineRenderer>();
-        m_lineRenderer.startWidth = m_lineRenderer.endWidth = lineWidth;
+        m_lineRenderer = GetComponentInChildren<LineRenderer>();
+        //m_lineRenderer.startWidth = m_lineRenderer.endWidth = lineWidth;
 
         if (_Number == -1) _IsOpen = true;
     }
@@ -32,9 +38,14 @@ public class Laser : StageGimmick
         {
             RayCheck();
         }
+    }
 
-        //削除予定
-        debugfunction();
+    void SetEffect()
+    {
+        startVFX.SetActive(!startVFX.activeSelf);
+        startBeam.SetActive(!startBeam.activeSelf);
+        endVFX.SetActive(!endVFX.activeSelf);
+        endBeam.SetActive(!endBeam.activeSelf);
     }
 
     void RayCheck()
@@ -53,12 +64,18 @@ public class Laser : StageGimmick
                 m_hitPos = hitInfo.point; //当たった位置
                 m_hitObject = hitInfo.collider.gameObject; //当たったオブジェクト
                 m_lineRenderer.SetPosition(1, m_hitPos); //描画終点
+
+                endVFX.transform.position = m_hitPos;
+                endBeam.transform.position = m_hitPos;
             }
         }
         else
         {
             Vector2 endPoint = transform.up * rayLength;
             m_lineRenderer.SetPosition(1, pos + endPoint); //描画終点
+
+            endVFX.transform.position = pos + endPoint;
+            endBeam.transform.position = pos + endPoint;
         }
         Debug.DrawRay(ray2D.origin, ray2D.direction * rayLength, Color.red);
     }
@@ -122,27 +139,14 @@ public class Laser : StageGimmick
 
         _IsOpen = !_IsOpen;
         m_lineRenderer.enabled = _IsOpen;
+
+        SetEffect();
     }
     public override void Close()
     {
         _IsOpen = !_IsOpen;
         m_lineRenderer.enabled = _IsOpen;
-    }
 
-    void debugfunction()
-    {
-        //破壊目標物によって色変更
-        if (destoryItem && destoryPlayer)
-        {
-            m_lineRenderer.material.SetColor("_Color", Color.red);
-        }
-        else if (destoryItem)
-        {
-            m_lineRenderer.material.SetColor("_Color", Color.green);
-        }
-        else if (destoryPlayer)
-        {
-            m_lineRenderer.material.SetColor("_Color", Color.cyan);
-        }
+        SetEffect();
     }
 }
