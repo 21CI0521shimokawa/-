@@ -50,6 +50,7 @@ public class ElevatoControll : MonoBehaviour
     }
     public void ElevatorStart()
     {
+        PlaySE(SE);
         AutoDoorAnimator.SetTrigger("Close");
         CameraActive.SetActive(false);
         //  AutoDoorControll.PlaySE(SE);
@@ -99,9 +100,21 @@ public class ElevatoControll : MonoBehaviour
             FadeManager.Instance.LoadScene("4-1", FadeTime);
         }
     }
+    public void PlaySE(AudioClip audio)
+    {
+        if (AudioSource != null)
+        {
+            AudioSource.PlayOneShot(audio);
+        }
+        else
+        {
+            Debug.Log("オーディオソースが設定されてない");
+        }
+    }
     #region コルーチン
     public IEnumerator ElevatorUp()
     {
+        yield return new WaitForSeconds(1f);
         while (NowPosition.y < DestinationNum)
         {
             NowPosition = transform.position;
