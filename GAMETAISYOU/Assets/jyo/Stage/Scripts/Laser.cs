@@ -98,6 +98,11 @@ public class Laser : StageGimmick
 
         if(item.tag == "Item")
         {
+            FallGarekiController fallGarekiController = item.GetComponent<FallGarekiController>();
+            if(fallGarekiController != null)
+            {
+                fallGarekiController.SpawnBrokenWall();
+            }
             Destroy(item);
             return true;
         }
