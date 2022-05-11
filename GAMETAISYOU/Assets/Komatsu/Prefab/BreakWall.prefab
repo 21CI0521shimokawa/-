@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.043754578, y: 0.014585972}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0793304, y: 7.913553}
+  m_Size: {x: 2, y: 8}
   m_EdgeRadius: 0
 --- !u!114 &5671237915448916696
 MonoBehaviour:
@@ -123,12 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af09c69c353071549a4dcc6ac567bcd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakWeight: 1.5
+  breakWeight: 4
   brokenWallPieces: 15
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
   PlaySE: {fileID: 0}
+  SE: {fileID: 8300000, guid: a11641a72fbeebb4fb1fd71cd717dcd7, type: 3}
   BreakWallAudioSource: {fileID: 539565971}
-  BreakSE: {fileID: 8300000, guid: a11641a72fbeebb4fb1fd71cd717dcd7, type: 3}
 --- !u!82 &539565971
 AudioSource:
   m_ObjectHideFlags: 0

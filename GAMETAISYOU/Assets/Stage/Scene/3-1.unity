@@ -303,6 +303,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  SE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
 --- !u!61 &62928994
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4875,6 +4878,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  SE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
 --- !u!61 &445832938
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5464,6 +5470,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  SE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
 --- !u!61 &678844961
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5477,7 +5486,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.020130157, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5488,7 +5497,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.0533295, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &678844962
 SpriteRenderer:
@@ -5589,6 +5598,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  SE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
 --- !u!61 &700624574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6570,6 +6582,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  SE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
 --- !u!61 &1279823802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6926,6 +6941,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  SE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
 --- !u!61 &1345513736
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11405,6 +11423,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  SE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
 --- !u!61 &2031130861
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11530,6 +11551,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  SE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
 --- !u!61 &2045785371
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12202,6 +12226,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  SE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
 --- !u!61 &2972985632205547823
 BoxCollider2D:
   m_ObjectHideFlags: 0

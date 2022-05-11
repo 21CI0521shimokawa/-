@@ -9,6 +9,10 @@ public class BrokenGround : MonoBehaviour
     [SerializeField] int brokenWallPieces;
     public GameObject brokenWallPrefab;
 
+    [SerializeField] AutoDoorControll PlaySE;
+    [SerializeField] AudioClip SE;
+    [SerializeField] AudioSource BreakWallAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +24,7 @@ public class BrokenGround : MonoBehaviour
     {
         if (CheckBroken())
         {
+            PlaySE.PlaySE(SE);
             Destroy(gameObject);
             SpawnBrokenWall();
         }
