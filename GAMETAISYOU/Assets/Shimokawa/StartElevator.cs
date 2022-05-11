@@ -10,6 +10,8 @@ public class StartElevator : MonoBehaviour
     public Vector3 DestinationPos;
     public bool is2ndFloor;
 
+    [SerializeField] Animator StartElevatorAnimator;
+
     void Start()
     {
         DestinationPos = new Vector3(0, DestinationPosY, 0);
@@ -30,6 +32,7 @@ public class StartElevator : MonoBehaviour
             transform.Translate(0, 0.02f, 0);
             yield return new WaitForSeconds(0.01f);
         }
+        StartElevatorAnimator.SetTrigger("Open");
         is2ndFloor = true;
     }
     public void MoveDown()
