@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +30,10 @@ public class Laser : StageGimmick
         m_lineRenderer = GetComponentInChildren<LineRenderer>();
         //m_lineRenderer.startWidth = m_lineRenderer.endWidth = lineWidth;
 
-        if (_Number == -1) _IsOpen = true;
+        if (_Number == -1) {
+            SetEffect();
+            _IsOpen = true;
+        } 
     }
 
     void Update()
