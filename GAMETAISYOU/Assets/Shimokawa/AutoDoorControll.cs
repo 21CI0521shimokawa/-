@@ -90,7 +90,7 @@ public class AutoDoorControll : MonoBehaviour
     #region コルーチン
     private IEnumerator Up()//ドア上昇
     {
-        if (PlaySECnt == 0)
+        if (PlaySECnt == 0&&NowState!=State.Exit)
         {
             PlaySE(DoorSE);
             PlaySECnt++;
