@@ -7,6 +7,9 @@ public class BreakWall : MonoBehaviour
     [SerializeField] float breakWeight;
     [SerializeField] int brokenWallPieces;
     public GameObject brokenWallPrefab;
+    [SerializeField] AutoDoorControll PlaySE;
+    [SerializeField] AudioClip SE;
+    [SerializeField] AudioSource BreakWallAudioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,7 @@ public class BreakWall : MonoBehaviour
 
             if (CheckWeight(weight))
             {
+                PlaySE.PlaySE(SE);
                 Destroy(gameObject);
                 SpawnBrokenWall();
             }

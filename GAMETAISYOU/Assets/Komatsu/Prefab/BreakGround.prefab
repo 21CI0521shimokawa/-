@@ -145,8 +145,8 @@ MonoBehaviour:
   brokenWallPieces: 20
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
   PlaySE: {fileID: 0}
+  SE: {fileID: 8300000, guid: a11641a72fbeebb4fb1fd71cd717dcd7, type: 3}
   BreakWallAudioSource: {fileID: 3359317341868638871}
-  BreakSE: {fileID: 8300000, guid: a11641a72fbeebb4fb1fd71cd717dcd7, type: 3}
 --- !u!82 &3359317341868638871
 AudioSource:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3221935181088306992}
   - component: {fileID: 2312038998898597139}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Collison
   m_TagString: AutomaticDoor
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681278917304244498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 8140804114953693376}
   - component: {fileID: 4507997123813194150}
   - component: {fileID: 279385682395199047}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Automatic door
   m_TagString: AutomaticDoor
   m_Icon: {fileID: 0}
