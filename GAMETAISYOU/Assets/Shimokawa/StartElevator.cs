@@ -12,6 +12,9 @@ public class StartElevator : MonoBehaviour
 
     [SerializeField] Animator StartElevatorAnimator;
     [SerializeField] SlimeController SlimeController;
+    [SerializeField] AudioSource StartElevatorAudioSource;
+    [SerializeField] AudioClip SE;
+    [SerializeField] AutoDoorControll PlaySE;
     void Start()
     {
         SlimeController._ifOperation = false;
@@ -30,10 +33,11 @@ public class StartElevator : MonoBehaviour
         while (pos.y < DestinationPos.y)
         {
             pos = transform.position;
-            transform.Translate(0, 4*Time.deltaTime, 0);
+            transform.Translate(0, 2*Time.deltaTime, 0);
             yield return new WaitForSeconds(0.01f);
         }
         SlimeController._ifOperation = true;
+        PlaySE.PlaySE(SE);
         StartElevatorAnimator.SetTrigger("Open");
         is2ndFloor = true;
     }
