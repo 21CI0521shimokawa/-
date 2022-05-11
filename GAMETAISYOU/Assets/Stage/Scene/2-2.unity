@@ -6468,6 +6468,9 @@ MonoBehaviour:
   breakWeight: 2.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &911877931
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6823,7 +6826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.93
+      value: -11.67
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6906,7 +6909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1466602970285474363, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.18
+      value: -9.23
       objectReference: {fileID: 0}
     - target: {fileID: 1466602970285474363, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6948,6 +6951,10 @@ PrefabInstance:
       propertyPath: Destination
       value: 
       objectReference: {fileID: 1699408362}
+    - target: {fileID: 5050075161512873543, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
+      propertyPath: DestinationPosY
+      value: -1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7388471236682931035, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_Name
       value: StartElevator
@@ -7259,6 +7266,9 @@ MonoBehaviour:
   breakWeight: 2.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &1311625521
 BoxCollider2D:
   m_ObjectHideFlags: 0

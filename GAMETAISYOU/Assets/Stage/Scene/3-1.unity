@@ -303,6 +303,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &62928994
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -394,6 +397,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &101407713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+  m_PrefabInstance: {fileID: 427247287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee8ff07694c24243b876735c9af8851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &201886563
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,6 +635,26 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: -19, y: -10, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 0, y: -10, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 19, y: -10, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 1
@@ -990,6 +1024,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 19, y: -1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -171, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -1241,6 +1285,16 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: -19, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 1
@@ -2061,6 +2115,26 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: -19, y: 10, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 0, y: 10, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 19, y: 10, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 1
@@ -4224,15 +4298,15 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 328
     m_Data: {fileID: 11400000, guid: 78c607038cf7e5e4882088fdd1629942, type: 2}
-  - m_RefCount: 44
+  - m_RefCount: 50
     m_Data: {fileID: 11400000, guid: 35332891926fe5b49ad9a6bed4070fea, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 328
     m_Data: {fileID: 21300000, guid: 5a901ed9d8c7c584482029839e2201ea, type: 3}
-  - m_RefCount: 44
+  - m_RefCount: 50
     m_Data: {fileID: 21300000, guid: d612c6be31e41b348b3d3472851a6f2c, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 372
+  - m_RefCount: 378
     m_Data:
       e00: 1
       e01: 0
@@ -4251,7 +4325,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 372
+  - m_RefCount: 378
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -4800,6 +4874,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &445832938
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5075,7 +5152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.93
+      value: -11.71
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5264,6 +5341,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &678844961
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5389,6 +5469,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &700624574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5501,7 +5584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1466602970285474363, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.18
+      value: -9.43
       objectReference: {fileID: 0}
     - target: {fileID: 1466602970285474363, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5543,6 +5626,10 @@ PrefabInstance:
       propertyPath: Destination
       value: 
       objectReference: {fileID: 1997094320}
+    - target: {fileID: 5050075161512873543, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
+      propertyPath: DestinationPosY
+      value: -1.47
+      objectReference: {fileID: 0}
     - target: {fileID: 7388471236682931035, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_Name
       value: StartElevator
@@ -6366,6 +6453,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &1279823802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6722,6 +6812,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &1345513736
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7194,21 +7287,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6794146148780095387, guid: ca1de71f897160443bfcd8bb97f0dcf3, type: 3}
-      propertyPath: weightPrefab
+      propertyPath: PlaySE
       value: 
-      objectReference: {fileID: 579617219677177103, guid: b575cbbe953fbf04e9c96de450619adb, type: 3}
-    - target: {fileID: 6794146148780095387, guid: ca1de71f897160443bfcd8bb97f0dcf3, type: 3}
-      propertyPath: spawnInterval
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6794146148780095387, guid: ca1de71f897160443bfcd8bb97f0dcf3, type: 3}
-      propertyPath: spawnPosition.x
-      value: -155.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6794146148780095387, guid: ca1de71f897160443bfcd8bb97f0dcf3, type: 3}
-      propertyPath: spawnPosition.y
-      value: 40
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 101407713}
     - target: {fileID: 6794146148780095388, guid: ca1de71f897160443bfcd8bb97f0dcf3, type: 3}
       propertyPath: m_Name
       value: WeightGenerator
@@ -11213,6 +11294,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &2031130861
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11338,6 +11422,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &2045785371
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11938,6 +12025,9 @@ MonoBehaviour:
   breakWeight: 1.5
   brokenWallPieces: 2
   brokenWallPrefab: {fileID: 5386954250158159206, guid: 1c93cc2f96090814e85257860d04f573, type: 3}
+  PlaySE: {fileID: 0}
+  BreakWallAudioSource: {fileID: 0}
+  BreakSE: {fileID: 0}
 --- !u!61 &2972985632205547823
 BoxCollider2D:
   m_ObjectHideFlags: 0
