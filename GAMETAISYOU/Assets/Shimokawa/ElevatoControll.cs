@@ -22,8 +22,8 @@ public class ElevatoControll : MonoBehaviour
 
     [SerializeField, Tooltip("ポストエフェクトの取得")]
     private PostProcessVolume Volume;
-    [SerializeField, Tooltip("ポストエフェクトVignetteの取得")] //エレベーター乗った時に暗くなる
-    private Vignette Vignette;
+   // [SerializeField, Tooltip("ポストエフェクトVignetteの取得")] //エレベーター乗った時に暗くなる
+   // private Vignette Vignette;
     [SerializeField, Tooltip("sceneの名前")]
     Scene SceneName;
     [SerializeField, Tooltip("SE関数取得")]
@@ -46,7 +46,7 @@ public class ElevatoControll : MonoBehaviour
         _IsFloor = false;
         DestinationNum = Mathf.Abs(Destination.position.y);
         //ポストエフェクト
-        Volume.profile.TryGetSettings<Vignette>(out Vignette);
+      //  Volume.profile.TryGetSettings<Vignette>(out Vignette);
     }
     public void ElevatorStart()
     {
