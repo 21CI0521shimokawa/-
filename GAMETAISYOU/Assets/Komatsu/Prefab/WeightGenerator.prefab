@@ -48,9 +48,8 @@ MonoBehaviour:
   spawnInterval: 5
   spawnPosition: {x: -155.5, y: 40, z: 0}
   spawnFlag: 1
-  PlaySE: {fileID: 0}
+  WeightGeneratorAudioSource: {fileID: 41892633713106464}
   SE: {fileID: 8300000, guid: 01b7b18c41e230a41ae7f4307d30dfe7, type: 3}
-  AudioSource: {fileID: 41892633713106464}
 --- !u!82 &41892633713106464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -61,7 +60,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 01b7b18c41e230a41ae7f4307d30dfe7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -71,10 +70,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 25
+  MaxDistance: 70
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -107,7 +106,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
