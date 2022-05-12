@@ -11,6 +11,8 @@ public class BeltConveyor : MonoBehaviour
 
     [SerializeField] Sprite[] images;
 
+    BeltConveyor_Buffer buffer;
+
     public bool _isOn;  //ƒ‚ƒm‚ð“®‚©‚·‚©‚Ç‚¤‚©
     public float _speed; //‘¬“x
 
@@ -20,6 +22,7 @@ public class BeltConveyor : MonoBehaviour
     void Start()
     {
         moveImage = 0;
+        buffer = GameObject.Find("BeltConveyor_Buffer").GetComponent<BeltConveyor_Buffer>();
     }
 
     // Update is called once per frame
@@ -36,7 +39,12 @@ public class BeltConveyor : MonoBehaviour
             {
                 if(i)
                 {
-                    i.transform.Translate(move, Space.World);
+                    if(!buffer._SearchObject(i))
+                    {
+                        i.transform.Translate(move, Space.World);
+
+                        buffer._Add(i);
+                    }
                 }
             }
         }
