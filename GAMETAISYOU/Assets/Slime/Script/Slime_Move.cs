@@ -10,11 +10,14 @@ public class Slime_Move : MonoBehaviour
 
     float speed;
 
+    float noMoveTime;   //移動ができない時間
+
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         speed = 0;
+        noMoveTime = 0;
     }
 
     // Update is called once per frame
@@ -22,7 +25,13 @@ public class Slime_Move : MonoBehaviour
     {
         SpeedSetting();
 
-        if (slimeController.moveUpdate)
+        //動けない時間カウント
+        if(noMoveTime > 0)
+        {
+            noMoveTime = Mathf.Max(noMoveTime - Time.deltaTime, 0);
+        }
+
+        if (slimeController.moveUpdate && noMoveTime == 0)
         {
             float horizontal = slimeController.modeLR == SlimeController.LRMode.Left ? /*Input.GetAxisRaw("L_Stick_Horizontal")*/Gamepad.current.leftStick.x.ReadValue() : /*Input.GetAxisRaw("R_Stick_Horizontal")*/Gamepad.current.rightStick.x.ReadValue();
             if (horizontal > 0.2f) { horizontal = 1; }
@@ -46,21 +55,22 @@ public class Slime_Move : MonoBehaviour
                 }
                 else
                 {
-                    Vector2 force = new Vector2(moveForceX, 0);    // 力を設定
-
-                    //移動ベクトルを床の角度に応じて回転
-                    if (slimeController._rayHitFoot)
+                    //足元がトランポリンだったら処理しない
+                    if(!IsFootTrampoline())
                     {
-                        Debug.Log(slimeController._rayHitFoot.normal);
-                        //force = Quaternion.Euler(Quaternion.FromToRotation(transform.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
-                        //force = Quaternion.Euler(Quaternion.FromToRotation(Vector3.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
-                        force = Quaternion.Euler(slimeController._FloorAngle()) * force;
+                        Vector2 force = new Vector2(moveForceX, 0);    // 力を設定
+                        //移動ベクトルを床の角度に応じて回転
+                        if (slimeController._rayHitFoot)
+                        {
+                            Debug.Log(slimeController._rayHitFoot.normal);
+                            //force = Quaternion.Euler(Quaternion.FromToRotation(transform.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
+                            //force = Quaternion.Euler(Quaternion.FromToRotation(Vector3.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
+                            force = Quaternion.Euler(slimeController._FloorAngle()) * force;
+                        }
+
+                        rigidBody.velocity = force;
                     }
-
-                    rigidBody.velocity = force;
-
-
-
+                    
                     //かかっている力を消す
                     //Vector2 force = new Vector2(moveForceX, rigidBody.velocity.y);    // 力を設定
                     //rigidBody.velocity = force;
@@ -125,5 +135,20 @@ public class Slime_Move : MonoBehaviour
     bool StateAIRMoveWallCheck()
     {
         return !slimeController._triggerRight._onTrigger;
+    }
+
+    //スライムがトランポリンを踏んでいるかどうか
+    bool IsFootTrampoline()
+    {
+        if (slimeController._rayHitFoot)
+        {
+            if (slimeController._rayHitFoot.collider.gameObject.tag == "Trampoline")
+            {
+                noMoveTime = 0.2f;  //0.2秒間移動ができない
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -263,7 +263,8 @@ public class Slime_Tearoff : MonoBehaviour
         {
             float distance = slimeController._scaleMax * 1.0f;
 
-            Vector3 position = new Vector2((float)(transform.position.x + distance * (slimeController._direction == SlimeController._Direction.Right ? 1 : -1)), transform.position.y);
+            Vector3 position = new Vector2((float)(transform.position.x + SlimeNoCoreInstanceateDistance(distance) * (slimeController._direction == SlimeController._Direction.Right ? 1 : -1)), transform.position.y);
+
             GameObject cloneObject = Instantiate(slimePrefab);
             cloneObject.transform.position = position;
 
@@ -315,5 +316,51 @@ public class Slime_Tearoff : MonoBehaviour
         Destroy(this.gameObject);
 
         IsDirecting = false;
+    }
+
+
+    float SlimeNoCoreInstanceateDistance(float distance_)
+    {
+        float rtv = distance_;
+
+        //Rayを真横に飛ばす
+        Ray ray = new Ray(transform.position, slimeController._direction == SlimeController._Direction.Right ? Vector2.right : Vector2.left);
+
+        Debug.DrawRay(ray.origin, ray.direction * distance_, Color.red);
+        RaycastHit2D[] rayHits = Physics2D.RaycastAll(ray.origin, ray.direction, distance_);
+        List<RaycastHit2D> raycastHits = new List<RaycastHit2D>();
+
+        //一番距離が近いオブジェクトとの距離をだす
+        foreach (RaycastHit2D i in rayHits)
+        {
+            //トリガーは除外
+            if (i.collider.isTrigger)
+            {
+                continue;
+            }
+
+            //自分自身は除外
+            if (i.collider.gameObject == this.gameObject)
+            {
+                continue;
+            }
+
+            //一部のタグのついたオブジェクトは除外
+            switch (i.collider.gameObject.tag)
+            {
+                case "Slime" : continue;        //スライム        
+                case "SlimeTrigger": continue;  //スライムトリガー
+                case "Tracking": continue;      //カメラトラッキング
+                //ここに追加
+
+                default:
+                    raycastHits.Add(i);    //追加
+                    break;
+            }
+
+            rtv = Mathf.Min(rtv, i.distance);   //距離が短い方を代入
+        }
+
+        return rtv;
     }
 }
