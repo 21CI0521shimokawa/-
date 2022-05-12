@@ -10,11 +10,12 @@ public class BreakWall : MonoBehaviour
     [SerializeField] AutoDoorControll PlaySE;
     [SerializeField] AudioClip SE;
     [SerializeField] AudioSource BreakWallAudioSource;
+    ControllerVibrationScript controllerVibration;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        controllerVibration = GameObject.Find("ControllerVibration").GetComponent<ControllerVibrationScript>();
     }
 
     // Update is called once per frame
@@ -36,8 +37,10 @@ public class BreakWall : MonoBehaviour
             if (CheckWeight(weight))
             {
                 PlaySE.PlaySE(SE);
-                Destroy(gameObject);
+                ObjectHide();
                 SpawnBrokenWall();
+
+                ControllerVibration();
             }
         }
     }
@@ -61,5 +64,23 @@ public class BreakWall : MonoBehaviour
     private bool CheckWeight(float weight)
     {
         return weight >= breakWeight;
+    }
+
+    void ObjectHide()
+    {
+        this.gameObject.GetComponent<Collider2D>().enabled = false;
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    private void ControllerVibration()
+    {
+        controllerVibration.Vibration("BreakWall", 1.0f, 1.0f);
+        Invoke("ControllerVibrationDelayMethod", 1.0f);
+    }
+
+    private void ControllerVibrationDelayMethod()
+    {
+        controllerVibration.Destroy("BreakWall");
+        Destroy(gameObject);
     }
 }
