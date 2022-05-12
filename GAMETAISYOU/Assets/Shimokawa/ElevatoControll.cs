@@ -97,6 +97,10 @@ public class ElevatoControll : MonoBehaviour
         {
             FadeManager.Instance.LoadScene("4-1", FadeTime);
         }
+        else if (SceneName == "4-1")
+        {
+            FadeManager.Instance.LoadScene("ClearScene", FadeTime);
+        }
     }
     public void PlaySE(AudioClip audio)
     {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4801598804233407286}
   - component: {fileID: 598100065860285113}
   - component: {fileID: 5849553840431545866}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: FallGareki
   m_TagString: Item
   m_Icon: {fileID: 0}
