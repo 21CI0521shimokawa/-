@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 7447981417997804932}
   audioSourceSoundStretch: {fileID: 7803590351163427987}
-  soundJump: {fileID: 8300000, guid: 563961c87ae5fbd48a2bec4e93906c15, type: 3}
+  soundJump: {fileID: 8300000, guid: 542896aa0de8586489b74d525192e4f1, type: 3}
   soundTearoff: {fileID: 8300000, guid: ab5936601ce3c4d43bdadcc8ee492056, type: 3}
   soundMove: {fileID: 8300000, guid: e98d6f0f3404ff945a83d145d3d12da6, type: 3}
   soundLanding: {fileID: 8300000, guid: 059383c60df60ea418a9cda3d921a0f6, type: 3}

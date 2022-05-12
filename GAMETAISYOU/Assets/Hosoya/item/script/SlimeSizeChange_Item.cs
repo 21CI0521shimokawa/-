@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlimeSizeChange_Item : MonoBehaviour
 {
     [SerializeField] float chengeSize;  //‘å‚«‚³‚Ì•Ï‰»—Ê
+    [SerializeField] AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class SlimeSizeChange_Item : MonoBehaviour
         if (collision.gameObject.tag == "Slime")
         {
             collision.gameObject.GetComponent<SlimeController>()._scaleMax += chengeSize;
+            AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
             Destroy(this.gameObject);
         }
     }
