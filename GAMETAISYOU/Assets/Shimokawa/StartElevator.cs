@@ -7,6 +7,8 @@ public class StartElevator : MonoBehaviour
     private Vector3 pos;
     [SerializeField, Tooltip("Y�̈ʒu")]
     private float DestinationPosY;
+    [SerializeField]
+    private float Speed;
     public Vector3 DestinationPos;
     public bool is2ndFloor;
 
@@ -33,7 +35,7 @@ public class StartElevator : MonoBehaviour
         while (pos.y < DestinationPos.y)
         {
             pos = transform.position;
-            transform.Translate(0, 2*Time.deltaTime, 0);
+            transform.Translate(0, Speed*Time.deltaTime, 0);
             yield return new WaitForSeconds(0.01f);
         }
         SlimeController._ifOperation = true;

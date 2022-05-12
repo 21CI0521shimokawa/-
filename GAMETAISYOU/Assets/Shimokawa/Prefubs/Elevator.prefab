@@ -109,8 +109,7 @@ MonoBehaviour:
   Volume: {fileID: 0}
   SceneName:
     m_Handle: 0
-  AutoDoorControll: {fileID: 0}
-  SE: {fileID: 8300000, guid: d755a498849996f4a8f9f47bb198c3ae, type: 3}
+  SE: {fileID: 8300000, guid: 3d9f0baa04158574f929550eb4959ef5, type: 3}
   AudioSource: {fileID: 5722008326939435404}
   AutoDoorAnimator: {fileID: 3095068783024266687}
   CameraActive: {fileID: 0}
