@@ -94,7 +94,12 @@ public class WeighingBoard_ObjectOnObject : MonoBehaviour
                 if (!i.CompareTag("WeighingBoard"))
                 {
                     _exclusionObjects.Add(i);   //除外に入れる
-                    return i.GetComponent<WeighingBoard_ObjectOnObject>().IfThatObjectToWeighingBoard(_exclusionObjects);  //除外したオブジェクトでもう一度処理をする
+
+                    WeighingBoard_ObjectOnObject buf = i.GetComponent<WeighingBoard_ObjectOnObject>();
+                    if (buf && i)
+                    {
+                        return buf.IfThatObjectToWeighingBoard(_exclusionObjects);  //除外したオブジェクトでもう一度処理をする
+                    }
                 }
                 else
                 {
