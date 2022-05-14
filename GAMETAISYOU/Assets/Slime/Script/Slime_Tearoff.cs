@@ -72,6 +72,7 @@ public class Slime_Tearoff : MonoBehaviour
 
                     //Debug.Log("引っ張ってるよ:" + stickLHorizontal + "," + stickRHorizontal);
 
+                    ChangeDivisionTime();
                     power += (-stickLHorizontal + stickRHorizontal) / 2 * Time.deltaTime / divisionTime;    //かかる力を増やす
 
                     if (power > (-stickLHorizontal + stickRHorizontal) / 2)
@@ -80,18 +81,18 @@ public class Slime_Tearoff : MonoBehaviour
                     }
 
                     //振動
-                    slimeController._controllerVibrationScript.Vibration("SlimeTearoff", power * 0.5f, power * 0.5f);
+                    slimeController._controllerVibrationScript.Vibration("SlimeTearoff", power * 0.3f, power * 0.3f);
 
                     slimeController._slimeSE._PlayStretchSE(3 * power);
 
                     //ちぎる
                     if (power >= 1)
                     {
-                        if (slimeController._scaleMax == slimeController._scaleNow) //スライムが大きくなりきっていたら
+                        //if (slimeController._scaleMax == slimeController._scaleNow) //スライムが大きくなりきっていたら
                         {
                             
                             //大きさがLimitより大きいならちぎる
-                            if(slimeController._scaleMax > _scaleLowerLimit)
+                            if(slimeController._scaleNow > _scaleLowerLimit)
                             {
                                 //ちぎる大きさと今の大きさからLimitを引いた値の内小さい方を代入する
                                 float tearOffSlimeScale = Mathf.Min(divisionScale, slimeController._scaleMax - _scaleLowerLimit);
@@ -120,12 +121,12 @@ public class Slime_Tearoff : MonoBehaviour
                             //}
                             
                         }
-                        else
-                        {
-                            GetComponent<Renderer>().material.color = Color.red;
-                            Debug.Log("スライムが大きくなりきってません！！");
-                            slimeController._CannotAction();
-                        }
+                        //else
+                        //{
+                        //    GetComponent<Renderer>().material.color = Color.red;
+                        //    Debug.Log("スライムが大きくなりきってません！！");
+                        //    slimeController._CannotAction();
+                        //}
                     }
                     else
                     {
@@ -251,9 +252,9 @@ public class Slime_Tearoff : MonoBehaviour
 
         slimeController._controllerVibrationScript.Vibration("SlimeTearoff", 1.0f, 1.0f);
 
-        yield return new WaitForSeconds(0.15f); //0.15秒待つ
+        yield return new WaitForSeconds(0.25f); //0.25秒待つ
         slimeController._controllerVibrationScript.Destroy("SlimeTearoff");
-        yield return new WaitForSeconds(0.3f); //0.3秒待つ
+        yield return new WaitForSeconds(0.2f); //0.2秒待つ
 
         Debug.Log("きれたよ");
 
@@ -362,5 +363,21 @@ public class Slime_Tearoff : MonoBehaviour
         }
 
         return rtv;
+    }
+
+    void ChangeDivisionTime()
+    {
+        float sizeMin = 2.0f;
+        float sizeMax = 5.0f;
+
+        float divisionTimeMin = 1.0f;
+        float divisionTimeMax = 2.5f;
+
+
+        float buf = (slimeController._scaleMax - sizeMin) / sizeMax;
+
+        float newDivisionTime = Mathf.Lerp(divisionTimeMin, divisionTimeMax, buf);
+
+        divisionTime = newDivisionTime;
     }
 }
