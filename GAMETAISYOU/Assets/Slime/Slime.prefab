@@ -1004,7 +1004,7 @@ MonoBehaviour:
   moveUpdate: 0
   s_state: 0
   rigid2D: {fileID: 8680789583821087135}
-  _scaleMax: 1
+  _scaleMax: 2
   modeLR: 0
   liveTime: 0
   deadTime: 0
@@ -1032,8 +1032,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeController: {fileID: 8680789583821087134}
-  _scaleLowerLimit: 0.5
-  divisionScale: 0.5
+  _scaleLowerLimit: 1
+  divisionScale: 1
   divisionTime: 1
   slimePrefab: {fileID: 8680789583821087122}
   stretchEndTime: 0
@@ -1066,6 +1066,7 @@ MonoBehaviour:
   _nextHazikuUpdateTime: 0
   _stateFixationTime: 0
   guidetype: 0
+  stickType: 0
   eyeReverse: 0
 --- !u!114 &615655020605770485
 MonoBehaviour:
@@ -1239,6 +1240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6935be961354d24abe2c5085d2d0805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slimeController: {fileID: 8680789583821087134}
   audioSource: {fileID: 7447981417997804932}
   audioSourceSoundStretch: {fileID: 7803590351163427987}
   soundJump: {fileID: 8300000, guid: 542896aa0de8586489b74d525192e4f1, type: 3}

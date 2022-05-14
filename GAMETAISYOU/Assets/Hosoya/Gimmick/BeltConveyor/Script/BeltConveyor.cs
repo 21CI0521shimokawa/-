@@ -11,6 +11,9 @@ public class BeltConveyor : MonoBehaviour
 
     [SerializeField] Sprite[] images;
 
+    [SerializeField] AudioSource audioSource;
+    bool isAudioPlay;
+
     BeltConveyor_Buffer buffer;
 
     public bool _isOn;  //ƒ‚ƒm‚ð“®‚©‚·‚©‚Ç‚¤‚©
@@ -23,6 +26,8 @@ public class BeltConveyor : MonoBehaviour
     {
         moveImage = 0;
         buffer = GameObject.Find("BeltConveyor_Buffer").GetComponent<BeltConveyor_Buffer>();
+
+        isAudioPlay = false;
     }
 
     // Update is called once per frame
@@ -48,6 +53,8 @@ public class BeltConveyor : MonoBehaviour
                 }
             }
         }
+
+        AudioUpdate();
     }
 
     void Animation()
@@ -64,5 +71,26 @@ public class BeltConveyor : MonoBehaviour
         }
 
         renderer.sprite = images[(int)moveImage];
+    }
+
+
+    void AudioUpdate()
+    {
+        if(_isOn && _speed != 0)
+        {
+            if(!isAudioPlay)
+            {
+                isAudioPlay = true;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            if (isAudioPlay)
+            {
+                isAudioPlay = false;
+                audioSource.Stop();
+            }
+        }
     }
 }

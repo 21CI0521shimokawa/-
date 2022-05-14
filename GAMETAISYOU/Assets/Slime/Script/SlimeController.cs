@@ -506,6 +506,8 @@ public class SlimeController: MonoBehaviour
             if (slimeCore)
             {
                 slimeCore.GetComponent<SlimeController>()._scaleMax += this._scaleMax;
+
+                slimeCore.GetComponent<SlimeController>()._slimeSE._PlayTearoffSE();
             }
 
             Destroy(this.gameObject);

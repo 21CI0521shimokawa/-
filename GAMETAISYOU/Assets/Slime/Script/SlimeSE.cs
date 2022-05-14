@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SlimeSE : MonoBehaviour
 {
+    [SerializeField] SlimeController slimeController;
+
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioSource audioSourceSoundStretch;
 
@@ -41,8 +43,10 @@ public class SlimeSE : MonoBehaviour
     void Update()
     {
         flagReset();
+        ChangePitch();
 
-        if(PlaysoundStretch)
+
+        if (PlaysoundStretch)
         {
             if (!isPlaysoundStretch)
             {
@@ -133,7 +137,9 @@ public class SlimeSE : MonoBehaviour
 
             if (soundBuzzer)
             {
+                audioSource.pitch = 1.0f;
                 audioSource.PlayOneShot(soundBuzzer, soundBuzzerVolume);
+                ChangePitch();
             }
             Debug.Log("ÉuÉUÅ[âπ");
         }
@@ -151,5 +157,24 @@ public class SlimeSE : MonoBehaviour
     public void _StopStretchSE()
     {
         PlaysoundStretch = false;
+    }
+
+
+    void ChangePitch()
+    {
+        float sizeMin = 1.0f;
+        float sizeMax = 5.0f;
+
+        float pitchMin = 0.5f;
+        float pitchMax = 2.0f;
+
+
+        float buf = (slimeController._scaleNow - sizeMin) / sizeMax;
+
+        float newPitch = Mathf.Lerp(pitchMax, pitchMin, buf);
+
+        //float newPitch = pitchMax - (pitchMax - pitchMin) * buf;
+
+        audioSource.pitch = newPitch;
     }
 }

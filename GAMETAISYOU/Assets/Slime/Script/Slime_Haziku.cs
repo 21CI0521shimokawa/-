@@ -34,7 +34,7 @@ public class Slime_Haziku : MonoBehaviour
     public float _stateFixationTime;    //はじいた後StateをAIRで固定する時間（不具合対策）
 
     enum GuideType
-    { 
+    {
         Non,
         arrow,
         Ray
@@ -42,6 +42,14 @@ public class Slime_Haziku : MonoBehaviour
 
 
     [SerializeField] GuideType guidetype;
+
+    enum StickType
+    {
+        Normal,
+        Reverse
+    };
+
+    [SerializeField] StickType stickType;
 
     [SerializeField] bool eyeReverse;
 
@@ -95,8 +103,8 @@ public class Slime_Haziku : MonoBehaviour
 
         if (slimeController.hazikuUpdate && !slimeController._slimeBuf._ifTearOff)
         {
-            stickX[freamCnt % freamCntMax] = horizontal;
-            stickY[freamCnt % freamCntMax] = vertical;
+            stickX[freamCnt % freamCntMax] = horizontal * (stickType == StickType.Reverse ? 1 : -1);
+            stickY[freamCnt % freamCntMax] = vertical * (stickType == StickType.Reverse ? 1 : -1);
 
             if (freamCnt >= freamCntMax)
             {
@@ -146,11 +154,11 @@ public class Slime_Haziku : MonoBehaviour
                     if (radian < 0) radian += 360;
                     
                     //目の位置に応じて向き変更
-                    if(slimeController._direction == SlimeController._Direction.Right && horizontal * (eyeReverse ? -1 : 1) > 0.1f)
+                    if(slimeController._direction == SlimeController._Direction.Right && horizontal * (!eyeReverse ? -1 : 1) > 0.1f)
                     {
                         slimeController._direction = SlimeController._Direction.Left;
                     }
-                    else if (slimeController._direction == SlimeController._Direction.Left && horizontal * (eyeReverse ? -1 : 1) < -0.1f)
+                    else if (slimeController._direction == SlimeController._Direction.Left && horizontal * (!eyeReverse ? -1 : 1) < -0.1f)
                     {
                         slimeController._direction = SlimeController._Direction.Right;
                     }
@@ -172,7 +180,7 @@ public class Slime_Haziku : MonoBehaviour
                     eye.transform.position += new Vector3(slimeController._direction == SlimeController._Direction.Right ? 0.05f : -0.05f, 0, 0);
 
                     //目移動
-                    float magnification = 0.07f * (eyeReverse ? 1 : -1) * slimeController._scaleNow;
+                    float magnification = 0.07f * (!eyeReverse ? 1 : -1) * slimeController._scaleNow;
                     eye.transform.position += new Vector3(currentVector.x * magnification, currentVector.y * magnification);
                 }
                 #endregion
@@ -197,6 +205,7 @@ public class Slime_Haziku : MonoBehaviour
                         slimeSE._PlayJumpSE();
 
                         slimeController._SlimeAnimator.SetTrigger("Haziku");
+                        StartCoroutine(vibrationCoroutine(Mathf.Abs(stickVectorMost.magnitude), Mathf.Abs(stickVectorMost.magnitude)));    //コルーチンの起動
 
                         slimeController.rigid2D.velocity = stickVectorMost * -moveSpeed * _power;
                         freamCnt = 0;
@@ -314,5 +323,15 @@ public class Slime_Haziku : MonoBehaviour
             eye.SetActive(false);
             Destroy(eye);
         }
+    }
+
+
+    // コルーチン本体
+    private IEnumerator vibrationCoroutine(float leftPower_, float rightPower_)
+    {
+        slimeController._controllerVibrationScript.Vibration("SlimeHaziku", leftPower_, rightPower_);
+
+        yield return new WaitForSeconds(0.25f); //0.25秒待つ
+        slimeController._controllerVibrationScript.Destroy("SlimeHaziku");
     }
 }

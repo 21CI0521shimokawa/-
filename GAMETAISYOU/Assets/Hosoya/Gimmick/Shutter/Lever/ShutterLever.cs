@@ -7,6 +7,8 @@ public class ShutterLever : MonoBehaviour
     [SerializeField] GameObject bar;
     [SerializeField] HingeJoint2D hingeJoint2D;
     [SerializeField] ShutterController shutter;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioClip;
 
     bool isStartOpen;
 
@@ -28,6 +30,7 @@ public class ShutterLever : MonoBehaviour
 
             hingeJoint2D.useMotor = true;
             shutter._Open();
+            audioSource.PlayOneShot(audioClip);
         }
     }
 
