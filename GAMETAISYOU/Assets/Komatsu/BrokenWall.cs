@@ -6,12 +6,11 @@ public class BrokenWall : MonoBehaviour
 {
     float destroyTimeCnt;
     float destroyTimeMax;
-
     // Start is called before the first frame update
     void Start()
     {
         destroyTimeCnt = 0.0f;
-        destroyTimeMax = Random.Range(0.5f, 3.0f);
+        destroyTimeMax = Random.Range(0.5f, 3.0f);  
     }
 
     // Update is called once per frame
@@ -20,7 +19,7 @@ public class BrokenWall : MonoBehaviour
         destroyTimeCnt += Time.deltaTime;
         if(destroyTimeCnt >= destroyTimeMax)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

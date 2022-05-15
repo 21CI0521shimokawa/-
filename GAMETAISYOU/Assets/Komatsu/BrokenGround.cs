@@ -24,9 +24,7 @@ public class BrokenGround : MonoBehaviour
     {
         if (CheckBroken())
         {
-            PlaySE.PlaySE(SE);
-            Destroy(gameObject);
-            SpawnBrokenWall();
+            StartCoroutine(Break());
         }
     }
 
@@ -49,5 +47,13 @@ public class BrokenGround : MonoBehaviour
     private bool CheckBroken()
     {
         return this.breakWeight <= weighingBoard.weight;
+    }
+    private IEnumerator Break()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PlaySE.PlaySE(SE);
+        Destroy(gameObject);
+        SpawnBrokenWall();
+        yield break;
     }
 }
