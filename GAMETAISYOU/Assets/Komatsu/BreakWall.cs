@@ -36,11 +36,7 @@ public class BreakWall : MonoBehaviour
 
             if (CheckWeight(weight))
             {
-                PlaySE.PlaySE(SE);
-                ObjectHide();
-                SpawnBrokenWall();
-
-                ControllerVibration();
+                StartCoroutine(Break());
             }
         }
     }
@@ -82,5 +78,14 @@ public class BreakWall : MonoBehaviour
     {
         controllerVibration.Destroy("BreakWall");
         Destroy(gameObject);
+    }
+    private IEnumerator Break()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PlaySE.PlaySE(SE);
+        ObjectHide();
+        SpawnBrokenWall();
+        ControllerVibration();
+        yield break;
     }
 }
