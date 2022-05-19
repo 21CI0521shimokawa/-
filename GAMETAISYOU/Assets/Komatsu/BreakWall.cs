@@ -82,7 +82,7 @@ public class BreakWall : MonoBehaviour
     private IEnumerator Break()
     {
         yield return new WaitForSeconds(0.5f);
-        PlaySE.PlaySE(SE);
+        PlaySEStart(SE);
         ObjectHide();
         SpawnBrokenWall();
         ControllerVibration();
@@ -93,6 +93,17 @@ public class BreakWall : MonoBehaviour
     public void SetPlaySEDoor(AutoDoorControll door_)
     {
         PlaySE = door_;
+    }
+    public void PlaySEStart(AudioClip audio)
+    {
+        if (BreakWallAudioSource != null)
+        {
+            BreakWallAudioSource.PlayOneShot(audio);
+        }
+        else
+        {
+            Debug.Log("オーディオソースが設定されてない");
+        }
     }
 
     public void SetBreakWeight(float weight_)

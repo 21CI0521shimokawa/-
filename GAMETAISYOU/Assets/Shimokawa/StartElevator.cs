@@ -16,7 +16,6 @@ public class StartElevator : MonoBehaviour
     [SerializeField] SlimeController SlimeController;
     [SerializeField] AudioSource StartElevatorAudioSource;
     [SerializeField] AudioClip SE;
-    [SerializeField] AutoDoorControll PlaySE;
     void Start()
     {
         SlimeController._ifOperation = false;
@@ -39,7 +38,7 @@ public class StartElevator : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         SlimeController._ifOperation = true;
-        PlaySE.PlaySE(SE);
+        PlaySE(SE);
         StartElevatorAnimator.SetTrigger("Open");
         is2ndFloor = true;
     }
@@ -48,7 +47,17 @@ public class StartElevator : MonoBehaviour
         StartCoroutine("MoveDownStart");
 
     }
-
+    public void PlaySE(AudioClip audio)
+    {
+        if (StartElevatorAudioSource != null)
+        {
+            StartElevatorAudioSource.PlayOneShot(audio);
+        }
+        else
+        {
+            Debug.Log("オーディオソースが設定されてない");
+        }
+    }
     IEnumerator MoveDownStart()
     {
         while (pos.y > 0.0f)
