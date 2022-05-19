@@ -59,47 +59,59 @@ public class ElevatoControll : MonoBehaviour
     {
         //åªç›ÇÃsceneÇéÊìæ
         string SceneName = SceneManager.GetActiveScene().name;
-        if (SceneName == "0-1")
+        if (SceneName == "S0-1")
         {
-            FadeManager.Instance.LoadScene("0-2", FadeTime);
+            FadeManager.Instance.LoadScene("S0-2", FadeTime);
             return;
         }
-        else if (SceneName == "0-2")
+        else if (SceneName == "S0-2")
         {
-            FadeManager.Instance.LoadScene("0-3", FadeTime);
+            FadeManager.Instance.LoadScene("S0-3", FadeTime);
             return;
         }
-        else if(SceneName== "0-3")
+        else if(SceneName== "S0-3")
         {
-            FadeManager.Instance.LoadScene("1-1", FadeTime);
+            FadeManager.Instance.LoadScene("S1-1", FadeTime);
         }
-        else if(SceneName== "1-1")
+        else if(SceneName== "S1-1")
         {
-            FadeManager.Instance.LoadScene("1-2", FadeTime);
+            FadeManager.Instance.LoadScene("S1-2", FadeTime);
         }
-        else if (SceneName == "1-2")
+        else if (SceneName == "S1-2")
         {
-            FadeManager.Instance.LoadScene("2-1", FadeTime);
+            FadeManager.Instance.LoadScene("S1-3", FadeTime);
         }
-        else if (SceneName == "2-1")
+        else if (SceneName == "S1-3")
         {
-            FadeManager.Instance.LoadScene("2-2", FadeTime);
+            FadeManager.Instance.LoadScene("S2-1", FadeTime);
         }
-        else if (SceneName == "2-2")
+        else if (SceneName == "S2-1")
         {
-            FadeManager.Instance.LoadScene("3-1", FadeTime);
+            FadeManager.Instance.LoadScene("S2-2", FadeTime);
         }
-        else if (SceneName == "3-1")
+        else if (SceneName == "S2-2")
         {
-            FadeManager.Instance.LoadScene("3-2", FadeTime);
+            FadeManager.Instance.LoadScene("S2-3", FadeTime);
         }
-        else if (SceneName == "3-2")
+        else if (SceneName == "S2-3")
+        {
+            FadeManager.Instance.LoadScene("S2-4", FadeTime);
+        }
+        else if (SceneName == "S2-4")
+        {
+            FadeManager.Instance.LoadScene("S3-1", FadeTime);
+        }
+        else if (SceneName == "S3-1")
+        {
+            FadeManager.Instance.LoadScene("S3-2", FadeTime);
+        }
+        else if (SceneName == "S3-2")
+        {
+            FadeManager.Instance.LoadScene("S3-3", FadeTime);
+        }
+        else if (SceneName == "S3-3")
         {
             FadeManager.Instance.LoadScene("4-1", FadeTime);
-        }
-        else if (SceneName == "4-1")
-        {
-            FadeManager.Instance.LoadScene("ClearScene", FadeTime);
         }
     }
     public void PlaySE(AudioClip audio)
