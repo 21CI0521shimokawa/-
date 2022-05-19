@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WeighingBoard : MonoBehaviour
 {
-    [SerializeField] Animator animator;
-
     // 乗っているオブジェクトリスト
     public List<GameObject> onObjects = new List<GameObject>();
     
@@ -13,6 +11,11 @@ public class WeighingBoard : MonoBehaviour
 
     public int quantity;    //乗っているモノの個数
     public float weight;    //乗っているモノの重さ
+
+    [SerializeField] Sprite[] boardAnimation;
+    [SerializeField] SpriteRenderer spriteRenderer;
+
+    public WeighingBoard_ChangeCounter _changeCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -68,10 +71,7 @@ public class WeighingBoard : MonoBehaviour
             weight += i.GetComponent<Rigidbody2D>().mass;
         }
 
-        if(animator)
-        {
-            animator.SetFloat("Weight", (int)weight);
-        }
+        BoardAnimation();
     }
 
     //初期化
@@ -113,6 +113,27 @@ public class WeighingBoard : MonoBehaviour
             if(buf != null)
             {
                 Destroy(buf);
+            }
+        }
+    }
+
+
+    //台アニメーション
+    void BoardAnimation()
+    {
+        if (spriteRenderer)
+        {
+            if(weight < 1)
+            {
+                spriteRenderer.sprite = boardAnimation[0];
+            }
+            else if(weight < 4)
+            {
+                spriteRenderer.sprite = boardAnimation[1];
+            }
+            else
+            {
+                spriteRenderer.sprite = boardAnimation[2];
             }
         }
     }

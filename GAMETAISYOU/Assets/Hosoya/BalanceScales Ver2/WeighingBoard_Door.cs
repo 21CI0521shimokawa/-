@@ -24,6 +24,8 @@ public class WeighingBoard_Door : MonoBehaviour
     {
         ifOn = false;
         beforePosY = this.gameObject.transform.position.y;
+
+        weighingBoard._changeCounter._goalWeight = onWeight;
     }
 
     // Update is called once per frame
