@@ -88,4 +88,20 @@ public class BreakWall : MonoBehaviour
         ControllerVibration();
         yield break;
     }
+
+    //オートドア設定
+    public void SetPlaySEDoor(AutoDoorControll door_)
+    {
+        PlaySE = door_;
+    }
+
+    public void SetBreakWeight(float weight_)
+    {
+        breakWeight = weight_;
+    }
+
+    public void SetBrokenWallPieces(int quantity_)
+    {
+        brokenWallPieces = quantity_;
+    }
 }
