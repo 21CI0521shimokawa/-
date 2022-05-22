@@ -355,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 7388471236682931035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.6932454, y: 6, z: 1}
+  m_LocalScale: {x: 8.00202, y: 8.300889, z: 1.2067}
   m_Children:
   - {fileID: 8828176040228077040}
   - {fileID: 2967539018438886246}
@@ -403,7 +403,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 9dc0612f8d7fa7546a0752fd3e3807a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -427,14 +427,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d19b6481895fe249ab89bf79d54646a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestinationPosY: -1.54
+  DestinationPosY: -0.63
+  Speed: 3
   DestinationPos: {x: 0, y: 0, z: 0}
   is2ndFloor: 0
   StartElevatorAnimator: {fileID: 3125171243067205057}
   SlimeController: {fileID: 0}
   StartElevatorAudioSource: {fileID: 1721054553}
   SE: {fileID: 8300000, guid: 2fe9f30fe3df3da4a9659ff1ab720bb8, type: 3}
-  PlaySE: {fileID: 0}
 --- !u!61 &2864338087935963703
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.68797004}
+  m_Offset: {x: -0.00026503205, y: -0.64649224}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -459,7 +459,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.38508788}
+  m_Size: {x: 0.9994704, y: 0.3613665}
   m_EdgeRadius: 0
 --- !u!95 &352232009
 Animator:
@@ -492,7 +492,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
