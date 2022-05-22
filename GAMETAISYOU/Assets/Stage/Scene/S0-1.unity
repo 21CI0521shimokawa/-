@@ -181,7 +181,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -30
   m_Sprite: {fileID: 21300000, guid: 10cef6f21d85e024f9a768dbb23257b7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -203,7 +203,7 @@ Transform:
   m_LocalScale: {x: 2.19128, y: 2.19128, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &358108088
 GameObject:
@@ -672,14 +672,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayBGM
       objectReference: {fileID: 0}
-    - target: {fileID: 2678581899582617998, guid: 76ec5f89504f8f5458acc596bbcc6fc6, type: 3}
-      propertyPath: volume
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4761705963882478662, guid: 76ec5f89504f8f5458acc596bbcc6fc6, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 1ca7706b3693833488d47ec835086d6c, type: 3}
     - target: {fileID: 7279888829346918985, guid: 76ec5f89504f8f5458acc596bbcc6fc6, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1461,49 +1453,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
   m_PrefabInstance: {fileID: 670013615}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1041168464
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1041168466}
-  - component: {fileID: 1041168465}
-  m_Layer: 0
-  m_Name: Debug
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1041168465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041168464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aecc853dce2c904eac24e770a9b85c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1041168466
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041168464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -115.14825, y: 0.21011038, z: -36.17206}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1061439513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1514,10 +1463,6 @@ PrefabInstance:
     - target: {fileID: 2029051302279793293, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: m_Name
       value: Elevator
-      objectReference: {fileID: 0}
-    - target: {fileID: 5644892542105372795, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.66
       objectReference: {fileID: 0}
     - target: {fileID: 6290584954129448259, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: m_RootOrder
@@ -2525,7 +2470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276561160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.317501, y: -0.86136997, z: -10}
+  m_LocalPosition: {x: -29.842957, y: -0.86136997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1988010147}
@@ -2760,7 +2705,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -30
   m_Sprite: {fileID: 21300000, guid: 10cef6f21d85e024f9a768dbb23257b7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2782,7 +2727,7 @@ Transform:
   m_LocalScale: {x: 2.19128, y: 2.19128, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1524731399 stripped
 GameObject:
@@ -2860,7 +2805,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 200
+  m_SortingOrder: 929
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
@@ -28739,7 +28684,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988010145
 GameObject:

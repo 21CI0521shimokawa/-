@@ -16,11 +16,11 @@ public class GoalControll : MonoBehaviour
     {
         
     }
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag=="Slime")
+        if (collision.gameObject.tag == "Slime")
         {
-            FadeManager.Instance.LoadScene("GameClear",2f);
+            FadeManager.Instance.LoadScene("GameClear", 6f);
         }
     }
 }

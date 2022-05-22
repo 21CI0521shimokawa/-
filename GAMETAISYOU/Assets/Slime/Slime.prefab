@@ -512,7 +512,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 3390382694285778316, guid: 58cd7a23f548f2f4f8d06de6aed314da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -975,7 +975,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 90f2aec48e5b84347be7ad4dbd41d463, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8680789583821087134
 MonoBehaviour:
@@ -1008,8 +1008,8 @@ MonoBehaviour:
   modeLR: 0
   liveTime: 0
   deadTime: 0
-  core: 0
-  _ifOperation: 1
+  core: 1
+  _ifOperation: 0
   _moveSpeed: 5
   _stateAIRMoveSpeedMagnification: 1
   _stateAIRMoveSpeedMax: 3.5

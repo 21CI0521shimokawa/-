@@ -82,7 +82,7 @@ public class BreakWall : MonoBehaviour
     private IEnumerator Break()
     {
         yield return new WaitForSeconds(0.5f);
-        PlaySEStart(SE);
+        PlaySE.PlaySE(SE);
         ObjectHide();
         SpawnBrokenWall();
         ControllerVibration();
