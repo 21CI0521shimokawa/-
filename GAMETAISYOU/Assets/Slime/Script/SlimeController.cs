@@ -302,6 +302,9 @@ public class SlimeController: MonoBehaviour
             if (_SlimeAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slime_Fall"))
             {
                 _SlimeAnimator.SetTrigger("Landing");
+
+                //振動
+                StartCoroutine(LandingControllerVibrationCoroutine());    //コルーチンの起動
             }
 
             //スライムのStateがAIRで固定されていなければMOVEに変える
@@ -356,17 +359,20 @@ public class SlimeController: MonoBehaviour
     {
         if(liveTime >= _hazikuScript._nextHazikuUpdateTime)  //クールタイム中だったら処理しない
         {
-            if (_ifOperation)   //操作ができるなら
+            if (!_SlimeAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slime_Landing"))   //アニメーションが着地だったら処理しない
             {
-                if (modeLR == LRMode.Left ? _gamepad.leftStickButton.isPressed : _gamepad.rightStickButton.isPressed)    //スティックが押されているなら
+                if (_ifOperation)   //操作ができるなら
                 {
-                    return true;
-                }
-                else
-                {
-                    if (_hazikuScript._ifSlimeHazikuNow)
+                    if (modeLR == LRMode.Left ? _gamepad.leftStickButton.isPressed : _gamepad.rightStickButton.isPressed)    //スティックが押されているなら
                     {
                         return true;
+                    }
+                    else
+                    {
+                        if (_hazikuScript._ifSlimeHazikuNow)
+                        {
+                            return true;
+                        }
                     }
                 }
             }
@@ -618,5 +624,14 @@ public class SlimeController: MonoBehaviour
         {
             _slimeSE._PlayBuzzerSE();
         }
+    }
+
+    // 着地時振動コルーチン
+    private IEnumerator LandingControllerVibrationCoroutine()
+    {
+        _controllerVibrationScript.Vibration("SlimeLanding", 0.3f, 0.3f);
+
+        yield return new WaitForSeconds(0.25f); //0.25秒待つ
+        _controllerVibrationScript.Destroy("SlimeLanding");
     }
 }
