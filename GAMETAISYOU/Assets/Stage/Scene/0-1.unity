@@ -455,6 +455,10 @@ PrefabInstance:
       propertyPath: Elevator
       value: 
       objectReference: {fileID: 1524731399}
+    - target: {fileID: 7007595957200978829, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087122, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_Name
       value: Slime
@@ -4639,7 +4643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276561160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.317501, y: -0.86136997, z: -10}
+  m_LocalPosition: {x: -30.469063, y: -0.86136997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1988010147}

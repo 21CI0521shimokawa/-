@@ -110,6 +110,12 @@ public class FadeManager : MonoBehaviour
 		StartCoroutine (TransScene (scene, interval));
 	}
 
+    public void ToStage()
+    {
+        StartCoroutine(TransScene("S0-1", 1));
+    }
+
+
 	/// <summary>
 	/// シーン遷移用コルーチン .
 	/// </summary>
