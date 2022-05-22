@@ -169,9 +169,9 @@ TextureImporter:
       name: can_anim_0
       rect:
         serializedVersion: 2
-        x: 204
+        x: 0
         y: 0
-        width: 514
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -190,9 +190,9 @@ TextureImporter:
       name: can_anim_1
       rect:
         serializedVersion: 2
-        x: 1129
+        x: 924
         y: 0
-        width: 516
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -211,9 +211,9 @@ TextureImporter:
       name: can_anim_2
       rect:
         serializedVersion: 2
-        x: 2056
+        x: 1848
         y: 0
-        width: 510
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -232,9 +232,9 @@ TextureImporter:
       name: can_anim_3
       rect:
         serializedVersion: 2
-        x: 2977
+        x: 2772
         y: 0
-        width: 516
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -253,9 +253,9 @@ TextureImporter:
       name: can_anim_4
       rect:
         serializedVersion: 2
-        x: 3899
+        x: 3696
         y: 0
-        width: 515
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -274,9 +274,9 @@ TextureImporter:
       name: can_anim_5
       rect:
         serializedVersion: 2
-        x: 4824
+        x: 4620
         y: 0
-        width: 516
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -295,9 +295,9 @@ TextureImporter:
       name: can_anim_6
       rect:
         serializedVersion: 2
-        x: 5751
+        x: 5544
         y: 0
-        width: 510
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -316,9 +316,9 @@ TextureImporter:
       name: can_anim_7
       rect:
         serializedVersion: 2
-        x: 6672
+        x: 6468
         y: 0
-        width: 516
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -337,9 +337,9 @@ TextureImporter:
       name: can_anim_8
       rect:
         serializedVersion: 2
-        x: 7598
+        x: 7392
         y: 0
-        width: 515
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -358,9 +358,9 @@ TextureImporter:
       name: can_anim_9
       rect:
         serializedVersion: 2
-        x: 8520
+        x: 8316
         y: 0
-        width: 515
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -379,9 +379,9 @@ TextureImporter:
       name: can_anim_10
       rect:
         serializedVersion: 2
-        x: 9446
+        x: 9240
         y: 0
-        width: 516
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -400,9 +400,9 @@ TextureImporter:
       name: can_anim_11
       rect:
         serializedVersion: 2
-        x: 10367
+        x: 10164
         y: 0
-        width: 516
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -421,9 +421,9 @@ TextureImporter:
       name: can_anim_12
       rect:
         serializedVersion: 2
-        x: 11294
+        x: 11088
         y: 0
-        width: 514
+        width: 924
         height: 924
       alignment: 0
       pivot: {x: 0, y: 0}
