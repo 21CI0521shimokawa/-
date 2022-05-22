@@ -26,7 +26,7 @@ public class Slime_Move : MonoBehaviour
         SpeedSetting();
 
         //動けない時間カウント
-        if(noMoveTime > 0)
+        if (noMoveTime > 0)
         {
             noMoveTime = Mathf.Max(noMoveTime - Time.deltaTime, 0);
         }
@@ -62,13 +62,18 @@ public class Slime_Move : MonoBehaviour
                         //移動ベクトルを床の角度に応じて回転
                         if (slimeController._rayHitFoot)
                         {
-                            Debug.Log(slimeController._rayHitFoot.normal);
-                            //force = Quaternion.Euler(Quaternion.FromToRotation(transform.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
-                            //force = Quaternion.Euler(Quaternion.FromToRotation(Vector3.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
-                            force = Quaternion.Euler(slimeController._FloorAngle()) * force;
+                            //足元がスライムだったら処理しない
+                            if (!IsFootSlime())
+                            {
+                                Debug.Log(slimeController._rayHitFoot.normal);
+                                //force = Quaternion.Euler(Quaternion.FromToRotation(transform.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
+                                //force = Quaternion.Euler(Quaternion.FromToRotation(Vector3.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
+                                force = Quaternion.Euler(slimeController._FloorAngle()) * force;
+                            }
                         }
 
                         rigidBody.velocity = force;
+
                     }
                     
                     //かかっている力を消す
@@ -78,6 +83,7 @@ public class Slime_Move : MonoBehaviour
             }
         }
 
+        
         slimeController._SlimeAnimator.SetFloat("MoveSpeed", Mathf.Abs(rigidBody.velocity.x));
     }
 
@@ -145,6 +151,20 @@ public class Slime_Move : MonoBehaviour
             if (slimeController._rayHitFoot.collider.gameObject.tag == "Trampoline")
             {
                 noMoveTime = 0.2f;  //0.2秒間移動ができない
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    //スライムが他のスライムを踏んでいるかどうか
+    bool IsFootSlime()
+    {
+        if (slimeController._rayHitFoot)
+        {
+            if (slimeController._rayHitFoot.collider.gameObject.tag == "Slime")
+            {
                 return true;
             }
         }

@@ -170,18 +170,21 @@ public class Slime_Haziku : MonoBehaviour
                     Vector2 currentVector = new Vector2(horizontal, vertical);
                     float radian = Mathf.Atan2(currentVector.y, currentVector.x) * Mathf.Rad2Deg + 90;
                     if (radian < 0) radian += 360;
-                    AnimationInstanceate();
-                    eye.transform.position = transform.position;
+                    
+                    if(AnimationInstanceate())
+                    {
+                        eye.transform.position = transform.position;
 
-                    //大きさ調整
-                    eye.transform.localScale = new Vector2(slimeController._scaleNow * 1.2f * (slimeController._direction == SlimeController._Direction.Right ? 1 : -1), slimeController._scaleNow * 1.2f);
+                        //大きさ調整
+                        eye.transform.localScale = new Vector2(slimeController._scaleNow * 1.2f * (slimeController._direction == SlimeController._Direction.Right ? 1 : -1), slimeController._scaleNow * 1.2f);
 
-                    //位置調整
-                    eye.transform.position += new Vector3(slimeController._direction == SlimeController._Direction.Right ? 0.05f : -0.05f, 0, 0);
+                        //位置調整
+                        eye.transform.position += new Vector3(slimeController._direction == SlimeController._Direction.Right ? 0.05f : -0.05f, 0, 0);
 
-                    //目移動
-                    float magnification = 0.07f * (!eyeReverse ? 1 : -1) * slimeController._scaleNow;
-                    eye.transform.position += new Vector3(currentVector.x * magnification, currentVector.y * magnification);
+                        //目移動
+                        float magnification = 0.07f * (!eyeReverse ? 1 : -1) * slimeController._scaleNow;
+                        eye.transform.position += new Vector3(currentVector.x * magnification, currentVector.y * magnification);
+                    }
                 }
                 #endregion
 
@@ -205,7 +208,16 @@ public class Slime_Haziku : MonoBehaviour
                         slimeSE._PlayJumpSE();
 
                         slimeController._SlimeAnimator.SetTrigger("Haziku");
-                        StartCoroutine(vibrationCoroutine(Mathf.Abs(stickVectorMost.magnitude), Mathf.Abs(stickVectorMost.magnitude)));    //コルーチンの起動
+
+                        #region 振動
+                        float vibrationPower = Mathf.Abs(stickVectorMost.magnitude);
+                        vibrationPower = (vibrationPower - 0.5f) * 2;
+                        if (vibrationPower > 0)
+                        {
+                            Debug.Log(vibrationPower);
+                            StartCoroutine(vibrationCoroutine(vibrationPower, vibrationPower));    //コルーチンの起動
+                        }
+                        #endregion
 
                         slimeController.rigid2D.velocity = stickVectorMost * -moveSpeed * _power;
                         freamCnt = 0;
@@ -290,20 +302,28 @@ public class Slime_Haziku : MonoBehaviour
     }
 
 
-    void AnimationInstanceate()
+    bool AnimationInstanceate()
     {
         slimeController._SlimeAnimator.SetBool("Haziku_prepare", true);
 
-        if (!isEyeBeing)
+        //アニメーションがはじくの状態でないなら処理しない
+        if (slimeController._SlimeAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slime_Haziku_prepare"))
         {
-            isEyeBeing = true;
+            if (!isEyeBeing)
+            {
+                isEyeBeing = true;
 
-            EyePrefab.SetActive(true);
-            GameObject buf = GameObject.Instantiate(EyePrefab);
-            eye = buf;
+                EyePrefab.SetActive(true);
+                GameObject buf = GameObject.Instantiate(EyePrefab);
+                eye = buf;
 
-            _eyeRenderer = eye.GetComponent<SpriteRenderer>();
+                _eyeRenderer = eye.GetComponent<SpriteRenderer>();
+            }
+
+            return true;
         }
+
+        return false;
     }
 
 
