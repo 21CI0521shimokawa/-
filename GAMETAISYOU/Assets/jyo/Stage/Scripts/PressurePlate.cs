@@ -15,6 +15,12 @@ public class PressurePlate : StageGimmick
     List<GameObject> m_matchButton; //同じ番号のボタン
     Vector2 m_normalPos; //初期位置
 
+    [SerializeField, Tooltip("SE")]
+    AudioClip SE;
+    [SerializeField, Tooltip("オーディオsource")]
+    AudioSource AudioSource;
+    [SerializeField]
+
     void Start()
     {
         GameManager.Instance.RegisterButton(this.gameObject);
@@ -41,6 +47,7 @@ public class PressurePlate : StageGimmick
                     //同じ番号のボタンの状況確認
                     if (CheckSameNumberButton())
                     {
+                        SECheck();
                         OpenItem();
                     }
                 }
@@ -48,7 +55,6 @@ public class PressurePlate : StageGimmick
             case STATE.PRESSED:
                 transform.position = Vector3.MoveTowards(transform.position, m_normalPos + sinkTo, 1);
                 //OpenItem();
-
                 if (!CheckAboveItem())
                 {
                     _IsOpen = false;
@@ -56,6 +62,18 @@ public class PressurePlate : StageGimmick
                     CloseItem();
                 }
                 break;
+        }
+    }
+
+    void SECheck()
+    {
+        if(AudioSource.isPlaying==false)
+        {
+            PlaySE(SE);
+        }
+        if(AudioSource.isPlaying)
+        {
+            return;
         }
     }
 
@@ -136,6 +154,17 @@ public class PressurePlate : StageGimmick
             {
                 item.GetComponent<StageGimmick>().Close();
             }
+        }
+    }
+    public void PlaySE(AudioClip audio)
+    {
+        if (AudioSource != null)
+        {
+            AudioSource.PlayOneShot(audio);
+        }
+        else
+        {
+            Debug.Log("オーディオソースが設定されてない");
         }
     }
 

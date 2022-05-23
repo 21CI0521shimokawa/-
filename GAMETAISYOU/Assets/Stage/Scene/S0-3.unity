@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149834324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.682081, y: -7.754541, z: -10}
+  m_LocalPosition: {x: -14.727579, y: -7.754541, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 447585507}
@@ -1481,6 +1481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7012b88cfe9c7c94587847136fa8f846, type: 3}
+--- !u!82 &846038483 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 191132545890446772, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
+  m_PrefabInstance: {fileID: 1868134238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &850604797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,7 +2746,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 10cef6f21d85e024f9a768dbb23257b7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91382,17 +91387,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3010640501918462856, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
-      propertyPath: m_RootOrder
+    - target: {fileID: 191132545890446772, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3010640501918462856, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010640501918462856, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 6
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3010640501918462856, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -91435,16 +91436,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3010640501918462858, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
-      propertyPath: sinkTo.y
-      value: -0.3
-      objectReference: {fileID: 0}
+      propertyPath: SE
+      value: 
+      objectReference: {fileID: 8300000, guid: 4bd8788aaec1cfd43ada94e2f6530a0c, type: 3}
+    - target: {fileID: 3010640501918462858, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
+      propertyPath: AudioSource
+      value: 
+      objectReference: {fileID: 846038483}
     - target: {fileID: 3010640501918462862, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
       propertyPath: m_Name
       value: Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010640501918462863, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6a796be291e1b841a6a7650487b193f, type: 3}
