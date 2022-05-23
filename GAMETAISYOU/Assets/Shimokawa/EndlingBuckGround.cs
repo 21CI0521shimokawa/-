@@ -8,13 +8,15 @@ public class EndlingBuckGround : MonoBehaviour
 	private float Speed;
 	[SerializeField]
 	private float LimitPosition;
+	[SerializeField]
+	private Vector2 RestartPosition;
 
 	void Update()
 	{
 		transform.Translate(Speed*Time.deltaTime, 0, 0);
-		if (transform.position.x < LimitPosition)
+		if (transform.position.x> LimitPosition)
 		{
-			transform.position = new Vector3(44f, 0.19f, 0);
+			transform.position = RestartPosition;
 		}
 	}
 }

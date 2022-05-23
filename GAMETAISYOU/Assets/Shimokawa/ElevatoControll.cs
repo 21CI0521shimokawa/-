@@ -22,8 +22,8 @@ public class ElevatoControll : MonoBehaviour
 
     [SerializeField, Tooltip("ポストエフェクトの取得")]
     private PostProcessVolume Volume;
-   // [SerializeField, Tooltip("ポストエフェクトVignetteの取得")] //エレベーター乗った時に暗くなる
-   // private Vignette Vignette;
+    // [SerializeField, Tooltip("ポストエフェクトVignetteの取得")] //エレベーター乗った時に暗くなる
+    // private Vignette Vignette;
     [SerializeField, Tooltip("sceneの名前")]
     Scene SceneName;
     [SerializeField, Tooltip("SE")]
@@ -44,15 +44,14 @@ public class ElevatoControll : MonoBehaviour
         _IsFloor = false;
         DestinationNum = Mathf.Abs(Destination.position.y);
         //ポストエフェクト
-      //  Volume.profile.TryGetSettings<Vignette>(out Vignette);
+        //  Volume.profile.TryGetSettings<Vignette>(out Vignette);
     }
     public void ElevatorStart()
     {
-        PlaySE(SE);
         AutoDoorAnimator.SetTrigger("Close");
         CameraActive.SetActive(false);
         //  AutoDoorControll.PlaySE(SE);
-       // Vignette.enabled.Override(true);
+        // Vignette.enabled.Override(true);
         StartCoroutine("ElevatorUp");
     }
     public void SceneChange()  //実装方法変更予定
@@ -69,11 +68,11 @@ public class ElevatoControll : MonoBehaviour
             FadeManager.Instance.LoadScene("S0-3", FadeTime);
             return;
         }
-        else if(SceneName== "S0-3")
+        else if (SceneName == "S0-3")
         {
             FadeManager.Instance.LoadScene("S1-1", FadeTime);
         }
-        else if(SceneName== "S1-1")
+        else if (SceneName == "S1-1")
         {
             FadeManager.Instance.LoadScene("S1-2", FadeTime);
         }
@@ -128,7 +127,14 @@ public class ElevatoControll : MonoBehaviour
     #region コルーチン
     public IEnumerator ElevatorUp()
     {
-        yield return new WaitForSeconds(1f);
+        if (this.AudioSource.isPlaying == false)
+        {
+            PlaySE(SE);
+        }
+        while (this.AudioSource.isPlaying)
+        {
+            yield return new WaitForSeconds(0);
+        }
         while (NowPosition.y < DestinationNum)
         {
             NowPosition = transform.position;

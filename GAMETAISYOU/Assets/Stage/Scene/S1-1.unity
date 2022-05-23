@@ -52936,7 +52936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681109545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.591684, y: -0.57962704, z: -10}
+  m_LocalPosition: {x: -18.710562, y: -0.5753956, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 587898483}
@@ -54154,7 +54154,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
   m_Origin: {x: -52, y: -20, z: 0}
   m_Size: {x: 153, y: 41, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
