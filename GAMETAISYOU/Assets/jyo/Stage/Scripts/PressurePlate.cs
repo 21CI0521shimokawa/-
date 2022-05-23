@@ -73,8 +73,8 @@ public class PressurePlate : StageGimmick
         Vector2 pos = transform.position;
 
         var colliders = Physics2D.OverlapBoxAll(
-            pos + new Vector2(0f, transform.localScale.y / 4.0f),
-            new Vector2(transform.localScale.x - 1, 0.2f), 0f,
+            pos + new Vector2(0f, transform.localScale.y / 6.0f),
+            new Vector2(transform.localScale.x / 2f, 1f), 0f,
             searchLayer
         );
         
@@ -147,12 +147,12 @@ public class PressurePlate : StageGimmick
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + new Vector3(0f, transform.localScale.y / 4.0f),
-            new Vector2(transform.localScale.x - 1f, 0.2f));
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireCube(transform.position + new Vector3(0f, transform.localScale.y / 6.0f),
+    //         new Vector2(transform.localScale.x / 2f, 1f));
+    // }
 
 
     //ÉXÉâÉCÉÄÇÃëÄçÏí‚é~ è¡Ç¶ÇÈÇ‹Ç≈ÇÃéûä‘âÑí∑
