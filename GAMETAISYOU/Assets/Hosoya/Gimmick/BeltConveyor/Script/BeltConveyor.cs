@@ -65,7 +65,7 @@ public class BeltConveyor : MonoBehaviour
         {
             moveImage += 16.0f;
         }
-        while (moveImage > 16)
+        while (moveImage >= 16)
         {
             moveImage -= 16.0f;
         }
