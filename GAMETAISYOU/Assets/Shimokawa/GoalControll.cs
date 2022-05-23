@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GoalControll : MonoBehaviour
 {
+    [SerializeField] PlayBGM playBGM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,9 @@ public class GoalControll : MonoBehaviour
     {
         if (collision.gameObject.tag == "Slime")
         {
-            FadeManager.Instance.LoadScene("GameClear", 6f);
+            FadeManager.Instance.LoadScene("GameClear", 3f);
+            playBGM._FadeOutStart();
+            collision.gameObject.GetComponent<SlimeController>()._ifOperation = false;
         }
     }
 }

@@ -24,7 +24,7 @@ public class ShutterLever : MonoBehaviour
         Debug.Log(bar.transform.rotation.z);
 
         //‰ñ“]’âŽ~
-        if(bar.transform.rotation.z >= 0.35f && !isStartOpen)
+        if(bar.transform.rotation.z >= 0.5f && !isStartOpen)
         {
             isStartOpen = true;
 
