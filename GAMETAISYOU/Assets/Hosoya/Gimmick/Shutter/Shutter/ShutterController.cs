@@ -9,6 +9,8 @@ public class ShutterController : MonoBehaviour
 
     [SerializeField] LightBrightnessChange lightBrightnessChange;
 
+    [SerializeField] GameObject shadow;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,11 @@ public class ShutterController : MonoBehaviour
         if(lightBrightnessChange)
         {
             lightBrightnessChange.BrightnessChangeStart();
+        }
+
+        if(shadow)
+        {
+            Destroy(shadow);
         }
     }
 }

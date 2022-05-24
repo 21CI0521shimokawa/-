@@ -54,20 +54,20 @@ public class BreakBlockReproduction : MonoBehaviour
         {
             if(!breakBlocks[i].breakblock)
             {
-                BreakBlockInfo block = new BreakBlockInfo();
-                block.breakblock = GameObject.Instantiate(breakBlockPrefab);
-                block.breakblock.transform.position = breakBlocks[i].pos;
-                block.pos = breakBlocks[i].pos;
+                //BreakBlockInfo block = new BreakBlockInfo();
+                //block.breakblock = GameObject.Instantiate(breakBlockPrefab);
+                //block.breakblock.transform.position = breakBlocks[i].pos;
+                //block.pos = breakBlocks[i].pos;
 
-                //ê›íË
-                BreakWall buf = block.breakblock.GetComponent<BreakWall>();
-                buf.SetPlaySEDoor(door);
-                buf.SetBreakWeight(1.5f);
-                buf.SetBrokenWallPieces(2);
+                ////ê›íË
+                //BreakWall buf = block.breakblock.GetComponent<BreakWall>();
+                //buf.SetPlaySEDoor(door);
+                //buf.SetBreakWeight(1.5f);
+                //buf.SetBrokenWallPieces(2);
 
-                breakBlocks.Add(block);
+                //breakBlocks.Add(block);
 
-                reproductionNumber.Add(i);
+                //reproductionNumber.Add(i);
             }
         }
 
@@ -76,5 +76,25 @@ public class BreakBlockReproduction : MonoBehaviour
         {
             breakBlocks.Remove(breakBlocks[i]);
         }
+
+
+        for (int i = 0; i < breakBlocks.Count; ++i)
+        {
+            if (!breakBlocks[i].breakblock)
+            {
+                BreakBlockInfo bufBlockInfo = breakBlocks[i];
+                bufBlockInfo.breakblock = Instantiate(breakBlockPrefab);
+                bufBlockInfo.breakblock.transform.position = breakBlocks[i].pos;
+
+                //ê›íË
+                BreakWall buf = bufBlockInfo.breakblock.GetComponent<BreakWall>();
+                buf.SetPlaySEDoor(door);
+                buf.SetBreakWeight(1.5f);
+                buf.SetBrokenWallPieces(2);
+
+                breakBlocks[i] = bufBlockInfo;
+            }
+        }
+
     }
 }
