@@ -58,6 +58,11 @@ public class ElevatoControll : MonoBehaviour
     {
         //Œ»İ‚Ìscene‚ğæ“¾
         string SceneName = SceneManager.GetActiveScene().name;
+        if (SceneName == "Title")
+        {
+            FadeManager.Instance.LoadScene("S0-1", FadeTime);
+            return;
+        }
         if (SceneName == "S0-1")
         {
             FadeManager.Instance.LoadScene("S0-2", FadeTime);
@@ -109,6 +114,10 @@ public class ElevatoControll : MonoBehaviour
             FadeManager.Instance.LoadScene("S3-3", FadeTime);
         }
         else if (SceneName == "S3-3")
+        {
+            FadeManager.Instance.LoadScene("S3-4", FadeTime);
+        }
+        else if (SceneName == "S3-4")
         {
             FadeManager.Instance.LoadScene("S4-1", FadeTime);
         }

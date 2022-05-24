@@ -91,11 +91,6 @@ public class Trampoline : MonoBehaviour
             //shake = true;
             //GetComponent<Renderer>().material.SetColor("_Color", Color.red);
             animator.SetTrigger("Touch");
-
-            if(collisionInfo.gameObject.tag == "Slime")
-            {
-                collisionInfo.gameObject.GetComponent<SlimeController>()._SlimeAnimator.SetTrigger("Tranpoline");
-            }
         }
         //CaculateStopAndShotPoint();
     }
