@@ -12,10 +12,13 @@ public class BreakWall : MonoBehaviour
     [SerializeField] AudioSource BreakWallAudioSource;
     ControllerVibrationScript controllerVibration;
 
+    bool isBreaking;
+
     // Start is called before the first frame update
     void Start()
     {
         controllerVibration = GameObject.Find("ControllerVibration").GetComponent<ControllerVibrationScript>();
+        isBreaking = false;
     }
 
     // Update is called once per frame
@@ -36,7 +39,11 @@ public class BreakWall : MonoBehaviour
 
             if (CheckWeight(weight))
             {
-                StartCoroutine(Break());
+                if(!isBreaking)
+                {
+                    StartCoroutine(Break());
+                    isBreaking = true;
+                }
             }
         }
     }
