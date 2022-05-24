@@ -183,7 +183,7 @@ public class Slime_Haziku : MonoBehaviour
 
                         //–ÚˆÚ“®
                         float magnification = 0.07f * (!eyeReverse ? 1 : -1) * slimeController._scaleNow;
-                        eye.transform.position += new Vector3(currentVector.x * magnification, currentVector.y * magnification);
+                        eye.transform.position += new Vector3(currentVector.x * magnification, (currentVector.y + 0.15f) * magnification);
                     }
                 }
                 #endregion
