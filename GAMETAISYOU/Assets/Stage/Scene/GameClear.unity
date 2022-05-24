@@ -1378,7 +1378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -107, y: -547}
+  m_AnchoredPosition: {x: -167, y: -846}
   m_SizeDelta: {x: 568.84, y: -468.5605}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1902821992
@@ -1414,7 +1414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uFF5E\u30B5\u30A6\u30F3\u30C9\u63D0\u4F9B\uFF5E\n\n\u9B54\u738B\u9B42\u69D8\n\n\u52B9\u679C\u97F3\u30E9\u30DC\u69D8\n\n\u72EC\u308A\u97F3\u69D8\n\n\u52B9\u679C\u97F3\u8F9E\u5178\u69D8\n\nVSQ
+  m_Text: "\uFF5E\u30B5\u30A6\u30F3\u30C9\u63D0\u4F9B\uFF5E\n\n\u9B54\u738B\u9B42\u69D8\n\n\u52B9\u679C\u97F3\u30E9\u30DC\u69D8\n\n\u72EC\u308A\u97F3\u69D8\n\nVSQ
     plus+\u69D8\n\nDOVA-SYNDROME\u69D8\n\n\n\n\n\n\n\n\n\n\n\n\uFF5E\u5236\u4F5C\uFF5E\n\n\u30B7\u30E5\u30FC\u30AF\u30EA\u30FC\u30E0\u98DF\u3079\u968A"
 --- !u!222 &1902821993
 CanvasRenderer:
@@ -1437,7 +1437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textScrollSpeed: 47
-  limitPosition: 2150
+  limitPosition: 2050
   LastText: {fileID: 1087339650}
 --- !u!1001 &2097800591
 PrefabInstance:
