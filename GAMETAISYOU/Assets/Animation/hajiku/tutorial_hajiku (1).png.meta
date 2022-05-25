@@ -1,0 +1,816 @@
+fileFormatVersion: 2
+guid: f8cb4ef3ec265bf4fac48936c6ca3f51
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -69846696996623017
+    second: tutorial_hajiku (1)_0
+  - first:
+      213: 4852017109621027718
+    second: tutorial_hajiku (1)_1
+  - first:
+      213: 5848561697518453015
+    second: tutorial_hajiku (1)_2
+  - first:
+      213: 6077874847147186556
+    second: tutorial_hajiku (1)_3
+  - first:
+      213: -1949677934522306582
+    second: tutorial_hajiku (1)_4
+  - first:
+      213: 7053820861992084410
+    second: tutorial_hajiku (1)_5
+  - first:
+      213: 2343638228850416903
+    second: tutorial_hajiku (1)_6
+  - first:
+      213: -8007733106271474736
+    second: tutorial_hajiku (1)_7
+  - first:
+      213: 4381672931455971329
+    second: tutorial_hajiku (1)_8
+  - first:
+      213: -8735186316414479931
+    second: tutorial_hajiku (1)_9
+  - first:
+      213: 7751924820302383076
+    second: tutorial_hajiku (1)_10
+  - first:
+      213: 8823688111884525703
+    second: tutorial_hajiku (1)_11
+  - first:
+      213: -9122649553461712704
+    second: tutorial_hajiku (1)_12
+  - first:
+      213: -969268626814384523
+    second: tutorial_hajiku (1)_13
+  - first:
+      213: 7994383398873411911
+    second: tutorial_hajiku (1)_14
+  - first:
+      213: 7955576012505901299
+    second: tutorial_hajiku (1)_15
+  - first:
+      213: 4013482145396282522
+    second: tutorial_hajiku (1)_16
+  - first:
+      213: 8825329535662791019
+    second: tutorial_hajiku (1)_17
+  - first:
+      213: -4291637335691008079
+    second: tutorial_hajiku (1)_18
+  - first:
+      213: 6512214171311739133
+    second: tutorial_hajiku (1)_19
+  - first:
+      213: 840342983852806636
+    second: tutorial_hajiku (1)_20
+  - first:
+      213: -7163584695864966582
+    second: tutorial_hajiku (1)_21
+  - first:
+      213: -598868440377983464
+    second: tutorial_hajiku (1)_22
+  - first:
+      213: 8002542996904965656
+    second: tutorial_hajiku (1)_23
+  - first:
+      213: 7873434494249623046
+    second: tutorial_hajiku (1)_24
+  - first:
+      213: -759498693695464240
+    second: tutorial_hajiku (1)_25
+  - first:
+      213: 2304706103148721829
+    second: tutorial_hajiku (1)_26
+  - first:
+      213: 8519591385109899272
+    second: tutorial_hajiku (1)_27
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 514
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d28c49ccad70ff0800000000000000
+      internalID: -69846696996623017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 514
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6833417aad3d55340800000000000000
+      internalID: 4852017109621027718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_2
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 514
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7110b8b70e34a2150800000000000000
+      internalID: 5848561697518453015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_3
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 514
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c795d75b8f2f85450800000000000000
+      internalID: 6077874847147186556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_4
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 514
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aef61669f3a51f4e0800000000000000
+      internalID: -1949677934522306582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_5
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 514
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3274483b434e160800000000000000
+      internalID: 7053820861992084410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 386
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d97a05d86468020800000000000000
+      internalID: 2343638228850416903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_7
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 386
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dbad88aa21ded090800000000000000
+      internalID: -8007733106271474736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_8
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 386
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 100b069e054decc30800000000000000
+      internalID: 4381672931455971329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_9
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 386
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c11343835266c680800000000000000
+      internalID: -8735186316414479931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_10
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 386
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e748a77d8e549b60800000000000000
+      internalID: 7751924820302383076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_11
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 386
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 780e6bd7699047a70800000000000000
+      internalID: 8823688111884525703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 258
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c8e983a096d56180800000000000000
+      internalID: -9122649553461712704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_13
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 258
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5764cceb1577c82f0800000000000000
+      internalID: -969268626814384523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_14
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 258
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74131206851c1fe60800000000000000
+      internalID: 7994383398873411911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_15
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 258
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f86801ab32e76e60800000000000000
+      internalID: 7955576012505901299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_16
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 258
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94d7b43fb0c2b730800000000000000
+      internalID: 4013482145396282522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_17
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 258
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6991fe347ed97a70800000000000000
+      internalID: 8825329535662791019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_18
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 130
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b7655dc49a0174c0800000000000000
+      internalID: -4291637335691008079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_19
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 130
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df01d4e1948006a50800000000000000
+      internalID: 6512214171311739133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_20
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 130
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce1d902dd7f79ab00800000000000000
+      internalID: 840342983852806636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_21
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 130
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a424b846ca5d59c90800000000000000
+      internalID: -7163584695864966582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_22
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 130
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ef310935460b7f0800000000000000
+      internalID: -598868440377983464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_23
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 130
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8167f46d47ebe0f60800000000000000
+      internalID: 8002542996904965656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_24
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e5e0015fe044d60800000000000000
+      internalID: 7873434494249623046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_25
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 2
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dc98ea46f7b575f0800000000000000
+      internalID: -759498693695464240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_26
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 2
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a6badd6df5fbff10800000000000000
+      internalID: 2304706103148721829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_hajiku (1)_27
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 2
+        width: 125
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80824fcd93bab3670800000000000000
+      internalID: 8519591385109899272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

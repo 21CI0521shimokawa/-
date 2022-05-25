@@ -61,11 +61,7 @@ public class BGMManeger : MonoBehaviour
         }
         else if(SceneName=="S4-1")
         {
-            BGMAudios.clip = BGMs[3];
-            if (BGMAudios.isPlaying == false)
-            {
-                BGMAudios.Play();
-            }
+            Destroy(gameObject);
         }
     }
 }
