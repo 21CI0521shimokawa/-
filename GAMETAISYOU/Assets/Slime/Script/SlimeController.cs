@@ -72,7 +72,7 @@ public class SlimeController: MonoBehaviour
 
     public RaycastHit2D _rayHitFoot = new RaycastHit2D();
 
-    bool offTriggerUnderOneFlameBefore; //1フレーム前も地面に立っていなかったかどうか
+    int offTriggerUnderFlame; //何フレーム地面に立っていないかどうか
 
     public bool _OnElevetor;    //スライムがエレベーターに乗っているか
 
@@ -113,7 +113,7 @@ public class SlimeController: MonoBehaviour
 
         _controllerVibrationScript = GameObject.Find("ControllerVibration").GetComponent<ControllerVibrationScript>();
 
-        offTriggerUnderOneFlameBefore = false;
+        offTriggerUnderFlame = 0;
 
         _OnElevetor = false;
 
@@ -295,7 +295,7 @@ public class SlimeController: MonoBehaviour
         //地面についていたら
         if (_triggerUnder._onTrigger/* || SlimeGetRayHit()*/)
         {
-            offTriggerUnderOneFlameBefore = false;
+            offTriggerUnderFlame = 0;
             _SlimeAnimator.SetFloat("FallSpeed", 0);
 
             //アニメーションがFallだったら着地にする
@@ -317,7 +317,7 @@ public class SlimeController: MonoBehaviour
         else //ついていなかったら
         {
             //1フレームだけ待つ
-            if (offTriggerUnderOneFlameBefore)
+            if (offTriggerUnderFlame >= 1)
             {
                 //スライムのStateがMOVEだったらAIRに変える
                 if (s_state == State.MOVE)
@@ -329,7 +329,7 @@ public class SlimeController: MonoBehaviour
             }
             else
             {
-                offTriggerUnderOneFlameBefore = true;
+                ++offTriggerUnderFlame;
             } 
         }
 

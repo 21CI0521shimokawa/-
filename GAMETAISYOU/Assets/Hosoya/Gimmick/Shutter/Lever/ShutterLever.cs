@@ -31,6 +31,7 @@ public class ShutterLever : MonoBehaviour
             hingeJoint2D.useMotor = true;
             shutter._Open();
             audioSource.PlayOneShot(audioClip);
+            bar.GetComponent<Collider2D>().enabled = false;
         }
     }
 

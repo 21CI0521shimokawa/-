@@ -69,6 +69,7 @@ public class Slime_Tearoff : MonoBehaviour
                 if ((stickLHorizontal < 0) && (stickRHorizontal > 0))
                 {
                     slimeController._SlimeAnimator.SetBool("Extend", true);
+                    slimeController._SlimeAnimator.SetBool("SlimeScaleNo", slimeController._scaleNow <= _scaleLowerLimit);
 
                     //Debug.Log("引っ張ってるよ:" + stickLHorizontal + "," + stickRHorizontal);
 
@@ -94,10 +95,14 @@ public class Slime_Tearoff : MonoBehaviour
                             //大きさがLimitより大きいならちぎる
                             if(slimeController._scaleNow > _scaleLowerLimit)
                             {
-                                //ちぎる大きさと今の大きさからLimitを引いた値の内小さい方を代入する
-                                float tearOffSlimeScale = Mathf.Min(divisionScale, slimeController._scaleMax - _scaleLowerLimit);
-                             
-                                StartCoroutine(SlimeTearOffCoroutine(tearOffSlimeScale));    //コルーチンの起動
+                                //スライムアニメーションがちぎれる状態だったら
+                                if(slimeController._SlimeAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slime_ExtendIdle"))
+                                {
+                                    //ちぎる大きさと今の大きさからLimitを引いた値の内小さい方を代入する
+                                    float tearOffSlimeScale = Mathf.Min(divisionScale, slimeController._scaleMax - _scaleLowerLimit);
+
+                                    StartCoroutine(SlimeTearOffCoroutine(tearOffSlimeScale));    //コルーチンの起動
+                                }
                             }
                             else
                             {
