@@ -9,6 +9,7 @@ public class Slime_Move : MonoBehaviour
     [SerializeField] Rigidbody2D rigidBody;
 
     float speed;
+    [SerializeField] float airPowerMagnificationSlimeScale;    //ƒXƒ‰ƒCƒ€‚ª1‘å‚«‚­‚È‚é‚²‚Æ‚É—Í‚ª‰½”{‚É‚È‚é‚©
 
     float noMoveTime;   //ˆÚ“®‚ª‚Å‚«‚È‚¢ŠÔ
 
@@ -44,13 +45,18 @@ public class Slime_Move : MonoBehaviour
             {
                 if (slimeController.s_state == State.AIR)
                 {
+
+                    moveForceX *= slimeController._scaleNow;
+                    moveForceX *= Time.deltaTime;
+
                     moveForceX = StateAIRMoveForceCheck(moveForceX);
 
                     if (StateAIRMoveWallCheck())
                     {
                         //X²‚É—Í‚ğ‘«‚·
                         Vector2 force = new Vector2(moveForceX, 0);    // —Í‚ğİ’è
-                        rigidBody.AddForce(force);
+                        //force *= Mathf.Pow(airPowerMagnificationSlimeScale, slimeController._scaleNow);
+                        rigidBody.AddForce(force, ForceMode2D.Impulse);
                     }
                 }
                 else

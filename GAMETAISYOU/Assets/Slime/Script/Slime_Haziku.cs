@@ -19,6 +19,7 @@ public class Slime_Haziku : MonoBehaviour
     #endregion
 
     public float _power;    //パワー
+    [SerializeField] float powerMagnificationSlimeScale;    //スライムが1大きくなるごとに力が何倍になるか
 
     GameObject arrow;
     GameObject eye;
@@ -138,7 +139,7 @@ public class Slime_Haziku : MonoBehaviour
                     {
                         GuideInstanceate();
                         lineRenderer.SetPosition(0, this.gameObject.transform.position);
-                        lineRenderer.SetPosition(1, new Vector2(this.gameObject.transform.position.x + currentVector.normalized.x * -3, this.gameObject.transform.position.y + currentVector.normalized.y * -3));
+                        lineRenderer.SetPosition(1, new Vector2(this.gameObject.transform.position.x + currentVector.normalized.x * 3, this.gameObject.transform.position.y + currentVector.normalized.y * 3));
                     }
                     else
                     {
@@ -182,8 +183,8 @@ public class Slime_Haziku : MonoBehaviour
                         eye.transform.position += new Vector3(slimeController._direction == SlimeController._Direction.Right ? 0.05f : -0.05f, 0, 0);
 
                         //目移動
-                        float magnification = 0.07f * (!eyeReverse ? 1 : -1) * slimeController._scaleNow;
-                        eye.transform.position += new Vector3(currentVector.x * magnification, (currentVector.y + 0.15f) * magnification);
+                        float magnification = 0.1f * (!eyeReverse ? 1 : -1) * slimeController._scaleNow;
+                        eye.transform.position += new Vector3(currentVector.x * magnification, (currentVector.y + 1.0f) * magnification);
                     }
                 }
                 #endregion
@@ -219,7 +220,11 @@ public class Slime_Haziku : MonoBehaviour
                         }
                         #endregion
 
-                        slimeController.rigid2D.velocity = stickVectorMost * -moveSpeed * _power;
+                        Vector2 velocity = stickVectorMost * -moveSpeed * _power;
+                        velocity *= Mathf.Pow(powerMagnificationSlimeScale, slimeController._scaleNow);
+
+                        slimeController.rigid2D.velocity = velocity;
+
                         freamCnt = 0;
                         slimeController.s_state = State.AIR;
 

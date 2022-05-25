@@ -8,6 +8,7 @@ public class SlimeSE : MonoBehaviour
 
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioSource audioSourceSoundStretch;
+    [SerializeField] AudioSource audioSourcesoundBuzzer;
 
     [SerializeField] AudioClip soundJump;
     [SerializeField] AudioClip soundTearoff;
@@ -137,9 +138,7 @@ public class SlimeSE : MonoBehaviour
 
             if (soundBuzzer)
             {
-                audioSource.pitch = 1.0f;
-                audioSource.PlayOneShot(soundBuzzer, soundBuzzerVolume);
-                ChangePitch();
+                audioSourcesoundBuzzer.PlayOneShot(soundBuzzer, soundBuzzerVolume);
             }
             Debug.Log("ÉuÉUÅ[âπ");
         }
