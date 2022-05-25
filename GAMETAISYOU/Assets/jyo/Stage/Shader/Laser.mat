@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Laser
   m_Shader: {fileID: -6465566751694194690, guid: 7bd143e73bbf678419c82d224522a7b4, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - MainTex_:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -36,9 +36,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_672a727a8cac467597450cc3cd8c468e: 10
-    - Vector1_c4b6409da9af4a3f8f9fcc668b7f3675: 33.21
+    - Vector1_672a727a8cac467597450cc3cd8c468e: 8
+    - Vector1_c4b6409da9af4a3f8f9fcc668b7f3675: 30
     m_Colors:
-    - Color_3c0498e871a549d3a50a6c16fb4e8d16: {r: 14.379642, g: 16.524736, b: 4.325847, a: 0}
+    - Color_3c0498e871a549d3a50a6c16fb4e8d16: {r: 14.44833, g: 16.524736, b: 4.325847, a: 0}
     - Vector2_aed68dbbdb6943fd9d965b55bd4cf42a: {r: -0.5, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

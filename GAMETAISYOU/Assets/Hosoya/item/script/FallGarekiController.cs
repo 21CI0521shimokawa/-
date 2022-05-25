@@ -19,7 +19,7 @@ public class FallGarekiController : MonoBehaviour
         
     }
 
-    public void SpawnBrokenWall()
+    void SpawnBrokenWall()
     {
         for (int i = 0; i < brokenWallPieces; ++i)
         {
@@ -33,5 +33,12 @@ public class FallGarekiController : MonoBehaviour
             Vector2 moveSpeed = new Vector2(moveSpeedX, moveSpeedY);
             brokenWall.GetComponent<Rigidbody2D>().velocity = moveSpeed;
         }
+
+        Destroy(gameObject);
+    }
+
+    public void DestoryThisItem()
+    {
+        Invoke("SpawnBrokenWall", 0.5f);
     }
 }

@@ -56,4 +56,9 @@ public class TimeLineAudioManager : MonoBehaviour
         _AmbientSource.Stop();
         _AmbientSource.PlayOneShot(_RockSEClip);
     }
+
+    public void StartGame()
+    {
+        FadeManager.Instance.ToStage();
+    }
 }
