@@ -122,6 +122,19 @@ public class ElevatoControll : MonoBehaviour
             FadeManager.Instance.LoadScene("S4-1", FadeTime);
         }
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+     if(collision.gameObject.tag=="Change")
+        {
+            //Œ»İ‚Ìscene‚ğæ“¾
+            string SceneName = SceneManager.GetActiveScene().name;
+            if (SceneName == "S0-3")
+            {
+                FadeManager.Instance.LoadScene("S1-1", FadeTime);
+            }
+        }
+    }
+
     public void PlaySE(AudioClip audio)
     {
         if (AudioSource != null)
