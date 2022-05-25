@@ -34,6 +34,8 @@ public class ElevatoControll : MonoBehaviour
     Animator AutoDoorAnimator;
     [SerializeField]
     GameObject CameraActive;
+    [SerializeField]
+    SlimeController ClonSlime;
     //“–‚½‚è”»’è‚Ì‚·‚è”²‚¯–hŽ~
     public Rigidbody2D ElevatorRigidbody;
     void Start()
@@ -48,6 +50,11 @@ public class ElevatoControll : MonoBehaviour
     }
     public void ElevatorStart()
     {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Slime");
+        foreach (GameObject obj in objects)
+        {
+            obj.GetComponent<SlimeController>().liveTime = 20;
+        }
         AutoDoorAnimator.SetTrigger("Close");
         CameraActive.SetActive(false);
         //  AutoDoorControll.PlaySE(SE);
