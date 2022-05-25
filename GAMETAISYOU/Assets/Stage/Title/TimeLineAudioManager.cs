@@ -12,6 +12,7 @@ public class TimeLineAudioManager : MonoBehaviour
     public float _BGMVolume = 0.8f;
     public float _SEVolume = 0.8f;
     public float _AmbientVolume = 0.8f;
+    public GameObject BGMMeneger;
 
     AudioSource _BGMSource;
     AudioSource _SESource;
@@ -24,14 +25,15 @@ public class TimeLineAudioManager : MonoBehaviour
         _BGMSource.volume = _BGMVolume;
         _SESource.volume = _SEVolume;
         _AmbientSource.volume = _AmbientVolume;
+        BGMMeneger.SetActive(true);
     }
 
-    public void PlayBGMAudio()
+   /* public void PlayBGMAudio()
     {
         _BGMSource.Stop();
         _BGMSource.clip = _BGMClip;
         _BGMSource.Play();
-    }
+    }*/
 
     public void PlaySlimeSEAudio()
     {
