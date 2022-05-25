@@ -1,6 +1,6 @@
+using System.Runtime.CompilerServices;
 using System;
 using System.Collections;
-
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,21 +19,23 @@ public class Laser : StageGimmick
     [SerializeField] GameObject startBeam;
     [SerializeField] GameObject endBeam;
 
-    GameObject m_hitObject; //当たったオブジェクト
-    LineRenderer m_lineRenderer; //レイの描画
-    Vector2 m_hitPos; //当たったポイント
-    float lineWidth = 0.15f; //線の幅
+    [SerializeField] GameObject hitObject; //当たったオブジェクト
+    LineRenderer lineRenderer; //レイの描画
+    Material material;
+    Vector2 hitPos; //当たったポイント
 
     void Start()
     {
         GameManager.Instance.RegisterLaser(this.gameObject);
-        m_lineRenderer = GetComponentInChildren<LineRenderer>();
+        lineRenderer = GetComponentInChildren<LineRenderer>();
+        material = GetComponent<Renderer>().material;
         //m_lineRenderer.startWidth = m_lineRenderer.endWidth = lineWidth;
 
-        if (_Number == -1) {
+        if (_Number == -1)
+        {
             SetEffect();
             _IsOpen = true;
-        } 
+        }
     }
 
     void Update()
@@ -58,29 +60,53 @@ public class Laser : StageGimmick
 
         RaycastHit2D hitInfo;
         Ray2D ray2D = new Ray2D(pos + rayStartPointOffset, transform.up);
-        m_lineRenderer.SetPosition(0, pos);
+        lineRenderer.SetPosition(0, pos);
 
         hitInfo = Physics2D.Raycast(ray2D.origin, ray2D.direction, rayLength, searchLayer);
+
         if (hitInfo)
         {
-            if(!ItemDestory(hitInfo.collider.gameObject) && !PlayerDestory(hitInfo.collider.gameObject))
+            if (hitInfo.collider.gameObject != hitObject)
             {
-                m_hitPos = hitInfo.point; //当たった位置
-                m_hitObject = hitInfo.collider.gameObject; //当たったオブジェクト
-                m_lineRenderer.SetPosition(1, m_hitPos); //描画終点
-
-                endVFX.transform.position = m_hitPos;
-                endBeam.transform.position = m_hitPos;
+                hitObject = hitInfo.collider.gameObject; //当たったオブジェクト
+                ItemDestory(hitObject);
             }
+
+            hitPos = hitInfo.point; //当たった位置
+            lineRenderer.SetPosition(1, hitPos); //描画終点
+            endVFX.transform.position = hitPos;
+            endBeam.transform.position = hitPos;
         }
         else
         {
             Vector2 endPoint = transform.up * rayLength;
-            m_lineRenderer.SetPosition(1, pos + endPoint); //描画終点
+            lineRenderer.SetPosition(1, pos + endPoint); //描画終点
+            hitObject = null;
 
             endVFX.transform.position = pos + endPoint;
             endBeam.transform.position = pos + endPoint;
         }
+
+        //if (hitInfo)
+        //{
+        //    if (!ItemDestory(hitInfo.collider.gameObject))
+        //    {
+        //        m_hitPos = hitInfo.point; //当たった位置
+        //        _hitObject = hitInfo.collider.gameObject; //当たったオブジェクト
+        //        _lineRenderer.SetPosition(1, m_hitPos); //描画終点
+
+        //        endVFX.transform.position = m_hitPos;
+        //        endBeam.transform.position = m_hitPos;
+        //    }
+        //}
+        //else
+        //{
+        //    Vector2 endPoint = transform.up * rayLength;
+        //    _lineRenderer.SetPosition(1, pos + endPoint); //描画終点
+
+        //    endVFX.transform.position = pos + endPoint;
+        //    endBeam.transform.position = pos + endPoint;
+        //}
         Debug.DrawRay(ray2D.origin, ray2D.direction * rayLength, Color.red);
     }
 
@@ -91,14 +117,19 @@ public class Laser : StageGimmick
     /// <returns></returns>
     bool ItemDestory(GameObject item)
     {
-        if(!destoryItem)
+        if (!destoryItem)
         {
             return false;
         }
 
-        if(item.tag == "Item")
+        if (item.tag == "Item")
         {
-            Destroy(item);
+            item.GetComponent<FallGarekiController>().DestoryThisItem();
+            material.SetFloat("_LaserEdgeSmoothness", 20);
+            lineRenderer.endWidth = 0.22f;
+            endBeam.transform.localScale = new Vector3(2f, 2f, 2f);
+            endVFX.transform.localScale = new Vector3(2f, 2f, 2f);
+            Invoke("ResetLaserView", 0.5f);
             return true;
         }
         return false;
@@ -111,12 +142,12 @@ public class Laser : StageGimmick
     /// <returns></returns>
     bool PlayerDestory(GameObject item)
     {
-        if(!destoryPlayer)
+        if (!destoryPlayer)
         {
             return false;
         }
 
-        if(item.tag == "Player" || item.tag == "Slime")
+        if (item.tag == "Player" || item.tag == "Slime")
         {
             Destroy(item);
             GameManager.Instance.RestartStage();
@@ -124,12 +155,20 @@ public class Laser : StageGimmick
         }
         return false;
     }
+
+    void ResetLaserView()
+    {
+        material.SetFloat("_LaserEdgeSmoothness", 8);
+        lineRenderer.endWidth = 0.2f;
+        endBeam.transform.localScale = new Vector3(1f, 1f, 1f);
+        endVFX.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
     //------------------------------------------------
     public override void Open()
     {
-        if(pressToSwitchTarget)
+        if (pressToSwitchTarget)
         {
-            if(destoryItem)
+            if (destoryItem)
             {
                 destoryItem = false;
                 destoryPlayer = true;
@@ -142,14 +181,14 @@ public class Laser : StageGimmick
         }
 
         _IsOpen = !_IsOpen;
-        m_lineRenderer.enabled = _IsOpen;
+        lineRenderer.enabled = _IsOpen;
 
         SetEffect();
     }
     public override void Close()
     {
         _IsOpen = !_IsOpen;
-        m_lineRenderer.enabled = _IsOpen;
+        lineRenderer.enabled = _IsOpen;
 
         SetEffect();
     }

@@ -1656,7 +1656,7 @@
     },
     "m_Name": "LaserEdgeSmoothness",
     "m_DefaultReferenceName": "Vector1_672a727a8cac467597450cc3cd8c468e",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_LaserEdgeSmoothness",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
