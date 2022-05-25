@@ -24,9 +24,14 @@ public class SlimeSizeChange_Item : MonoBehaviour
         //スライムだったら
         if (collision.gameObject.tag == "Slime")
         {
-            collision.gameObject.GetComponent<SlimeController>()._scaleMax += chengeSize;
-            AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
-            Destroy(this.gameObject);
+            //コアだったら
+            SlimeController slimeController = collision.gameObject.GetComponent<SlimeController>();
+            if (slimeController.core)
+            {
+                slimeController._scaleMax += chengeSize;
+                AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
+                Destroy(this.gameObject);
+            }
         }
     }
         
