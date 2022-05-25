@@ -35,7 +35,7 @@ public class BGMManeger : MonoBehaviour
     {
         // Œ»İ‚Ìscene‚ğæ“¾
         string SceneName = SceneManager.GetActiveScene().name;
-        if(SceneName=="S0-1")
+        if(SceneName=="Title")
         {
             BGMAudios.clip = BGMs[0];
             if (BGMAudios.isPlaying == false)

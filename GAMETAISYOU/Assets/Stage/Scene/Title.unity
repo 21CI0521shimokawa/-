@@ -2214,6 +2214,7 @@ MonoBehaviour:
   _BGMVolume: 0.1
   _SEVolume: 0.8
   _AmbientVolume: 0.8
+  BGMMeneger: {fileID: 1003456663}
 --- !u!1 &1359299413
 GameObject:
   m_ObjectHideFlags: 0
