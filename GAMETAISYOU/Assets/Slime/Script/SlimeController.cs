@@ -205,13 +205,18 @@ public class SlimeController: MonoBehaviour
 
             case State.AIR:
                 //‹ó’†‚É‚¢‚é‚Æ‚«
-                if (IfHazikuUpdate(gamepad) && _airJump && _ifOperation)
+
+                //‘€ì‰Â
+                if (_ifOperation)
                 {
-                    hazikuUpdate = true;
-                }
-                else
-                {
-                    moveUpdate = true;
+                    if (IfHazikuUpdate(gamepad) && _airJump)
+                    {
+                        hazikuUpdate = true;
+                    }
+                    else
+                    {
+                        moveUpdate = true;
+                    }
                 }
                 break;
         }
