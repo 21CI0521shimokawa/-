@@ -234,8 +234,8 @@ public class Slime_Tearoff : MonoBehaviour
             buf.core = true;
             buf.modeLR = SlimeController.LRMode.Left;
             buf._direction = slimeController._direction;
+            buf.GetComponent<Slime_Tearoff>().deadEndTime = this.deadEndTime;
         }
-
         //é©êgÇîjâÛ
         Destroy(this.gameObject);
     }

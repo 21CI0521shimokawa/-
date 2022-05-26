@@ -6,6 +6,8 @@ public class TitleLogoStay : MonoBehaviour
 {
     [SerializeField] GameObject StartLogo;
     [SerializeField] GameObject TimeLine;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip StartSE;
     private void Awake()
     {
         StartLogo.SetActive(false);
@@ -16,14 +18,26 @@ public class TitleLogoStay : MonoBehaviour
     }
     private void Update()
     {
-        if(TimeLine)
+        if (TimeLine.activeSelf&&StartLogo.activeSelf)
         {
-            Destroy(gameObject);
+            PlaySE(StartSE);
+            StartLogo.SetActive(false);
         }
     }
     private IEnumerator Stay()
     {
-        yield return new WaitForSeconds(7f);//スライムが落ち着くまで待つ
+        yield return new WaitForSeconds(8f);//スライムが落ち着くまで待つ
         StartLogo.SetActive(true);
+    }
+    public void PlaySE(AudioClip audio)
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(audio);
+        }
+        else
+        {
+            Debug.Log("オーディオソースが設定されてない");
+        }
     }
 }
