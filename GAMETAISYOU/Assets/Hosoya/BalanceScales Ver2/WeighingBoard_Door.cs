@@ -19,6 +19,9 @@ public class WeighingBoard_Door : MonoBehaviour
 
     [SerializeField] Animator gear;
 
+    [SerializeField] AudioSource audioSource;
+    bool oneFlameBeforeOpen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,8 @@ public class WeighingBoard_Door : MonoBehaviour
         beforePosY = this.gameObject.transform.position.y;
 
         weighingBoard._changeCounter._goalWeight = onWeight;
+
+        oneFlameBeforeOpen = false;
     }
 
     // Update is called once per frame
@@ -49,6 +54,12 @@ public class WeighingBoard_Door : MonoBehaviour
                 {
                     moveY = beforePosY + moveMaxY - transform.position.y;
                 }
+
+                if(!oneFlameBeforeOpen)
+                {
+                    oneFlameBeforeOpen = true;
+                    audioSource.Play();
+                }
             }
             else
             {
@@ -60,6 +71,12 @@ public class WeighingBoard_Door : MonoBehaviour
                 if (transform.position.y + moveY < beforePosY)
                 {
                     moveY = beforePosY - transform.position.y;
+                }
+
+                if (oneFlameBeforeOpen)
+                {
+                    oneFlameBeforeOpen = false;
+                    audioSource.Play();
                 }
             }
 
