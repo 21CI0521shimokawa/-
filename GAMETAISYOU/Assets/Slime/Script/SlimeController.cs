@@ -524,10 +524,10 @@ public class SlimeController: MonoBehaviour
     private bool IfSlimeGrowInSize()
     {
         //エレベーターに乗っていたら処理しない
-        if (_OnElevetor)
-        {
-            return false;
-        }
+        //if (_OnElevetor)
+        //{
+        //    return false;
+        //}
 
         //現在の大きさと最大値が同じだったら処理しない
         if (_scaleMax == _scaleNow)

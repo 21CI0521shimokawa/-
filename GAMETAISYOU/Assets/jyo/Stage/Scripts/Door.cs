@@ -10,7 +10,9 @@ public class Door : StageGimmick
     [Tooltip("移動量"), SerializeField] Vector2 moveTo = new Vector2(0, 2);
     [Tooltip("移動速度"), SerializeField] float moveSpeed = 5f;
 
-    
+    [SerializeField] AudioSource audioSource;
+    bool isOpenOneFlameBefore;    
+
     Vector2 m_normalPos;//初期位置
 
     void Start()
@@ -18,6 +20,8 @@ public class Door : StageGimmick
         //オブジェクトをゲームマネージャーのリストに登録する
         GameManager.Instance.RegisterDoor(this.gameObject); 
         m_normalPos = transform.position;
+
+        isOpenOneFlameBefore = false;
     }
 
     void Update()
@@ -43,7 +47,19 @@ public class Door : StageGimmick
             {
                 gear.SetBool("Open", false);
             }
-        }  
+        }
+
+        PlaySE();
+    }
+
+    //SE再生
+    void PlaySE()
+    {
+        if(isOpenOneFlameBefore != _IsOpen)
+        {
+            isOpenOneFlameBefore = _IsOpen;
+            audioSource.Play();
+        }
     }
 
 

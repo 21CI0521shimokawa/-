@@ -1012,8 +1012,8 @@ MonoBehaviour:
   core: 1
   _ifOperation: 0
   _moveSpeed: 5
-  _stateAIRMoveSpeedMagnification: 5
-  _stateAIRMoveSpeedMax: 5
+  _stateAIRMoveSpeedMagnification: 2
+  _stateAIRMoveSpeedMax: 4
   _scaleNow: 0
   _airJump: 0
   slimeImage: {fileID: 7007595957200978829}
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   stickX: []
   stickY: []
   _power: 6
-  powerMagnificationSlimeScale: 1.05
+  powerMagnificationSlimeScale: 1.01
   _eyeRenderer: {fileID: 0}
   _ifSlimeHazikuNow: 0
   coolTime: 0.5
