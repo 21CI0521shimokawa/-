@@ -27730,7 +27730,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 14
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -33770,7 +33770,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 13
-      m_TileSpriteIndex: 13
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -46280,7 +46280,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 11
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 1
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -70815,18 +70815,18 @@ Tilemap:
     m_Data: {fileID: -6472874401326232, guid: 5545a222a0572bc45bdfa35432987a68, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 8798944226150371144, guid: 5545a222a0572bc45bdfa35432987a68, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -6507947630551659073, guid: 5545a222a0572bc45bdfa35432987a68, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -2376933601864114580, guid: 5545a222a0572bc45bdfa35432987a68, type: 3}
   - m_RefCount: 1
+    m_Data: {fileID: -6507947630551659073, guid: 5545a222a0572bc45bdfa35432987a68, type: 3}
+  - m_RefCount: 1
     m_Data: {fileID: -6033804263923981377, guid: 5545a222a0572bc45bdfa35432987a68, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 1616217959683308121, guid: 5545a222a0572bc45bdfa35432987a68, type: 3}
-  - m_RefCount: 1
     m_Data: {fileID: -2578634290482498685, guid: 5545a222a0572bc45bdfa35432987a68, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1616217959683308121, guid: 5545a222a0572bc45bdfa35432987a68, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 6938
     m_Data:
@@ -82587,6 +82587,10 @@ PrefabInstance:
     - target: {fileID: 2029051302279793293, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: m_Name
       value: Elevator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644892542105372795, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 6290584954129448259, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: m_RootOrder
