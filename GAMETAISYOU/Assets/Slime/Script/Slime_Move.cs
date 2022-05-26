@@ -68,8 +68,8 @@ public class Slime_Move : MonoBehaviour
                         //移動ベクトルを床の角度に応じて回転
                         if (slimeController._rayHitFoot)
                         {
-                            //足元がスライムだったら処理しない
-                            if (!IsFootSlime())
+                            //足元がスライムor石だったら処理しない
+                            if (!(IsFootObjectCheckTag("Slime") || IsFootObjectCheckTag("Item")))
                             {
                                 Debug.Log(slimeController._rayHitFoot.normal);
                                 //force = Quaternion.Euler(Quaternion.FromToRotation(transform.up, slimeController._rayHitFoot.normal).eulerAngles) * force;
@@ -164,12 +164,12 @@ public class Slime_Move : MonoBehaviour
         return false;
     }
 
-    //スライムが他のスライムを踏んでいるかどうか
-    bool IsFootSlime()
+    //足元のオブジェクトのタグが一致していたらtrue
+    bool IsFootObjectCheckTag(string tag)
     {
         if (slimeController._rayHitFoot)
         {
-            if (slimeController._rayHitFoot.collider.gameObject.tag == "Slime")
+            if (slimeController._rayHitFoot.collider.gameObject.tag == tag)
             {
                 return true;
             }
