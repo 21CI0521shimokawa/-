@@ -20,8 +20,9 @@ public class SlimeImageRotation : MonoBehaviour
         if(slimeController._rayHitFoot && slimeController.s_state != State.AIR)
         {
 
-            //スライムの上に乗っていたら回転しない
-            if(slimeController._rayHitFoot.collider.gameObject.tag != "Slime")
+            //スライムor石の上に乗っていたら回転しない
+            if(slimeController._rayHitFoot.collider.gameObject.tag != "Slime" ||
+               slimeController._rayHitFoot.collider.gameObject.tag != "Item")
             {
                 Debug.Log(slimeController._FloorAngle());
 
