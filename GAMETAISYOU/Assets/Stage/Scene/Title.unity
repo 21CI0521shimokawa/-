@@ -2113,7 +2113,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: aed977eaf01ee6c4c96628ef1c41c352, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2252,12 +2252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7779514855fe7e44095e4ba8bcd7b297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BGMClip: {fileID: 8300000, guid: 1ca7706b3693833488d47ec835086d6c, type: 3}
   _SlimeSEClip: {fileID: 8300000, guid: e98d6f0f3404ff945a83d145d3d12da6, type: 3}
   _ShakeSEClip: {fileID: 8300000, guid: 81e864abe0fca1449a7b6487ced2672f, type: 3}
   _GlassSEClip: {fileID: 8300000, guid: de72bb0f5fa6a2c48b26cd55b5aecea3, type: 3}
   _RockSEClip: {fileID: 8300000, guid: a11641a72fbeebb4fb1fd71cd717dcd7, type: 3}
-  _BGMVolume: 0.1
   _SEVolume: 0.8
   _AmbientVolume: 0.8
   BGMMeneger: {fileID: 1003456663}
