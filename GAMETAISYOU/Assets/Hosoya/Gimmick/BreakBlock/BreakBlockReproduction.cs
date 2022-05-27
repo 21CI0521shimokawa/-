@@ -10,6 +10,8 @@ public class BreakBlockReproduction : MonoBehaviour
     {
         public GameObject breakblock;
         public Vector2 pos;
+
+        public SpriteRenderer spriteRenderer;
     }
 
     List<BreakBlockInfo> breakBlocks = new List<BreakBlockInfo>();
@@ -24,6 +26,7 @@ public class BreakBlockReproduction : MonoBehaviour
             BreakBlockInfo buf = new BreakBlockInfo();
             buf.breakblock = i.gameObject;
             buf.pos = i.gameObject.transform.position;
+            buf.spriteRenderer = buf.breakblock.GetComponent<SpriteRenderer>();
             breakBlocks.Add(buf);
         }
     }
@@ -31,7 +34,22 @@ public class BreakBlockReproduction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < breakBlocks.Count; ++i)
+        {
+            //­‚µ‚¸‚Â”Z‚­
+            if(breakBlocks[i].spriteRenderer)
+            {
+                if (breakBlocks[i].spriteRenderer.color.a < 1)
+                {
+                    breakBlocks[i].spriteRenderer.color += new Color(0, 0, 0, Time.deltaTime);
+
+                    if (breakBlocks[i].spriteRenderer.color.a > 1)
+                    {
+                        breakBlocks[i].spriteRenderer.color = new Color(1, 1, 1, 1);
+                    }
+                }
+            }
+        }
     }
 
 
@@ -91,6 +109,9 @@ public class BreakBlockReproduction : MonoBehaviour
                 buf.SetPlaySEDoor(door);
                 buf.SetBreakWeight(1.5f);
                 buf.SetBrokenWallPieces(2);
+
+                bufBlockInfo.spriteRenderer = bufBlockInfo.breakblock.GetComponent<SpriteRenderer>();
+                bufBlockInfo.spriteRenderer.color = new Color(1, 1, 1, 0);
 
                 breakBlocks[i] = bufBlockInfo;
             }

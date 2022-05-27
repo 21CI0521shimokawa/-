@@ -287,9 +287,15 @@ public class SlimeController: MonoBehaviour
         Slime_SizeChange();
 
         //スライムの重さ変更
-        if (rigid2D.mass != _scaleNow * _slimeBuf._slimeMass)
+        #region 旧
+        //if (rigid2D.mass != _scaleNow * _slimeBuf._slimeMass)
+        //{
+        //    rigid2D.mass = _scaleNow * _slimeBuf._slimeMass;
+        //}
+        #endregion
+        if (rigid2D.mass != _scaleMax * _slimeBuf._slimeMass)
         {
-            rigid2D.mass = _scaleNow * _slimeBuf._slimeMass;
+            rigid2D.mass = _scaleMax * _slimeBuf._slimeMass;
         }
 
         Slime_Direction();
@@ -464,6 +470,7 @@ public class SlimeController: MonoBehaviour
             _trampoline.enabled = false;
             rigid2D.simulated = false;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            slimeImage.sortingOrder = 10000;
 
             //はじくの矢印を消す
             _hazikuScript._GuideDestroy();

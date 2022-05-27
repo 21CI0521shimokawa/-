@@ -83,7 +83,25 @@ public class WeighingBoard : MonoBehaviour
     }
 
     //リスト追加
-    public void OnCollisionEnter2D(Collision2D collision)
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Rigidbody2D collisionRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
+
+    //    //リストに無かったら追加
+    //    if (!onObjects.Contains(collision.gameObject) && collisionRigidbody)
+    //    {
+    //        onObjects.Add(collision.gameObject);
+
+    //        //Scriptが無かったら Scriptアタッチ
+    //        if (!collision.gameObject.GetComponent<WeighingBoard_ObjectOnObject>())
+    //        {
+    //            collision.gameObject.AddComponent<WeighingBoard_ObjectOnObject>();
+    //        }
+    //    }
+    //}
+
+    //リスト追加
+    public void OnCollisionStay2D(Collision2D collision)
     {
         Rigidbody2D collisionRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
 
