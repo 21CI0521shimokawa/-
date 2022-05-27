@@ -21,7 +21,7 @@ public class SlimeImageRotation : MonoBehaviour
         {
 
             //ƒXƒ‰ƒCƒ€orÎ‚Ìã‚Éæ‚Á‚Ä‚¢‚½‚ç‰ñ“]‚µ‚È‚¢
-            if(slimeController._rayHitFoot.collider.gameObject.tag != "Slime" ||
+            if(slimeController._rayHitFoot.collider.gameObject.tag != "Slime" &&
                slimeController._rayHitFoot.collider.gameObject.tag != "Item")
             {
                 Debug.Log(slimeController._FloorAngle());
