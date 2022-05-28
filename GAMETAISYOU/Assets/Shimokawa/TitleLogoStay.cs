@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class TitleLogoStay : MonoBehaviour
 {
+    [SerializeField] TitleAudioManager TitleLogo;
     [SerializeField] GameObject StartLogo;
     [SerializeField] GameObject TimeLine;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip StartSE;
+    
     private void Awake()
     {
         StartLogo.SetActive(false);
@@ -34,6 +36,7 @@ public class TitleLogoStay : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.PlayOneShot(audio);
+            TitleLogo.IsStart = true;
         }
         else
         {
