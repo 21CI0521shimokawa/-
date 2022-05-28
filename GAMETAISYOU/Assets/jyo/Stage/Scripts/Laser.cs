@@ -24,6 +24,9 @@ public class Laser : StageGimmick
     Material material;
     Vector2 hitPos; //当たったポイント
 
+    [Tooltip("オーディオソース"), SerializeField] AudioSource LaserAudio;
+    [SerializeField] AudioClip LaserSE;
+
     void Start()
     {
         GameManager.Instance.RegisterLaser(this.gameObject);
@@ -124,6 +127,7 @@ public class Laser : StageGimmick
 
         if (item.tag == "Item")
         {
+            PlaySE(LaserSE);
             item.GetComponent<FallGarekiController>().DestoryThisItem();
             material.SetFloat("_LaserEdgeSmoothness", 20);
             lineRenderer.endWidth = 0.22f;
@@ -191,5 +195,12 @@ public class Laser : StageGimmick
         lineRenderer.enabled = _IsOpen;
 
         SetEffect();
+    }
+    public void PlaySE(AudioClip audio)
+    {
+        if (LaserAudio != null)
+        {
+            LaserAudio.PlayOneShot(audio);
+        }
     }
 }
