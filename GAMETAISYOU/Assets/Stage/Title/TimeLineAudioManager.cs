@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeLineAudioManager : MonoBehaviour
 {
     public AudioClip _SlimeSEClip;
+    public AudioClip _JumpSEClip;
     public AudioClip _ShakeSEClip;
     public AudioClip _GlassSEClip;
     public AudioClip _RockSEClip;
@@ -27,6 +28,12 @@ public class TimeLineAudioManager : MonoBehaviour
     {
         _SESource.Stop();
         _SESource.PlayOneShot(_SlimeSEClip);
+    }
+
+    public void PlayJumpSEAudio()
+    {
+        _SESource.Stop();
+        _SESource.PlayOneShot(_JumpSEClip);
     }
 
     public void PlayShakeSEAudio()

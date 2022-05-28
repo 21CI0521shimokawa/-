@@ -1156,6 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128ba6da89a2a2d469e29e0c05bb1d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TitleLogo: {fileID: 1022166680}
   StartLogo: {fileID: 1416793164}
   TimeLine: {fileID: 1282211351}
   audioSource: {fileID: 593370214}
@@ -1985,6 +1986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _SlimeClip: {fileID: 8300000, guid: e98d6f0f3404ff945a83d145d3d12da6, type: 3}
+  _WinkClip: {fileID: 8300000, guid: 842840d54979c774c970759a0be26b6b, type: 3}
 --- !u!1 &1031874838
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,6 +2354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _SlimeSEClip: {fileID: 8300000, guid: e98d6f0f3404ff945a83d145d3d12da6, type: 3}
+  _JumpSEClip: {fileID: 8300000, guid: ce29acdf81329db4b81f98b90ee2a218, type: 3}
   _ShakeSEClip: {fileID: 8300000, guid: 81e864abe0fca1449a7b6487ced2672f, type: 3}
   _GlassSEClip: {fileID: 8300000, guid: de72bb0f5fa6a2c48b26cd55b5aecea3, type: 3}
   _RockSEClip: {fileID: 8300000, guid: a11641a72fbeebb4fb1fd71cd717dcd7, type: 3}
