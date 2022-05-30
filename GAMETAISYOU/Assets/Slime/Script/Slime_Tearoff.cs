@@ -257,9 +257,9 @@ public class Slime_Tearoff : MonoBehaviour
 
         slimeController._controllerVibrationScript.Vibration("SlimeTearoff", 1.0f, 1.0f);
 
-        yield return new WaitForSeconds(0.25f); //0.25•b‘Ò‚Â
+        yield return new WaitForSeconds(0.35f); //0.35•b‘Ò‚Â
         slimeController._controllerVibrationScript.Destroy("SlimeTearoff");
-        yield return new WaitForSeconds(0.2f); //0.2•b‘Ò‚Â
+        yield return new WaitForSeconds(0.1f); //0.1•b‘Ò‚Â
 
         Debug.Log("‚«‚ê‚½‚æ");
 
@@ -376,10 +376,11 @@ public class Slime_Tearoff : MonoBehaviour
         float sizeMax = 5.0f;
 
         float divisionTimeMin = 1.0f;
-        float divisionTimeMax = 2.5f;
+        float divisionTimeMax = 1.7f;
 
 
-        float buf = (slimeController._scaleMax - sizeMin) / sizeMax;
+        //float buf = (slimeController._scaleMax - sizeMin) / sizeMax;
+        float buf = Mathf.InverseLerp(sizeMin, sizeMax, slimeController._scaleMax);
 
         float newDivisionTime = Mathf.Lerp(divisionTimeMin, divisionTimeMax, buf);
 

@@ -23,20 +23,28 @@ public class WeighingBoard_ObjectOnObject : MonoBehaviour
     {
         foreach(GameObject i in onObjects)
         {
-            //リストに無かったら追加 処理
-            if (!_weighingBoard.onObjectsOll.Contains(i) && !i.CompareTag("WeighingBoard"))
+            //存在していたら
+            if(i)
             {
-                _weighingBoard.onObjectsOll.Add(i);
-
-                //Scriptが無かったら Scriptアタッチ
-                WeighingBoard_ObjectOnObject buf = i.GetComponent<WeighingBoard_ObjectOnObject>();
-                if (!buf)
+                //リストに無かったら追加 処理
+                if (!_weighingBoard.onObjectsOll.Contains(i) && !i.CompareTag("WeighingBoard"))
                 {
-                    buf = i.AddComponent<WeighingBoard_ObjectOnObject>();
-                }
+                    _weighingBoard.onObjectsOll.Add(i);
 
-                //処理
-                buf.ObjectOnObjectProsess(_weighingBoard);
+                    //Scriptが無かったら Scriptアタッチ
+                    WeighingBoard_ObjectOnObject buf = i.GetComponent<WeighingBoard_ObjectOnObject>();
+                    if (!buf)
+                    {
+                        buf = i.AddComponent<WeighingBoard_ObjectOnObject>();
+                    }
+
+                    //処理
+                    buf.ObjectOnObjectProsess(_weighingBoard);
+                }
+            }
+            else
+            {
+                onObjects.Remove(i);
             }
         }
     }

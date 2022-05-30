@@ -206,38 +206,41 @@ public class Slime_Haziku : MonoBehaviour
                     //移動
                     if (stickVectorMost.magnitude > stickVectorNow.magnitude + 0.25f)
                     {
-                        slimeSE._PlayJumpSE();
-
-                        slimeController._SlimeAnimator.SetTrigger("Haziku");
-
-                        #region 振動
-                        float vibrationPower = Mathf.Abs(stickVectorMost.magnitude);
-                        vibrationPower = (vibrationPower - 0.5f) * 2;
-                        if (vibrationPower > 0)
+                        if(slimeController._SlimeAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slime_Haziku_prepare"))
                         {
-                            Debug.Log(vibrationPower);
-                            StartCoroutine(vibrationCoroutine(vibrationPower, vibrationPower));    //コルーチンの起動
+                            slimeSE._PlayJumpSE();
+
+                            slimeController._SlimeAnimator.SetTrigger("Haziku");
+
+                            #region 振動
+                            float vibrationPower = Mathf.Abs(stickVectorMost.magnitude);
+                            vibrationPower = (vibrationPower - 0.5f) * 2;
+                            if (vibrationPower > 0)
+                            {
+                                Debug.Log(vibrationPower);
+                                StartCoroutine(vibrationCoroutine(vibrationPower, vibrationPower));    //コルーチンの起動
+                            }
+                            #endregion
+
+                            Vector2 velocity = stickVectorMost * -moveSpeed * _power;
+                            velocity *= Mathf.Pow(powerMagnificationSlimeScale, slimeController._scaleNow);
+
+                            slimeController.rigid2D.velocity = velocity;
+
+                            freamCnt = 0;
+                            slimeController.s_state = State.AIR;
+
+                            for (int i = 0; i < freamCntMax; ++i)
+                            {
+                                stickX[i] = 0.0f;
+                                stickY[i] = 0.0f;
+                            }
+
+                            _ifSlimeHazikuNow = false;
+
+                            _nextHazikuUpdateTime = slimeController.liveTime + coolTime;
+                            _stateFixationTime = slimeController.liveTime + 0.03f;
                         }
-                        #endregion
-
-                        Vector2 velocity = stickVectorMost * -moveSpeed * _power;
-                        velocity *= Mathf.Pow(powerMagnificationSlimeScale, slimeController._scaleNow);
-
-                        slimeController.rigid2D.velocity = velocity;
-
-                        freamCnt = 0;
-                        slimeController.s_state = State.AIR;
-
-                        for (int i = 0; i < freamCntMax; ++i)
-                        {
-                            stickX[i] = 0.0f;
-                            stickY[i] = 0.0f;
-                        }
-
-                        _ifSlimeHazikuNow = false;
-
-                        _nextHazikuUpdateTime = slimeController.liveTime + coolTime;
-                        _stateFixationTime = slimeController.liveTime + 0.03f;
                     }
                 }
                 else
