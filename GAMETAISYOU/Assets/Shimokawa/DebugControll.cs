@@ -9,6 +9,11 @@ public class DebugControll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (IsDuplicate())
+        {
+            Destroy(gameObject);
+        }
+
         FadeTime = 1.0f;
     }
 
@@ -16,7 +21,16 @@ public class DebugControll : MonoBehaviour
     void Update()
     {
         DontDestroyOnLoad(gameObject);
-        if (Input.GetKeyDown(KeyCode.F2))
+
+        //現在のシーンをやり直す
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            //現在のsceneを取得
+            string SceneName = SceneManager.GetActiveScene().name;
+            FadeManager.Instance.LoadScene(SceneName, FadeTime);
+        }
+        //一つ進む
+        else if (Input.GetKeyDown(KeyCode.F2))
         {
             //現在のsceneを取得
             string SceneName = SceneManager.GetActiveScene().name;
@@ -88,5 +102,14 @@ public class DebugControll : MonoBehaviour
                 FadeManager.Instance.LoadScene("GameClear", FadeTime+2f);
             }
         }
+    }
+
+    //重複チェック
+    bool IsDuplicate()
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("GameSetting");
+
+        //重複していたら(二つ以上検知したら)true
+        return gameObjects.Length >= 2;
     }
 }

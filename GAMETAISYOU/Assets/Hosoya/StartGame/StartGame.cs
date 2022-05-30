@@ -9,7 +9,6 @@ public class StartGame : MonoBehaviour
     [SerializeField] GameObject timeLine;
 
     [SerializeField, Tooltip("ボタンを押してもゲームが始まらない時間（second）")] float notStartTime;
-    [SerializeField, Tooltip("ボタンを押さなくても勝手にゲームが始まる時間（second）")] float startTime;
 
     float timeCount;
 
@@ -26,12 +25,15 @@ public class StartGame : MonoBehaviour
         {
             if (timeCount >= notStartTime)
             {
-                if (ControllerOperation() || timeCount >= startTime)
+                if (ControllerOperation())
                 {
                     timeLine.SetActive(true);
                 }
             }
-            timeCount += Time.deltaTime;
+            else
+            {
+                timeCount += Time.deltaTime;
+            }
         }
     }
 

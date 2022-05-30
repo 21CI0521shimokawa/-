@@ -51,7 +51,7 @@ public class Slime_Move : MonoBehaviour
 
                     moveForceX = StateAIRMoveForceCheck(moveForceX);
 
-                    if (StateAIRMoveWallCheck())
+                    if (StateAIRMoveWallCheck(moveForceX))
                     {
                         //X軸に力を足す
                         Vector2 force = new Vector2(moveForceX, 0);    // 力を設定
@@ -144,9 +144,12 @@ public class Slime_Move : MonoBehaviour
 
 
     //進もうとしている方向に壁はないか確認    
-    bool StateAIRMoveWallCheck()
+    bool StateAIRMoveWallCheck(float moveForceX)
     {
-        return !slimeController._triggerRight._onTrigger;
+        int moveDirection = (int)Mathf.Sign(moveForceX);
+        int slimeAngle = slimeController._direction == SlimeController._Direction.Right ? 1 : -1;
+
+        return !(moveDirection * slimeAngle >= 0 ? slimeController._triggerRight._onTrigger : slimeController._triggerLeft._onTrigger);
     }
 
     //スライムがトランポリンを踏んでいるかどうか
