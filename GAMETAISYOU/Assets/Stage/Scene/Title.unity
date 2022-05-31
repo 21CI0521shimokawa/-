@@ -2233,6 +2233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeAttackCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8838565205106163962, guid: a074d002f072c084284ab52751c258b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a074d002f072c084284ab52751c258b3, type: 3}
 --- !u!1 &1128451913
@@ -2451,7 +2455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _SlimeSEClip: {fileID: 8300000, guid: e98d6f0f3404ff945a83d145d3d12da6, type: 3}
-  _JumpSEClip: {fileID: 8300000, guid: ce29acdf81329db4b81f98b90ee2a218, type: 3}
+  _JumpSEClip: {fileID: 8300000, guid: 059383c60df60ea418a9cda3d921a0f6, type: 3}
   _ShakeSEClip: {fileID: 8300000, guid: 81e864abe0fca1449a7b6487ced2672f, type: 3}
   _GlassSEClip: {fileID: 8300000, guid: de72bb0f5fa6a2c48b26cd55b5aecea3, type: 3}
   _RockSEClip: {fileID: 8300000, guid: a11641a72fbeebb4fb1fd71cd717dcd7, type: 3}

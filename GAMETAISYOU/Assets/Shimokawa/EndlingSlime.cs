@@ -8,6 +8,8 @@ public class EndlingSlime : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
+    [SerializeField] PlayBGM playBGM;
+
     bool isMove = true;
     bool stopOnce;
 
@@ -26,5 +28,6 @@ public class EndlingSlime : MonoBehaviour
     public void ToTitle()
     {
         FadeManager.Instance.LoadScene("Title", 4f);
+        playBGM._FadeOutStart();
     }
 }

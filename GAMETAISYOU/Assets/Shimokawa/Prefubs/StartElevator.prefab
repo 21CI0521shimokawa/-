@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestinationPosY: -0.63
-  Speed: 3
+  Speed: 4
   DestinationPos: {x: 0, y: 0, z: 0}
   is2ndFloor: 0
   StartElevatorAnimator: {fileID: 3125171243067205057}

@@ -7,10 +7,13 @@ public class SlimeSizeChange_Item : MonoBehaviour
     [SerializeField] float chengeSize;  //‘å‚«‚³‚Ì•Ï‰»—Ê
     [SerializeField] AudioSource audioSource;
 
+    AutoDoorControll PlaySE;
+    [SerializeField] AudioClip SE;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlaySE = GameObject.Find("Automatic door").GetComponent<AutoDoorControll>();
     }
 
     // Update is called once per frame
@@ -29,7 +32,8 @@ public class SlimeSizeChange_Item : MonoBehaviour
             if (slimeController.core)
             {
                 slimeController._scaleMax += chengeSize;
-                AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
+                //AudioSource.PlayClipAtPoint(audioSource.clip, camera.transform.position);
+                PlaySE.PlaySE(SE);
                 Destroy(this.gameObject);
             }
         }
