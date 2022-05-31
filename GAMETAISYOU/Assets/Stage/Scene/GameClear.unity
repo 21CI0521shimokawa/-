@@ -655,7 +655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2678581899582617998, guid: 76ec5f89504f8f5458acc596bbcc6fc6, type: 3}
       propertyPath: fadeOutTime
-      value: 5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4761705963882478662, guid: 76ec5f89504f8f5458acc596bbcc6fc6, type: 3}
       propertyPath: Loop
@@ -1183,6 +1183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: -1.2
+  playBGM: {fileID: 1753419081}
 --- !u!95 &1182289572
 Animator:
   serializedVersion: 3
@@ -1488,7 +1489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1285}
+  m_AnchoredPosition: {x: -40.3, y: -1350}
   m_SizeDelta: {x: 620, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370199756
@@ -1563,8 +1564,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000022888, y: -692}
-  m_SizeDelta: {x: 620, y: 400}
+  m_AnchoredPosition: {x: 0, y: -819}
+  m_SizeDelta: {x: 730.9238, y: 670.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1433722597
 MonoBehaviour:
@@ -1586,7 +1587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2988bce8ae940aa47965410c4c0a219a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e875ca6c55b1e5b4cbe93de9d06ec1d6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1818,6 +1819,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1753419081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2678581899582617998, guid: 76ec5f89504f8f5458acc596bbcc6fc6, type: 3}
+  m_PrefabInstance: {fileID: 861425510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4e6bd377532c1418644729331cca45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1902821990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,8 +2064,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 637.5, y: 82.5}
-  m_SizeDelta: {x: -1275, y: -165}
+  m_AnchoredPosition: {x: 538.0852, y: 82.5}
+  m_SizeDelta: {x: -1144.8295, y: -165}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094193813
 MonoBehaviour:
