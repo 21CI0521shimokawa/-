@@ -357,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 7388471236682931035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.00202, y: 8.300889, z: 1.2067}
+  m_LocalScale: {x: 7.00202, y: 8.300889, z: 1.2067}
   m_Children:
   - {fileID: 8828176040228077040}
   - {fileID: 2967539018438886246}
@@ -429,14 +429,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d19b6481895fe249ab89bf79d54646a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestinationPosY: -0.63
-  Speed: 4
-  DestinationPos: {x: 0, y: 0, z: 0}
-  is2ndFloor: 0
+  DestinationPos: {x: 0, y: -0.6, z: 0}
+  NowPositon: {x: 0, y: 0, z: 0}
+  StartElevatorSpeed: 3
   StartElevatorAnimator: {fileID: 3125171243067205057}
   SlimeController: {fileID: 0}
   StartElevatorAudioSource: {fileID: 1721054553}
-  SE: {fileID: 8300000, guid: 2fe9f30fe3df3da4a9659ff1ab720bb8, type: 3}
+  OpenSE: {fileID: 8300000, guid: 2fe9f30fe3df3da4a9659ff1ab720bb8, type: 3}
 --- !u!61 &2864338087935963703
 BoxCollider2D:
   m_ObjectHideFlags: 0

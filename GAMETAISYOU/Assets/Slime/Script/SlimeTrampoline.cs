@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlimeTrampoline : MonoBehaviour
 {
     [SerializeField] SlimeController slimeController;
-
+    [SerializeField] Rigidbody2D SlimeRigidbody; 
     [SerializeField] Rigidbody2D itemBody;
     [SerializeField] Vector2 normal; //ñ@ê¸
     [SerializeField] Vector2 startPoint; //í èÌà íu
@@ -92,7 +92,8 @@ public class SlimeTrampoline : MonoBehaviour
         {
             if (slimeController.core)
             {
-                Elevator.GetComponent<ElevatoControll>().ElevatorStart();
+                SlimeRigidbody.gravityScale = 0;
+                Elevator.GetComponent<ElevatorControll>().ElevatorStart();
                 slimeController._ifOperation = false;
                 slimeController._OnElevetor = true;
             }

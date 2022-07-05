@@ -887,6 +887,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 504522203}
     - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: MoveTo.y
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: ClonSlime
+      value: 
+      objectReference: {fileID: 1396477837}
+    - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: CameraActive
       value: 
       objectReference: {fileID: 1909398995}
@@ -1435,8 +1443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca6067e392a7f84994fde5d46ed0b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 469622077}
-  slimeController: {fileID: 0}
+  MainCamera: {fileID: 0}
+  TargetPlayer: {fileID: 0}
   PlayerPosition: {fileID: 1885268412}
   ExpansionTime: 0.05
   TrackingFlag: 0
@@ -1511,7 +1519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469622071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.387981, y: 3.6000004, z: -10}
+  m_LocalPosition: {x: -10.522224, y: 3.6000004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 504522202}
@@ -2252,6 +2260,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 185972973}
     - target: {fileID: 4143101950999046256, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: SlimeRigidbody
+      value: 
+      objectReference: {fileID: 961558602}
+    - target: {fileID: 4143101950999046256, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: AutoDoorAnimator
       value: 
       objectReference: {fileID: 0}
@@ -2341,6 +2353,11 @@ AudioSource:
 --- !u!4 &961558601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+  m_PrefabInstance: {fileID: 961558599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &961558602 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8680789583821087135, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
   m_PrefabInstance: {fileID: 961558599}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1176296449
@@ -2576,6 +2593,10 @@ PrefabInstance:
       propertyPath: SlimeController
       value: 
       objectReference: {fileID: 1396477837}
+    - target: {fileID: 5050075161512873543, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
+      propertyPath: DestinationPos.y
+      value: -0.68
+      objectReference: {fileID: 0}
     - target: {fileID: 7388471236682931035, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_Name
       value: StartElevator
@@ -2875,6 +2896,75 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1001 &1527305593
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 91.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: MoveTo.y
+      value: 8.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: moveTo.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987281897102204834, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707845458755566032, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_Name
+      value: Automatic door
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
 --- !u!1 &1670219472
 GameObject:
   m_ObjectHideFlags: 0
@@ -81875,10 +81965,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
     LensShift: {x: 0, y: 0}
-    GateFit: 2
-    m_SensorSize: {x: 1.9912022, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

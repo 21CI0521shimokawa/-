@@ -320,8 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca6067e392a7f84994fde5d46ed0b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 138557586}
-  slimeController: {fileID: 0}
+  MainCamera: {fileID: 0}
+  TargetPlayer: {fileID: 0}
   PlayerPosition: {fileID: 999574449}
   ExpansionTime: 0.05
   TrackingFlag: 0
@@ -396,7 +396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138557581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -208.9353, y: -14.50008, z: -10}
+  m_LocalPosition: {x: -212.7223, y: -14.50008, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 401636096}
@@ -58397,6 +58397,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 811313325}
     - target: {fileID: 4143101950999046256, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: SlimeRigidbody
+      value: 
+      objectReference: {fileID: 999574456}
+    - target: {fileID: 4143101950999046256, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: AutoDoorAnimator
       value: 
       objectReference: {fileID: 0}
@@ -58508,6 +58512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2c844b901f2cc40b6951bb931e3db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &999574456 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8680789583821087135, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+  m_PrefabInstance: {fileID: 999574448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1018893237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58644,6 +58653,10 @@ PrefabInstance:
       propertyPath: SlimeController
       value: 
       objectReference: {fileID: 999574452}
+    - target: {fileID: 5050075161512873543, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
+      propertyPath: DestinationPos.y
+      value: -18.67
+      objectReference: {fileID: 0}
     - target: {fileID: 7388471236682931035, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_Name
       value: StartElevator
@@ -58712,10 +58725,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
     LensShift: {x: 0, y: 0}
-    GateFit: 2
-    m_SensorSize: {x: 2.1564791, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -58755,6 +58765,75 @@ MonoBehaviour:
   SlimeDirectoin: {fileID: 0}
   PlayerPosition: {fileID: 999574449}
   IsSwitching: 0
+--- !u!1001 &1213835116
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -130.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -20.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: MoveTo.y
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: moveTo.y
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987281897102204834, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_SortingOrder
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707845458755566032, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_Name
+      value: Automatic door
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
 --- !u!1001 &1243002623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58772,11 +58851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3479599118848043227, guid: 4b4798d6a1568a54b9fa2384370ef5d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4681544
+      value: 5.1
       objectReference: {fileID: 0}
     - target: {fileID: 3479599118848043227, guid: 4b4798d6a1568a54b9fa2384370ef5d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4796467
+      value: -10.9
       objectReference: {fileID: 0}
     - target: {fileID: 3479599118848043227, guid: 4b4798d6a1568a54b9fa2384370ef5d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -60293,6 +60372,14 @@ PrefabInstance:
       propertyPath: Volume
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: MoveTo.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: ClonSlime
+      value: 
+      objectReference: {fileID: 999574452}
     - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: CameraActive
       value: 

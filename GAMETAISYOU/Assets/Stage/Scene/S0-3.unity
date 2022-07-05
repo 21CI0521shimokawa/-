@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149834324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.682081, y: -7.754541, z: -10}
+  m_LocalPosition: {x: -18.682138, y: -7.7636943, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 447585507}
@@ -314,8 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca6067e392a7f84994fde5d46ed0b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 149834330}
-  slimeController: {fileID: 0}
+  MainCamera: {fileID: 0}
+  TargetPlayer: {fileID: 0}
   PlayerPosition: {fileID: 0}
   ExpansionTime: 0.05
   TrackingFlag: 0
@@ -464,6 +464,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1040513376}
     - target: {fileID: 4143101950999046256, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: SlimeRigidbody
+      value: 
+      objectReference: {fileID: 1265937865}
+    - target: {fileID: 4143101950999046256, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: AutoDoorAnimator
       value: 
       objectReference: {fileID: 0}
@@ -489,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.204
+      value: -15.46
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1286,59 +1290,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8091320017f9434a91c675e3357ec2d, type: 3}
---- !u!1 &805662348
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 805662350}
-  - component: {fileID: 805662349}
-  m_Layer: 0
-  m_Name: SceneChange
-  m_TagString: Change
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!68 &805662349
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805662348}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.5, y: 0}
-  - {x: 15.528152, y: -0.034311295}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
---- !u!4 &805662350
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805662348}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76.7, y: -8.41, z: -3.443858}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 34
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &818617700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2862,6 +2813,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: MoveTo.y
+      value: -10.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: ClonSlime
+      value: 
+      objectReference: {fileID: 1265937863}
     - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: CameraActive
       value: 
@@ -94599,6 +94558,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2c844b901f2cc40b6951bb931e3db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1265937865 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8680789583821087135, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+  m_PrefabInstance: {fileID: 150227858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1265937866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
@@ -96526,10 +96490,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  moveTo: {x: 0, y: 0}
-  audioSource: {fileID: 279385682319319741}
+  MoveTo: {x: 0, y: 4, z: 0}
+  AutoDoorMoveTime: 0
+  AudioSource: {fileID: 0}
   DoorSE: {fileID: 8300000, guid: 9dce7bbb0dfb81b488f2599a000d432d, type: 3}
   AutoDoorAnimator: {fileID: 416359994854415670}
+  EaseType: 0
 --- !u!61 &5569751923906636239
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -96644,7 +96610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6093116344851444176, guid: 9b1b5674ac4749a46b4d87b3693e3443, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.704
+      value: -10.96
       objectReference: {fileID: 0}
     - target: {fileID: 6093116344851444176, guid: 9b1b5674ac4749a46b4d87b3693e3443, type: 3}
       propertyPath: m_LocalPosition.z
