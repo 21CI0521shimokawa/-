@@ -118834,7 +118834,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 10cef6f21d85e024f9a768dbb23257b7, type: 3}
   m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   m_FlipX: 0
@@ -123028,7 +123028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.59
+      value: -17.3
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087132, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -123248,7 +123248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1466602970285474363, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.9145
+      value: -13.77
       objectReference: {fileID: 0}
     - target: {fileID: 1466602970285474363, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -123294,6 +123294,10 @@ PrefabInstance:
       propertyPath: SlimeController
       value: 
       objectReference: {fileID: 1315795112}
+    - target: {fileID: 5050075161512873543, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
+      propertyPath: DestinationPos.y
+      value: -0.63
+      objectReference: {fileID: 0}
     - target: {fileID: 5674148726025530436, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -123690,7 +123694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347159363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.463562, y: -0.7638025, z: -10}
+  m_LocalPosition: {x: -24.444347, y: -0.7638664, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1168076538}
@@ -125150,10 +125154,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
     LensShift: {x: 0, y: 0}
-    GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -125170,7 +125171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916676280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.5, y: -11.59, z: -10}
+  m_LocalPosition: {x: -24.5, y: -17.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1833964276}

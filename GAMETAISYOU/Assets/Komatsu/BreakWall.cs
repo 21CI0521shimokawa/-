@@ -12,7 +12,7 @@ public class BreakWall : MonoBehaviour
     [SerializeField] AudioSource BreakWallAudioSource;
     ControllerVibrationScript controllerVibration;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         controllerVibration = GameObject.Find("ControllerVibration").GetComponent<ControllerVibrationScript>();
@@ -26,7 +26,6 @@ public class BreakWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         GameObject @object = collision.gameObject;
         if (collision.gameObject.tag == "Slime")
         {

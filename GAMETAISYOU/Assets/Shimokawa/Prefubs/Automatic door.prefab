@@ -361,7 +361,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.7832546, y: -3.8344493}
+  m_Offset: {x: -1.7832546, y: -5.0660324}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -372,7 +372,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.531232, y: 8.668899}
+  m_Size: {x: 4.531232, y: 11.132067}
   m_EdgeRadius: 0
 --- !u!114 &4507997123813194150
 MonoBehaviour:
@@ -387,10 +387,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  moveTo: {x: 0, y: 6}
-  audioSource: {fileID: 279385682395199047}
+  moveTo: {x: 0, y: 6, z: 0}
+  AutoDoorMoveTime: 2.1
+  AudioSource: {fileID: 279385682395199047}
   DoorSE: {fileID: 8300000, guid: 9dce7bbb0dfb81b488f2599a000d432d, type: 3}
   AutoDoorAnimator: {fileID: 416359996205091276}
+  EaseType: 1
 --- !u!82 &279385682395199047
 AudioSource:
   m_ObjectHideFlags: 0

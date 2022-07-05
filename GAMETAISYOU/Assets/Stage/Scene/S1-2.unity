@@ -315,10 +315,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
     LensShift: {x: 0, y: 0}
-    GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -425,6 +422,10 @@ PrefabInstance:
       propertyPath: Elevator
       value: 
       objectReference: {fileID: 902745724}
+    - target: {fileID: 4143101950999046256, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+      propertyPath: SlimeRigidbody
+      value: 
+      objectReference: {fileID: 263137895}
     - target: {fileID: 4143101950999046256, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: AutoDoorAnimator
       value: 
@@ -539,6 +540,11 @@ AudioSource:
 --- !u!1 &263137894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8680789583821087122, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
+  m_PrefabInstance: {fileID: 263137890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &263137895 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8680789583821087135, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
   m_PrefabInstance: {fileID: 263137890}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &383026164
@@ -82860,6 +82866,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1034301690}
     - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: MoveTo.y
+      value: 9.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
+      propertyPath: ClonSlime
+      value: 
+      objectReference: {fileID: 263137892}
+    - target: {fileID: 7688295874911823114, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
       propertyPath: CameraActive
       value: 
       objectReference: {fileID: 66093790}
@@ -82875,6 +82889,71 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2029051302279793293, guid: d567f6ed5039e334cb6c80de14fb5d30, type: 3}
   m_PrefabInstance: {fileID: 902745722}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &932458395
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 71.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388990793704851020, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: MoveTo.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507997123813194150, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: AutoDoorMoveTime
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707845458755566032, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
+      propertyPath: m_Name
+      value: Automatic door (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4465512bfdcf9b848ab8c46c290dfb83, type: 3}
 --- !u!1 &952619065
 GameObject:
   m_ObjectHideFlags: 0
@@ -84939,6 +85018,10 @@ PrefabInstance:
       propertyPath: SlimeController
       value: 
       objectReference: {fileID: 263137892}
+    - target: {fileID: 5050075161512873543, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
+      propertyPath: DestinationPos.y
+      value: -10.38
+      objectReference: {fileID: 0}
     - target: {fileID: 7388471236682931035, guid: 43c3cd518f5371347b0ce99f07ea92e1, type: 3}
       propertyPath: m_Name
       value: StartElevator
