@@ -20,6 +20,8 @@ public class PauseManager : MonoBehaviour
     [SerializeField] Image cursor_;
     [SerializeField] Vector3[] cursorPosTable_;
 
+    [SerializeField] AudioClip selectSE_;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,6 +96,8 @@ public class PauseManager : MonoBehaviour
         //Œˆ’è
         if (gamepad.buttonEast.wasPressedThisFrame)
         {
+            PlayAudio.PlaySE(selectSE_);
+
             return true;
         }
 
