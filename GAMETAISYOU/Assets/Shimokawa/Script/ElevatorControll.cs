@@ -140,6 +140,10 @@ public class ElevatorControll : MonoBehaviour
         {
             FadeManager.Instance.LoadScene("S4-1", FadeTime);
         }
+        else if(SceneName== "TGS-1")
+        {
+            FadeManager.Instance.LoadScene("TGS-2", FadeTime);
+        }
     }
     public void PlaySE(AudioClip audio) //SE‚ğˆê‰ñ‚Ì‚İÄ¶
     {

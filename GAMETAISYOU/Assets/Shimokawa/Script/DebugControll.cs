@@ -101,6 +101,10 @@ public class DebugControll : MonoBehaviour
             {
                 FadeManager.Instance.LoadScene("GameClear", FadeTime+2f);
             }
+            else if(SceneName=="TGS-1")
+            {
+                FadeManager.Instance.LoadScene("TGS-2", FadeTime);
+            }
         }
     }
 
