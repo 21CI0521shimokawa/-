@@ -36,6 +36,14 @@ public class BGMManeger : MonoBehaviour
     private void ChangeBGM()
     {
         string SceneName = SceneManager.GetActiveScene().name;// åªç›ÇÃsceneÇéÊìæ
+        if (SceneName == "TGS-1")
+        {
+            BGMAudios.clip = BGMs[4];
+            if (BGMAudios.isPlaying == false)
+            {
+                BGMAudios.Play();
+            }
+        }
         if (SceneName == "Title")
         {
             BGMAudios.clip = BGMs[0];
@@ -61,7 +69,7 @@ public class BGMManeger : MonoBehaviour
                 BGMAudios.Play();
             }
         }
-        else if (SceneName == "S4-1")
+        else if (SceneName == "S4-1"||SceneName=="TGS-2")
         {
             Destroy(gameObject);//êÍópBGMÇ…ïœçXÇÃÇΩÇﬂîjä¸
         }

@@ -112,7 +112,7 @@ public class FadeManager : MonoBehaviour
 
     public void ToStage()
     {
-        StartCoroutine(TransScene("S0-1", 1));
+        StartCoroutine(TransScene("TGS-1", 1));
     }
 
 
