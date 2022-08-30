@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class DebugControll : MonoBehaviour
 {
     private float FadeTime;
-    // Start is called before the first frame update
     void Start()
     {
         if (IsDuplicate())
