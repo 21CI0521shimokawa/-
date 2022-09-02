@@ -35,7 +35,7 @@ public class DebugControll : MonoBehaviour
             string SceneName = SceneManager.GetActiveScene().name;
             if (SceneName == "Title")
             {
-                FadeManager.Instance.LoadScene("S0-1", FadeTime);
+                FadeManager.Instance.LoadScene("TGS-1", FadeTime);
                 return;
             }
             if (SceneName == "S0-1")
@@ -103,6 +103,15 @@ public class DebugControll : MonoBehaviour
             else if(SceneName=="TGS-1")
             {
                 FadeManager.Instance.LoadScene("TGS-2", FadeTime);
+            }
+        }
+        //‚Ð‚Æ‚Â‘O‚É–ß‚é
+        else if(Input.GetKeyDown(KeyCode.F3))
+        {
+            string SceneName = SceneManager.GetActiveScene().name;
+            if(SceneName=="TGS-2")
+            {
+                FadeManager.Instance.LoadScene("TGS-1", FadeTime);
             }
         }
     }

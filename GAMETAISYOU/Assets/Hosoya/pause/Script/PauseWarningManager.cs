@@ -27,7 +27,7 @@ public class PauseWarningManager : MonoBehaviour
     {
         state_ = State.Select;
         select_ = Select.No;
-
+        Time.timeScale = 0.0f;
         oldStickValueY_ = 0.0f;
     }
 

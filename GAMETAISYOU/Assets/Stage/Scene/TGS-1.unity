@@ -404,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087133, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: deadEndTime
-      value: 15
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8680789583821087133, guid: 819a48a37165e2b49a095b5600e6acbd, type: 3}
       propertyPath: tearoffSlimeType

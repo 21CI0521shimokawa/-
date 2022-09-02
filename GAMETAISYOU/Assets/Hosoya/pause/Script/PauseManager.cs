@@ -55,7 +55,7 @@ public class PauseManager : MonoBehaviour
                             break;
 
                         case Select.Title:
-                            FadeManager.Instance.LoadScene("Title", 1.0f);
+                            PauseWarning();
                             EndPause();
                             break;
                     }
@@ -136,6 +136,13 @@ public class PauseManager : MonoBehaviour
             isPause_ = true;
             SceneManager.LoadSceneAsync("PauseScene", LoadSceneMode.Additive);   //加算ロード
             Time.timeScale = 0.0f;
+        }
+    }
+    public void PauseWarning()
+    {
+        if(isPause_)
+        {
+            SceneManager.LoadSceneAsync("PauseWarningScene", LoadSceneMode.Additive);   //加算ロード
         }
     }
 }
