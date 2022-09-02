@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class PauseWarningManager : MonoBehaviour
 {
-    static bool isPause_ = false;
-
     enum State { Non, Select }
     State state_;
 
@@ -20,7 +18,10 @@ public class PauseWarningManager : MonoBehaviour
     [SerializeField] Image cursor_;
     [SerializeField] Vector3[] cursorPosTable_;
 
-    [SerializeField] AudioClip selectSE_;
+    [SerializeField] AudioClip decisionSE_;
+
+    [SerializeField] AudioClip SelectionSE;
+    [SerializeField] AudioClip StartSE;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +50,7 @@ public class PauseWarningManager : MonoBehaviour
 
                         case Select.Yes:
                             FadeManager.Instance.LoadScene("Title", 1.0f);
-                            EndPause();
+                            PauseManager.EndPause();
                             break;
                     }
                 }
@@ -75,6 +76,7 @@ public class PauseWarningManager : MonoBehaviour
             {
                 if (select_ != Select.Yes)
                 {
+                    PlayAudio.PlaySE(SelectionSE);
                     --select_;
                 }
             }
@@ -82,6 +84,7 @@ public class PauseWarningManager : MonoBehaviour
             {
                 if (select_ != Select.No)
                 {
+                    PlayAudio.PlaySE(SelectionSE);
                     ++select_;
                 }
             }
@@ -92,25 +95,12 @@ public class PauseWarningManager : MonoBehaviour
         //決定
         if (gamepad.buttonEast.wasPressedThisFrame)
         {
-            PlayAudio.PlaySE(selectSE_);
+            PlayAudio.PlaySE(decisionSE_);
 
             return true;
         }
 
         return false;
-    }
-
-    void EndPause()
-    {
-        if (isPause_)
-        {
-            isPause_ = false;
-            Time.timeScale = 1.0f;
-            SceneManager.UnloadSceneAsync("PauseScene");   //アンロード
-            SceneManager.UnloadSceneAsync("PauseWarningScene");
-
-            Resources.UnloadUnusedAssets(); //未使用アセットの解放
-        }
     }
 
 

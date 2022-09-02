@@ -429,7 +429,9 @@ MonoBehaviour:
   - {x: -500, y: 150, z: 0}
   - {x: -500, y: 0, z: 0}
   - {x: -500, y: -150, z: 0}
-  selectSE_: {fileID: 8300000, guid: 4e32303e76f8bbd4d9aa1113b136e682, type: 3}
+  decisionSE_: {fileID: 0}
+  SelectionSE: {fileID: 0}
+  StartSE: {fileID: 0}
 --- !u!4 &1454001500
 Transform:
   m_ObjectHideFlags: 0
@@ -460,7 +462,9 @@ MonoBehaviour:
   cursorPosTable_:
   - {x: -500, y: 0, z: 0}
   - {x: -500, y: -150, z: 0}
-  selectSE_: {fileID: 8300000, guid: 4e32303e76f8bbd4d9aa1113b136e682, type: 3}
+  decisionSE_: {fileID: 8300000, guid: e79aa669ec8243b42bf7cb7d6a2fe226, type: 3}
+  SelectionSE: {fileID: 8300000, guid: ae056599a39228b4f96e3b9bddd3a134, type: 3}
+  StartSE: {fileID: 0}
 --- !u!1 &1546057385
 GameObject:
   m_ObjectHideFlags: 0
