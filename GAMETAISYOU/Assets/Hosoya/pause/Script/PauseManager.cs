@@ -55,8 +55,8 @@ public class PauseManager : MonoBehaviour
                             break;
 
                         case Select.Title:
-                            PauseWarning();
-                            EndPause();
+                            SceneManager.LoadSceneAsync("PauseWarningScene", LoadSceneMode.Additive);   //加算ロード
+                            SceneManager.UnloadSceneAsync("PauseScene");
                             break;
                     }
                 }
@@ -109,13 +109,25 @@ public class PauseManager : MonoBehaviour
         return false;
     }
 
-    void EndPause()
+    public static void EndPause()
     {
         if(isPause_)
         {
             isPause_ = false;
             Time.timeScale = 1.0f;
-            SceneManager.UnloadSceneAsync("PauseScene");   //アンロード
+
+            //現在読み込まれているシーン数だけループ
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                if(SceneManager.GetSceneAt(i).name == "PauseWarningScene")
+                {
+                    SceneManager.UnloadSceneAsync("PauseWarningScene");   //アンロード
+                }
+                else if(SceneManager.GetSceneAt(i).name == "PauseScene")
+                {
+                    SceneManager.UnloadSceneAsync("PauseScene");   //アンロード
+                }
+            }     
 
             Resources.UnloadUnusedAssets(); //未使用アセットの解放
         }
@@ -136,13 +148,6 @@ public class PauseManager : MonoBehaviour
             isPause_ = true;
             SceneManager.LoadSceneAsync("PauseScene", LoadSceneMode.Additive);   //加算ロード
             Time.timeScale = 0.0f;
-        }
-    }
-    public void PauseWarning()
-    {
-        if(isPause_)
-        {
-            SceneManager.LoadSceneAsync("PauseWarningScene", LoadSceneMode.Additive);   //加算ロード
         }
     }
 }
