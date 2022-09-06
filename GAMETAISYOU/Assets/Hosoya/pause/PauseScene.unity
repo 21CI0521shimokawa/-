@@ -171,9 +171,8 @@ MonoBehaviour:
   - {x: -500, y: 150, z: 0}
   - {x: -500, y: 0, z: 0}
   - {x: -500, y: -150, z: 0}
-  decisionSE_: {fileID: 8300000, guid: e79aa669ec8243b42bf7cb7d6a2fe226, type: 3}
+  decisionSE_: {fileID: 8300000, guid: 21c6775bd7ff72744bd028ba2a60d37c, type: 3}
   SelectionSE: {fileID: 8300000, guid: ae056599a39228b4f96e3b9bddd3a134, type: 3}
-  StartSE: {fileID: 0}
 --- !u!1 &252042422
 GameObject:
   m_ObjectHideFlags: 0

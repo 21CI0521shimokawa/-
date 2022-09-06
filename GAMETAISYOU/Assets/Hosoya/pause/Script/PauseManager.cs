@@ -23,9 +23,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] AudioClip decisionSE_;
 
     [SerializeField] AudioClip SelectionSE;
-    [SerializeField] AudioClip StartSE;
 
-    // Start is called before the first frame update
     void Start()
     {
         state_ = State.Select;

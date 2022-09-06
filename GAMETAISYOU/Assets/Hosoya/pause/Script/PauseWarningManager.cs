@@ -22,7 +22,6 @@ public class PauseWarningManager : MonoBehaviour
 
     [SerializeField] AudioClip SelectionSE;
     [SerializeField] AudioClip StartSE;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +50,7 @@ public class PauseWarningManager : MonoBehaviour
                         case Select.Yes:
                             FadeManager.Instance.LoadScene("Title", 1.0f);
                             PauseManager.EndPause();
+                            BGMManeger.Destroy();
                             break;
                     }
                 }

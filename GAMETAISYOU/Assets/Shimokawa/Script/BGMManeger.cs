@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class BGMManeger : MonoBehaviour
 {
     private static BGMManeger instance;
-
+    public static bool _IsTitlePlay;
     [SerializeField] AudioClip[] BGMs;
     [SerializeField] AudioSource BGMAudios;
 
@@ -47,7 +47,7 @@ public class BGMManeger : MonoBehaviour
         if (SceneName == "Title")
         {
             BGMAudios.clip = BGMs[0];
-            if (BGMAudios.isPlaying == false)
+            if (_IsTitlePlay)
             {
                 BGMAudios.Play();
             }
@@ -71,7 +71,11 @@ public class BGMManeger : MonoBehaviour
         }
         else if (SceneName == "S4-1"||SceneName=="TGS-2")
         {
-            Destroy(gameObject);//専用BGMに変更のため破棄
+            Destroy();//専用BGMに変更のため破棄
         }
+    }
+    public void  Destroy()
+    {
+        Destroy(gameObject);
     }
 }

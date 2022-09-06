@@ -11,8 +11,6 @@ public class TimeLineAudioManager : MonoBehaviour
     public AudioClip _RockSEClip;
     public float _SEVolume = 0.8f;
     public float _AmbientVolume = 0.8f;
-    public GameObject BGMMeneger;
-
     AudioSource _SESource;
     AudioSource _AmbientSource;
 
