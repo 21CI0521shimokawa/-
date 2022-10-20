@@ -6,14 +6,14 @@ using UniRx.Triggers;
 
 public class EndlingSlime : MonoBehaviour
 {
-    #region SerializeField
     [SerializeField,Tooltip("スライムの移動速度")]float MoveSpeed;
-    [SerializeField,Tooltip("エンディングBGM関数の取得")] PlayBGM PlayBGM;
-    #endregion
-
+    [SerializeField, Tooltip("エンディングBGM関数の取得")] PlayBGM PlayBGM;
     private bool IsMove = true;
     private bool StopOnce;
 
+    /// <summary>
+    /// ゲームが始まる時に一度だけ呼ばれる関数
+    /// </summary>
     void Start()
     {
         this.UpdateAsObservable()
@@ -21,26 +21,31 @@ public class EndlingSlime : MonoBehaviour
            {
                if (IsMove)
                {
-                   transform.Translate(MoveSpeed * Time.deltaTime, 0, 0);
+                   transform.Translate(MoveSpeed * Time.deltaTime, 0, 0); //IsMoveがtrueだったらMoveSpeedの速さで左に移動
                }
-               if (!StopOnce&&transform.position.x <= -1)
+               if (!StopOnce&&transform.position.x <= -1) //StopOnceがfalseでスライムが一定の位置まで到着したら
                {
-                   StopOnce = true;
-                   IsMove = false;
+                   StopOnce = true; //StopOnceをtrueに変更
+                   IsMove = false; //IsMoveをfalseにしてスライムの動きを止める
                }
            });
     }
-    #region public function
-    public void Move() //アニメーションイベントで参照される関数
+
+    /// <summary>
+    /// アニメーションイベントで参照される移動再開関数
+    /// </summary>
+    public void Move()
     {
         IsMove = true;
         MoveSpeed = -1.2f;
     }
 
-    public void ToTitle()//アニメーションイベントで参照される関数
+    /// <summary>
+    /// アニメーションイベントで参照されるタイトルに戻る関数
+    /// </summary>
+    public void ToTitle()
     {
         FadeManager.Instance.LoadScene("Title", 4f);
         PlayBGM._FadeOutStart();
     }
-    #endregion
 }

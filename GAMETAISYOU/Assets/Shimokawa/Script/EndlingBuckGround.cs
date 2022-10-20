@@ -6,21 +6,19 @@ using UniRx.Triggers;
 
 public class EndlingBuckGround : MonoBehaviour
 {
-    #region SerializeField
-    [SerializeField, Tooltip("背景オブジェクトの移動スピード")] float Speed;
+    [SerializeField, Tooltip("背景オブジェクトの移動スピード")] float MoveSpeed;
     [SerializeField, Tooltip("折り返し地点設定")] float LimitPosition;
     [SerializeField, Tooltip("リスタート地点設定")] Vector2 RestartPosition;
-    #endregion
 
     void Start()
     {
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                transform.Translate(Speed * Time.deltaTime, 0, 0);
+                transform.Translate(MoveSpeed * Time.deltaTime, 0, 0); //左にSpeedの速さで移動
                 if (transform.position.x > LimitPosition)
                 {
-                    transform.position = RestartPosition;
+                    transform.position = RestartPosition; //一定の位置になったら最初の位置に戻る
                 }
 
             });

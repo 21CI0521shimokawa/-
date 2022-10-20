@@ -9,88 +9,94 @@ using DG.Tweening;
 
 public class ElevatorControll : MonoBehaviour
 {
-    #region SerializeField
     [SerializeField, Tooltip("ドアの開閉スピード")] float Speed;
-    [SerializeField, Tooltip("移動量"),] Vector3 MoveTo = new Vector3(0, 4);
     [SerializeField, Tooltip("ドアの移動時間")] float ElevatorMoveTime;
-    [SerializeField, Tooltip("オーディオソース")] AudioSource AudioSource = null;
+    [SerializeField, Tooltip("移動量")] Vector3 MoveTo = new Vector3(0, 4);
     [SerializeField, Tooltip("ドア開閉SE")] AudioClip DoorSE;
     [SerializeField, Tooltip("ドアの開閉アニメーション")] Animator ElevatorAnimator;
     [SerializeField, Tooltip("移動イージング指定")] Ease EaseType;
-    [SerializeField, Tooltip("フェードの時間")] float FadeTime;
     [SerializeField, Tooltip("現在のシーンの名前")] Scene SceneName;
     [SerializeField, Tooltip("スライムオブジェクトの取得")] SlimeController ClonSlime;
     [SerializeField, Tooltip("剛体取得")] Rigidbody2D ElevatorRigidbody;
-    [SerializeField,Tooltip("カメラの追跡管理")] GameObject CameraActive;
-    #endregion
+    [SerializeField, Tooltip("カメラの追跡管理")] GameObject CameraActive;
+    private const int DoTime = 1; //衝突した後の処理を一度だけ実行するための変数
+    private const float DelayTime = 1f; //アニメーションを再生してから動きだすためのDelayTimeを指定
 
     #region ステート管理
     private enum ElevatorState { MOVE, WAIT };
     ElevatorState NowState;
     #endregion
 
+    /// <summary>
+    /// ゲームが始まる時に一度だけStart関数より先呼ばれる関数
+    /// </summary>
     void Awake()
     {
-        CameraActive.SetActive(true);
+        NowState = AutoDoorState.MOVE; //ステートをMOVEにしておく
     }
+
+    /// <summary>
+    /// ゲームが始まる時に一度だけ呼ばれる関数
+    /// </summary>
     void Start()
     {
         this.OnTriggerEnter2DAsObservable()
-            .Select(collison => collison.tag)
-            .Where(tag => tag == "Slime")
-            .Take(1)
+            .Select(collison => collison.tag) //衝突したオブジェクトのタグが
+            .Where(tag => tag == "Slime") //"Slime"だったら
+            .Take(DoTime) //一度だけ実行
             .Subscribe(collision =>
             {
-                if (NowState == ElevatorState.MOVE)
+                if (NowState == ElevatorState.MOVE) //現在のステートがMOVEだったら実行
                 {
-                    PlaySE(DoorSE);
-                    this.transform.DOMoveY(MoveTo.y, ElevatorMoveTime).SetDelay(1f)
+                    this.transform.DOMoveY(MoveTo.y, ElevatorMoveTime).SetDelay(DelayTime) //DelayTimeの時間待ってからMoveto.yの地点までElevatorMoveTimeの速さで移動
                         .OnStart(() =>
-                        {//実行開始時のコールバック
-                            ElevatorAnimator.SetBool("Start", true);
+                        {
+                            PlayAudio.PlaySE(DoorSE); //DoorSEを再生
+                            ElevatorAnimator.SetBool("Start", true); //実行する時にアニメーション再生
                         })
                         .OnComplete(() =>
-                        {//実行完了時のコールバック
-                            ElevatorAnimator.SetBool("Start", false);
-                            ElevatorRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
-                            NowState = ElevatorState.WAIT;
-                            SceneChange();
-                            return;
+                        {
+                            ElevatorAnimator.SetBool("Start", false); //移動完了したら移動終了
+                            ElevatorRigidbody.constraints = RigidbodyConstraints2D.FreezePosition; //移動完了したらそこに留まる
+                            NowState = ElevatorState.WAIT; //移動完了したらステートをWAITに変更
+                            SceneChange(); //一度だけシーン移行処理を呼び出す
                         })
                     .SetEase(EaseType);
                 }
             });
     }
 
-    #region public function
-    public void ElevatorStart() //Elevator起動時にゲームパッドの入力を引き受けない
+    /// <summary>
+    /// Elevator起動時に分裂している子供スライムを全員集合
+    /// </summary>
+    public void ElevatorStart()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Slime");
-        foreach (GameObject obj in objects)
+        GameObject[] SlimeObjects = GameObject.FindGameObjectsWithTag("Slime"); //シーンに存在している分裂している子供スライムを全て取得
+        foreach (GameObject Obj in SlimeObjects) //シーン上に存在しているスライムオブジェクトを取得
         {
-            obj.GetComponent<SlimeController>().liveTime = 20;
+            Obj.GetComponent<SlimeController>().liveTime = 20; //子供スライムが親スライムに戻る時間を指定する事で集合させる
         }
-        CameraActive.SetActive(false);
-        ElevatorAnimator.SetTrigger("Close");
+        CameraActive.SetActive(false); //カメラの追跡を停止させる
+        ElevatorAnimator.SetTrigger("Close"); //エレベーターのCloseアニメーション再生
     }
-    public void SceneChange()  //scene移行
+
+    /// <summary>
+    /// 現在のsceneを取得してシーン移行
+    /// </summary>
+    public void SceneChange()
     {
-        //現在のsceneを取得
-        string SceneName = SceneManager.GetActiveScene().name;
+        string SceneName = SceneManager.GetActiveScene().name; //現在のシーンの名前を取得
         if (SceneName == "Title")
         {
             FadeManager.Instance.LoadScene("S0-1", FadeTime);
-            return;
         }
         if (SceneName == "S0-1")
         {
             FadeManager.Instance.LoadScene("S0-2", FadeTime);
-            return;
         }
         else if (SceneName == "S0-2")
         {
             FadeManager.Instance.LoadScene("S0-3", FadeTime);
-            return;
         }
         else if (SceneName == "S0-3")
         {
@@ -140,17 +146,9 @@ public class ElevatorControll : MonoBehaviour
         {
             FadeManager.Instance.LoadScene("S4-1", FadeTime);
         }
-        else if(SceneName== "TGS-1")
+        else if (SceneName == "TGS-1")
         {
             FadeManager.Instance.LoadScene("TGS-2", FadeTime);
         }
     }
-    public void PlaySE(AudioClip audio) //SEを一回のみ再生
-    {
-        if (AudioSource != null)
-        {
-            AudioSource.PlayOneShot(audio);
-        }
-    }
-    #endregion
 }
