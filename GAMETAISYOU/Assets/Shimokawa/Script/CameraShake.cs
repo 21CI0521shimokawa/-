@@ -4,16 +4,11 @@ using UnityEngine.InputSystem;
 
 public class CameraShake : MonoBehaviour
 {
-    #region public function
     public void Shake(float duration, float magnitude)
     {
         StartCoroutine(CameraDoShake(duration, magnitude));
     }
-    #endregion
 
-    /// <summary>
-    /// ÉRÉãÅ[É`Éì
-    /// </summary>
     private IEnumerator CameraDoShake(float Duration, float Magnitude)
     {
         var Positon = transform.localPosition;

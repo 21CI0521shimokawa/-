@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Blinking_Control : MonoBehaviour
+public class Blinking_Controller : MonoBehaviour
 {
-
-    //public
     public float speed = 1.0f;
 
     //private
