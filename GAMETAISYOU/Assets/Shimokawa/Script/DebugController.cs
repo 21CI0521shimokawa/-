@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DebugControll : MonoBehaviour
+public class DebugController : MonoBehaviour
 {
     private float FadeTime;
     void Start()

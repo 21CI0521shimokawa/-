@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class Blinking_Controller : MonoBehaviour
 {
-    public float speed = 1.0f;
-
-    //private
-    private Text text;
-    private Image image;
-    private float time;
+    [SerializeField] float Speed = 1.0f; //点滅するスピード
+    private Text Text; //点滅させるテキスト
+    private Image Image; //点滅させる画像
+    private float NowTime; //点滅させるために必要な時間を所持するための内部的な変数
 
     private enum ObjType
     {
@@ -25,12 +23,12 @@ public class Blinking_Controller : MonoBehaviour
         if (this.gameObject.GetComponent<Image>())
         {
             thisObjType = ObjType.IMAGE;
-            image = this.gameObject.GetComponent<Image>();
+            Image = this.gameObject.GetComponent<Image>();
         }
         else if (this.gameObject.GetComponent<Text>())
         {
             thisObjType = ObjType.TEXT;
-            text = this.gameObject.GetComponent<Text>();
+            Text = this.gameObject.GetComponent<Text>();
         }
     }
 
@@ -39,20 +37,20 @@ public class Blinking_Controller : MonoBehaviour
        
         if (thisObjType == ObjType.IMAGE)
         {
-            image.color = GetAlphaColor(image.color);
+            Image.color = GetAlphaColor(Image.color);
         }
         else if (thisObjType == ObjType.TEXT)
         {
-            text.color = GetAlphaColor(text.color);
+            Text.color = GetAlphaColor(Text.color);
         }
     }
 
    
-    Color GetAlphaColor(Color color)
+    Color GetAlphaColor(Color Color)
     {
-        time += Time.deltaTime * 5.0f * speed;
-        color.a = Mathf.Sin(time) * 0.5f + 0.5f;
+        NowTime += Time.deltaTime * 5.0f * Speed;
+        Color.a = Mathf.Sin(NowTime) * 0.5f + 0.5f; 
 
-        return color;
+        return Color;
     }
 }
