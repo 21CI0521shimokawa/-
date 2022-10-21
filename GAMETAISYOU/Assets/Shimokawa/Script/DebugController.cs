@@ -6,33 +6,42 @@ using UnityEngine.SceneManagement;
 public class DebugController : MonoBehaviour
 {
     private float FadeTime;
+
+    /// <summary>
+    /// ゲームが始まる時に一度だけStart関数より先呼ばれる関数
+    /// </summary>
+    void Awake()
+    {
+        DontDestroyOnLoad(instance);
+    }
+
+    /// <summary>
+    /// ゲームが始まる時に一度だけ呼ばれる関数
+    /// </summary>
     void Start()
     {
         if (IsDuplicate())
-        {
+        { DontDestroyOnLoad(instance);
             Destroy(gameObject);
         }
 
         FadeTime = 1.0f;
+
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// 毎フレーム呼ばれる関数
+    /// </summary>
     void Update()
     {
-        DontDestroyOnLoad(gameObject);
-
-        //現在のシーンをやり直す
-        if(Input.GetKeyDown(KeyCode.F1))
+        if(Input.GetKeyDown(KeyCode.F1)) //現在のシーンをやり直す
         {
-            //現在のsceneを取得
-            string SceneName = SceneManager.GetActiveScene().name;
+            string SceneName = SceneManager.GetActiveScene().name;//現在のsceneを取得
             FadeManager.Instance.LoadScene(SceneName, FadeTime);
         }
-        //一つ進む
-        else if (Input.GetKeyDown(KeyCode.F2))
+        else if (Input.GetKeyDown(KeyCode.F2)) //一つシーンを進ませる
         {
-            //現在のsceneを取得
-            string SceneName = SceneManager.GetActiveScene().name;
+            string SceneName = SceneManager.GetActiveScene().name; //現在のsceneを取得
             if (SceneName == "Title")
             {
                 FadeManager.Instance.LoadScene("TGS-1", FadeTime);
@@ -105,8 +114,7 @@ public class DebugController : MonoBehaviour
                 FadeManager.Instance.LoadScene("TGS-2", FadeTime);
             }
         }
-        //ひとつ前に戻る
-        else if(Input.GetKeyDown(KeyCode.F3))
+        else if(Input.GetKeyDown(KeyCode.F3)) //ひとつ前に戻る
         {
             string SceneName = SceneManager.GetActiveScene().name;
             if(SceneName=="TGS-2")
@@ -116,12 +124,13 @@ public class DebugController : MonoBehaviour
         }
     }
 
-    //重複チェック
+    /// <summary>
+    /// 重複チェック
+    /// </summary>
+    /// <returns></returns>
     bool IsDuplicate()
     {
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("GameSetting");
-
-        //重複していたら(二つ以上検知したら)true
-        return gameObjects.Length >= 2;
+        return gameObjects.Length >= 2; //重複していたら(二つ以上検知したら)true
     }
 }

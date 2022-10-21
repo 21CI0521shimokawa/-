@@ -15,8 +15,12 @@ public class Blinking_Controller : MonoBehaviour
         TEXT,
         IMAGE
     };
+
     private ObjType thisObjType = ObjType.TEXT;
 
+    /// <summary>
+    /// ゲームが始まる時に一度だけ呼ばれる関数
+    /// </summary>
     void Start()
     {
         
@@ -32,6 +36,9 @@ public class Blinking_Controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 毎フレーム呼ばれる関数
+    /// </summary>
     void Update()
     {
         switch (thisObjType)//thisObjType事に処理を分けてGetAlphaColor(オブジェクト点滅処理)を呼び出す
@@ -47,7 +54,12 @@ public class Blinking_Controller : MonoBehaviour
         }
     }
 
-    Color GetAlphaColor(Color Color) //点滅処理関数
+    /// <summary>
+    /// 点滅処理関数
+    /// </summary>
+    /// <param name="Color"></param>
+    /// <returns></returns>
+    Color GetAlphaColor(Color Color)
     {
         NowTime += Time.deltaTime * 5.0f * Speed;
         Color.a = Mathf.Sin(NowTime) * 0.5f + 0.5f; 

@@ -8,6 +8,10 @@ public class GoalController : MonoBehaviour
     [SerializeField] PlayBGM PlayBGM;
     [SerializeField] float FadeTime;
 
+    /// <summary>
+    /// "Slime"のタグがついているオブジェクトに衝突した時
+    /// </summary>
+    /// <param name="collision"></param>
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Slime")

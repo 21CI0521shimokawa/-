@@ -8,17 +8,26 @@ public class TitleLogoStay : MonoBehaviour
     [SerializeField] GameObject TimeLine; //オープニングムービーを流しているオブジェクト
     [SerializeField] AudioClip StartSE; //ゲームスタートSE
     [SerializeField] float StayTime; //スライムが移動完了するまでの時間を保持する変数
-    
+
+    /// <summary>
+    /// ゲームが始まる時に一度だけStart関数より先呼ばれる関数
+    /// </summary>
     private void Awake()
     {
         ObjectDorw(StartLogo, false);
     }
 
+    /// <summary>
+    /// ゲームが始まる時に一度だけ呼ばれる関数
+    /// </summary>
     void Start()
     {
         StartCoroutine(Stay()); //コルーチン呼び出し
     }
 
+    /// <summary>
+    /// 毎フレーム呼ばれる関数
+    /// </summary>
     private void Update()
     {
         if (TimeLine.activeSelf&&StartLogo.activeSelf)
@@ -28,13 +37,22 @@ public class TitleLogoStay : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// スライムが移動完了したらタイトルロゴを消す関数
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Stay()
     {
         yield return new WaitForSeconds(StayTime);//スライムが落ち着くまで待つ
         ObjectDorw(StartLogo, true);
     }
 
-    private void ObjectDorw(GameObject SubjectObject, bool IsDrow) //オブジェクト描画判定
+    /// <summary>
+    /// オブジェクト描画判定
+    /// </summary>
+    /// <param name="SubjectObject"></param>
+    /// <param name="IsDrow"></param>
+    private void ObjectDorw(GameObject SubjectObject, bool IsDrow) 
     {
         switch (IsDrow)
         {
