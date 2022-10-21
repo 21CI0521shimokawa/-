@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class TitleLogoStay : MonoBehaviour
 {
-    [SerializeField] TitleAudioManager TitleLogo;
-    [SerializeField] GameObject StartLogo;
-    [SerializeField] GameObject TimeLine;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip StartSE;
-    [SerializeField] float StayTime;
+    [SerializeField] GameObject StartLogo; //PressAnyKeyイメージ画像
+    [SerializeField] GameObject TimeLine; //オープニングムービーを流しているオブジェクト
+    [SerializeField] AudioClip StartSE; //ゲームスタートSE
+    [SerializeField] float StayTime; //スライムが移動完了するまでの時間を保持する変数
     
     private void Awake()
     {
-        StartLogo.SetActive(false);
+        ObjectDorw(StartLogo, false);
     }
 
     void Start()
     {
-        StartCoroutine(Stay());
+        StartCoroutine(Stay()); //コルーチン呼び出し
     }
 
     private void Update()
@@ -36,7 +34,7 @@ public class TitleLogoStay : MonoBehaviour
         ObjectDorw(StartLogo, true);
     }
 
-    private void ObjectDorw(GameObject SubjectObject, bool IsDrow)
+    private void ObjectDorw(GameObject SubjectObject, bool IsDrow) //オブジェクト描画判定
     {
         switch (IsDrow)
         {

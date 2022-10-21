@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class BGMManeger : MonoBehaviour
 {
-    private static BGMManeger instance;
-    public static bool _IsTitlePlay;
-    [SerializeField] AudioClip[] BGMs;
-    [SerializeField] AudioSource BGMAudios;
+    private static BGMManeger instance; //外部で扱うためにstatic変数に設定
+    public static bool _IsTitlePlay; //現在タイトルにBGMが流れているかの判定(timelineで使用)
+    [SerializeField] AudioClip[] BGMs; //BGMを格納した変数
+    [SerializeField] AudioSource BGMAudios; //音源を流す変数
 
     private void Awake() //シングルトン
     {
@@ -26,14 +26,15 @@ public class BGMManeger : MonoBehaviour
     }
     void Start()
     {
-        BGMAudios.Play();
+        BGMAudios.Play(); //最初に設定されているClipを再生
         this.UpdateAsObservable()
             .Subscribe(_ =>
         {
-            ChangeBGM();
+            ChangeBGM(); //シーン事に音源を判定し特定のシーンで音源変更
         });
     }
-    private void ChangeBGM()
+
+    private void ChangeBGM() //シーンを変更する判定関数
     {
         string SceneName = SceneManager.GetActiveScene().name;// 現在のsceneを取得
         if (SceneName == "TGS-1")

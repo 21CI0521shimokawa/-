@@ -34,19 +34,20 @@ public class Blinking_Controller : MonoBehaviour
 
     void Update()
     {
-       
-        if (thisObjType == ObjType.IMAGE)
+        switch (thisObjType)//thisObjType事に処理を分けてGetAlphaColor(オブジェクト点滅処理)を呼び出す
         {
-            Image.color = GetAlphaColor(Image.color);
-        }
-        else if (thisObjType == ObjType.TEXT)
-        {
-            Text.color = GetAlphaColor(Text.color);
+            case ObjType.TEXT:
+                Text.color = GetAlphaColor(Text.color);
+                break;
+            case ObjType.IMAGE:
+                Image.color = GetAlphaColor(Image.color);
+                break;
+            default:
+                break;
         }
     }
 
-   
-    Color GetAlphaColor(Color Color)
+    Color GetAlphaColor(Color Color) //点滅処理関数
     {
         NowTime += Time.deltaTime * 5.0f * Speed;
         Color.a = Mathf.Sin(NowTime) * 0.5f + 0.5f; 
