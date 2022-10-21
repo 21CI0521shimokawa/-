@@ -12,6 +12,9 @@ public class BGMManeger : MonoBehaviour
     [SerializeField] AudioClip[] BGMs; //BGMを格納した変数
     [SerializeField] AudioSource BGMAudios; //音源を流す変数
 
+    /// <summary>
+    /// ゲームが始まる時に一度だけStart関数より先呼ばれる関数
+    /// </summary>
     private void Awake() //シングルトン
     {
         if (instance == null)
@@ -24,6 +27,10 @@ public class BGMManeger : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /// <summary>
+    /// ゲームが始まる時に一度だけ呼ばれる関数
+    /// </summary>
     void Start()
     {
         BGMAudios.Play(); //最初に設定されているClipを再生
@@ -34,7 +41,10 @@ public class BGMManeger : MonoBehaviour
         });
     }
 
-    private void ChangeBGM() //シーンを変更する判定関数
+    /// <summary>
+    /// シーンを変更する判定関数
+    /// </summary>
+    private void ChangeBGM()
     {
         string SceneName = SceneManager.GetActiveScene().name;// 現在のsceneを取得
         if (SceneName == "TGS-1")
@@ -75,8 +85,12 @@ public class BGMManeger : MonoBehaviour
             Destroy();//専用BGMに変更のため破棄
         }
     }
+
+    /// <summary>
+    /// オブジェクト破棄関数
+    /// </summary>
     public void  Destroy()
     {
-        Destroy(gameObject);
+        Destroy(gameObject); //破棄する
     }
 }
