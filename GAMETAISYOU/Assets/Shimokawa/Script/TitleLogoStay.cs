@@ -9,38 +9,43 @@ public class TitleLogoStay : MonoBehaviour
     [SerializeField] GameObject TimeLine;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip StartSE;
+    [SerializeField] float StayTime;
     
     private void Awake()
     {
         StartLogo.SetActive(false);
     }
+
     void Start()
     {
         StartCoroutine(Stay());
     }
+
     private void Update()
     {
         if (TimeLine.activeSelf&&StartLogo.activeSelf)
         {
-            PlaySE(StartSE);
-            StartLogo.SetActive(false);
+            PlayAudio.PlaySE(StartSE);
+            ObjectDorw(StartLogo, false);
         }
     }
+
     private IEnumerator Stay()
     {
-        yield return new WaitForSeconds(8f);//スライムが落ち着くまで待つ
-        StartLogo.SetActive(true);
+        yield return new WaitForSeconds(StayTime);//スライムが落ち着くまで待つ
+        ObjectDorw(StartLogo, true);
     }
-    public void PlaySE(AudioClip audio)
+
+    private void ObjectDorw(GameObject SubjectObject, bool IsDrow)
     {
-        if (audioSource != null)
+        switch (IsDrow)
         {
-            audioSource.PlayOneShot(audio);
-            TitleLogo.IsStart = true;
-        }
-        else
-        {
-            Debug.Log("オーディオソースが設定されてない");
+            case true:
+                SubjectObject.SetActive(true);
+                break;
+            case false:
+                SubjectObject.SetActive(false);
+                break;
         }
     }
 }
