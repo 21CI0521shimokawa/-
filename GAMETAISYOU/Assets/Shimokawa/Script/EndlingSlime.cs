@@ -1,43 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UniRx;
-using UniRx.Triggers;
+using SceneDefine;
 
 public class EndlingSlime : MonoBehaviour
 {
-    [SerializeField,Tooltip("スライムの移動速度")]float MoveSpeed;
-    [SerializeField, Tooltip("エンディングBGM関数の取得")] PlayBGM PlayBGM;
-    private bool IsMove = true;
-    private bool StopOnce;
+    [SerializeField, Tooltip("スライムの移動速度")] float moveSpeed;
+    [SerializeField, Tooltip("スライムの移動再開した後の速度")] float resumeMoveSpeed;
+    [SerializeField, Tooltip("エンディングBGM関数の取得")] PlayBGM playBGM;
+    [SerializeField, Tooltip("シーン移行時の時間")] float fadeTime;
+    private bool isMove = true;
+    private bool stopOnce;
 
     /// <summary>
-    /// ゲームが始まる時に一度だけ呼ばれる関数
+    /// 存在していたら毎フレーム呼ばれる関数
     /// </summary>
-    void Start()
+    void Update()
     {
-        this.UpdateAsObservable()
-           .Subscribe(_ =>
-           {
-               if (IsMove)
-               {
-                   transform.Translate(MoveSpeed * Time.deltaTime, 0, 0); //IsMoveがtrueだったらMoveSpeedの速さで左に移動
-               }
-               if (!StopOnce&&transform.position.x <= -1) //StopOnceがfalseでスライムが一定の位置まで到着したら
-               {
-                   StopOnce = true; //StopOnceをtrueに変更
-                   IsMove = false; //IsMoveをfalseにしてスライムの動きを止める
-               }
-           });
+        if (isMove)
+        {
+            //IsMoveがtrueだったらMoveSpeedの速さで左に移動
+            transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+        }
+            //StopOnceがfalseでスライムが一定の位置まで到着したら
+        if (!stopOnce && transform.position.x <= -1)
+        {
+            //StopOnceをtrueに変更
+            stopOnce = true;
+            //IsMoveをfalseにしてスライムの動きを止める
+            isMove = false;
+        }
     }
 
     /// <summary>
     /// アニメーションイベントで参照される移動再開関数
     /// </summary>
-    public void Move()
+    public void ResumeMove()
     {
-        IsMove = true;
-        MoveSpeed = -1.2f;
+        isMove = true;
+        moveSpeed = resumeMoveSpeed;
     }
 
     /// <summary>
@@ -45,7 +44,7 @@ public class EndlingSlime : MonoBehaviour
     /// </summary>
     public void ToTitle()
     {
-        FadeManager.Instance.LoadScene("Title", 4f);
-        PlayBGM._FadeOutStart();
+        SceneManagement.LoadNextScene(fadeTime);
+        playBGM._FadeOutStart();
     }
 }

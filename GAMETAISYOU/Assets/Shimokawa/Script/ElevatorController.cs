@@ -1,69 +1,69 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Linq;
 using UniRx;
 using UniRx.Triggers;
 using DG.Tweening;
+using Cysharp.Threading.Tasks;
+using SceneDefine;
 
-public class ElevatorController : MonoBehaviour
+public class ElevatorController : ClimbingMachine
 {
-    [SerializeField, Tooltip("ドアの開閉スピード")] float Speed;
-    [SerializeField, Tooltip("ドアの移動時間")] float ElevatorMoveTime;
-    [SerializeField, Tooltip("移動量")] Vector3 MoveTo = new Vector3(0, 4);
-    [SerializeField, Tooltip("ドア開閉SE")] AudioClip DoorSE;
-    [SerializeField, Tooltip("ドアの開閉アニメーション")] Animator ElevatorAnimator;
-    [SerializeField, Tooltip("移動イージング指定")] Ease EaseType;
-    [SerializeField, Tooltip("現在のシーンの名前")] Scene SceneName;
-    [SerializeField, Tooltip("スライムオブジェクトの取得")] SlimeController ClonSlime;
-    [SerializeField, Tooltip("剛体取得")] Rigidbody2D ElevatorRigidbody;
-    [SerializeField, Tooltip("カメラの追跡管理")] GameObject CameraActive;
-    private const int DoTime = 1; //衝突した後の処理を一度だけ実行するための変数
-    private const float DelayTime = 1f; //アニメーションを再生してから動きだすためのDelayTimeを指定
-
-    #region ステート管理
-    private enum ElevatorState { MOVE, WAIT };
-    ElevatorState NowState;
-    #endregion
-
-    /// <summary>
-    /// ゲームが始まる時に一度だけStart関数より先呼ばれる関数
-    /// </summary>
-    void Awake()
-    {
-        NowState = AutoDoorState.MOVE; //ステートをMOVEにしておく
-    }
+    [SerializeField, Tooltip("カメラの追跡管理")] GameObject cameraActive;
+    [SerializeField, Tooltip("シーン移行時の時間")] float fadeTime;
+    [SerializeField, Tooltip("エレベーターの開閉SE")] AudioClip openSE;
+    private const int cloneSlimeDieTime = 20; //分裂されたスライムが親スライムに戻る時間を指定
+    private const float delayTime = 1f; //アニメーションを再生してから動きだすためのDelayTimeを指定
 
     /// <summary>
     /// ゲームが始まる時に一度だけ呼ばれる関数
     /// </summary>
     void Start()
     {
-        this.OnTriggerEnter2DAsObservable()
-            .Select(collison => collison.tag) //衝突したオブジェクトのタグが
-            .Where(tag => tag == "Slime") //"Slime"だったら
-            .Take(DoTime) //一度だけ実行
-            .Subscribe(collision =>
-            {
-                if (NowState == ElevatorState.MOVE) //現在のステートがMOVEだったら実行
-                {
-                    this.transform.DOMoveY(MoveTo.y, ElevatorMoveTime).SetDelay(DelayTime) //DelayTimeの時間待ってからMoveto.yの地点までElevatorMoveTimeの速さで移動
-                        .OnStart(() =>
-                        {
-                            PlayAudio.PlaySE(DoorSE); //DoorSEを再生
-                            ElevatorAnimator.SetBool("Start", true); //実行する時にアニメーション再生
-                        })
-                        .OnComplete(() =>
-                        {
-                            ElevatorAnimator.SetBool("Start", false); //移動完了したら移動終了
-                            ElevatorRigidbody.constraints = RigidbodyConstraints2D.FreezePosition; //移動完了したらそこに留まる
-                            NowState = ElevatorState.WAIT; //移動完了したらステートをWAITに変更
-                            SceneChange(); //一度だけシーン移行処理を呼び出す
-                        })
-                    .SetEase(EaseType);
-                }
-            });
+        Moving();
+    }
+
+    /// <summary>
+    /// エレベーターの動きの心臓部
+    /// </summary>
+    protected override void Moving()
+    {
+        TriggerEnterDirector
+                         //衝突したオブジェクトのタグが
+                         .Select(collison => collison.tag)
+                         //"Slime"だったら
+                         .Where(tag => tag == SubjectObjectTag)
+                         //現在のステートがMOVEだったら実行
+                         .Where(_State => NowState == ClimbingState.MOVE)
+                         //一度だけ実行
+                         .Take(DoTime)
+                         .Subscribe(async collision =>
+                         {
+                             //DoorSEを再生
+                             PlayAudio.PlaySE(openSE);
+                             //エレベーターが閉じるアニメーションが終わるまで待機
+                             var WaitAnimEnd = await IsEndNowAnimation();
+                             //アニメーションが終了してからUpMoveValue.yの地点までdelayTimeの速さで移動しイージングタイプを指定
+                             ClimbingTween = transform.DOMoveY(UpMoveValue.y, MovingTime).SetDelay(delayTime).SetEase(EaseType);
+
+                             ClimbingTween
+                                  .OnStart(() =>
+                                  {
+                                      // Elevator起動時に分裂している子供スライムを全員集合
+                                      ElevatorStart();
+                                      //実行する時にアニメーション再生
+                                      ClimbingMachineAnimator.SetBool("Start", true);
+                                  })
+                                  .OnComplete(() =>
+                                  {
+                                      //移動完了したらステートをWAITに変更
+                                      NowState = ClimbingState.WAIT;
+                                      //シーン移行
+                                      SceneManagement.LoadNextScene(fadeTime);
+                                  });
+                         });
     }
 
     /// <summary>
@@ -71,84 +71,18 @@ public class ElevatorController : MonoBehaviour
     /// </summary>
     public void ElevatorStart()
     {
-        GameObject[] SlimeObjects = GameObject.FindGameObjectsWithTag("Slime"); //シーンに存在している分裂している子供スライムを全て取得
-        foreach (GameObject Obj in SlimeObjects) //シーン上に存在しているスライムオブジェクトを取得
+        //シーンに存在している分裂している子供スライムを全て取得
+        GameObject[] slimeObjects = GameObject.FindGameObjectsWithTag(SubjectObjectTag);
+        //シーン上に存在しているスライムオブジェクトを取得
+        foreach (GameObject objcet in slimeObjects)
         {
-            Obj.GetComponent<SlimeController>().liveTime = 20; //子供スライムが親スライムに戻る時間を指定する事で集合させる
+            //子供スライムが親スライムに戻る時間を指定する事で集合させる
+            objcet.GetComponent<SlimeController>().liveTime = cloneSlimeDieTime;
         }
-        CameraActive.SetActive(false); //カメラの追跡を停止させる
-        ElevatorAnimator.SetTrigger("Close"); //エレベーターのCloseアニメーション再生
+        //カメラの追跡を停止させる
+        cameraActive.SetActive(false);
+        //エレベーターのCloseアニメーション再生
+        ClimbingMachineAnimator.SetTrigger("Close");
     }
 
-    /// <summary>
-    /// 現在のsceneを取得してシーン移行
-    /// </summary>
-    public void SceneChange()
-    {
-        string SceneName = SceneManager.GetActiveScene().name; //現在のシーンの名前を取得
-        if (SceneName == "Title")
-        {
-            FadeManager.Instance.LoadScene("S0-1", FadeTime);
-        }
-        if (SceneName == "S0-1")
-        {
-            FadeManager.Instance.LoadScene("S0-2", FadeTime);
-        }
-        else if (SceneName == "S0-2")
-        {
-            FadeManager.Instance.LoadScene("S0-3", FadeTime);
-        }
-        else if (SceneName == "S0-3")
-        {
-            FadeManager.Instance.LoadScene("S1-1", FadeTime);
-        }
-        else if (SceneName == "S1-1")
-        {
-            FadeManager.Instance.LoadScene("S1-2", FadeTime);
-        }
-        else if (SceneName == "S1-2")
-        {
-            FadeManager.Instance.LoadScene("S1-3", FadeTime);
-        }
-        else if (SceneName == "S1-3")
-        {
-            FadeManager.Instance.LoadScene("S2-1", FadeTime);
-        }
-        else if (SceneName == "S2-1")
-        {
-            FadeManager.Instance.LoadScene("S2-2", FadeTime);
-        }
-        else if (SceneName == "S2-2")
-        {
-            FadeManager.Instance.LoadScene("S2-3", FadeTime);
-        }
-        else if (SceneName == "S2-3")
-        {
-            FadeManager.Instance.LoadScene("S2-4", FadeTime);
-        }
-        else if (SceneName == "S2-4")
-        {
-            FadeManager.Instance.LoadScene("S3-1", FadeTime);
-        }
-        else if (SceneName == "S3-1")
-        {
-            FadeManager.Instance.LoadScene("S3-2", FadeTime);
-        }
-        else if (SceneName == "S3-2")
-        {
-            FadeManager.Instance.LoadScene("S3-3", FadeTime);
-        }
-        else if (SceneName == "S3-3")
-        {
-            FadeManager.Instance.LoadScene("S3-4", FadeTime);
-        }
-        else if (SceneName == "S3-4")
-        {
-            FadeManager.Instance.LoadScene("S4-1", FadeTime);
-        }
-        else if (SceneName == "TGS-1")
-        {
-            FadeManager.Instance.LoadScene("TGS-2", FadeTime);
-        }
-    }
 }
