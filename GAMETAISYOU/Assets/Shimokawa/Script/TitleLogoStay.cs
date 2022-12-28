@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class TitleLogoStay : MonoBehaviour
 {
-    [SerializeField] GameObject StartLogo; //PressAnyKeyイメージ画像
-    [SerializeField] GameObject TimeLine; //オープニングムービーを流しているオブジェクト
-    [SerializeField] AudioClip StartSE; //ゲームスタートSE
-    [SerializeField] float StayTime; //スライムが移動完了するまでの時間を保持する変数
+    [SerializeField] GameObject startLogo; //PressAnyKeyイメージ画像
+    [SerializeField] GameObject timeLine; //オープニングムービーを流しているオブジェクト
+    [SerializeField] AudioClip startSE; //ゲームスタートSE
+    [SerializeField] float stayTime; //スライムが移動完了するまでの時間を保持する変数
 
     /// <summary>
     /// ゲームが始まる時に一度だけStart関数より先呼ばれる関数
     /// </summary>
     private void Awake()
     {
-        ObjectDorw(StartLogo, false);
+        ObjectDorw(startLogo, false);
     }
 
     /// <summary>
@@ -30,10 +30,10 @@ public class TitleLogoStay : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (TimeLine.activeSelf&&StartLogo.activeSelf)
+        if (timeLine.activeSelf&&StartLogo.activeSelf)
         {
-            PlayAudio.PlaySE(StartSE);
-            ObjectDorw(StartLogo, false);
+            PlayAudio.PlaySE(startSE);
+            ObjectDorw(startLogo, false);
         }
     }
 
@@ -43,24 +43,24 @@ public class TitleLogoStay : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Stay()
     {
-        yield return new WaitForSeconds(StayTime);//スライムが落ち着くまで待つ
-        ObjectDorw(StartLogo, true);
+        yield return new WaitForSeconds(stayTime);//スライムが落ち着くまで待つ
+        ObjectDorw(startLogo, true);
     }
 
     /// <summary>
     /// オブジェクト描画判定
     /// </summary>
-    /// <param name="SubjectObject"></param>
-    /// <param name="IsDrow"></param>
-    private void ObjectDorw(GameObject SubjectObject, bool IsDrow) 
+    /// <param name="subjectObject"></param>
+    /// <param name="isDrow"></param>
+    private void ObjectDorw(GameObject subjectObject, bool isDrow) 
     {
-        switch (IsDrow)
+        switch (isDrow)
         {
             case true:
-                SubjectObject.SetActive(true);
+                subjectObject.SetActive(true);
                 break;
             case false:
-                SubjectObject.SetActive(false);
+                subjectObject.SetActive(false);
                 break;
         }
     }
